@@ -85,7 +85,6 @@
       <sprite>sprites\spr_spawn</sprite>
       <sprite>sprites\sprite100</sprite>
       <sprite>sprites\sprite106</sprite>
-      <sprite>sprites\sprite105</sprite>
     </sprites>
     <sprites name="debug">
       <sprite>sprites\spr_debug</sprite>
