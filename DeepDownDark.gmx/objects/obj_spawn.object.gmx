@@ -119,11 +119,10 @@ if awake == false &amp;&amp; awaketest &gt; 0
 if awake == false &amp;&amp; awaketest &lt;= 0
     {
         awaketest = awaketestmax;
-        leader = instance_nearest(x, y, obj_spawnleader);
         if leader.awake == true
             {
                 awake = true;
-                aimx =x;
+                aimx = x;
                 aimy = y;
             }   
     }
@@ -156,7 +155,7 @@ if awake == true
     
     if homing == true 
     {
-        leader = instance_nearest(x, y, obj_spawnleader);
+        //leader = instance_nearest(x, y, obj_spawnleader);
         playerdist = distance_to_point(obj_player.x, obj_player.y);
         if playerdist &lt;= attackrange attack = true else attack = false
         
@@ -178,7 +177,8 @@ if awake == true
      if avoidtest &lt;=0
      {
          avoid = noone;
-         avoid = collision_point(x + lengthdir_x(64, image_angle), y + lengthdir_y(64, image_angle), obj_asteroid, false, true);
+         avoid = collision_point(x + lengthdir_x(16, image_angle), y + lengthdir_y(16, image_angle), obj_spawn, false, true);
+         if avoid == noone avoid = collision_point(x + lengthdir_x(64, image_angle), y + lengthdir_y(64, image_angle), obj_asteroid, false, true);
          //if avoid == noone avoid = collision_point(x + lengthdir_x(52, image_angle), y + lengthdir_y(52, image_angle), obj_gaunt, false, true);
         
          if avoid != noone      //if something directly in front swerve away
@@ -228,8 +228,8 @@ if collision_point(x+vx * speedmult, y+vy * speedmult, obj_spawn, true, true) ==
 }
 else
 {                      
-        x -= vx
-        y -= vy
+        x -= vx * speedmult
+        y -= vy * speedmult
 }
 
       
