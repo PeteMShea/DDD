@@ -316,13 +316,22 @@ for (v = 0; v < gridsize; v +=1)
         {
             if bigblock[u, v] >= 0
             {
-                
+                //GAUNTS
                 if random(1) < gauntchance
                     {
                         if gauntdensity < gauntdensitymax gauntdensitycurrent += ((gauntdensitymax - gauntdensitymin)/gauntdensitysteps)
                         gauntdensity = gauntdensitycurrent;
                     }
                 else gauntdensity = 0;
+                
+                //FUNGHI SPAWNS
+                if random(1) < spawnchance
+                    {
+                        if spawndensity < spawndensitymax spawndensitycurrent += ((spawndensitymax - spawndensitymin)/spawndensitysteps)
+                        spawndensity = spawndensitycurrent;
+                        spawnleader = false;
+                    }
+                else spawndensity = 0;                
                 //instance_create( 64 + (u * 384), 64 + (v * 384), obj_debug);
                 script_execute(scr_testWeeblocks, u, v, gridsize, starthuge, endhuge, gauntdensity)
 
@@ -1041,6 +1050,7 @@ blocktest = block [bx, by]
                                                       if weeblock[column, c] == 0 && c < count && blockswitch == 2 weeblock[column, c] = 8      // vine
                                                       if weeblock[column, c] == 0 && c == count && blockswitch == 2 weeblock[column, c] = 9     //end cap
                                                     }
+                                                    
                                 if random(1) < gauntdensity
                                     {
                                         var inst
@@ -1050,6 +1060,24 @@ blocktest = block [bx, by]
                                                 image_angle = 270
                                             }                                                    
                                     }
+                                if random(1) < spawndensity
+                                    {
+                                        var inst
+                                        if spawnleader == false
+                                            {
+                                                inst = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((count+1) *4) + 10, obj_spawnleader)
+                                                spawnleader = true;
+                                            }
+                                        else
+                                            {
+                                                inst = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((count+1) *4) + 10, obj_spawn)
+                                            }
+                                        with (inst)
+                                            {
+                                                image_angle = 270
+                                            }                                                    
+                                    }                                    
+                                    
                                 }                  
                     }  
 
@@ -1097,7 +1125,24 @@ blocktest = block [bx, by]
                                             {
                                                 image_angle = 90
                                             }                                                    
-                                    }                   
+                                    }
+                                if random(1) < spawndensity
+                                    {
+                                        var inst
+                                        if spawnleader == false
+                                            {
+                                                inst = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((7-c) *4) -10, obj_spawnleader)
+                                                spawnleader = true;                                                
+                                            }
+                                        else
+                                            {
+                                                inst = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((7-c) *4) -10, obj_spawn)
+                                            }
+                                        with (inst)
+                                            {
+                                                image_angle = 90
+                                            }                                                    
+                                    }                                                        
                             }  
                     }
 
@@ -1146,7 +1191,25 @@ blocktest = block [bx, by]
                                                 {
                                                     image_angle = 180
                                                 }                                                    
-                                        }                  
+                                        }
+                                if random(1) < spawndensity
+                                    {
+                                        var inst
+                                        if spawnleader == false
+                                            {
+                                                inst = instance_create( 64 + (bx * 32) + (7-c) * 4 -10, 64 + (by *32) + (row *4) + 0, obj_spawnleader)
+                                                spawnleader = true;                                                
+                                            }
+                                        else
+                                            {
+                                                inst = instance_create( 64 + (bx * 32) + (7-c) * 4 -10, 64 + (by *32) + (row *4) + 0, obj_spawn)
+
+                                            }
+                                        with (inst)
+                                            {
+                                                image_angle = 180
+                                            }                                                    
+                                    }                                                          
                             }
                     } 
 
@@ -1195,7 +1258,25 @@ blocktest = block [bx, by]
                                                 {
                                                     image_angle = 0
                                                 }                                                    
-                                        }                                      
+                                        }
+                                if random(1) < spawndensity
+                                    {
+                                        var inst
+                                        if spawnleader == false
+                                            {
+                                                inst = instance_create( 64 + (bx * 32) + (c) * 4 + 10, 64 + (by *32) + (row *4) + 0, obj_spawnleader)
+                                                spawnleader = true;                                                
+                                            }
+                                        else
+                                            {
+                                                inst = instance_create( 64 + (bx * 32) + (c) * 4 + 10, 64 + (by *32) + (row *4) + 0, obj_spawn)
+
+                                            }
+                                        with (inst)
+                                            {
+                                                image_angle = 0
+                                            }                                                    
+                                    }                                                                              
                                 }                    
                     }  
 
@@ -1243,7 +1324,25 @@ blocktest = block [bx, by]
                                             {
                                                 image_angle = 270
                                             }                                                    
-                                    }                                                    
+                                    }
+                                if random(1) < spawndensity
+                                    {
+                                        var inst
+                                        if spawnleader == false
+                                            {
+                                                inst = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((count+1) *4) + 10, obj_spawnleader)
+                                                spawnleader = true;                                                
+                                            }
+                                        else
+                                            {
+                                                inst = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((count+1) *4) + 10, obj_spawn)
+
+                                            }
+                                        with (inst)
+                                            {
+                                                image_angle = 270
+                                            }                                                    
+                                    }                                                                                         
                             }
                         for (column = 0; column < 8; column +=1)           //now iterate through each column from south edge up
                             {       
@@ -1283,7 +1382,25 @@ blocktest = block [bx, by]
                                             {
                                                 image_angle = 90
                                             }                                                    
-                                    }                                          
+                                    }
+                                if random(1) < spawndensity
+                                    {
+                                        var inst
+                                        if spawnleader == false
+                                            {
+                                                inst = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((7-c) *4) - 10, obj_spawnleader)
+                                                spawnleader = true;                                                
+                                            }
+                                        else
+                                            {
+                                                inst = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((7-c) *4) - 10, obj_spawn)
+
+                                            }
+                                        with (inst)
+                                            {
+                                                image_angle = 90
+                                            }                                                    
+                                    }                                                                              
                                }                                                       
                     }               
               
@@ -1332,7 +1449,25 @@ blocktest = block [bx, by]
                                                 {
                                                     image_angle = 180
                                                 }                                                    
-                                        }                                                       
+                                        }
+                                if random(1) < spawndensity
+                                    {
+                                        var inst
+                                        if spawnleader == false
+                                            {
+                                                inst = instance_create( 64 + (bx * 32) + (7-c) * 4 - 10, 64 + (by *32) + (row *4) + 0, obj_spawnleader)
+                                                spawnleader = true;                                                
+                                            }
+                                        else
+                                            {
+                                                inst = instance_create( 64 + (bx * 32) + (7-c) * 4 - 10, 64 + (by *32) + (row *4) + 0, obj_spawn)
+
+                                            }
+                                        with (inst)
+                                            {
+                                                image_angle = 180
+                                            }                                                    
+                                    }                                                                                                 
                             }
                         localvinechance = vinechance;    
                         for (row = 0; row < 8; row +=1)           //iterate through each column from north edge down
@@ -1375,7 +1510,25 @@ blocktest = block [bx, by]
                                                 {
                                                     image_angle = 0
                                                 }                                                    
-                                        }                                                          
+                                        }
+                                if random(1) < spawndensity
+                                    {
+                                        var inst
+                                        if spawnleader == false
+                                            {
+                                                inst = instance_create( 64 + (bx * 32) + (c) * 4 + 10, 64 + (by *32) + (row *4) + 0, obj_spawnleader)
+                                                spawnleader = true;                                                
+                                            }
+                                        else
+                                            {
+                                                inst = instance_create( 64 + (bx * 32) + (c) * 4 + 10, 64 + (by *32) + (row *4) + 0, obj_spawn)
+
+                                            }
+                                        with (inst)
+                                            {
+                                                image_angle = 0
+                                            }                                                    
+                                    }                                                                                                  
                             }
                 }              
 

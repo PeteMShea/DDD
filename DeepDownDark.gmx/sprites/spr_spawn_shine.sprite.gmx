@@ -7,10 +7,10 @@
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>1</bbox_left>
-  <bbox_right>23</bbox_right>
-  <bbox_top>2</bbox_top>
-  <bbox_bottom>22</bbox_bottom>
+  <bbox_left>5</bbox_left>
+  <bbox_right>19</bbox_right>
+  <bbox_top>5</bbox_top>
+  <bbox_bottom>19</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
@@ -20,8 +20,6 @@
   <width>25</width>
   <height>24</height>
   <frames>
-    <frame index="0">images\spr_spawn_0.png</frame>
-    <frame index="1">images\spr_spawn_1.png</frame>
-    <frame index="2">images\spr_spawn_2.png</frame>
+    <frame index="0">images\spr_spawn_shine_0.png</frame>
   </frames>
 </sprite>
