@@ -82,9 +82,8 @@
       <sprite>sprites\spr_gaunt_hit</sprite>
       <sprite>sprites\spr_enemy_debris</sprite>
       <sprite>sprites\spr_gaunt_attack</sprite>
+      <sprite>sprites\spawnref</sprite>
       <sprite>sprites\spr_spawn</sprite>
-      <sprite>sprites\sprite100</sprite>
-      <sprite>sprites\sprite106</sprite>
     </sprites>
     <sprites name="debug">
       <sprite>sprites\spr_debug</sprite>
