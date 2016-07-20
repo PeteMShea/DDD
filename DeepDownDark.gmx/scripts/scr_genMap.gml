@@ -330,6 +330,8 @@ for (v = 0; v < gridsize; v +=1)
                         if spawndensity < spawndensitymax spawndensitycurrent += ((spawndensitymax - spawndensitymin)/spawndensitysteps)
                         spawndensity = spawndensitycurrent;
                         spawnleader = false;
+                        sporeoffsetangle = startsporeoffsetangle;
+                        sporeoffsetdistance = startsporeoffsetdistance;
                     }
                 else spawndensity = 0;                
                 //instance_create( 64 + (u * 384), 64 + (v * 384), obj_debug);
@@ -1075,10 +1077,13 @@ blocktest = block [bx, by]
                                         else
                                             {
                                                 inst = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((count+1) *4), obj_spawn)
+                                                script_execute(scr_sporeoffset, sporeoffsetdistance, sporeoffsetangle);                                                             
                                                 with(inst)
                                                 {
                                                     image_angle = 270
                                                     leader = other.leader;
+                                                    offsetx = other.offsetx;
+                                                    offsety = other.offsety;
                                                 }
                                             }                       
                                     
@@ -1145,10 +1150,13 @@ blocktest = block [bx, by]
                                         else
                                             {
                                                 inst = instance_create( 64 + (bx * 32) + column * 4, 64 + (by *32) + ((7-c) *4), obj_spawn)
+                                                script_execute(scr_sporeoffset, sporeoffsetdistance, sporeoffsetangle);                                                  
                                                 with(inst)
                                                 {
                                                     image_angle = 90
                                                     leader = other.leader;
+                                                    offsetx = other.offsetx;
+                                                    offsety = other.offsety;                                                    
                                                 }                                                
                                                   
                                             }                                                        
@@ -1217,10 +1225,13 @@ blocktest = block [bx, by]
                                         else
                                             {
                                                 inst = instance_create( 64 + (bx * 32) + (7-c) * 4, 64 + (by *32) + (row *4), obj_spawn)
+                                                script_execute(scr_sporeoffset, sporeoffsetdistance, sporeoffsetangle);                                                      
                                                 with(inst)
                                                 {
                                                     image_angle = 180
                                                     leader = other.leader;
+                                                    offsetx = other.offsetx;
+                                                    offsety = other.offsety;                                                    
                                                 }
                                             }                                                    
                                     }                                                          
@@ -1288,10 +1299,13 @@ blocktest = block [bx, by]
                                         else
                                             {
                                                 inst = instance_create( 64 + (bx * 32) + (c) * 4, 64 + (by *32) + (row *4), obj_spawn)
+                                                script_execute(scr_sporeoffset, sporeoffsetdistance, sporeoffsetangle);                                                      
                                                 with(inst)
                                                 {
                                                     image_angle = 0
                                                     leader = other.leader;
+                                                    offsetx = other.offsetx;
+                                                    offsety = other.offsety;                                                    
                                                 }
                                             }                                                    
                                     }                                                                              
@@ -1362,6 +1376,8 @@ blocktest = block [bx, by]
                                                 {
                                                     image_angle = 270
                                                     leader = other.leader;
+                                                    offsetx = other.offsetx;
+                                                    offsety = other.offsety;                                                    
                                                 }
                                             }                                                    
                                     }                                                                                         
@@ -1420,10 +1436,13 @@ blocktest = block [bx, by]
                                         else
                                             {
                                                 inst = instance_create( 64 + (bx * 32) + column * 4, 64 + (by *32) + ((7-c) *4), obj_spawn)
+                                                script_execute(scr_sporeoffset, sporeoffsetdistance, sporeoffsetangle);                                                      
                                                 with(inst)
                                                 {
                                                     image_angle = 90
                                                     leader = other.leader;
+                                                    offsetx = other.offsetx;
+                                                    offsety = other.offsety;                                                    
                                                 }                                                  
                                                                                                                   
                                             }
@@ -1492,10 +1511,13 @@ blocktest = block [bx, by]
                                         else
                                             {
                                                 inst = instance_create( 64 + (bx * 32) + (7-c) * 4, 64 + (by *32) + (row *4), obj_spawn)
+                                                script_execute(scr_sporeoffset, sporeoffsetdistance, sporeoffsetangle);                                                
                                                 with(inst)
                                                 {
                                                     image_angle = 180
                                                     leader = other.leader;
+                                                    offsetx = other.offsetx;
+                                                    offsety = other.offsety;                                                    
                                                 }                                                  
                                             }                                                                                                 
                                     }
@@ -1557,10 +1579,13 @@ blocktest = block [bx, by]
                                         else
                                             {
                                                 inst = instance_create( 64 + (bx * 32) + (c) * 4, 64 + (by *32) + (row *4), obj_spawn)
+                                                script_execute(scr_sporeoffset, sporeoffsetdistance, sporeoffsetangle);                                                      
                                                 with(inst)
                                                 {
                                                     image_angle = 0
                                                     leader = other.leader;
+                                                    offsetx = other.offsetx;
+                                                    offsety = other.offsety;                                                    
                                                 }
                                             }                                                    
                                     }                                                                                                  
@@ -2065,3 +2090,13 @@ if totalspawnpoints > 0
         }
     //instance_deactivate_all(true);
 }
+#define scr_sporeoffset
+offsetx = lengthdir_x(sporeoffsetdistance, sporeoffsetangle);
+offsety = lengthdir_y(sporeoffsetdistance, sporeoffsetangle);
+sporeoffsetangle +=30
+if sporeoffsetangle >= 360     //set a circle of offset points around the leader- incrementing with each one
+    {
+        sporeoffsetangle = 0;
+        sporeoffsetdistance +=24;
+    }
+

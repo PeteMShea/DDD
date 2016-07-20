@@ -65,6 +65,10 @@ spawndensitysteps = 10;          //how many huge squares gauntdensity increases 
 spawndensity = spawndensitymin;
 spawndensitycurrent = 0;
 spawnleader = false;
+startsporeoffsetangle = 0;
+startsporeoffsetdistance = 24;
+sporeoffsetangle = startsporeoffsetangle;
+sporeoffsetdistance = startsporeoffsetdistance;
 
 global.startx = 0;
 global.starty = 0;
