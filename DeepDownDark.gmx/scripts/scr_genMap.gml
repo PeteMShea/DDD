@@ -1065,7 +1065,7 @@ blocktest = block [bx, by]
                                         var inst
                                         if spawnleader == false
                                             {
-                                                leader = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((count+1) *4) + 10, obj_spawnleader)
+                                                leader = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((count+1) *4), obj_spawnleader)
                                                 with (leader)
                                                 {
                                                     image_angle = 270
@@ -1074,7 +1074,7 @@ blocktest = block [bx, by]
                                             }
                                         else
                                             {
-                                                inst = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((count+1) *4) + 10, obj_spawn)
+                                                inst = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((count+1) *4), obj_spawn)
                                                 with(inst)
                                                 {
                                                     image_angle = 270
@@ -1135,7 +1135,7 @@ blocktest = block [bx, by]
                                         var inst
                                         if spawnleader == false
                                             {
-                                                leader = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((7-c) *4) -10, obj_spawnleader)
+                                                leader = instance_create( 64 + (bx * 32) + column * 4, 64 + (by *32) + ((7-c) *4), obj_spawnleader)
                                                 with (leader)
                                                 {
                                                     image_angle = 90
@@ -1144,7 +1144,7 @@ blocktest = block [bx, by]
                                             }
                                         else
                                             {
-                                                inst = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((7-c) *4) -10, obj_spawn)
+                                                inst = instance_create( 64 + (bx * 32) + column * 4, 64 + (by *32) + ((7-c) *4), obj_spawn)
                                                 with(inst)
                                                 {
                                                     image_angle = 90
@@ -1207,7 +1207,7 @@ blocktest = block [bx, by]
                                         var inst
                                         if spawnleader == false
                                             {
-                                                leader = instance_create( 64 + (bx * 32) + (7-c) * 4 -10, 64 + (by *32) + (row *4) + 0, obj_spawnleader)
+                                                leader = instance_create( 64 + (bx * 32) + (7-c) * 4, 64 + (by *32) + (row *4), obj_spawnleader)
                                                 with (leader)
                                                 {
                                                     image_angle = 180
@@ -1216,7 +1216,7 @@ blocktest = block [bx, by]
                                             }
                                         else
                                             {
-                                                inst = instance_create( 64 + (bx * 32) + (7-c) * 4 -10, 64 + (by *32) + (row *4) + 0, obj_spawn)
+                                                inst = instance_create( 64 + (bx * 32) + (7-c) * 4, 64 + (by *32) + (row *4), obj_spawn)
                                                 with(inst)
                                                 {
                                                     image_angle = 180
@@ -1278,7 +1278,7 @@ blocktest = block [bx, by]
                                         var inst
                                         if spawnleader == false
                                             {
-                                                leader = instance_create( 64 + (bx * 32) + (c) * 4 + 10, 64 + (by *32) + (row *4) + 0, obj_spawnleader)
+                                                leader = instance_create( 64 + (bx * 32) + (c) * 4 , 64 + (by *32) + (row *4), obj_spawnleader)
                                                 with (leader)
                                                 {
                                                     image_angle = 0
@@ -1287,7 +1287,7 @@ blocktest = block [bx, by]
                                             }
                                         else
                                             {
-                                                inst = instance_create( 64 + (bx * 32) + (c) * 4 + 10, 64 + (by *32) + (row *4) + 0, obj_spawn)
+                                                inst = instance_create( 64 + (bx * 32) + (c) * 4, 64 + (by *32) + (row *4), obj_spawn)
                                                 with(inst)
                                                 {
                                                     image_angle = 0
@@ -1348,7 +1348,7 @@ blocktest = block [bx, by]
                                         var inst
                                         if spawnleader == false
                                             {
-                                                leader = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((count+1) *4) + 10, obj_spawnleader)
+                                                leader = instance_create( 64 + (bx * 32) + column * 4, 64 + (by *32) + ((count+1) *4), obj_spawnleader)
                                                 with (leader)
                                                 {
                                                     image_angle = 270
@@ -1357,7 +1357,7 @@ blocktest = block [bx, by]
                                             }
                                         else
                                             {
-                                                inst = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((count+1) *4) + 10, obj_spawn)
+                                                inst = instance_create( 64 + (bx * 32) + column * 4, 64 + (by *32) + ((count+1) *4), obj_spawn)
                                                 with(inst)
                                                 {
                                                     image_angle = 270
@@ -1410,7 +1410,7 @@ blocktest = block [bx, by]
                                         var inst
                                         if spawnleader == false
                                             {
-                                                leader = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((7-c) *4) - 10, obj_spawnleader)
+                                                leader = instance_create( 64 + (bx * 32) + column * 4, 64 + (by *32) + ((7-c) *4), obj_spawnleader)
                                                 with (leader)
                                                 {
                                                     image_angle = 90
@@ -1419,7 +1419,7 @@ blocktest = block [bx, by]
                                             }
                                         else
                                             {
-                                                inst = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((7-c) *4) - 10, obj_spawn)
+                                                inst = instance_create( 64 + (bx * 32) + column * 4, 64 + (by *32) + ((7-c) *4), obj_spawn)
                                                 with(inst)
                                                 {
                                                     image_angle = 90
@@ -1482,7 +1482,7 @@ blocktest = block [bx, by]
                                         var inst
                                         if spawnleader == false
                                             {
-                                                leader = instance_create( 64 + (bx * 32) + (7-c) * 4 - 10, 64 + (by *32) + (row *4) + 0, obj_spawnleader)
+                                                leader = instance_create( 64 + (bx * 32) + (7-c) * 4, 64 + (by *32) + (row *4), obj_spawnleader)
                                                 with (leader)
                                                 {
                                                     image_angle = 180
@@ -1491,7 +1491,7 @@ blocktest = block [bx, by]
                                             }
                                         else
                                             {
-                                                inst = instance_create( 64 + (bx * 32) + (7-c) * 4 - 10, 64 + (by *32) + (row *4) + 0, obj_spawn)
+                                                inst = instance_create( 64 + (bx * 32) + (7-c) * 4, 64 + (by *32) + (row *4), obj_spawn)
                                                 with(inst)
                                                 {
                                                     image_angle = 180
@@ -1547,7 +1547,7 @@ blocktest = block [bx, by]
                                         var inst
                                         if spawnleader == false
                                             {
-                                                leader = instance_create( 64 + (bx * 32) + (c) * 4 + 10, 64 + (by *32) + (row *4) + 0, obj_spawnleader)
+                                                leader = instance_create( 64 + (bx * 32) + (c) * 4, 64 + (by *32) + (row *4), obj_spawnleader)
                                                 with (leader)
                                                 {
                                                     image_angle = 0
@@ -1556,7 +1556,7 @@ blocktest = block [bx, by]
                                             }
                                         else
                                             {
-                                                inst = instance_create( 64 + (bx * 32) + (c) * 4 + 10, 64 + (by *32) + (row *4) + 0, obj_spawn)
+                                                inst = instance_create( 64 + (bx * 32) + (c) * 4, 64 + (by *32) + (row *4), obj_spawn)
                                                 with(inst)
                                                 {
                                                     image_angle = 0

@@ -84,7 +84,8 @@
       <sprite>sprites\spr_gaunt_attack</sprite>
       <sprite>sprites\spawnref</sprite>
       <sprite>sprites\spr_spawn</sprite>
-      <sprite>sprites\spr_spawn_shine</sprite>
+      <sprite>sprites\spore</sprite>
+      <sprite>sprites\spr_spore_shadow</sprite>
     </sprites>
     <sprites name="debug">
       <sprite>sprites\spr_debug</sprite>
@@ -228,7 +229,7 @@
       <object>objects\obj_enemybullet</object>
       <object>objects\obj_gaunt</object>
       <object>objects\obj_spawn</object>
-      <object>objects\obj_spawnShine</object>
+      <object>objects\obj_sporeshadow</object>
       <object>objects\obj_spawnleader</object>
       <object>objects\obj_gauntLW</object>
       <object>objects\obj_gauntRW</object>
