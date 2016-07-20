@@ -30,7 +30,7 @@
 //direction = point_direction(x, y, obj_player.x, obj_player.y) + random_range(-15, 15);
 direction = random_range(0, 360);
 speed = random_range(0.2, 0.3);
-lifespan = random_range(120, 300);
+lifespan = random_range(30, 120);
 
 
 </string>
@@ -91,7 +91,7 @@ else
             <kind>1</kind>
             <string>// hit the player, turn to dirt
 
-if global.dirtalpha &lt; 1 global.dirtalpha += 0.001
+if global.dirtalpha &lt; 1 global.dirtalpha += 0.0005
 
 instance_destroy();
 

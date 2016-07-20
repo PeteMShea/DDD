@@ -31,13 +31,14 @@ awake = false;
 homing = false;
 attack = false;
 
-currenthealth = 1;     //HP 
+currenthealth = 1;     //HP
+lifespan = random_range(600,900);   //how long spores live for once they have launched
 
 awaketestmax = 60;     //how many frames between each time limpet checks to see if it should wake up
 awaketest = 60;
-awakerange = random_range(250, 300);   //distance from player before awakening
-launchtimemax = 60;    //how many frames enemy will launch for before it begins homing
-launchtime = -60;
+awakerange = random_range(350, 450);   //distance from player before awakening
+launchtimemax = 150;    //how many frames enemy will launch for before it begins homing
+launchtime = 0;
 takeoffspeed = 0.12;     //animation speed for take-off sequence 0.2
 speedmax = 0.6;      //max speed of travel
 speedmult = 0;
@@ -47,13 +48,11 @@ maxturnspeed = 8;      //fast turn  8
 turnspeed = normalturnspeed;
 attackrange = 8;    //distance from player to switch to attack
 homedirectrange = 64// distance from player to switch to direct homing
-gauntdamage = 5;    //damage inflicted on player every damagecountermax frames (see below)
-damagecountermax = 60;  //how often gaunt can damage- i.e. every x frames
+damage = 5;    //damage inflicted on player on self destruct
+damageproximity = 8     //how close to player it destructs
 
-maxanimspeed = 1.5;   //maximum flying animation speed- speedmult is subtracted from this to get anim speed- so faster flight means less wing strokes
-attackanimspeed = 0.75      //attack animation speed
 
-homingtestmax = 60;     //how many frames between each time enemy checks LOS to target and adjusts aim  30
+homingtestmax = 120;     //how many frames between each time enemy checks LOS to target and adjusts aim  30
 homingtest = 0;
 linedistance = 64;     //how long a LOS ray test to perform when pathfinding- shorter equals quicker
 aimoffset = 15;     //max number of degrees for random offset when pathfinding to target
@@ -73,10 +72,9 @@ hitanimimagespeed = 0.25;   //anim speed for hit anim
 
 damagecounter = 0;
 explosionproximity = 80;       //how close to an explosion kills gaunt
+shadow = false;
 
 
-// create a shadow object to follow this one
-instance_create(x,y, obj_sporeshadow);
 
 
 
@@ -119,15 +117,20 @@ if awake == false &amp;&amp; awaketest &gt; 0
 if awake == false &amp;&amp; awaketest &lt;= 0
     {
         awaketest = awaketestmax;
+        playerdist = distance_to_object(obj_player);
+        if playerdist &lt;= awakerange
+            {
                 awake = true;
                 aimx = x;
                 aimy = y;
-                aimangle = image_angle; 
+                aimangle = image_angle;
+            } 
                
     }
 
 if awake == true
 {    
+
     
     // when we first wake up  set a point to travel to             
     if homing == false &amp;&amp; launchtime == 0
@@ -143,13 +146,19 @@ if awake == true
     if  homing == false &amp;&amp; launchtime &lt; launchtimemax
         {
             launchtime +=1
-            //show_debug_message("L: " + string(launchtime));
+            if launchtime &gt;= launchtimemax/2 &amp;&amp; shadow == false
+            {            
+                image_index = 1;   //scale up as it launches
+                // create a shadow object to follow this one
+                instance_create(x,y, obj_sporeshadow);
+                shadow = true;
+            }
         }
     
     if  homing == false &amp;&amp; launchtime &gt;= launchtimemax
         {
             homing = true;
-            image_index = 1;        //change to 1 for actual spawn
+            image_index = 2;        //spines out
             image_speed = 0;
             aimx = obj_player.x + offsetx;
             aimy = obj_player.y + offsety;            
@@ -158,6 +167,8 @@ if awake == true
     
     if homing == true 
     {
+        lifespan -=1
+        if lifespan &lt;= 0 currenthealth = 0;
         //leader = instance_nearest(x, y, obj_spawnleader);
         playerdist = distance_to_point(obj_player.x, obj_player.y);
         if playerdist &lt;= attackrange attack = true else attack = false
@@ -294,35 +305,46 @@ if awake == true
     
         if speedmult &lt;= speedmax speedmult += acceleration
         
-
     
-if collision_point(x+vx * speedmult, y+vy * speedmult, obj_block, true, true) == noone &amp;&amp; homing == true  
-    { 
-                     
-        x += vx * speedmult
-        y += vy * speedmult
-
-    }
-
-      
+    coltest = collision_point(x+vx * speedmult, y+vy * speedmult, obj_block, true, true);
+    if coltest == noone coltest = collision_point(x+vx * speedmult, y+vy * speedmult, obj_asteroid, true, true) 
     
-    if hitanim &gt;0 &amp;&amp; attack == false
-        {
-            speedmult = speedmax * 0.5;           
-
+    if coltest == noone &amp;&amp; awake == true  
+        { 
+                         
+            x += vx * speedmult
+            y += vy * speedmult
+    
         }
-        
-        
 
-                      
-    }
-
-if currenthealth &lt;=0 
-{
-                          
+if distance_to_point(obj_player.x, obj_player.y) &lt;= damageproximity
+    {
+    // blow up and destroy and damage player
+    
+    effect_create_above(ef_explosion, x, y, 0, c_lime);
+    bx = x;
+    by = y;
+    script_execute(scr_sporeburst, bx, by);
+    global.playerHealth -= damage;
+    global.playerdamaged = 20;
+    loc_x = x;
+    loc_y = y;
+    script_execute(scr_shipvisualdamage, x, y, loc_x, loc_y, damage); 
     instance_destroy();
+    }        
+        
+                      
 }
 
+if currenthealth &lt;=0 
+    {
+        bx = x;
+        by = y;
+        script_execute(scr_sporeburst, bx, by);                          
+        instance_destroy();
+    }
+    
+    
 // if near an explosion reduce health to death
 if instance_exists(obj_explosion128)
     {
@@ -358,33 +380,6 @@ if instance_exists(obj_explosion128)
           <argument>
             <kind>1</kind>
             <string>// clean up if stuck in environment
-
-instance_destroy();
-
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_player">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>// temp
 
 instance_destroy();
 

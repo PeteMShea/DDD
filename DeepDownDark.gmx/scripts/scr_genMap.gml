@@ -329,7 +329,6 @@ for (v = 0; v < gridsize; v +=1)
                     {
                         if spawndensity < spawndensitymax spawndensitycurrent += ((spawndensitymax - spawndensitymin)/spawndensitysteps)
                         spawndensity = spawndensitycurrent;
-                        spawnleader = false;
                         sporeoffsetangle = startsporeoffsetangle;
                         sporeoffsetdistance = startsporeoffsetdistance;
                     }
@@ -1319,7 +1318,6 @@ blocktest = block [bx, by]
                                                 with(inst)
                                                 {
                                                     image_angle = 270
-                                                    leader = other.leader;
                                                     offsetx = other.offsetx;
                                                     offsety = other.offsety;                                                    
                                                 }

@@ -85,6 +85,8 @@
       <sprite>sprites\spawnref</sprite>
       <sprite>sprites\spr_spawn</sprite>
       <sprite>sprites\spore</sprite>
+      <sprite>sprites\sporedebris</sprite>
+      <sprite>sprites\sporespines</sprite>
       <sprite>sprites\spr_spore_shadow</sprite>
     </sprites>
     <sprites name="debug">
@@ -133,25 +135,34 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\scr_genMap_old.gml</script>
     <script>scripts\scr_genMap.gml</script>
-    <script>scripts\scr_blockburstvfx.gml</script>
-    <script>scripts\scr_shipdebrisvfx.gml</script>
-    <script>scripts\scr_asteroidburst.gml</script>
-    <script>scripts\scr_smalldebris.gml</script>
-    <script>scripts\scr_bulletsparks.gml</script>
-    <script>scripts\scr_spawngoldburst.gml</script>
-    <script>scripts\scratch.gml</script>
-    <script>scripts\scr_playerShoot.gml</script>
-    <script>scripts\movementbackup.gml</script>
-    <script>scripts\scr_forwardthrust.gml</script>
-    <script>scripts\scr_backthrust.gml</script>
-    <script>scripts\scr_landingsequence.gml</script>
     <script>scripts\scr_gotonewlevel.gml</script>
-    <script>scripts\scr_shipvisualdamage.gml</script>
-    <script>scripts\scr_repairdamage.gml</script>
-    <script>scripts\LOScheck.gml</script>
-    <script>scripts\scr_deathsequence.gml</script>
+    <scripts name="VFX">
+      <script>scripts\scr_bulletsparks.gml</script>
+      <script>scripts\scr_spawngoldburst.gml</script>
+      <script>scripts\scr_smalldebris.gml</script>
+      <script>scripts\scr_shipdebrisvfx.gml</script>
+      <script>scripts\scr_blockburstvfx.gml</script>
+      <script>scripts\scr_asteroidburst.gml</script>
+      <script>scripts\scr_sporeburst.gml</script>
+    </scripts>
+    <scripts name="Player">
+      <script>scripts\scr_repairdamage.gml</script>
+      <script>scripts\scr_deathsequence.gml</script>
+      <script>scripts\scr_backthrust.gml</script>
+      <script>scripts\scr_shipvisualdamage.gml</script>
+      <script>scripts\scr_landingsequence.gml</script>
+      <script>scripts\scr_forwardthrust.gml</script>
+      <script>scripts\scr_playerShoot.gml</script>
+    </scripts>
+    <scripts name="Enemy">
+      <script>scripts\LOScheck.gml</script>
+    </scripts>
+    <scripts name="OLD">
+      <script>scripts\movementbackup.gml</script>
+      <script>scripts\scratch.gml</script>
+      <script>scripts\scr_genMap_old.gml</script>
+    </scripts>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_multiply.shader</shader>
@@ -228,10 +239,12 @@
       <object>objects\obj_fixedgunbase</object>
       <object>objects\obj_enemybullet</object>
       <object>objects\obj_gaunt</object>
-      <object>objects\obj_spawn</object>
       <object>objects\obj_sporeshadow</object>
       <object>objects\obj_spawnleader</object>
       <object>objects\obj_gauntLW</object>
+      <object>objects\obj_spawn</object>
+      <object>objects\obj_sporespine</object>
+      <object>objects\obj_sporedebris</object>
       <object>objects\obj_gauntRW</object>
       <object>objects\obj_gauntTorso</object>
       <object>objects\obj_gauntTail</object>
