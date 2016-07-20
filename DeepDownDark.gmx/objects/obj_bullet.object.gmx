@@ -170,7 +170,28 @@ if gaunt != noone
         instance_destroy();
 
     }     
-    
+
+var spores;
+spores = instance_place(x, y, obj_spawn);
+if spores != noone
+    {
+        with(spores) 
+            {
+                if currenthealth &gt;0
+                {
+                
+                //create debris tinyblocks
+                bx = x
+                by = y
+                script_execute(scr_bulletsparks, bx, by);
+                awake = true;
+                currenthealth -= 1;
+                
+                }           
+            }
+// don't destroy the bullet when shooting spores
+
+    }     
     
 var asteroid;
 asteroid = instance_place(x, y, obj_asteroid);

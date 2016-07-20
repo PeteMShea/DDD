@@ -35,13 +35,13 @@ currenthealth = 1;     //HP
 
 awaketestmax = 60;     //how many frames between each time limpet checks to see if it should wake up
 awaketest = 60;
-awakerange = random_range(250, 400);   //distance from player before awakening
-launchtimemax = 60;    //how many frames gaunt will launch for before it begins homing
+awakerange = random_range(250, 300);   //distance from player before awakening
+launchtimemax = 60;    //how many frames enemy will launch for before it begins homing
 launchtime = -60;
 takeoffspeed = 0.12;     //animation speed for take-off sequence 0.2
-speedmax = 0.5;      //max speed of travel
+speedmax = 0.6;      //max speed of travel
 speedmult = 0;
-acceleration = 0.005;     //acceleratation
+acceleration = 0.003;     //acceleratation
 normalturnspeed = 4;      //number of degrees to turn per frame  4
 maxturnspeed = 8;      //fast turn  8
 turnspeed = normalturnspeed;
@@ -58,7 +58,7 @@ homingtest = 0;
 linedistance = 64;     //how long a LOS ray test to perform when pathfinding- shorter equals quicker
 aimoffset = 15;     //max number of degrees for random offset when pathfinding to target
 avoidtest = 0;
-if random(1) &lt;0.5 angleadjust = -45 else angleadjust = +45      //decide whether this gaunt avoids this number of degrees to the left or the right
+if random(1) &lt;0.5 angleadjust = -60 else angleadjust = +60      //decide whether this gaunt avoids this number of degrees to the left or the right
 collision = false;
 
 aimx = x;
@@ -119,13 +119,11 @@ if awake == false &amp;&amp; awaketest &gt; 0
 if awake == false &amp;&amp; awaketest &lt;= 0
     {
         awaketest = awaketestmax;
-        if leader.awake == true
-            {
                 awake = true;
                 aimx = x;
                 aimy = y;
                 aimangle = image_angle; 
-            }   
+               
     }
 
 if awake == true
@@ -153,8 +151,8 @@ if awake == true
             homing = true;
             image_index = 1;        //change to 1 for actual spawn
             image_speed = 0;
-            aimx = leader.x + offsetx;
-            aimy = leader.y + offsety;            
+            aimx = obj_player.x + offsetx;
+            aimy = obj_player.y + offsety;            
             aimangle = point_direction(x, y, aimx, aimy); 
         }
     
@@ -164,8 +162,8 @@ if awake == true
         playerdist = distance_to_point(obj_player.x, obj_player.y);
         if playerdist &lt;= attackrange attack = true else attack = false
 
-        aimx = leader.x + offsetx;
-        aimy = leader.y + offsety;
+        aimx = obj_player.x + offsetx;
+        aimy = obj_player.y + offsety;
        
                 
         //perform LOS check ever Z frames

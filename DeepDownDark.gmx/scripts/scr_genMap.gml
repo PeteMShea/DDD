@@ -1065,27 +1065,15 @@ blocktest = block [bx, by]
                                 if random(1) < spawndensity
                                     {
                                         var inst
-                                        if spawnleader == false
-                                            {
-                                                leader = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((count+1) *4), obj_spawnleader)
-                                                with (leader)
-                                                {
-                                                    image_angle = 270
-                                                }                                                    
-                                                spawnleader = true;
-                                            }
-                                        else
-                                            {
                                                 inst = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((count+1) *4), obj_spawn)
                                                 script_execute(scr_sporeoffset, sporeoffsetdistance, sporeoffsetangle);                                                             
                                                 with(inst)
                                                 {
                                                     image_angle = 270
-                                                    leader = other.leader;
                                                     offsetx = other.offsetx;
                                                     offsety = other.offsety;
                                                 }
-                                            }                       
+                                                                   
                                     
                                     }                  
                             }  
@@ -1138,28 +1126,18 @@ blocktest = block [bx, by]
                                 if random(1) < spawndensity
                                     {
                                         var inst
-                                        if spawnleader == false
-                                            {
-                                                leader = instance_create( 64 + (bx * 32) + column * 4, 64 + (by *32) + ((7-c) *4), obj_spawnleader)
-                                                with (leader)
-                                                {
-                                                    image_angle = 90
-                                                }                                                    
-                                                spawnleader = true;                                                
-                                            }
-                                        else
-                                            {
+                                            
                                                 inst = instance_create( 64 + (bx * 32) + column * 4, 64 + (by *32) + ((7-c) *4), obj_spawn)
                                                 script_execute(scr_sporeoffset, sporeoffsetdistance, sporeoffsetangle);                                                  
                                                 with(inst)
                                                 {
                                                     image_angle = 90
-                                                    leader = other.leader;
+
                                                     offsetx = other.offsetx;
                                                     offsety = other.offsety;                                                    
                                                 }                                                
                                                   
-                                            }                                                        
+                                                                                                    
                                     }
                           }  
                     }
@@ -1213,27 +1191,16 @@ blocktest = block [bx, by]
                                 if random(1) < spawndensity
                                     {
                                         var inst
-                                        if spawnleader == false
-                                            {
-                                                leader = instance_create( 64 + (bx * 32) + (7-c) * 4, 64 + (by *32) + (row *4), obj_spawnleader)
-                                                with (leader)
-                                                {
-                                                    image_angle = 180
-                                                }                                                    
-                                                spawnleader = true;                                                
-                                            }
-                                        else
-                                            {
+
                                                 inst = instance_create( 64 + (bx * 32) + (7-c) * 4, 64 + (by *32) + (row *4), obj_spawn)
                                                 script_execute(scr_sporeoffset, sporeoffsetdistance, sporeoffsetangle);                                                      
                                                 with(inst)
                                                 {
                                                     image_angle = 180
-                                                    leader = other.leader;
                                                     offsetx = other.offsetx;
                                                     offsety = other.offsety;                                                    
                                                 }
-                                            }                                                    
+                                                                                                
                                     }                                                          
                             }
                     } 
@@ -1287,27 +1254,15 @@ blocktest = block [bx, by]
                                 if random(1) < spawndensity
                                     {
                                         var inst
-                                        if spawnleader == false
-                                            {
-                                                leader = instance_create( 64 + (bx * 32) + (c) * 4 , 64 + (by *32) + (row *4), obj_spawnleader)
-                                                with (leader)
-                                                {
-                                                    image_angle = 0
-                                                }                                                    
-                                                spawnleader = true;                                                
-                                            }
-                                        else
-                                            {
                                                 inst = instance_create( 64 + (bx * 32) + (c) * 4, 64 + (by *32) + (row *4), obj_spawn)
                                                 script_execute(scr_sporeoffset, sporeoffsetdistance, sporeoffsetangle);                                                      
                                                 with(inst)
                                                 {
                                                     image_angle = 0
-                                                    leader = other.leader;
                                                     offsetx = other.offsetx;
                                                     offsety = other.offsety;                                                    
                                                 }
-                                            }                                                    
+                                                                                                
                                     }                                                                              
                                 }                    
                     }  
@@ -1360,18 +1315,7 @@ blocktest = block [bx, by]
                                 if random(1) < spawndensity
                                     {
                                         var inst
-                                        if spawnleader == false
-                                            {
-                                                leader = instance_create( 64 + (bx * 32) + column * 4, 64 + (by *32) + ((count+1) *4), obj_spawnleader)
-                                                with (leader)
-                                                {
-                                                    image_angle = 270
-                                                }                                                
-                                                spawnleader = true;                                                
-                                            }
-                                        else
-                                            {
-                                                inst = instance_create( 64 + (bx * 32) + column * 4, 64 + (by *32) + ((count+1) *4), obj_spawn)
+                                        inst = instance_create( 64 + (bx * 32) + column * 4, 64 + (by *32) + ((count+1) *4), obj_spawn)
                                                 with(inst)
                                                 {
                                                     image_angle = 270
@@ -1379,7 +1323,7 @@ blocktest = block [bx, by]
                                                     offsetx = other.offsetx;
                                                     offsety = other.offsety;                                                    
                                                 }
-                                            }                                                    
+                                                                                                
                                     }                                                                                         
                             }
                         for (column = 0; column < 8; column +=1)           //now iterate through each column from south edge up
@@ -1424,28 +1368,16 @@ blocktest = block [bx, by]
                                 if random(1) < spawndensity
                                     {
                                         var inst
-                                        if spawnleader == false
-                                            {
-                                                leader = instance_create( 64 + (bx * 32) + column * 4, 64 + (by *32) + ((7-c) *4), obj_spawnleader)
-                                                with (leader)
-                                                {
-                                                    image_angle = 90
-                                                }                                                    
-                                                spawnleader = true;                                                
-                                            }
-                                        else
-                                            {
-                                                inst = instance_create( 64 + (bx * 32) + column * 4, 64 + (by *32) + ((7-c) *4), obj_spawn)
+                                        inst = instance_create( 64 + (bx * 32) + column * 4, 64 + (by *32) + ((7-c) *4), obj_spawn)
                                                 script_execute(scr_sporeoffset, sporeoffsetdistance, sporeoffsetangle);                                                      
                                                 with(inst)
                                                 {
                                                     image_angle = 90
-                                                    leader = other.leader;
                                                     offsetx = other.offsetx;
                                                     offsety = other.offsety;                                                    
                                                 }                                                  
                                                                                                                   
-                                            }
+                                            
                                     }                                                      
                             }
                     }               
@@ -1499,27 +1431,15 @@ blocktest = block [bx, by]
                                 if random(1) < spawndensity
                                     {
                                         var inst
-                                        if spawnleader == false
-                                            {
-                                                leader = instance_create( 64 + (bx * 32) + (7-c) * 4, 64 + (by *32) + (row *4), obj_spawnleader)
-                                                with (leader)
-                                                {
-                                                    image_angle = 180
-                                                }                                                    
-                                                spawnleader = true;                                                
-                                            }
-                                        else
-                                            {
-                                                inst = instance_create( 64 + (bx * 32) + (7-c) * 4, 64 + (by *32) + (row *4), obj_spawn)
+                                        inst = instance_create( 64 + (bx * 32) + (7-c) * 4, 64 + (by *32) + (row *4), obj_spawn)
                                                 script_execute(scr_sporeoffset, sporeoffsetdistance, sporeoffsetangle);                                                
                                                 with(inst)
                                                 {
                                                     image_angle = 180
-                                                    leader = other.leader;
                                                     offsetx = other.offsetx;
                                                     offsety = other.offsety;                                                    
                                                 }                                                  
-                                            }                                                                                                 
+                                                                                                                                             
                                     }
                             }
                         localvinechance = vinechance;    
@@ -1567,27 +1487,15 @@ blocktest = block [bx, by]
                                 if random(1) < spawndensity
                                     {
                                         var inst
-                                        if spawnleader == false
-                                            {
-                                                leader = instance_create( 64 + (bx * 32) + (c) * 4, 64 + (by *32) + (row *4), obj_spawnleader)
-                                                with (leader)
-                                                {
-                                                    image_angle = 0
-                                                }                                                    
-                                                spawnleader = true;                                                
-                                            }
-                                        else
-                                            {
-                                                inst = instance_create( 64 + (bx * 32) + (c) * 4, 64 + (by *32) + (row *4), obj_spawn)
+                                        inst = instance_create( 64 + (bx * 32) + (c) * 4, 64 + (by *32) + (row *4), obj_spawn)
                                                 script_execute(scr_sporeoffset, sporeoffsetdistance, sporeoffsetangle);                                                      
                                                 with(inst)
                                                 {
                                                     image_angle = 0
-                                                    leader = other.leader;
                                                     offsetx = other.offsetx;
                                                     offsety = other.offsety;                                                    
                                                 }
-                                            }                                                    
+                                                                                                
                                     }                                                                                                  
                             }
                 }              
