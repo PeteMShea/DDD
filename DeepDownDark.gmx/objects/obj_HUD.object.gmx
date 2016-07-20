@@ -390,7 +390,8 @@ draw_set_alpha(1.0);
 
 
 //Now frame counter
-//draw_text(10, 42, "FPS = " + string(fps));
+draw_set_font(fnt_CapsullaTitle);
+draw_text(healthtextright, 42, "FPS = " + string(fps));
 
 </string>
           </argument>

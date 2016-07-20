@@ -39,9 +39,9 @@ awakerange = random_range(250, 400);   //distance from player before awakening
 launchtimemax = 60;    //how many frames gaunt will launch for before it begins homing
 launchtime = -60;
 takeoffspeed = 0.12;     //animation speed for take-off sequence 0.2
-speedmax = 0.4;      //max speed of travel  0.5
+speedmax = 1.0;      //max speed of travel  0.5
 speedmult = 0;
-acceleration = 0.005;     //acceleratation
+acceleration = 0.001;     //acceleratation
 normalturnspeed = 4;      //number of degrees to turn per frame
 maxturnspeed = 8;      //fast turn
 turnspeed = normalturnspeed;
@@ -53,7 +53,7 @@ damagecountermax = 60;  //how often gaunt can damage- i.e. every x frames
 maxanimspeed = 1.5;   //maximum flying animation speed- speedmult is subtracted from this to get anim speed- so faster flight means less wing strokes
 attackanimspeed = 0.75      //attack animation speed
 
-homingtestmax = 30;     //how many frames between each time limpet checks LOS to player and adjusts aim
+homingtestmax = 60;     //how many frames between each time limpet checks LOS to player and adjusts aim
 homingtest = 0;
 homingoffset = 16;  //maximum number of pixels offset from centre of ship when homing towards it
 linedistance = 64;     //how long a LOS ray test to perform when pathfinding- shorter equals quicker
@@ -107,6 +107,7 @@ explosionproximity = 80;       //how close to an explosion kills gaunt
 if awake == false &amp;&amp; awaketest &gt; 0
     {
     awaketest -= 1;
+    aimangle = image_angle;
     
     }
 if awake == false &amp;&amp; awaketest &lt;= 0
@@ -234,8 +235,8 @@ if awake == true
         }
      } 
 
-     //check nothing directly in front of gaunt
-     aimangle = point_direction(x, y, aimx, aimy);   
+     //check nothing directly in front of enemy
+     //aimangle = point_direction(x, y, aimx, aimy);   
      if avoidtest &lt;=0
      {
          avoid = noone;

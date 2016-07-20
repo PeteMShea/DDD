@@ -42,8 +42,8 @@ takeoffspeed = 0.12;     //animation speed for take-off sequence 0.2
 speedmax = 0.5;      //max speed of travel
 speedmult = 0;
 acceleration = 0.005;     //acceleratation
-normalturnspeed = 4;      //number of degrees to turn per frame
-maxturnspeed = 8;      //fast turn
+normalturnspeed = 4;      //number of degrees to turn per frame  4
+maxturnspeed = 8;      //fast turn  8
 turnspeed = normalturnspeed;
 attackrange = 8;    //distance from player to switch to attack
 homedirectrange = 64// distance from player to switch to direct homing
@@ -53,13 +53,13 @@ damagecountermax = 60;  //how often gaunt can damage- i.e. every x frames
 maxanimspeed = 1.5;   //maximum flying animation speed- speedmult is subtracted from this to get anim speed- so faster flight means less wing strokes
 attackanimspeed = 0.75      //attack animation speed
 
-homingtestmax = 30;     //how many frames between each time limpet checks LOS to player and adjusts aim
+homingtestmax = 60;     //how many frames between each time enemy checks LOS to target and adjusts aim  30
 homingtest = 0;
-homingoffset = 16;  //maximum number of pixels offset from centre of ship when homing towards it
 linedistance = 64;     //how long a LOS ray test to perform when pathfinding- shorter equals quicker
 aimoffset = 15;     //max number of degrees for random offset when pathfinding to target
 avoidtest = 0;
 if random(1) &lt;0.5 angleadjust = -45 else angleadjust = +45      //decide whether this gaunt avoids this number of degrees to the left or the right
+collision = false;
 
 aimx = x;
 aimy = y;
@@ -124,6 +124,7 @@ if awake == false &amp;&amp; awaketest &lt;= 0
                 awake = true;
                 aimx = x;
                 aimy = y;
+                aimangle = image_angle; 
             }   
     }
 
@@ -135,7 +136,8 @@ if awake == true
         {
 
             aimx = x + lengthdir_x(200, image_angle);
-            aimy = y + lengthdir_y(200, image_angle);            
+            aimy = y + lengthdir_y(200, image_angle);
+            aimangle = point_direction(x, y, aimx, aimy);             
 
         }
     
@@ -151,6 +153,9 @@ if awake == true
             homing = true;
             image_index = 1;        //change to 1 for actual spawn
             image_speed = 0;
+            aimx = leader.x + offsetx;
+            aimy = leader.y + offsety;            
+            aimangle = point_direction(x, y, aimx, aimy); 
         }
     
     if homing == true 
@@ -158,22 +163,92 @@ if awake == true
         //leader = instance_nearest(x, y, obj_spawnleader);
         playerdist = distance_to_point(obj_player.x, obj_player.y);
         if playerdist &lt;= attackrange attack = true else attack = false
-        
+
+        aimx = leader.x + offsetx;
+        aimy = leader.y + offsety;
+       
+                
         //perform LOS check ever Z frames
         if homingtest &lt; homingtestmax homingtest +=1    
         if homingtest &gt;= homingtestmax 
         {
-            // first LOS check dead ahead +/- aimoffset degrees from player target for variety
-            aimx = leader.x + offsetx;
-            aimy = leader.y + offsety;
-            //instance_create(aimx, aimy, obj_debug);
-            homingtest = 0;               
+            // first LOS check dead ahead
+            linestartx = x;
+            linestarty = y;
+
+            aimangle = point_direction(x,y, aimx, aimy);
+            lineendx = x + lengthdir_x(linedistance, aimangle);
+            lineendy = y + lengthdir_y(linedistance, aimangle);
+            hit = 0;
+            debug = false;
+            LOScheck(linestartx, linestarty, lineendx, lineendy, linedistance, hit, debug);
+            //show_debug_message("hit: " + string(hit));
+            if hit != 0
+                {
+                    lineangle = point_direction(linestartx, linestarty, lineendx, lineendy);
+                    // left first
+                    aimangle +=45                                     
+                    lineendx = linestartx + lengthdir_x(linedistance, aimangle);
+                    lineendy = linestarty + lengthdir_y(linedistance, aimangle);
+                    //show_debug_message("Testing Left");
+                    debug = false
+                    hit = 0   
+                    LOScheck(linestartx, linestarty, lineendx, lineendy, linedistance, hit, debug);
+                    if hit != 0
+                        {
+                        //right 
+                            lefthit = hit;
+                            aimangle -=90
+                            lineendx = linestartx + lengthdir_x(linedistance, aimangle);
+                            lineendy = linestarty + lengthdir_y(linedistance, aimangle);
+                            //show_debug_message("Testing Right");
+                            debug = false
+                            hit = 0   
+                            LOScheck(linestartx, linestarty, lineendx, lineendy, linedistance, hit, debug);
+                   
+    
+                            if hit !=0      //next try left + 90 degrees
+                                {    
+                                    aimangle = +135;
+                                    lineendx = x + lengthdir_x(linedistance, aimangle);
+                                    lineendy = y + lengthdir_y(linedistance, aimangle);
+                                    debug = false
+                                    hit = 0   
+                                    LOScheck(linestartx, linestarty, lineendx, lineendy, linedistance, hit, debug);  
+                                    //show_debug_message("Left and Right blocked, aimx aimy:" + string(aimx) + " , " + string(aimy) + " , endxy endy" + string(lineendx) + ", " + string(lineendy));
+                                    
+                                    if hit !=0      //finally try right + 90 degrees
+                                        {    
+                                            aimangle = -180;
+                                            lineendx = x + lengthdir_x(linedistance, aimangle);
+                                            lineendy = y + lengthdir_y(linedistance, aimangle);
+                                            debug = false;
+                                            hit = 0   
+                                            LOScheck(linestartx, linestarty, lineendx, lineendy, linedistance, hit, debug);
+                                            
+                                            if hit !=0  //if still no free way to go- aim backwards
+                                                {
+                                                    lineendx = x + lengthdir_x(linedistance, image_angle - 180);
+                                                    lineendy = y + lengthdir_y(linedistance, image_angle - 180);
+                                                }
+                                                                                      
+                                        }    
+                                    
+                                }       
+                                    
+                                    
+                                
+                        }
+                }
+        
+        
+            homingtest = 0;             
         }
 
      } 
 
      //check nothing directly in front of gaunt
-     aimangle = point_direction(x, y, aimx, aimy);   
+     //aimangle = point_direction(x, y, aimx, aimy);   
      if avoidtest &lt;=0
      {
          avoid = noone;
@@ -221,16 +296,15 @@ if awake == true
     
         if speedmult &lt;= speedmax speedmult += acceleration
         
-if collision_point(x+vx * speedmult, y+vy * speedmult, obj_block, true, true) == noone        
-{                      
+
+    
+if collision_point(x+vx * speedmult, y+vy * speedmult, obj_block, true, true) == noone &amp;&amp; homing == true  
+    { 
+                     
         x += vx * speedmult
         y += vy * speedmult
-}
-else
-{                      
-        x -= vx * speedmult
-        y -= vy * speedmult
-}
+
+    }
 
       
     
