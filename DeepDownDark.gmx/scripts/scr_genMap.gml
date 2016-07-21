@@ -1557,8 +1557,8 @@ blocktest = block [bx, by]
                                 clampmax += 1
                                 if clampmax >=8 clampmax =7 
                                 blockswitch = 0;        //wee blocks
-                                weeblock[column, 0] = 13        //first block is always an indestruct wee block                                             
-                                for (c = 1; c < count; c +=1)
+                                      
+                                for (c = 0; c < count; c +=1)
                                     {
                                                       if blockswitch == 0 && goldcount > 0 && c >= count * goldthreshold blockswitch = 1    //switch to gold blocks for rest of column
                                                       if blockswitch == 0 && random (1) < localvinechance && c >= count * vinethreshold
@@ -1568,9 +1568,12 @@ blocktest = block [bx, by]
                                                           }
                                                       
                                                       //weeblock tests
-                                                      if weeblock[column, c] == 0 && c < count-1 && blockswitch == 0 weeblock[column, c] = 14
-                                                      if weeblock[column, c] == 0 && c == count-1 && blockswitch == 0 weeblock[column, c] = 4
-                                                      
+                                                      if count > 1 && weeblock[column, c] == 0 && c < count-3 && blockswitch == 0 weeblock[column, c] = 1                                                      
+                                                      if count > 1 && weeblock[column, c] == 0 && c == count-3 && blockswitch == 0 weeblock[column, c] = 16
+                                                      if count > 1 && weeblock[column, c] == 0 && c == count-2 && blockswitch == 0 weeblock[column, c] = 14                                                      
+                                                      if count > 1 && weeblock[column, c] == 0 && c == count-1 && blockswitch == 0 weeblock[column, c] = 4
+                                                      if count <= 1 && weeblock[column, c] == 0 && c == count-1 && blockswitch == 0 weeblock[column, c] = 16
+                                                                                                            
                                                       //goldtests
                                                       if weeblock[column, c] == 0 && blockswitch == 1 && goldcount > 0
                                                           {
@@ -1598,8 +1601,8 @@ blocktest = block [bx, by]
                                 clampmax +=1
                                 if clampmax >=8 clampmax =7 
                                 blockswitch = 0;        //wee blocks
-                                weeblock[column,0] = 13        //first block is always an indestruct wee block                                                                      
-                                for (c = 1; c < count; c +=1)
+                                                                 
+                                for (c = 0; c < count; c +=1)
                                     {
                                                       if blockswitch == 0 && goldcount > 0 && c >= count * goldthreshold blockswitch = 1    //switch to gold blocks for rest of column
                                                       if blockswitch == 0 && random (1) < localvinechance && c >= count * vinethreshold
@@ -1609,9 +1612,12 @@ blocktest = block [bx, by]
                                                           }
                                                       
                                                       //weeblock tests
-                                                      if weeblock[column, c] == 0 && c < count-1 && blockswitch == 0 weeblock[column, c] = 14
-                                                      if weeblock[column, c] == 0 && c == count-1 && blockswitch == 0 weeblock[column, c] = 4
-                                                      
+                                                      if count > 1 && weeblock[column, c] == 0 && c < count-3 && blockswitch == 0 weeblock[column, c] = 1                                                      
+                                                      if count > 1 && weeblock[column, c] == 0 && c == count-3 && blockswitch == 0 weeblock[column, c] = 15
+                                                      if count > 1 && weeblock[column, c] == 0 && c == count-2 && blockswitch == 0 weeblock[column, c] = 14                                                      
+                                                      if count > 1 && weeblock[column, c] == 0 && c == count-1 && blockswitch == 0 weeblock[column, c] = 4
+                                                      if count <= 1 && weeblock[column, c] == 0 && c == count-1 && blockswitch == 0 weeblock[column, c] = 15
+                                                                                                            
                                                       //goldtests
                                                       if weeblock[column, c] == 0 && blockswitch == 1 && goldcount > 0
                                                           {
@@ -1638,8 +1644,8 @@ blocktest = block [bx, by]
                                 clampmax +=1
                                 if clampmax >=8 clampmax =7 
                                 blockswitch = 0;        //wee blocks
-                                weeblock[column,7] = 17        //first block is always an indestruct wee block                            
-                                for (c = 1; c < count; c +=1)
+                           
+                                for (c = 0; c < count; c +=1)
                                         {
                                                       if blockswitch == 0 && goldcount > 0 && c >= count * goldthreshold blockswitch = 1    //switch to gold blocks for rest of column
                                                       if blockswitch == 0 && random (1) < localvinechance && c >= count * vinethreshold
@@ -1649,9 +1655,12 @@ blocktest = block [bx, by]
                                                           }
                                                       
                                                       //weeblock tests
-                                                      if weeblock[column, 7-c] == 0 && c < count-1 && blockswitch == 0 weeblock[column, 7-c] = 18
-                                                      if weeblock[column, 7-c] == 0 && c == count-1 && blockswitch == 0 weeblock[column, 7-c] = 5
-                                                      
+                                                      if count > 1 && weeblock[column, 7-c] == 0 && c < count-3 && blockswitch == 0 weeblock[column, 7-c] = 1                                                      
+                                                      if count > 1 && weeblock[column, 7-c] == 0 && c == count-3 && blockswitch == 0 weeblock[column, 7-c] = 20
+                                                      if count > 1 && weeblock[column, 7-c] == 0 && c == count-2 && blockswitch == 0 weeblock[column, 7-c] = 18                                                      
+                                                      if count > 1 && weeblock[column, 7-c] == 0 && c == count-1 && blockswitch == 0 weeblock[column, 7-c] = 5
+                                                      if count <= 1 && weeblock[column, 7-c] == 0 && c == count-1 && blockswitch == 0 weeblock[column, 7-c] = 20
+                                                                                                            
                                                       //goldtests
                                                       if weeblock[column, 7-c] == 0 && blockswitch == 1 && goldcount > 0
                                                           {
@@ -1679,8 +1688,8 @@ blocktest = block [bx, by]
                                 clampmax +=1
                                 if clampmax >=8 clampmax =7 
                                 blockswitch = 0;        //wee blocks
-                                weeblock[column,7] = 17        //first block is always an indestruct wee block                                                        
-                                for (c = 1; c < count; c +=1)
+                                                    
+                                for (c = 0; c < count; c +=1)
                                         {
                                                       if blockswitch == 0 && goldcount > 0 && c >= count * goldthreshold blockswitch = 1    //switch to gold blocks for rest of column
                                                       if blockswitch == 0 && random (1) < localvinechance && c >= count * vinethreshold
@@ -1690,9 +1699,12 @@ blocktest = block [bx, by]
                                                           }
                                                       
                                                       //weeblock tests
-                                                      if weeblock[column, 7-c] == 0 && c < count-1 && blockswitch == 0 weeblock[column, 7-c] = 18
-                                                      if weeblock[column, 7-c] == 0 && c == count-1 && blockswitch == 0 weeblock[column, 7-c] = 5
-                                                      
+                                                      if count > 1 && weeblock[column, 7-c] == 0 && c < count-3 && blockswitch == 0 weeblock[column, 7-c] = 1                                                      
+                                                      if count > 1 && weeblock[column, 7-c] == 0 && c == count-3 && blockswitch == 0 weeblock[column, 7-c] = 19
+                                                      if count > 1 && weeblock[column, 7-c] == 0 && c == count-2 && blockswitch == 0 weeblock[column, 7-c] = 18                                                      
+                                                      if count > 1 && weeblock[column, 7-c] == 0 && c == count-1 && blockswitch == 0 weeblock[column, 7-c] = 5
+                                                      if count <= 1 && weeblock[column, 7-c] == 0 && c == count-1 && blockswitch == 0 weeblock[column, 7-c] = 19
+                                                                                                            
                                                       //goldtests
                                                       if weeblock[column, 7-c] == 0 && blockswitch == 1 && goldcount > 0
                                                           {
@@ -1717,8 +1729,8 @@ blocktest = block [bx, by]
                                 count = count + irandom_range(-1, 1)
                                 count = clamp(count, minspike, clampmax)
                                 blockswitch = 0;        //wee blocks
-                                weeblock[7, row] = 21        //first block is always an indestruct wee block                                     
-                                for (c = 1; c < count+1; c +=1)
+                                  
+                                for (c = 0; c < count+1; c +=1)
                                     {
                                                       if blockswitch == 0 && goldcount > 0 && c >= count * goldthreshold blockswitch = 1    //switch to gold blocks for rest of column
                                                       if blockswitch == 0 && random (1) < localvinechance && c >= count * vinethreshold
@@ -1728,9 +1740,12 @@ blocktest = block [bx, by]
                                                           }
                                                       
                                                       //weeblock tests
-                                                      if weeblock[7-c, row] == 0 && c < count && blockswitch == 0 weeblock[7-c, row] = 23
-                                                      if weeblock[7-c, row] == 0 && c == count && blockswitch == 0 weeblock[7-c, row] = 7
-                                                      
+                                                      if count > 1 && weeblock[7-c, row] == 0 && c < count-2 && blockswitch == 0 weeblock[7-c, row] = 1                                                      
+                                                      if count > 1 && weeblock[7-c, row] == 0 && c == count-2 && blockswitch == 0 weeblock[7-c, row] = 21
+                                                      if count > 1 && weeblock[7-c, row] == 0 && c == count-1 && blockswitch == 0 weeblock[7-c, row] = 23                                                      
+                                                      if count > 1 && weeblock[7-c, row] == 0 && c == count && blockswitch == 0 weeblock[7-c, row] = 7
+                                                      if count <= 1 && weeblock[7-c, row] == 0 && c == count && blockswitch == 0 weeblock[7-c, row] = 21
+                                                                                                            
                                                       //goldtests
                                                       if weeblock[7-c, row] == 0 && blockswitch == 1 && goldcount > 0
                                                           {
@@ -1755,8 +1770,8 @@ blocktest = block [bx, by]
                                 count = count + irandom_range(-1, 1)
                                 count = clamp(count, minspike, clampmax)
                                 blockswitch = 0;        //wee blocks
-                                weeblock[column,0] = 13        //first block is always an indestruct wee block                                                                    
-                                for (c = 1; c < count+1; c +=1)
+                                                                  
+                                for (c = 0; c < count+1; c +=1)
                                     {
                                                       if blockswitch == 0 && goldcount > 0 && c >= count * goldthreshold blockswitch = 1    //switch to gold blocks for rest of column
                                                       if blockswitch == 0 && random (1) < localvinechance && c >= count * vinethreshold
@@ -1766,9 +1781,12 @@ blocktest = block [bx, by]
                                                           }
                                                       
                                                       //weeblock tests
-                                                      if weeblock[column, c] == 0 && c < count && blockswitch == 0 weeblock[column, c] = 14
-                                                      if weeblock[column, c] == 0 && c == count && blockswitch == 0 weeblock[column, c] = 4
-                                                      
+                                                      if count > 1 && weeblock[column, c] == 0 && c < count-2 && blockswitch == 0 weeblock[column, c] = 1                                                      
+                                                      if count > 1 && weeblock[column, c] == 0 && c == count-2 && blockswitch == 0 weeblock[column, c] = 13
+                                                      if count > 1 && weeblock[column, c] == 0 && c == count-1 && blockswitch == 0 weeblock[column, c] = 14                                                      
+                                                      if count > 1 && weeblock[column, c] == 0 && c == count && blockswitch == 0 weeblock[column, c] = 4
+                                                      if count <= 1 && weeblock[column, c] == 0 && c == count && blockswitch == 0 weeblock[column, c] = 13
+                                                                                                            
                                                       //goldtests
                                                       if weeblock[column, c] == 0 && blockswitch == 1 && goldcount > 0
                                                           {
@@ -1793,8 +1811,8 @@ blocktest = block [bx, by]
                                 count = count + irandom_range(-1, 1)
                                 count = clamp(count, minspike, clampmax)
                                 blockswitch = 0;        //wee blocks
-                                weeblock[column,7] = 17        //first block is always an indestruct wee block                                                                  
-                                for (c = 1; c < count+1; c +=1)
+                                                               
+                                for (c = 0; c < count+1; c +=1)
                                         {
                                                       if blockswitch == 0 && goldcount > 0 && c >= count * goldthreshold blockswitch = 1    //switch to gold blocks for rest of column
                                                       if blockswitch == 0 && random (1) < localvinechance && c >= count * vinethreshold
@@ -1804,9 +1822,12 @@ blocktest = block [bx, by]
                                                           }
                                                       
                                                       //weeblock tests
-                                                      if weeblock[column, 7-c] == 0 && c < count && blockswitch == 0 weeblock[column, 7-c] = 18
-                                                      if weeblock[column, 7-c] == 0 && c == count && blockswitch == 0 weeblock[column, 7-c] = 5
-                                                      
+                                                      if count > 1 && weeblock[column, 7-c] == 0 && c < count-2 && blockswitch == 0 weeblock[column, 7-c] = 1                                                      
+                                                      if count > 1 && weeblock[column, 7-c] == 0 && c == count-2 && blockswitch == 0 weeblock[column, 7-c] = 17
+                                                      if count > 1 && weeblock[column, 7-c] == 0 && c == count-1 && blockswitch == 0 weeblock[column, 7-c] = 18                                                      
+                                                      if count > 1 && weeblock[column, 7-c] == 0 && c == count && blockswitch == 0 weeblock[column, 7-c] = 5
+                                                      if count <= 1 && weeblock[column, 7-c] == 0 && c == count && blockswitch == 0 weeblock[column, 7-c] = 17
+                                                                                                            
                                                       //goldtests
                                                       if weeblock[column, 7-c] == 0 && blockswitch == 1 && goldcount > 0
                                                           {
@@ -1832,8 +1853,8 @@ blocktest = block [bx, by]
                                 count = count + irandom_range(-1, 1)
                                 count = clamp(count, minspike, clampmax)
                                 blockswitch = 0;        //wee blocks
-                                weeblock[0, row] = 22        //first block is always an indestruct wee block                                                                       
-                                for (c = 1; c < count+1; c +=1)
+                                                                   
+                                for (c = 0; c < count+1; c +=1)
                                     {
                                                       if blockswitch == 0 && goldcount > 0 && c >= count * goldthreshold blockswitch = 1    //switch to gold blocks for rest of column
                                                       if blockswitch == 0 && random (1) < localvinechance && c >= count * vinethreshold
@@ -1843,9 +1864,12 @@ blocktest = block [bx, by]
                                                           }
                                                       
                                                       //weeblock tests
-                                                      if weeblock[c, row] == 0 && c < count && blockswitch == 0 weeblock[c, row] = 24
-                                                      if weeblock[c, row] == 0 && c == count && blockswitch == 0 weeblock[c, row] = 6
-                                                      
+                                                      if count > 1 && weeblock[c, row] == 0 && c < count-2 && blockswitch == 0 weeblock[c, row] = 1                                                      
+                                                      if count > 1 && weeblock[c, row] == 0 && c == count-2 && blockswitch == 0 weeblock[c, row] = 22
+                                                      if count > 1 && weeblock[c, row] == 0 && c == count-1 && blockswitch == 0 weeblock[c, row] = 24                                                      
+                                                      if count > 1 && weeblock[c, row] == 0 && c == count && blockswitch == 0 weeblock[c, row] = 6
+                                                      if count <= 1 && weeblock[c, row] == 0 && c == count && blockswitch == 0 weeblock[c, row] = 22
+                                                                                                            
                                                       //goldtests
                                                       if weeblock[c, row] == 0 && blockswitch == 1 && goldcount > 0
                                                           {
