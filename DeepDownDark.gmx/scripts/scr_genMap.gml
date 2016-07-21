@@ -400,10 +400,27 @@ position_destroy(global.exitx, global.exity);
 position_destroy(global.exitx-64, global.exity);
 position_destroy(global.exitx+64, global.exity);    
     
-    
- 
-
-
+//and add four new borderside blocks
+inst = instance_create(starthuge * 384 + 64 + 64, 0, obj_borderside);
+with (inst)
+    {
+        image_index = 0;
+    }  
+inst = instance_create(starthuge * 384 + 192 + 64, 0, obj_borderside);
+with (inst)
+    {
+        image_index = 1;
+    }  
+inst = instance_create(endhuge * 384 + 64 + 64, gridsize * 384 + 64, obj_borderside);
+with (inst)
+    {
+        image_index = 2;
+    } 
+inst = instance_create(endhuge * 384 + 192 + 64, gridsize * 384+ 64, obj_borderside);
+with (inst)
+    {
+        image_index = 3;
+    } 
 
 
 
@@ -497,9 +514,26 @@ if bigblock[u , v] > 0
         if  n != 2 && bigblock [u, v-1] <= 0 n = 1
         if  s != 2 && bigblock [u, v+1] <= 0 s = 1
 
-        if v == 0 && u == starthuge n = 0;
-        if v == 7 && u == endhuge s = 0;  
-                  
+        if v == 0 && u == starthuge         //special routine to add blocks in start square along north edge
+            {
+                n = 0;
+                block[0 + u * 12, 0 + v * 12] = 1
+                block[1 + u * 12, 0 + v * 12] = 1
+                block[8 + u * 12, 0 + v * 12] = 1
+                block[9 + u * 12, 0 + v * 12] = 1
+                block[10 + u * 12, 0 + v * 12] = 1
+                block[11 + u * 12, 0 + v * 12] = 1                             
+            }
+        if v == 7 && u == endhuge                //special routine to add blocks in end square along south edge
+        {
+                s = 0;  
+                block[0 + u * 12, 11 + v * 12] = 1
+                block[1 + u * 12, 11 + v * 12] = 1
+                block[8 + u * 12, 11 + v * 12] = 1
+                block[9 + u * 12, 11 + v * 12] = 1
+                block[10 + u * 12, 11 + v * 12] = 1
+                block[11 + u * 12, 11 + v * 12] = 1             
+        }          
                                
         if w !=0 || e !=0 || n !=0 || s !=0                             // we have at least one external edge- so time to add blocks inside             
             {
@@ -2005,4 +2039,3 @@ if sporeoffsetangle >= 360     //set a circle of offset points around the leader
         sporeoffsetangle = 0;
         sporeoffsetdistance +=24;
     }
-

@@ -58,7 +58,7 @@ gauntdensitysteps = 10;          //how many huge squares gauntdensity increases 
 gauntdensity = gauntdensitymin;
 gauntdensitycurrent = 0;
 
-spawnchance = 0.9;        //chance of a huge square being populated with spores 0.3
+spawnchance = 0.0;        //chance of a huge square being populated with spores 0.3
 spawndensitymin = 0.1;        //how dense gaunts are at start of level 0
 spawndensitymax = 0.15;        //how dense spawn are at end of level 0.15
 spawndensitysteps = 10;          //how many huge squares gauntdensity increases over

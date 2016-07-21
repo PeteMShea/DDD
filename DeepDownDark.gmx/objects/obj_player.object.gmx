@@ -129,6 +129,7 @@ deathsequencetime = 180;       //how long death sequence lasts for
 deathstart = false;
 startfade = 150;    //number of frames until fade to black starts
 showmenu = false;   //draw menu once
+collisionoff = false;   // debug option to disable collision
 
 // set up gamepad
 if gamepad_is_connected(0) gamepad_set_axis_deadzone(0, 0.15);
@@ -564,163 +565,164 @@ if thrustcounter &gt;= 0 &amp;&amp; global.autopilot &lt;=0
    
 
 //  collision detection
-//if place_meeting(x- speed_x, y - speed_y, obj_block)
-colcheck = noone;
-
-colcheck = collision_circle(x + speed_x, y + speed_y, shipscale, obj_block, false, true) 
-if colcheck == noone colcheck = collision_circle(x + lengthdir_x(30, image_angle + 135), y + lengthdir_y(30, image_angle + 135), 4, obj_block, false, true)
-if colcheck == noone colcheck = collision_circle(x + lengthdir_x(30, image_angle + 225), y + lengthdir_y(30, image_angle + 225), 4, obj_block, false, true)  
-if colcheck == noone colcheck = collision_circle(x + lengthdir_x(-3, thrustdir) + speed_x, y + speed_y, shipscale, obj_asteroid, true, true)
-
-if colcheck != noone
-
+if collisionoff == false            //debug option for disabling collision
 {
-
-    if collision_circle(x+ speed_x, y + speed_y, shipscale + 3, obj_asteroid, true, true)
-
-        {
-        var inst;
-        //instance_create(x - speed_x + lengthdir_x(32, thrustdir), y - speed_y + lengthdir_y(32, thrustdir), obj_debug);
+    colcheck = noone;
     
-            
-        inst = instance_nearest(x + speed_x, y + speed_y, obj_asteroid);
-        if inst != noone
+    colcheck = collision_circle(x + speed_x, y + speed_y, shipscale, obj_block, false, true) 
+    if colcheck == noone colcheck = collision_circle(x + lengthdir_x(30, image_angle + 135), y + lengthdir_y(30, image_angle + 135), 4, obj_block, false, true)
+    if colcheck == noone colcheck = collision_circle(x + lengthdir_x(30, image_angle + 225), y + lengthdir_y(30, image_angle + 225), 4, obj_block, false, true)  
+    if colcheck == noone colcheck = collision_circle(x + lengthdir_x(-3, thrustdir) + speed_x, y + speed_y, shipscale, obj_asteroid, true, true)
+    
+    if colcheck != noone
+    
+    {
+    
+        if collision_circle(x+ speed_x, y + speed_y, shipscale + 3, obj_asteroid, true, true)
+    
             {
-                ax = (inst).x;
-                ay = (inst).y;
-                avector = point_direction(ax, ay, x, y);
-                loc_x = ax + lengthdir_x(16, avector);
-                loc_y = ay + lengthdir_y(16, avector);
-                extended_x = x + lengthdir_x(32, thrustdir);
-                extended_y = y + lengthdir_y(32, thrustdir); 
-                with(inst)
-                {    
-                    //show_debug_message(string(inst));
-                    hit_x = other.x;
-                    hit_y = other.y;
-                    ext_x = other.extended_x;
-                    ext_y = other.extended_y;
-                    hitspeed_x = other.speed_x;
-                    hitspeed_y = other.speed_y;
-                    asteroidhit = 1;        // 1 = hit by player
+            var inst;
+            //instance_create(x - speed_x + lengthdir_x(32, thrustdir), y - speed_y + lengthdir_y(32, thrustdir), obj_debug);
+        
+                
+            inst = instance_nearest(x + speed_x, y + speed_y, obj_asteroid);
+            if inst != noone
+                {
+                    ax = (inst).x;
+                    ay = (inst).y;
+                    avector = point_direction(ax, ay, x, y);
+                    loc_x = ax + lengthdir_x(16, avector);
+                    loc_y = ay + lengthdir_y(16, avector);
+                    extended_x = x + lengthdir_x(32, thrustdir);
+                    extended_y = y + lengthdir_y(32, thrustdir); 
+                    with(inst)
+                    {    
+                        //show_debug_message(string(inst));
+                        hit_x = other.x;
+                        hit_y = other.y;
+                        ext_x = other.extended_x;
+                        ext_y = other.extended_y;
+                        hitspeed_x = other.speed_x;
+                        hitspeed_y = other.speed_y;
+                        asteroidhit = 1;        // 1 = hit by player
+                    }
                 }
             }
+        else
+        // if hit something other than asteroid- calculate collision point loc_x, loc_y based upon thrustdir
+            {
+                l_angle = point_direction(x, y, x + speed_x, y + speed_y);
+                loc_x = x + lengthdir_x(shipscale, l_angle);
+                loc_y = y + lengthdir_y(shipscale, l_angle);
+            
+            }
+    
+        //now check for leg collisions for landing
+        leftlegcheck = collision_circle(x + lengthdir_x(30, image_angle + 135), y + lengthdir_y(30, image_angle + 135), 4, obj_block, false, true)
+        rightlegcheck = collision_circle(x + lengthdir_x(30, image_angle + 225), y + lengthdir_y(30, image_angle + 225), 4, obj_block, false, true)
+        currrentspeed = sqrt(speed_x * speed_x + speed_y * speed_y);          
+        if currrentspeed &lt;= minlandspeed landingokay = true else landingokay = false
+        if global.autopilot &gt; 0 landingokay = false
+        if leftlegcheck == noone &amp;&amp; rightlegcheck == noone landing = 0      //not landing as no legs in contact with ground       
+        if leftlegcheck != noone &amp;&amp; rightlegcheck != noone &amp;&amp; landingokay == true       //both legs down at same time
+            {
+                script_execute(scr_landingsequence, landing);
+            } 
+            
+        if leftlegcheck != noone &amp;&amp; rightlegcheck == noone &amp;&amp; landingokay == true &amp;&amp; landing == 0      //left leg hit
+            {
+                //show_debug_message("left leg down");
+                speed_x = 0;
+                speed_y = 0;
+                landing = 1;    //in progress
+                
+                //now check if the right leg is within a reasonable range of the ground before landing sequence
+                landx = x + lengthdir_x(36, image_angle + 210); 
+                landy = y + lengthdir_y(36, image_angle + 210);        
+                //instance_create(landx, landy, obj_debug);
+                
+                var legcheck = collision_point(landx, landy, obj_block, false, false);            
+                if legcheck != noone script_execute(scr_landingsequence, landing) else landing = 0;                         
+                            
+            }        
+    
+        if leftlegcheck == noone &amp;&amp; rightlegcheck != noone  &amp;&amp; landingokay == true &amp;&amp; landing == 0     //right leg hit so turn to the left
+            {
+                //show_debug_message("right leg down");            
+                speed_x = 0;
+                speed_y = 0;            
+                landing = 2;    // in progress
+                
+                //now check if the left leg is within a reasonable range of the ground before landing sequence
+                landx = x + lengthdir_x(36, image_angle + 150); 
+                landy = y + lengthdir_y(36, image_angle + 150);            
+                //instance_create(landx, landy, obj_debug);   
+                
+                var legcheck = collision_point(landx, landy, obj_block, false, false);            
+                if legcheck != noone script_execute(scr_landingsequence, landing) else landing = 0;  
+                           
+            }
+    
+                                   
+     
+        // show_debug_message(string(speed_x) + " , " + string(speed_y));
+    
+        // calculate new resolve vector pointing away from the object just hit
+        objhit_x = colcheck.x     
+        objhit_y = colcheck.y
+        //obj_vec = point_direction(objhit_x, objhit_y, x, y);
+        
+        //now turn this vector into a new direction of travel      
+    
+        ox = (x - objhit_x);
+        oy = (y - objhit_y);
+        
+        len = sqrt(ox * ox + oy * oy);
+        
+        ox = ox / len;
+        oy = oy / len;
+        
+        //now bounce away unless landing or trying to
+        if landing == 0
+        {
+            min_bounce_x = sign(ox) * 0.1;
+            min_bounce_y = sign(oy) * 0.1;     
+            bounce_x = abs(speed_x) * ox * bouncemult + min_bounce_x;
+            bounce_y = abs(speed_y) * oy * bouncemult + min_bounce_y;
+            
+            speed_x = + bounce_x;
+            speed_y = + bounce_y;
         }
+        //show_debug_message("bounce: " + string(speed_x) + " , " + string(speed_y));
+     
+        //trigger damage unless in cooldown time   
+        if hitcollide &lt;= 0
+            {    
+                hitcollide = damagecooldown * 60;  
+            }
+        
+            
+                 
+    } 
+    
+    // Player has collided with bad thing
+    if hitcollide &gt;= (damagecooldown * 60)
+        {
+            damagespeed = sqrt(speed_x * speed_x + speed_y * speed_y);
+            damage = (damagespeed * damagemult * armour)
+            global.playerHealth -= damage ;
+            
+            script_execute(scr_shipvisualdamage, x, y, loc_x, loc_y, damage);
+            
+              hitcollide -= 1;
+            global.playerdamaged = 20;
+         }
     else
-    // if hit something other than asteroid- calculate collision point loc_x, loc_y based upon thrustdir
         {
-            l_angle = point_direction(x, y, x + speed_x, y + speed_y);
-            loc_x = x + lengthdir_x(shipscale, l_angle);
-            loc_y = y + lengthdir_y(shipscale, l_angle);
-        
-        }
-
-    //now check for leg collisions for landing
-    leftlegcheck = collision_circle(x + lengthdir_x(30, image_angle + 135), y + lengthdir_y(30, image_angle + 135), 4, obj_block, false, true)
-    rightlegcheck = collision_circle(x + lengthdir_x(30, image_angle + 225), y + lengthdir_y(30, image_angle + 225), 4, obj_block, false, true)
-    currrentspeed = sqrt(speed_x * speed_x + speed_y * speed_y);          
-    if currrentspeed &lt;= minlandspeed landingokay = true else landingokay = false
-    if global.autopilot &gt; 0 landingokay = false
-    if leftlegcheck == noone &amp;&amp; rightlegcheck == noone landing = 0      //not landing as no legs in contact with ground       
-    if leftlegcheck != noone &amp;&amp; rightlegcheck != noone &amp;&amp; landingokay == true       //both legs down at same time
-        {
-            script_execute(scr_landingsequence, landing);
-        } 
-        
-    if leftlegcheck != noone &amp;&amp; rightlegcheck == noone &amp;&amp; landingokay == true &amp;&amp; landing == 0      //left leg hit
-        {
-            //show_debug_message("left leg down");
-            speed_x = 0;
-            speed_y = 0;
-            landing = 1;    //in progress
-            
-            //now check if the right leg is within a reasonable range of the ground before landing sequence
-            landx = x + lengthdir_x(36, image_angle + 210); 
-            landy = y + lengthdir_y(36, image_angle + 210);        
-            //instance_create(landx, landy, obj_debug);
-            
-            var legcheck = collision_point(landx, landy, obj_block, false, false);            
-            if legcheck != noone script_execute(scr_landingsequence, landing) else landing = 0;                         
-                        
-        }        
-
-    if leftlegcheck == noone &amp;&amp; rightlegcheck != noone  &amp;&amp; landingokay == true &amp;&amp; landing == 0     //right leg hit so turn to the left
-        {
-            //show_debug_message("right leg down");            
-            speed_x = 0;
-            speed_y = 0;            
-            landing = 2;    // in progress
-            
-            //now check if the left leg is within a reasonable range of the ground before landing sequence
-            landx = x + lengthdir_x(36, image_angle + 150); 
-            landy = y + lengthdir_y(36, image_angle + 150);            
-            //instance_create(landx, landy, obj_debug);   
-            
-            var legcheck = collision_point(landx, landy, obj_block, false, false);            
-            if legcheck != noone script_execute(scr_landingsequence, landing) else landing = 0;  
-                       
-        }
-
-                               
- 
-    // show_debug_message(string(speed_x) + " , " + string(speed_y));
-
-    // calculate new resolve vector pointing away from the object just hit
-    objhit_x = colcheck.x     
-    objhit_y = colcheck.y
-    //obj_vec = point_direction(objhit_x, objhit_y, x, y);
+            hitcollide -= 1;
     
-    //now turn this vector into a new direction of travel      
-
-    ox = (x - objhit_x);
-    oy = (y - objhit_y);
-    
-    len = sqrt(ox * ox + oy * oy);
-    
-    ox = ox / len;
-    oy = oy / len;
-    
-    //now bounce away unless landing or trying to
-    if landing == 0
-    {
-        min_bounce_x = sign(ox) * 0.1;
-        min_bounce_y = sign(oy) * 0.1;     
-        bounce_x = abs(speed_x) * ox * bouncemult + min_bounce_x;
-        bounce_y = abs(speed_y) * oy * bouncemult + min_bounce_y;
-        
-        speed_x = + bounce_x;
-        speed_y = + bounce_y;
-    }
-    //show_debug_message("bounce: " + string(speed_x) + " , " + string(speed_y));
- 
-    //trigger damage unless in cooldown time   
-    if hitcollide &lt;= 0
-        {    
-            hitcollide = damagecooldown * 60;  
-        }
-    
-        
-             
-} 
-
-// Player has collided with bad thing
-if hitcollide &gt;= (damagecooldown * 60)
-    {
-        damagespeed = sqrt(speed_x * speed_x + speed_y * speed_y);
-        damage = (damagespeed * damagemult * armour)
-        global.playerHealth -= damage ;
-        
-        script_execute(scr_shipvisualdamage, x, y, loc_x, loc_y, damage);
-        
-          hitcollide -= 1;
-        global.playerdamaged = 20;
-     }
-else
-    {
-        hitcollide -= 1;
-
-    }     
-  
+        }     
+}  
   
 // Apply movement to player
     x += speed_x
@@ -912,6 +914,33 @@ if dead == true &amp;&amp; deathcounter &lt; deathsequencetime
 
 
 
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="67">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// debug key for disabling player collision
+
+if collisionoff == false collisionoff = true else collisionoff = false;
 
 
 </string>

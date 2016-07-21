@@ -57,6 +57,7 @@
       <sprite>sprites\spr_vineScap</sprite>
       <sprite>sprites\spr_tinyblock</sprite>
       <sprite>sprites\spr_borderblock</sprite>
+      <sprite>sprites\spr_borderside</sprite>
       <sprite>sprites\spr_asteroid</sprite>
       <sprite>sprites\spr_goldasteroid</sprite>
       <sprite>sprites\spr_asteroidnormal</sprite>
@@ -221,6 +222,7 @@
       <object>objects\obj_weeblockendWcap</object>
       <object>objects\obj_weeblockendScap</object>
       <object>objects\obj_borderblock</object>
+      <object>objects\obj_borderside</object>
       <object>objects\obj_floatblock</object>
       <object>objects\obj_tinyblock</object>
       <object>objects\obj_gold</object>
