@@ -29,7 +29,7 @@
 global.pause = false;
 
 randomize(); 
-basechance = 0.3;       //base chance of removing a big block and replacing with an empty one 0.2
+basechance = 0.8;       //base chance of removing a big block and replacing with an empty one 0.3
 
 newblockoverlaychance = 0.2;    //chance of a new block having an overlay added for variety
 hugeblockoverlaychance = 0.7;   //chance of a huge block having an overlay added for variety

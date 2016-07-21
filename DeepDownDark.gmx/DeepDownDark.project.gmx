@@ -43,14 +43,17 @@
       <sprite>sprites\spr_weeblock</sprite>
       <sprite>sprites\spr_weeblockendNcap</sprite>
       <sprite>sprites\spr_weeblockendEcap</sprite>
-      <sprite>sprites\spr_weeblocdkendWcap</sprite>
+      <sprite>sprites\spr_weeblockendWcap</sprite>
       <sprite>sprites\spr_weeblockendScap</sprite>
+      <sprite>sprites\spr_weeblockNEcap</sprite>
+      <sprite>sprites\spr_weeblockNWcap</sprite>
+      <sprite>sprites\spr_weeblockSWcap</sprite>
+      <sprite>sprites\spr_weeblockSEcap</sprite>
       <sprite>sprites\spr_gold</sprite>
       <sprite>sprites\spr_moss</sprite>
       <sprite>sprites\spr_mossTest</sprite>
       <sprite>sprites\spr_blastblock</sprite>
       <sprite>sprites\spr_vine</sprite>
-      <sprite>sprites\sprite63</sprite>
       <sprite>sprites\spr_vineNcap</sprite>
       <sprite>sprites\spr_vineWcap</sprite>
       <sprite>sprites\spr_vineEcap</sprite>
@@ -217,6 +220,18 @@
       <object>objects\obj_hugeblock</object>
       <object>objects\obj_newblock</object>
       <object>objects\obj_weeblock</object>
+      <object>objects\obj_weeblock_N</object>
+      <object>objects\obj_weeblock_S</object>
+      <object>objects\obj_weeblock_E</object>
+      <object>objects\obj_weeblock_W</object>
+      <object>objects\obj_weeblock_NE</object>
+      <object>objects\obj_weeblock_NW</object>
+      <object>objects\obj_weeblock_SE</object>
+      <object>objects\obj_weeblock_SW</object>
+      <object>objects\obj_blastblock_N</object>
+      <object>objects\obj_blastblock_S</object>
+      <object>objects\obj_blastblock_E</object>
+      <object>objects\obj_blastblock_W</object>
       <object>objects\obj_weeblockendNcap</object>
       <object>objects\obj_weeblockendEcap</object>
       <object>objects\obj_weeblockendWcap</object>

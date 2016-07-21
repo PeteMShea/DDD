@@ -92,8 +92,20 @@ if inst != noone
 
         var ix;
         script_execute(scr_blockburstvfx, bx, by);
-        //destroy instance of block hit
-        with (inst) instance_destroy();
+        //change state or destroy instance of block hit
+        with (inst)
+        {
+            if hitpoints &gt; 0
+                {
+                    sprite_index = alt_sprite;
+                    image_index = irandom_range(0,5);
+                    hitpoints -= 1
+                }
+            else
+                {
+                    instance_destroy();
+                }
+        }
         
         //destroy the bullet
         bx = x

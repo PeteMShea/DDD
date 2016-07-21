@@ -29,6 +29,7 @@
 
 image_index = irandom(13);
 image_speed = 0;       //do not animate
+hitpoints = 0;
 </string>
           </argument>
         </arguments>

@@ -30,6 +30,7 @@ img = round(random_range(0,5));
 //show_debug_message(string(img));
 image_index = img;
 image_speed = 0;       //do not animate
+hitpoints = 0;
 
 
 

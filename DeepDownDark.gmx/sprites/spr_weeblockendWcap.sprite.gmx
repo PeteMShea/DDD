@@ -20,11 +20,11 @@
   <width>4</width>
   <height>4</height>
   <frames>
-    <frame index="0">images\spr_weeblocdkendWcap_0.png</frame>
-    <frame index="1">images\spr_weeblocdkendWcap_1.png</frame>
-    <frame index="2">images\spr_weeblocdkendWcap_2.png</frame>
-    <frame index="3">images\spr_weeblocdkendWcap_3.png</frame>
-    <frame index="4">images\spr_weeblocdkendWcap_4.png</frame>
-    <frame index="5">images\spr_weeblocdkendWcap_5.png</frame>
+    <frame index="0">images\spr_weeblockendWcap_0.png</frame>
+    <frame index="1">images\spr_weeblockendWcap_1.png</frame>
+    <frame index="2">images\spr_weeblockendWcap_2.png</frame>
+    <frame index="3">images\spr_weeblockendWcap_3.png</frame>
+    <frame index="4">images\spr_weeblockendWcap_4.png</frame>
+    <frame index="5">images\spr_weeblockendWcap_5.png</frame>
   </frames>
 </sprite>
