@@ -29,7 +29,7 @@
 global.pause = false;
 
 randomize(); 
-basechance = 0.8;       //base chance of removing a big block and replacing with an empty one 0.3
+basechance = 0.3;       //base chance of removing a big block and replacing with an empty one 0.3
 
 newblockoverlaychance = 0.2;    //chance of a new block having an overlay added for variety
 hugeblockoverlaychance = 0.7;   //chance of a huge block having an overlay added for variety
@@ -45,9 +45,9 @@ goldasteroidchance = 0.1;   //chance of gold asteroid being added 0.1
 
 
 minspike = 1;       //minimum number of normal blocks to add to each edge- should always be at least 1
-maxspike = 6; //how much normal blocks jut in from edges- defines overall corridor width (less equals wider)- max possible = 4
-mingap = 5;       //how big a gap there will always be between N/S and E/W corridors (allow for -2 due to wee blocks)
-spikyness = 1;      // how much wee blocks jut in from edges to empty space- minimum number of wee blocks + 1
+maxspike = 4; //how much normal blocks jut in from edges- defines overall corridor width (less equals wider)- normal 4 max possible = 7
+mingap = 5;       //how big a gap there will always be between N/S and E/W corridors (allow for -2 due to wee blocks) 5  min = 4
+spikyness = 1;      // how much wee blocks jut in from edges to empty space- minimum number of wee blocks + 1  /1
 maxweespike = 4;        //cannot be higher than 4!
 
 enemychance = 0.00;      //chance of an enemy being spawned 0.005
@@ -58,7 +58,7 @@ gauntdensitysteps = 10;          //how many huge squares gauntdensity increases 
 gauntdensity = gauntdensitymin;
 gauntdensitycurrent = 0;
 
-spawnchance = 0.0;        //chance of a huge square being populated with spores 0.3
+spawnchance = 0.3;        //chance of a huge square being populated with spores 0.3
 spawndensitymin = 0.1;        //how dense gaunts are at start of level 0
 spawndensitymax = 0.15;        //how dense spawn are at end of level 0.15
 spawndensitysteps = 10;          //how many huge squares gauntdensity increases over

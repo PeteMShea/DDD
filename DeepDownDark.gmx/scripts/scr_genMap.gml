@@ -309,7 +309,7 @@ for (u = 0; u < gridsize; u +=1)
         for (v = 0; v < gridsize; v +=1)
         {
             script_execute(scr_genBlocks, u, v, bigblock[u,v], gridsize, starthuge, endhuge)
-            //show_debug_message("Big Block Done " + string(u) + " , " + string(v) + " , array: " + string(bigblock[u,v]) );
+
 
              
         }
@@ -515,6 +515,7 @@ if bigblock[u , v] > 0
         e = 0;
         s = 0;
         w = 0;
+        special = 0;
 
         // edge squares- set to 2 so always add a block here (outer borders of map) unless at start square
         if u == 0 w = 2;
@@ -530,6 +531,7 @@ if bigblock[u , v] > 0
         if v == 0 && u == starthuge         //special routine to add blocks in start square along north edge
             {
                 n = 0;
+                special = 1;
                 block[0 + u * 12, 0 + v * 12] = 1
                 block[1 + u * 12, 0 + v * 12] = 1
                 block[8 + u * 12, 0 + v * 12] = 1
@@ -539,7 +541,8 @@ if bigblock[u , v] > 0
             }
         if v == 7 && u == endhuge                //special routine to add blocks in end square along south edge
         {
-                s = 0;  
+                s = 0;
+                special = 1;                  
                 block[0 + u * 12, 11 + v * 12] = 1
                 block[1 + u * 12, 11 + v * 12] = 1
                 block[8 + u * 12, 11 + v * 12] = 1
@@ -548,7 +551,7 @@ if bigblock[u , v] > 0
                 block[11 + u * 12, 11 + v * 12] = 1             
         }          
                                
-        if w !=0 || e !=0 || n !=0 || s !=0                             // we have at least one external edge- so time to add blocks inside             
+        if w !=0 || e !=0 || n !=0 || s !=0 || special == 1                             // we have at least one external edge- so time to add blocks inside             
             {
                     
                 // first check adjacent squares and change the array value to represent neighbouring squares
@@ -895,10 +898,10 @@ if bigblock[u , v] > 0
                         for (bv = 0; bv < 12; bv +=1)
                             {
         
-                                if block[bu + u * 12 , bv + v * 12] == 1
+                                if block[bu + u * 12 , bv + v * 12] == 1 
                                     {
                                         instance_create( u * 384+64 + bu *32, v * 384+64 + bv *32, obj_newblock);
-                                        instance_deactivate_object(obj_newblock);
+                                        //instance_deactivate_object(obj_newblock);
                                         //show_debug_message("block u: " + string(bu + u * 12) + " , v: " + string(bv + v * 12) + " , value:" + string(block[bu + u * 12 , bv + v * 12]));                  
                                         if random(1) < newblockoverlaychance instance_create(u * 384+64 + bu *32, v * 384+64 + bv *32, obj_newblockoverlay); 
                                     }
@@ -2068,11 +2071,12 @@ if totalspawnpoints > 0
                     instance_create(spawnpointx[count], spawnpointy[count], obj_asteroid);
                     
                 }
-            instance_deactivate_region(spawnpointx[count]-192, spawnpointy[count]-192, 384, 384, true, true);
+            //instance_deactivate_region(spawnpointx[count]-192, spawnpointy[count]-192, 384, 384, true, true);
         
         }
     //instance_deactivate_all(true);
 }
+
 #define scr_sporeoffset
 offsetx = lengthdir_x(sporeoffsetdistance, sporeoffsetangle);
 offsety = lengthdir_y(sporeoffsetdistance, sporeoffsetangle);
