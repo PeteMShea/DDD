@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>/// initialise variables
 
-bulletspd = 3;
+bulletspd = 3 * global.RM;
 lifespan = 120;     //number of frames bullet will live for
 asteroidmult = 0.25;       //how much damage done to asteroid
 
@@ -211,8 +211,8 @@ if asteroid != noone
 
     {
     hitangle = point_direction(start_x, start_y, x, y);
-    extended_x = x + lengthdir_x(32, hitangle);
-    extended_y = y + lengthdir_y(32, hitangle); 
+    extended_x = x + lengthdir_x(32 * global.RM, hitangle);
+    extended_y = y + lengthdir_y(32 * global.RM, hitangle); 
         with(asteroid) 
             {
                 asteroidhit = 2;    // 2= hit by bullet

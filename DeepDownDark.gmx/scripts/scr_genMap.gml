@@ -276,7 +276,7 @@ for (u = 0; u < gridsize; u +=1)
                     
                     blockindex = (bigblock[u, v] * -1) -1;                
                     //show_debug_message("blockindex = " + string(blockindex));                              
-                    inst = instance_create( u * 384+64, v * 384+64, obj_hugeblock)
+                    inst = instance_create( u * 384 * global.RM +64 * global.RM , v * 384 * global.RM +64 * global.RM , obj_hugeblock)
 
                     with (inst)
                         {
@@ -285,7 +285,7 @@ for (u = 0; u < gridsize; u +=1)
                         //show_debug_message("blockindex = " + string(other.blockindex));   
                         }
                    instance_deactivate_object(inst);
-                   if random(1) < hugeblockoverlaychance instance_create(u * 384+64, v * 384+64, obj_hugeblockoverlay);             
+                   if random(1) < hugeblockoverlaychance instance_create(u * 384 * global.RM +64 * global.RM , v * 384 * global.RM +64 * global.RM , obj_hugeblockoverlay);             
                 }
       
         }
@@ -358,7 +358,7 @@ for (v = 0; v < gridsize; v +=1)
                         sporeoffsetdistance = startsporeoffsetdistance;
                     }
                 else sporedensity = 0;                
-                //instance_create( 64 + (u * 384), 64 + (v * 384), obj_debug);
+                //instance_create( 64 * global.RM  + (u * 384 * global.RM ), 64 * global.RM  + (v * 384 * global.RM ), obj_debug);
                 script_execute(scr_testWeeblocks, u, v, gridsize, starthuge, endhuge, gauntdensity)
                 currentblock +=1;
                 //show_debug_message("Wee Block Done " + string(u) + " , " + string(v));
@@ -400,36 +400,36 @@ show_debug_message("Asteroids done");
 
 for (u =0; u < bordersize+2; u+=1)
     {
-                instance_create(u*64, 0, obj_borderblock)
-                instance_create(u*64, gridsize*384+64, obj_borderblock)
+                instance_create(u*64 * global.RM , 0, obj_borderblock)
+                instance_create(u*64 * global.RM , gridsize*384 * global.RM +64 * global.RM , obj_borderblock)
     }
 
 for (u =0 u < bordersize+2; u+=1)
     {
                 instance_create(0, u*64, obj_borderblock)
-                instance_create(gridsize*384+64,u*64 , obj_borderblock)
+                instance_create(gridsize*384 * global.RM +64 * global.RM ,u*64 * global.RM  , obj_borderblock)
     }
 
 
 // caculate start and exit points for the map- in centre of each huge empty square (plus border of 64)
-global.startx = starthuge * 384 + 182 + 64;
-global.starty = 16;     // 16 points down from top edge
-global.exitx = endhuge * 384 + 182 + 64;
-global.exity = gridsize * 384 + 128 - 32;
+global.startx = starthuge * 384 * global.RM  + 182 * global.RM  + 64 * global.RM ;
+global.starty = 16 * global.RM ;     // 16 points down from top edge
+global.exitx = endhuge * 384 * global.RM  + 182 * global.RM  + 64 * global.RM ;
+global.exity = gridsize * 384 * global.RM  + 128 * global.RM  - 32 * global.RM ;
 
 // now remove borderblocks at start and exit
 position_destroy(global.startx, global.starty);
-position_destroy(global.startx-64, global.starty);
-position_destroy(global.startx+64, global.starty);
+position_destroy(global.startx-64 * global.RM , global.starty);
+position_destroy(global.startx+64 * global.RM , global.starty);
 position_destroy(global.exitx, global.exity);
-position_destroy(global.exitx-64, global.exity);
-position_destroy(global.exitx+64, global.exity);    
+position_destroy(global.exitx-64 * global.RM , global.exity);
+position_destroy(global.exitx+64 * global.RM , global.exity);    
     
 //and add four new borderside blocks
-instance_create(starthuge * 384 + 64 + 64, 0, obj_bordersideleft);
-instance_create(starthuge * 384 + 192 + 64, 0, obj_bordersideright);
-instance_create(endhuge * 384 + 64 + 64, gridsize * 384 + 64, obj_bordersideleft);
-instance_create(endhuge * 384 + 192 + 64, gridsize * 384+ 64, obj_bordersideright);
+instance_create(starthuge * 384 * global.RM  + 64 * global.RM  + 64 * global.RM , 0, obj_bordersideleft);
+instance_create(starthuge * 384 * global.RM  + 192 * global.RM  + 64 * global.RM , 0, obj_bordersideright);
+instance_create(endhuge * 384 * global.RM  + 64 * global.RM  + 64 * global.RM , gridsize * 384 * global.RM  + 64 * global.RM , obj_bordersideleft);
+instance_create(endhuge * 384 * global.RM  + 192 * global.RM  + 64 * global.RM , gridsize * 384 * global.RM + 64 * global.RM , obj_bordersideright);
 
 
 
@@ -897,15 +897,15 @@ if bigblock[u , v] > 0
         
                                 if block[bu + u * 12 , bv + v * 12] == 1 
                                     {
-                                        instance_create( u * 384+64 + bu *32, v * 384+64 + bv *32, obj_newblock);
+                                        instance_create( u * 384 * global.RM+64 * global.RM + bu *32 * global.RM, v * 384 * global.RM+64 * global.RM + bv *32 * global.RM, obj_newblock);
                                         //instance_deactivate_object(obj_newblock);
                                         //show_debug_message("block u: " + string(bu + u * 12) + " , v: " + string(bv + v * 12) + " , value:" + string(block[bu + u * 12 , bv + v * 12]));                  
-                                        if random(1) < newblockoverlaychance instance_create(u * 384+64 + bu *32, v * 384+64 + bv *32, obj_newblockoverlay); 
+                                        if random(1) < newblockoverlaychance instance_create(u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM , v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM , obj_newblockoverlay); 
                                     }
                                 if block[bu + u * 12, bv + v * 12] == 3      //enemy on south side facing up
                                     {
 
-                                        with(instance_create( u * 384+64 + bu *32 +16, v * 384+64 + bv *32 + 16, obj_fixedgunbase))
+                                        with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  +16 * global.RM , v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 16 * global.RM , obj_fixedgunbase))
                                                 {
                                                     image_angle = 90;
                                                 }
@@ -914,7 +914,7 @@ if bigblock[u , v] > 0
                                         }
                                 if block[bu + u * 12, bv + v * 12] == 4      //enemy on north side facing down
                                         {
-                                            with(instance_create( u * 384+64 + bu *32 + 16, v * 384+64 + bv *32 + 16, obj_fixedgunbase))
+                                            with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  + 16 * global.RM , v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 16 * global.RM , obj_fixedgunbase))
                                                 {
                                                     image_angle = 270;
                                                     
@@ -923,7 +923,7 @@ if bigblock[u , v] > 0
                                         }
                                 if block[bu + u * 12, bv + v * 12] == 5      //enemy on west side facing east
                                         {
-                                          with(instance_create( u * 384+64 + bu *32 + 16, v * 384+64 + bv *32 + 16, obj_fixedgunbase))
+                                          with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  + 16 * global.RM , v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 16 * global.RM , obj_fixedgunbase))
                                                 {
                                                 image_angle = 180;
                                                 }
@@ -931,7 +931,7 @@ if bigblock[u , v] > 0
                                         }
                                 if block[bu + u * 12, bv + v * 12] == 6      //enemy on east side facing west
                                         {
-                                          with(instance_create( u * 384+64 + bu *32 + 16, v * 384+64 + bv *32 + 16, obj_fixedgunbase))
+                                          with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  + 16 * global.RM , v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 16 * global.RM , obj_fixedgunbase))
                                                 {
                                                 image_angle = 0;
                                                 }
@@ -939,7 +939,7 @@ if bigblock[u , v] > 0
                                         }
                                 if block[bu + u * 12, bv + v * 12] == 99      //debug
                                         {
-                                          with(instance_create( u * 384+64 + bu *32 + 16, v * 384+64 + bv *32 + 16, debug_S))
+                                          with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  + 16 * global.RM , v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 16 * global.RM , debug_S))
                                                 {
                                                 image_angle = 0;
                                                 }
@@ -1102,7 +1102,7 @@ blocktest = block [bx, by]
                                 if random(1) < gauntdensity
                                     {
                                         var inst
-                                        inst = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((count+1) *4) + 10, obj_gaunt);
+                                        inst = instance_create( 64 * global.RM  + (bx * 32 * global.RM ) + column * 4 * global.RM  + 0, 64 * global.RM  + (by *32 * global.RM ) + ((count+1) *4 * global.RM ) + 10 * global.RM , obj_gaunt);
                                         with (inst)
                                             {
                                                 image_angle = 270
@@ -1111,7 +1111,7 @@ blocktest = block [bx, by]
                                 if random(1) < sporedensity
                                     {
                                         var inst
-                                                inst = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((count+1) *4), obj_spawn)
+                                                inst = instance_create( 64 * global.RM  + (bx * 32 * global.RM ) + column * 4 * global.RM  + 0, 64 * global.RM  + (by *32 * global.RM ) + ((count+1) *4 * global.RM ), obj_spawn)
                                                 script_execute(scr_sporeoffset, sporeoffsetdistance, sporeoffsetangle);                                                             
                                                 with(inst)
                                                 {
@@ -1163,7 +1163,7 @@ blocktest = block [bx, by]
                                 if random(1) < gauntdensity
                                     {
                                         var inst
-                                        inst = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((7-c) *4) -10, obj_gaunt);
+                                        inst = instance_create( 64 * global.RM  + (bx * 32 * global.RM ) + column * 4 * global.RM  + 0, 64 * global.RM  + (by *32 * global.RM ) + ((7-c) *4 * global.RM ) -10 * global.RM , obj_gaunt);
                                         with (inst)
                                             {
                                                 image_angle = 90
@@ -1173,7 +1173,7 @@ blocktest = block [bx, by]
                                     {
                                         var inst
                                             
-                                                inst = instance_create( 64 + (bx * 32) + column * 4, 64 + (by *32) + ((7-c) *4), obj_spawn)
+                                                inst = instance_create( 64 * global.RM  + (bx * 32 * global.RM ) + column * 4 * global.RM , 64 * global.RM  + (by *32 * global.RM ) + ((7-c) *4 * global.RM ), obj_spawn)
                                                 script_execute(scr_sporeoffset, sporeoffsetdistance, sporeoffsetangle);                                                  
                                                 with(inst)
                                                 {
@@ -1228,7 +1228,7 @@ blocktest = block [bx, by]
                                     if random(1) < gauntdensity
                                         {
                                             var inst
-                                            inst = instance_create( 64 + (bx * 32) + (7-c) * 4 -10, 64 + (by *32) + (row *4) + 0, obj_gaunt);
+                                            inst = instance_create( 64 * global.RM  + (bx * 32 * global.RM ) + (7-c) * 4 * global.RM  -10 * global.RM , 64 * global.RM  + (by *32 * global.RM ) + (row *4 * global.RM ) + 0, obj_gaunt);
                                             with (inst)
                                                 {
                                                     image_angle = 180
@@ -1238,7 +1238,7 @@ blocktest = block [bx, by]
                                     {
                                         var inst
 
-                                                inst = instance_create( 64 + (bx * 32) + (7-c) * 4, 64 + (by *32) + (row *4), obj_spawn)
+                                                inst = instance_create( 64 * global.RM  + (bx * 32 * global.RM ) + (7-c) * 4, 64 * global.RM  + (by *32 * global.RM ) + (row *4 * global.RM ), obj_spawn)
                                                 script_execute(scr_sporeoffset, sporeoffsetdistance, sporeoffsetangle);                                                      
                                                 with(inst)
                                                 {
@@ -1291,7 +1291,7 @@ blocktest = block [bx, by]
                                     if random(1) < gauntdensity
                                         {
                                             var inst
-                                            inst = instance_create( 64 + (bx * 32) + (c) * 4 + 10, 64 + (by *32) + (row *4) + 0, obj_gaunt);
+                                            inst = instance_create( 64 * global.RM  + (bx * 32 * global.RM ) + (c) * 4 * global.RM  + 10 * global.RM , 64 * global.RM  + (by *32 * global.RM ) + (row *4 * global.RM ) + 0, obj_gaunt);
                                             with (inst)
                                                 {
                                                     image_angle = 0
@@ -1300,7 +1300,7 @@ blocktest = block [bx, by]
                                 if random(1) < sporedensity
                                     {
                                         var inst
-                                                inst = instance_create( 64 + (bx * 32) + (c) * 4, 64 + (by *32) + (row *4), obj_spawn)
+                                                inst = instance_create( 64 * global.RM  + (bx * 32 * global.RM ) + (c) * 4 * global.RM , 64 * global.RM  + (by *32 * global.RM ) + (row *4 * global.RM ), obj_spawn)
                                                 script_execute(scr_sporeoffset, sporeoffsetdistance, sporeoffsetangle);                                                      
                                                 with(inst)
                                                 {
@@ -1352,7 +1352,7 @@ blocktest = block [bx, by]
                                 if random(1) < gauntdensity
                                     {
                                         var inst
-                                        inst = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((count+1) *4) + 10, obj_gaunt);
+                                        inst = instance_create( 64 * global.RM  + (bx * 32 * global.RM ) + column * 4 * global.RM  + 0, 64 * global.RM  + (by *32 * global.RM ) + ((count+1) *4 * global.RM ) + 10 * global.RM , obj_gaunt);
                                         with (inst)
                                             {
                                                 image_angle = 270
@@ -1361,7 +1361,7 @@ blocktest = block [bx, by]
                                 if random(1) < sporedensity
                                     {
                                         var inst
-                                        inst = instance_create( 64 + (bx * 32) + column * 4, 64 + (by *32) + ((count+1) *4), obj_spawn)
+                                        inst = instance_create( 64 * global.RM  + (bx * 32 * global.RM ) + column * 4 * global.RM , 64 * global.RM  + (by *32 * global.RM ) + ((count+1) *4 * global.RM ), obj_spawn)
                                                 with(inst)
                                                 {
                                                     image_angle = 270
@@ -1404,7 +1404,7 @@ blocktest = block [bx, by]
                                 if random(1) < gauntdensity
                                     {
                                         var inst
-                                        inst = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((7-c) *4) - 10, obj_gaunt);
+                                        inst = instance_create( 64 * global.RM  + (bx * 32 * global.RM ) + column * 4 * global.RM  + 0, 64 * global.RM  + (by *32 * global.RM ) + ((7-c) *4 * global.RM ) - 10 * global.RM , obj_gaunt);
                                         with (inst)
                                             {
                                                 image_angle = 90
@@ -1413,7 +1413,7 @@ blocktest = block [bx, by]
                                 if random(1) < sporedensity
                                     {
                                         var inst
-                                        inst = instance_create( 64 + (bx * 32) + column * 4, 64 + (by *32) + ((7-c) *4), obj_spawn)
+                                        inst = instance_create( 64 * global.RM  + (bx * 32 * global.RM ) + column * 4 * global.RM , 64 * global.RM  + (by *32 * global.RM ) + ((7-c) *4 * global.RM ), obj_spawn)
                                                 script_execute(scr_sporeoffset, sporeoffsetdistance, sporeoffsetangle);                                                      
                                                 with(inst)
                                                 {
@@ -1467,7 +1467,7 @@ blocktest = block [bx, by]
                                     if random(1) < gauntdensity
                                         {
                                             var inst
-                                            inst = instance_create( 64 + (bx * 32) + (7-c) * 4 - 10, 64 + (by *32) + (row *4) + 0, obj_gaunt);
+                                            inst = instance_create( 64 * global.RM  + (bx * 32 * global.RM ) + (7-c) * 4 * global.RM  - 10 * global.RM , 64 * global.RM  + (by *32 * global.RM ) + (row *4 * global.RM ) + 0, obj_gaunt);
                                             with (inst)
                                                 {
                                                     image_angle = 180
@@ -1476,7 +1476,7 @@ blocktest = block [bx, by]
                                 if random(1) < sporedensity
                                     {
                                         var inst
-                                        inst = instance_create( 64 + (bx * 32) + (7-c) * 4, 64 + (by *32) + (row *4), obj_spawn)
+                                        inst = instance_create( 64 * global.RM  + (bx * 32 * global.RM ) + (7-c) * 4 * global.RM , 64 * global.RM  + (by *32 * global.RM ) + (row *4 * global.RM ), obj_spawn)
                                                 script_execute(scr_sporeoffset, sporeoffsetdistance, sporeoffsetangle);                                                
                                                 with(inst)
                                                 {
@@ -1523,7 +1523,7 @@ blocktest = block [bx, by]
                                 if random(1) < gauntdensity
                                         {
                                             var inst
-                                            inst = instance_create( 64 + (bx * 32) + (c) * 4 + 10, 64 + (by *32) + (row *4) + 0, obj_gaunt);
+                                            inst = instance_create( 64 * global.RM  + (bx * 32 * global.RM ) + (c) * 4 * global.RM  + 10 * global.RM , 64 * global.RM  + (by *32 * global.RM ) + (row *4 * global.RM ) + 0, obj_gaunt);
                                             with (inst)
                                                 {
                                                     image_angle = 0
@@ -1532,7 +1532,7 @@ blocktest = block [bx, by]
                                 if random(1) < sporedensity
                                     {
                                         var inst
-                                        inst = instance_create( 64 + (bx * 32) + (c) * 4, 64 + (by *32) + (row *4), obj_spawn)
+                                        inst = instance_create( 64 * global.RM  + (bx * 32 * global.RM ) + (c) * 4 * global.RM , 64 * global.RM  + (by *32 * global.RM ) + (row *4 * global.RM ), obj_spawn)
                                                 script_execute(scr_sporeoffset, sporeoffsetdistance, sporeoffsetangle);                                                      
                                                 with(inst)
                                                 {
@@ -1898,7 +1898,7 @@ blocktest = block [bx, by]
                                             if weeblock[wbu , wbv] != 0
                                                 {
                                                     type = weeblock[wbu , wbv];
-                                                    inst = instance_create( 64 + (bx * 32) + wbu * 4, 64 + (by *32) + wbv *4, weeblocktype[type]);
+                                                    inst = instance_create( 64 * global.RM  + (bx * 32 * global.RM ) + wbu * 4 * global.RM , 64 * global.RM  + (by *32 * global.RM ) + wbv *4 * global.RM , weeblocktype[type]);
                                                     //show_debug_message("adding weeblock " + string(type));
                                                     instance_deactivate_object(inst);  
                                                 }
@@ -1947,8 +1947,8 @@ if north == false && south == false && east == false && west == false
         {
             for (t = 1; t < 7; t +=1)
             {
-                spawnpointx[i] = u *384 + 64 + t*48 + 24 + 16 + irandom_range(-8, 8);
-                spawnpointy[i] = v *384 + 64 + s*48 + 24 + 16 + irandom_range(-8, 8);
+                spawnpointx[i] = u *384 * global.RM  + 64 * global.RM  + t*48 * global.RM  + 24 * global.RM  + 16 * global.RM  + irandom_range(-8 * global.RM , 8 * global.RM );
+                spawnpointy[i] = v *384 * global.RM  + 64 * global.RM  + s*48 * global.RM  + 24 * global.RM  + 16 * global.RM + irandom_range(-8 * global.RM , 8 * global.RM );
                 i += 1;
             }
             totalspawnpoints = 36
@@ -1962,8 +1962,8 @@ if north == true && south == true && totalspawnpoints == 0
     
     // create an array with 1 position
 
-                spawnpointx[1] = u *384 + 64 + 192 + 16 + irandom_range(-16, 16);
-                spawnpointy[1] = v *384 + 64 + 192 + 16 + irandom_range(-16, 16);
+                spawnpointx[1] = u *384 * global.RM  + 64 * global.RM  + 192 * global.RM  + 16 * global.RM  + irandom_range(-16 * global.RM , 16 * global.RM );
+                spawnpointy[1] = v *384 * global.RM  + 64 * global.RM  + 192 * global.RM  + 16 * global.RM  + irandom_range(-16 * global.RM , 16 * global.RM );
 
             totalspawnpoints = 1
 
@@ -1974,8 +1974,8 @@ if east == true && west == true && totalspawnpoints == 0
     
     // create an array with 1 position
 
-                spawnpointx[1] = u *384 + 64 + 192 + 16 + irandom_range(-16, 16);
-                spawnpointy[1] = v *384 + 64 + 192 + 16 + irandom_range(-16, 16);
+                spawnpointx[1] = u *384 * global.RM  + 64 * global.RM  + 192 * global.RM  + 16 * global.RM  + irandom_range(-16 * global.RM , 16 * global.RM );
+                spawnpointy[1] = v *384 * global.RM  + 64 * global.RM  + 192 * global.RM  + 16 + irandom_range(-16 * global.RM , 16 * global.RM );
 
             totalspawnpoints = 1
     }
@@ -1987,8 +1987,8 @@ if north == true && south == false && totalspawnpoints == 0
         for (t = 0; t <5; t +=1)
             {
 
-                spawnpointx[t] = u *384 + 64 + 192 + 16 + irandom_range(-24, 24);
-                spawnpointy[t] = v *384 + 64 + 144 + t*40 + 16;
+                spawnpointx[t] = u *384 * global.RM  + 64 * global.RM  + 192 * global.RM  + 16 * global.RM  + irandom_range(-24 * global.RM , 24 * global.RM );
+                spawnpointy[t] = v *384 * global.RM  + 64 * global.RM  + 144 * global.RM  + t*40 * global.RM  + 16 * global.RM ;
             }
 
             totalspawnpoints = 4
@@ -2002,8 +2002,8 @@ if north == false && south == true && totalspawnpoints == 0
         for (t = 0; t <5; t +=1)
             {
 
-                spawnpointx[t] = u *384 + 64 + 192 + 16 + irandom_range(-24, 24);
-                spawnpointy[t] = v *384 + 64 + t*40 + 16;
+                spawnpointx[t] = u *384 * global.RM  + 64 * global.RM  + 192 * global.RM  + 16 * global.RM  + irandom_range(-24 * global.RM , 24 * global.RM );
+                spawnpointy[t] = v *384 * global.RM  + 64 * global.RM  + t*40 * global.RM  + 16 * global.RM ;
             }
 
             totalspawnpoints = 4
@@ -2017,8 +2017,8 @@ if west == true && east == false && totalspawnpoints == 0
         for (t = 0; t <5; t +=1)
             {
 
-                spawnpointx[t] = u *384 + 64 + 192 + t*40 + 16 ;
-                spawnpointy[t] = v *384 + 64 + 192 + 16 + irandom_range(-24, 24);
+                spawnpointx[t] = u *384 * global.RM  + 64 * global.RM  + 192 * global.RM  + t*40 * global.RM  + 16 * global.RM;
+                spawnpointy[t] = v *384 * global.RM  + 64 * global.RM  + 192 * global.RM  + 16 * global.RM  + irandom_range(-24 * global.RM , 24 * global.RM );
             }
 
             totalspawnpoints = 4
@@ -2032,8 +2032,8 @@ if west == false && east == true && totalspawnpoints == 0
         for (t = 0; t <5; t +=1)
             {
 
-                spawnpointx[t] = u *384 + 64 + t*40 + 16;
-                spawnpointy[t] = v *384 + 64 + 192 + 16 + irandom_range(-24, 24);
+                spawnpointx[t] = u *384 * global.RM  + 64 * global.RM  + t*40 * global.RM  + 16 * global.RM ;
+                spawnpointy[t] = v *384 * global.RM  + 64 * global.RM  + 192 * global.RM  + 16 * global.RM  + irandom_range(-24 * global.RM , 24 * global.RM );
             }
 
             totalspawnpoints = 4
@@ -2053,18 +2053,18 @@ if totalspawnpoints > 0
             check = random(1);
             if totalspawnpoints == 1 check *= 0.25
             if totalspawnpoints > 5 check *= 3
-            instance_activate_region(spawnpointx[count]-192, spawnpointy[count]-192, 384, 384, true);
-            colcheck = collision_circle(spawnpointx[count], spawnpointy[count], 24, obj_block, false, true)
+            instance_activate_region(spawnpointx[count]-192 * global.RM , spawnpointy[count]-192 * global.RM , 384 * global.RM , 384 * global.RM , true);
+            colcheck = collision_circle(spawnpointx[count], spawnpointy[count], 24 * global.RM , obj_block, false, true)
             if check < goldasteroidchance && colcheck == noone
                 {
-                    instance_create(spawnpointx[count]+8, spawnpointy[count]-20, oLightSourceAsteroid);
+                    instance_create(spawnpointx[count]+8 * global.RM , spawnpointy[count]-20 * global.RM , oLightSourceAsteroid);
                     instance_create(spawnpointx[count], spawnpointy[count], obj_goldasteroid);
                     
                     check = 2;
                 }
             if check < asteroidchance && colcheck == noone
                 {
-                    instance_create(spawnpointx[count]+8, spawnpointy[count]-20, oLightSourceAsteroid);
+                    instance_create(spawnpointx[count]+8 * global.RM , spawnpointy[count]-20 * global.RM , oLightSourceAsteroid);
                     instance_create(spawnpointx[count], spawnpointy[count], obj_asteroid);
                     
                 }
@@ -2081,5 +2081,5 @@ sporeoffsetangle +=30
 if sporeoffsetangle >= 360     //set a circle of offset points around the leader- incrementing with each one
     {
         sporeoffsetangle = 0;
-        sporeoffsetdistance +=24;
+        sporeoffsetdistance +=24 * global.RM ;
     }

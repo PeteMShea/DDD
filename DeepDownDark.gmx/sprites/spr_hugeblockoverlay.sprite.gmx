@@ -8,17 +8,17 @@
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
   <bbox_left>0</bbox_left>
-  <bbox_right>383</bbox_right>
+  <bbox_right>767</bbox_right>
   <bbox_top>0</bbox_top>
-  <bbox_bottom>383</bbox_bottom>
+  <bbox_bottom>767</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>384</width>
-  <height>384</height>
+  <width>768</width>
+  <height>768</height>
   <frames>
     <frame index="0">images\spr_hugeblockoverlay_0.png</frame>
     <frame index="1">images\spr_hugeblockoverlay_1.png</frame>

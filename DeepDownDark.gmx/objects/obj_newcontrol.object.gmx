@@ -53,7 +53,7 @@ maxweespike = 4;        //cannot be higher than 4!
 enemychance = 0.00;      //chance of an enemy being spawned 0.005
 
 // nightgaunts
-gauntchance = 1.0;        //chance of a huge square being populated with gaunts 0.3
+gauntchance = 0.5;        //chance of a huge square being populated with gaunts 0.3
 gauntdensitymin = 0.01;        //how dense gaunts are at start of level 0
 gauntdensitymax = 0.2;          //maximum density of gaunts
 gauntdensityrange = gauntdensitymax - gauntdensitymin;
@@ -63,7 +63,7 @@ gauntdensity = gauntdensitymin;
 gauntdensitycurrent = 0;
 
 // spores
-sporechance = 1.0;        //chance of a huge square being populated with spores 0.3
+sporechance = 0.5;        //chance of a huge square being populated with spores 0.3
 sporedensitymin = 0.02;        //how dense gaunts are at start of level 0
 sporedensitymax = 0.2;          //maximum density of spores
 sporedensityrange = sporedensitymax - sporedensitymin;

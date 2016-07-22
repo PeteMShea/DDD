@@ -25,8 +25,8 @@ if deathstart == true
                                    // {                    
                                         debrisangle += random_range(-10,10);
                                         debrisspeed = random_range(debrisspeed *0.4, debrisspeed *0.5);    
-                                        dx = px + lengthdir_x(16, debrisangle);
-                                        dy = py + lengthdir_x(16, debrisangle);        
+                                        dx = px + lengthdir_x(16 * global.RM, debrisangle);
+                                        dy = py + lengthdir_x(16 * global.RM, debrisangle);        
                                         inst = instance_create(dx, dy, obj_shipdebris)
                                         with(inst)
                                             {

@@ -13,8 +13,8 @@ for (i = 0; i< irandom_range(5, 10); i+=1)
 }
 
 //now debris
-bx -= 8
-by -= 10
+bx -= 8 * global.RM
+by -= 10 * global.RM
 
 var ix;
 for (ix = 0; ix < 2; ix +=1)
@@ -26,6 +26,6 @@ for (ix = 0; ix < 2; ix +=1)
             script_execute(scr_particleburst, bx, by);
             bx += 4
         }
-        bx -= 16
-        by += 4
+        bx -= 16 * global.RM
+        by += 4 * global.RM
     }

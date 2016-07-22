@@ -38,7 +38,7 @@ bouncecount = 10;   //maximum number of bounces before self destruct
 
 awaketestmax = 60;     //how many frames between each time limpet checks to see if it should wake up
 awaketest = 60;
-awakerange = random_range(350, 450);   //distance from player before awakening
+awakerange = random_range(350 * global.RM, 450 * global.RM);   //distance from player before awakening
 launchtimemax = 150;    //how many frames enemy will launch for before it begins homing
 launchtime = 0;
 takeoffspeed = 0.12;     //animation speed for take-off sequence 0.2
@@ -48,15 +48,15 @@ acceleration = 0.003;     //acceleratation
 normalturnspeed = 4;      //number of degrees to turn per frame  4
 maxturnspeed = 8;      //fast turn  8
 turnspeed = normalturnspeed;
-attackrange = 8;    //distance from player to switch to attack
-homedirectrange = 64// distance from player to switch to direct homing
+attackrange = 8 * global.RM;    //distance from player to switch to attack
+homedirectrange = 64 * global.RM// distance from player to switch to direct homing
 damage = 5;    //damage inflicted on player on self destruct
-damageproximity = 8     //how close to player it destructs
+damageproximity = 8 * global.RM     //how close to player it destructs
 
 
 homingtestmax = 120;     //how many frames between each time enemy checks LOS to target and adjusts aim  30
 homingtest = 0;
-linedistance = 64;     //how long a LOS ray test to perform when pathfinding- shorter equals quicker
+linedistance = 32 * global.RM;     //how long a LOS ray test to perform when pathfinding- shorter equals quicker
 aimoffset = 15;     //max number of degrees for random offset when pathfinding to target
 avoidtest = 0;
 if random(1) &lt;0.5 angleadjust = -60 else angleadjust = +60      //decide whether this gaunt avoids this number of degrees to the left or the right
@@ -73,7 +73,7 @@ hitanimmax = 40;    //number of frames to play hitanim for
 hitanimimagespeed = 0.25;   //anim speed for hit anim
 
 damagecounter = 0;
-explosionproximity = 80;       //how close to an explosion kills gaunt
+explosionproximity = 80 * global.RM;       //how close to an explosion kills gaunt
 shadow = false;
 
 

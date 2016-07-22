@@ -27,15 +27,15 @@
             <kind>1</kind>
             <string>/// initialise variables
 
-instance_activate_region(view_xview[0]-64, view_yview[0]-64, view_wview[0]+128, view_hview[0]+128, true);
+instance_activate_region(view_xview[0]-64 * global.RM, view_yview[0]-64 * global.RM, view_wview[0]+128 * global.RM, view_hview[0]+128 * global.RM, true);
 
 alarm_set(0, 15);
 
 c_gold = make_colour_rgb(255,204,0);
 
-healthtextright = 80;
-HUDtextY = 10;
-goldtextleft = view_wview[0]-150;
+healthtextright = 80 * global.RM;
+HUDtextY = 10 * global.RM;
+goldtextleft = view_wview[0]-150 * global.RM;
 drawicon = obj_HUDHealth100;
 HealthHundreds = 0;
 HealthTens = 0;
@@ -119,7 +119,7 @@ background_x[0] = view_xview[0];
 background_y[0] = view_yview[0];
 
 background_x[1] = view_xview[0]/1.85;
-background_y[1] = view_yview[0]/1.10;
+background_y[1] = view_yview[0]/1.10;       //1.1
 
 
 </string>

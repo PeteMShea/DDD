@@ -1,6 +1,6 @@
 // create  floatblocks
-bx -= 8
-by -= 10
+bx -= 8 * global.RM
+by -= 10 * global.RM
 
 
 var ix;
@@ -20,6 +20,6 @@ for (ix = 0; ix < 4; ix +=1)
                 }
             bx += 4
         }
-        bx -= 16
-        by += 4
+        bx -= 16 * global.RM
+        by += 4 * global.RM
     }

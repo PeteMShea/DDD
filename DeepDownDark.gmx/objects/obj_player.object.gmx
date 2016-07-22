@@ -54,7 +54,7 @@ if ship =="tube"
     damagecooldown = 1;    //How many seconds player is invincible after taking damage
     thrustparticles = true;    
     thrustcolour = make_colour_rgb(80, 80, 80);
-    shipscale = 16;      //radius of collision circle for ship
+    shipscale = 16 * global.RM;      //radius of collision circle for ship
     turret = true;
     retro = false;
     shoot_rate = 6;     //number of frames between bullets when mouse button held
@@ -63,17 +63,17 @@ if ship =="tube"
 
 if ship =="shark"
 {
-    thrust = 0.001;       //thrust applied per frame of mouse input
-    min_thrust = 0.01;
+    thrust = 0.001 * global.RM;       //thrust applied per frame of mouse input
+    min_thrust = 0.01 * global.RM;
     max_forwardthrust = 0.35;
-    max_backthrust = 0.2;
+    max_backthrust = 0.2 * global.RM;
     thrustcounter = 20; //minimum number of frames thrust is applied before deceleration starts
     thrustacc = 1.001;    //how thrust accelerates while input is held
     inertia = 5;     //percentage speed lost per frame
     deceleration = 10;
     decay = 0.10;        // how quickly deceleration when not thrusting decays
-    min_speed = 0.4;    // minimum ie terminal velocity
-    max_speed = 2;      //maximum speed achievable
+    min_speed = 0.4 * global.RM;    // minimum ie terminal velocity
+    max_speed = 2 * global.RM;      //maximum speed achievable
     maxturnspeed = 1.5;       //rate at which ship turns- degrees per frame 1
     turnacceleration = 0.10;    //how much turnspeed accelerates over time    
     turndeceleration = 0.1;    //how much turnspeed decelerates over time
@@ -84,7 +84,7 @@ if ship =="shark"
     damagecooldown = 2;    //How many seconds player is invincible after taking damage
     thrustparticles = false;
     thrustcolour = make_colour_rgb(80, 80, 80);
-    shipscale = 18;     //radius of collision circle for ship
+    shipscale = 18 * global.RM;     //radius of collision circle for ship
     trails = true;
     trailspeed = 0.2;   //minimum speed before trails are drawn
     turret = false;
@@ -166,7 +166,7 @@ invertedturn = false;
 //Autopilot
 global.autopilot = 120;    // was 120
 auto_x = 0;
-auto_y = 0.25;   //downwards thrust...
+auto_y = 0.25 * global.RM;   //downwards thrust...
 autothrust = 10;            
 
 
@@ -373,7 +373,7 @@ if moveinput == 1 || fireinput == 1           //mouse input on left button or ri
                         
                 if turning == 1    
                     {
-                        rotcolcheck = collision_line(x + lengthdir_x(33, image_angle + 135), y + lengthdir_y(33, image_angle + 135), x + lengthdir_x(24, image_angle + 105), y + lengthdir_y(24, image_angle + 105), obj_block, false, true);
+                        rotcolcheck = collision_line(x + lengthdir_x(33, image_angle + 135), y + lengthdir_y(33 * global.RM, image_angle + 135), x + lengthdir_x(24 * global.RM, image_angle + 105), y + lengthdir_y(24 * global.RM, image_angle + 105), obj_block, false, true);
                         //if rotcolcheck != noone show_debug_message(string(rotcolcheck));
                         if rotcolcheck == noone
                             {                       
@@ -388,7 +388,7 @@ if moveinput == 1 || fireinput == 1           //mouse input on left button or ri
                     
                 if turning == 2    
                     {                                    
-                        rotcolcheck = collision_line(x + lengthdir_x(33, image_angle + 225), y + lengthdir_y(33, image_angle + 225), x + lengthdir_x(24, image_angle + 255), y + lengthdir_y(24, image_angle + 255), obj_block, false, true);
+                        rotcolcheck = collision_line(x + lengthdir_x(33 * global.RM, image_angle + 225), y + lengthdir_y(33 * global.RM, image_angle + 225), x + lengthdir_x(24 * global.RM, image_angle + 255), y + lengthdir_y(24 * global.RM, image_angle + 255), obj_block, false, true);
                         //if rotcolcheck != noone show_debug_message(string(rotcolcheck));
                         if rotcolcheck == noone
                             {
@@ -457,7 +457,7 @@ if joyx != 0 || joyy != 0
         jy = -joyy
         thrustdir = point_direction(0, 0, jx, jy);
         
-        if thrustparticles == true effect_create_below(ef_spark, x + lengthdir_x(16, thrustdir), y + lengthdir_y(16, thrustdir), 0.1, thrustcolour);
+        if thrustparticles == true effect_create_below(ef_spark, x + lengthdir_x(16 * global.RM, thrustdir), y + lengthdir_y(16 * global.RM, thrustdir), 0.1, thrustcolour);
         if trails = true
         {
             inst = instance_create(x , y , obj_sharkthrust);
@@ -486,7 +486,7 @@ if global.autopilot &gt; 0
                         
         joystickused = 0;
                       
-        if thrustparticles == true effect_create_below(ef_spark, x + lengthdir_x(16, thrustdir), y + lengthdir_y(16, thrustdir), 0.1, thrustcolour);
+        if thrustparticles == true effect_create_below(ef_spark, x + lengthdir_x(16 * global.RM, thrustdir), y + lengthdir_y(16 * global.RM, thrustdir), 0.1, thrustcolour);
         if trails == true
             {
                 inst = instance_create(x , y , obj_sharkthrust);
@@ -571,15 +571,15 @@ if collisionoff == false            //debug option for disabling collision
     colcheck = noone;
     
     colcheck = collision_circle(x + speed_x, y + speed_y, shipscale, obj_block, false, true) 
-    if colcheck == noone colcheck = collision_circle(x + lengthdir_x(30, image_angle + 135), y + lengthdir_y(30, image_angle + 135), 4, obj_block, false, true)
-    if colcheck == noone colcheck = collision_circle(x + lengthdir_x(30, image_angle + 225), y + lengthdir_y(30, image_angle + 225), 4, obj_block, false, true)  
-    if colcheck == noone colcheck = collision_circle(x + lengthdir_x(-3, thrustdir) + speed_x, y + speed_y, shipscale, obj_asteroid, true, true)
+    if colcheck == noone colcheck = collision_circle(x + lengthdir_x(30 * global.RM, image_angle + 135), y + lengthdir_y(30 * global.RM, image_angle + 135), 4, obj_block, false, true)
+    if colcheck == noone colcheck = collision_circle(x + lengthdir_x(30 * global.RM, image_angle + 225), y + lengthdir_y(30 * global.RM, image_angle + 225), 4, obj_block, false, true)  
+    if colcheck == noone colcheck = collision_circle(x + lengthdir_x(-3 * global.RM, thrustdir) + speed_x, y + speed_y, shipscale, obj_asteroid, true, true)
     
     if colcheck != noone
     
     {
     
-        if collision_circle(x+ speed_x, y + speed_y, shipscale + 3, obj_asteroid, true, true)
+        if collision_circle(x+ speed_x, y + speed_y, shipscale + 3 * global.RM, obj_asteroid, true, true)
     
             {
             var inst;
@@ -592,10 +592,10 @@ if collisionoff == false            //debug option for disabling collision
                     ax = (inst).x;
                     ay = (inst).y;
                     avector = point_direction(ax, ay, x, y);
-                    loc_x = ax + lengthdir_x(16, avector);
-                    loc_y = ay + lengthdir_y(16, avector);
-                    extended_x = x + lengthdir_x(32, thrustdir);
-                    extended_y = y + lengthdir_y(32, thrustdir); 
+                    loc_x = ax + lengthdir_x(16 * global.RM, avector);
+                    loc_y = ay + lengthdir_y(16 * global.RM, avector);
+                    extended_x = x + lengthdir_x(32 * global.RM, thrustdir);
+                    extended_y = y + lengthdir_y(32 * global.RM, thrustdir); 
                     with(inst)
                     {    
                         //show_debug_message(string(inst));
@@ -619,8 +619,8 @@ if collisionoff == false            //debug option for disabling collision
             }
     
         //now check for leg collisions for landing
-        leftlegcheck = collision_circle(x + lengthdir_x(30, image_angle + 135), y + lengthdir_y(30, image_angle + 135), 4, obj_block, false, true)
-        rightlegcheck = collision_circle(x + lengthdir_x(30, image_angle + 225), y + lengthdir_y(30, image_angle + 225), 4, obj_block, false, true)
+        leftlegcheck = collision_circle(x + lengthdir_x(30 * global.RM, image_angle + 135), y + lengthdir_y(30 * global.RM, image_angle + 135), 4, obj_block, false, true)
+        rightlegcheck = collision_circle(x + lengthdir_x(30 * global.RM, image_angle + 225), y + lengthdir_y(30 * global.RM, image_angle + 225), 4, obj_block, false, true)
         currrentspeed = sqrt(speed_x * speed_x + speed_y * speed_y);          
         if currrentspeed &lt;= minlandspeed landingokay = true else landingokay = false
         if global.autopilot &gt; 0 landingokay = false
@@ -638,8 +638,8 @@ if collisionoff == false            //debug option for disabling collision
                 landing = 1;    //in progress
                 
                 //now check if the right leg is within a reasonable range of the ground before landing sequence
-                landx = x + lengthdir_x(36, image_angle + 210); 
-                landy = y + lengthdir_y(36, image_angle + 210);        
+                landx = x + lengthdir_x(36 * global.RM, image_angle + 210); 
+                landy = y + lengthdir_y(36 * global.RM, image_angle + 210);        
                 //instance_create(landx, landy, obj_debug);
                 
                 var legcheck = collision_point(landx, landy, obj_block, false, false);            
@@ -655,8 +655,8 @@ if collisionoff == false            //debug option for disabling collision
                 landing = 2;    // in progress
                 
                 //now check if the left leg is within a reasonable range of the ground before landing sequence
-                landx = x + lengthdir_x(36, image_angle + 150); 
-                landy = y + lengthdir_y(36, image_angle + 150);            
+                landx = x + lengthdir_x(36 * global.RM, image_angle + 150); 
+                landy = y + lengthdir_y(36 * global.RM, image_angle + 150);            
                 //instance_create(landx, landy, obj_debug);   
                 
                 var legcheck = collision_point(landx, landy, obj_block, false, false);            
@@ -751,7 +751,7 @@ if desired_turnspeed &gt; 0
                 {
                     image_angle = other.image_angle
                 }         
-            rotcolcheck = collision_line(x + lengthdir_x(33, image_angle + 225), y + lengthdir_y(33, image_angle + 225), x + lengthdir_x(24, image_angle + 255), y + lengthdir_y(24, image_angle + 255), obj_block, false, true);
+            rotcolcheck = collision_line(x + lengthdir_x(33 * global.RM, image_angle + 225), y + lengthdir_y(33 * global.RM, image_angle + 225), x + lengthdir_x(24 * global.RM, image_angle + 255), y + lengthdir_y(24 * global.RM, image_angle + 255), obj_block, false, true);
             if rotcolcheck == noone        
                 {
                     image_angle += desired_turnspeed;
@@ -764,7 +764,7 @@ if desired_turnspeed &gt; 0
                 {
                     image_angle = other.image_angle
                 }
-            rotcolcheck = collision_line(x + lengthdir_x(33, image_angle + 135), y + lengthdir_y(33, image_angle + 135), x + lengthdir_x(24, image_angle + 105), y + lengthdir_y(24, image_angle + 105), obj_block, false, true);
+            rotcolcheck = collision_line(x + lengthdir_x(33 * global.RM, image_angle + 135), y + lengthdir_y(33 * global.RM, image_angle + 135), x + lengthdir_x(24 * global.RM, image_angle + 105), y + lengthdir_y(24 * global.RM, image_angle + 105), obj_block, false, true);
             if rotcolcheck == noone                        
                 {
                     image_angle -= desired_turnspeed;
@@ -787,8 +787,8 @@ if fireinput == 1
         }
     else
         {
-            aimx = x - lengthdir_x(100, image_angle);
-            aimy = y - lengthdir_y(100, image_angle);
+            aimx = x - lengthdir_x(100 * global.RM, image_angle);
+            aimy = y - lengthdir_y(100 * global.RM, image_angle);
         }
     script_execute(scr_playerShoot, aimx, aimy, shoot_counter);   
 }    
@@ -830,7 +830,7 @@ else
 
 // check if player has reached exit
 
-if y &gt;= 384 * 8 + 120
+if y &gt;= 384 * global.RM * 8 + 120 * global.RM
     {    
         vx = view_xport[0];
         vy = view_yport[0];

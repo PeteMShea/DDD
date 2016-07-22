@@ -4,8 +4,8 @@ thrustcounter = 20; //minimum number of frames thrust is applied before decelera
 
 max_thrust = max_forwardthrust;
                 
-destx =  x + lengthdir_x(16, turn_angle);
-desty =  y + lengthdir_y(16, turn_angle);                
+destx =  x + lengthdir_x(16 * global.RM, turn_angle);
+desty =  y + lengthdir_y(16 * global.RM, turn_angle);                
         
                 
 // increase thrust over duration of button held
