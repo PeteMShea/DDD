@@ -86,6 +86,7 @@ if ship =="shark"
     thrustcolour = make_colour_rgb(80, 80, 80);
     shipscale = 18;     //radius of collision circle for ship
     trails = true;
+    trailspeed = 0.2;   //minimum speed before trails are drawn
     turret = false;
     retro = true;    
     shoot_rate = 6;     //number of frames between bullets when mouse button held
@@ -797,10 +798,13 @@ if fireinput == 1
 
 if trails == true
 {
-    inst = instance_create(x , y , obj_redtrail);
-    with (inst)
+    if abs(speed_x) + abs(speed_y) &gt; trailspeed || turnspeed &gt; trailspeed
         {
-            image_angle = other.image_angle;
+        inst = instance_create(x , y , obj_redtrail);
+        with (inst)
+            {
+                image_angle = other.image_angle;
+            }
         }
 }    
     

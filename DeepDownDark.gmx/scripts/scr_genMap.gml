@@ -414,26 +414,11 @@ position_destroy(global.exitx-64, global.exity);
 position_destroy(global.exitx+64, global.exity);    
     
 //and add four new borderside blocks
-inst = instance_create(starthuge * 384 + 64 + 64, 0, obj_borderside);
-with (inst)
-    {
-        image_index = 0;
-    }  
-inst = instance_create(starthuge * 384 + 192 + 64, 0, obj_borderside);
-with (inst)
-    {
-        image_index = 1;
-    }  
-inst = instance_create(endhuge * 384 + 64 + 64, gridsize * 384 + 64, obj_borderside);
-with (inst)
-    {
-        image_index = 2;
-    } 
-inst = instance_create(endhuge * 384 + 192 + 64, gridsize * 384+ 64, obj_borderside);
-with (inst)
-    {
-        image_index = 3;
-    } 
+instance_create(starthuge * 384 + 64 + 64, 0, obj_bordersideleft);
+instance_create(starthuge * 384 + 192 + 64, 0, obj_bordersideright);
+instance_create(endhuge * 384 + 64 + 64, gridsize * 384 + 64, obj_bordersideleft);
+instance_create(endhuge * 384 + 192 + 64, gridsize * 384+ 64, obj_bordersideright);
+
 
 
 
