@@ -29,7 +29,7 @@
 global.pause = false;
 
 randomize(); 
-basechance = 0.3;       //base chance of removing a big block and replacing with an empty one 0.3
+basechance = 0.1;       //base chance of removing a big block and replacing with an empty one 0.3 good mix- 0 = tight walkblock path only
 
 newblockoverlaychance = 0.2;    //chance of a new block having an overlay added for variety
 hugeblockoverlaychance = 0.7;   //chance of a huge block having an overlay added for variety
@@ -51,19 +51,26 @@ spikyness = 1;      // how much wee blocks jut in from edges to empty space- min
 maxweespike = 4;        //cannot be higher than 4!
 
 enemychance = 0.00;      //chance of an enemy being spawned 0.005
-gauntchance = 0.0;        //chance of a huge square being populated with gaunts 0.3
-gauntdensitymin = 0.0;        //how dense gaunts are at start of level 0
-gauntdensitymax = 0.15;        //how dense gaunts are at end of level 0.15
-gauntdensitysteps = 10;          //how many huge squares gauntdensity increases over
+
+// nightgaunts
+gauntchance = 1.0;        //chance of a huge square being populated with gaunts 0.3
+gauntdensitymin = 0.01;        //how dense gaunts are at start of level 0
+gauntdensitymax = 0.2;          //maximum density of gaunts
+gauntdensityrange = gauntdensitymax - gauntdensitymin;
+gauntstartblock = 0.6;           //gaunts do not start spawning until this % empty huge blocks in
+gauntendblock = 0.95;             //no more gaunts after this % huge blocks
 gauntdensity = gauntdensitymin;
 gauntdensitycurrent = 0;
 
-spawnchance = 0.3;        //chance of a huge square being populated with spores 0.3
-spawndensitymin = 0.1;        //how dense gaunts are at start of level 0
-spawndensitymax = 0.15;        //how dense spawn are at end of level 0.15
-spawndensitysteps = 10;          //how many huge squares gauntdensity increases over
-spawndensity = spawndensitymin;
-spawndensitycurrent = 0;
+// spores
+sporechance = 1.0;        //chance of a huge square being populated with spores 0.3
+sporedensitymin = 0.02;        //how dense gaunts are at start of level 0
+sporedensitymax = 0.2;          //maximum density of spores
+sporedensityrange = sporedensitymax - sporedensitymin;
+sporestartblock = 0.1;           //spores do not start spawning until this % empty huge blocks in
+sporeendblock = 0.5;             //no more spores after this % huge blocks
+sporedensity = sporedensitymin;
+sporedensitycurrent = 0;
 startsporeoffsetangle = 0;
 startsporeoffsetdistance = 24;
 sporeoffsetangle = startsporeoffsetangle;
@@ -81,6 +88,9 @@ newbigblockvalue = 0;
 gridsize = 8;
 bordersize = gridsize*6
 spacechance = 0;
+currentblock = 0;
+totalwalkblocks = 0;
+
 
 
 script_execute(scr_genMap, basechance, spacechance, newbigblockvalue, spikyness, gridsize, maxgold, goldspread, enemychance, bordersize, minspike, maxspike, mingap);

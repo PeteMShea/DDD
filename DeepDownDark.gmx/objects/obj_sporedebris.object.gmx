@@ -99,7 +99,7 @@ if bouncecount &gt;= 2 || lifespan &lt;=0
    {
         bx = x ;
         by = y;
-        script_execute(scr_blockburstvfx, bx, by);
+        script_execute(scr_particleburst, bx, by);
         instance_destroy();
     
     }
@@ -199,7 +199,7 @@ bouncecount += 1;
 bx = x ;
 by = y;
 gold = 0;
-script_execute(scr_smalldebris, bx, by, gold);
+script_execute(scr_particleburst, bx, by);
 instance_destroy();
 </string>
           </argument>

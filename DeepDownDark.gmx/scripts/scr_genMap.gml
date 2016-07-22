@@ -45,6 +45,7 @@ for (i = 0; i < gridsize; i +=1)
      repeat(gridsize)
         {
         bigblock[ax, ay] = 0;
+        walkblock[ax, ay] = 0;
         //show_debug_message(string(ax) + " , " + string(ay));
         ax += 1;
          }
@@ -205,6 +206,8 @@ while (walkloop <= 64)          //this is just a debug safety check- walkloop is
                 walk_y += dir_y;
                 innerloop = true;
                 bigblock[walk_x, walk_y] = 5;
+                totalwalkblocks += 1;
+                walkblock[walk_x, walk_y] = totalwalkblocks;
                 //show_debug_message("into clear space");
             }
         if walk_y + 1 < gridsize && bigblock[walk_x, walk_y + 1] != 5  && innerloop != true && downlast == true    //move down if last move was down
@@ -212,6 +215,8 @@ while (walkloop <= 64)          //this is just a debug safety check- walkloop is
                 walk_y += 1 
                 innerloop = true;
                 bigblock[walk_x, walk_y] = 5;
+                totalwalkblocks += 1;
+                walkblock[walk_x, walk_y] = totalwalkblocks;                
                 //show_debug_message("headed down");
                 downlast = false;            
             }
@@ -220,6 +225,8 @@ while (walkloop <= 64)          //this is just a debug safety check- walkloop is
                 walk_x += 1 
                 innerloop = true;
                 bigblock[walk_x, walk_y] = 5;
+                totalwalkblocks += 1;
+                walkblock[walk_x, walk_y] = totalwalkblocks;                
                 //show_debug_message("headed right");        
             }
         if walk_x - 1 > 0 && bigblock[walk_x - 1 , walk_y] != 5  && innerloop != true    //move left
@@ -227,6 +234,8 @@ while (walkloop <= 64)          //this is just a debug safety check- walkloop is
                 walk_x -= 1 
                 innerloop = true;
                 bigblock[walk_x, walk_y] = 5;
+                totalwalkblocks += 1;
+                walkblock[walk_x, walk_y] = totalwalkblocks;                
                 //show_debug_message("headed left");              
             }
         if walk_y + 1 < gridsize && bigblock[walk_x, walk_y + 1] != 5  && innerloop != true && downlast == false    //move down
@@ -234,6 +243,8 @@ while (walkloop <= 64)          //this is just a debug safety check- walkloop is
                 walk_y += 1 
                 innerloop = true;
                 bigblock[walk_x, walk_y] = 5;
+                totalwalkblocks += 1;
+                walkblock[walk_x, walk_y] = totalwalkblocks;                
                 //show_debug_message("headed down");
                 downlast = true;            
             } 
@@ -280,7 +291,7 @@ for (u = 0; u < gridsize; u +=1)
         }
     }
 
-show_debug_message("Huge Blocks done");    
+show_debug_message("Huge Blocks done, totalwalkblocks = " + string(totalwalkblocks));    
 
 //Now iterate through each space big block & add normal blocks based upon adjacent big blocks
 //show_debug_message("Block Array started");
@@ -330,25 +341,26 @@ for (v = 0; v < gridsize; v +=1)
             if bigblock[u, v] >= 0
             {
                 //GAUNTS
-                if random(1) < gauntchance
-                    {
-                        if gauntdensity < gauntdensitymax gauntdensitycurrent += ((gauntdensitymax - gauntdensitymin)/gauntdensitysteps)
-                        gauntdensity = gauntdensitycurrent;
+                if random(1) < gauntchance && walkblock[u, v] > 0 && walkblock[u, v] >= (totalwalkblocks * gauntstartblock) && walkblock[u, v] <= (totalwalkblocks * gauntendblock)    
+                    {                        
+                                                
+                        gauntdensity = gauntdensitymin + (gauntdensityrange * ((walkblock[u,v]- totalwalkblocks * gauntstartblock)/(totalwalkblocks * gauntendblock - totalwalkblocks * gauntstartblock)))
+                        show_debug_message("Adding Gaunts at Walkblock: " + string(walkblock[u,v]) + " with density: " + string(gauntdensity));                        
                     }
                 else gauntdensity = 0;
                 
                 //FUNGHI SPAWNS
-                if random(1) < spawnchance
+                if random(1) < sporechance && walkblock[u, v] > 0 && walkblock[u, v] >= (totalwalkblocks * sporestartblock) && walkblock[u, v] <= (totalwalkblocks * sporeendblock) 
                     {
-                        if spawndensity < spawndensitymax spawndensitycurrent += ((spawndensitymax - spawndensitymin)/spawndensitysteps)
-                        spawndensity = spawndensitycurrent;
+                        sporedensity = sporedensitymin + (sporedensityrange * ((walkblock[u,v]- totalwalkblocks * sporestartblock)/(totalwalkblocks * sporeendblock - totalwalkblocks * sporestartblock)))
+                        show_debug_message("Adding Spores at Walkblock: " + string(walkblock[u,v]) + " with density: " + string(sporedensity));                        
                         sporeoffsetangle = startsporeoffsetangle;
                         sporeoffsetdistance = startsporeoffsetdistance;
                     }
-                else spawndensity = 0;                
+                else sporedensity = 0;                
                 //instance_create( 64 + (u * 384), 64 + (v * 384), obj_debug);
                 script_execute(scr_testWeeblocks, u, v, gridsize, starthuge, endhuge, gauntdensity)
-
+                currentblock +=1;
                 //show_debug_message("Wee Block Done " + string(u) + " , " + string(v));
             }
              
@@ -401,7 +413,7 @@ for (u =0 u < bordersize+2; u+=1)
 
 // caculate start and exit points for the map- in centre of each huge empty square (plus border of 64)
 global.startx = starthuge * 384 + 182 + 64;
-global.starty = 16;     // was 16
+global.starty = 16;     // 16 points down from top edge
 global.exitx = endhuge * 384 + 182 + 64;
 global.exity = gridsize * 384 + 128 - 32;
 
@@ -1096,7 +1108,7 @@ blocktest = block [bx, by]
                                                 image_angle = 270
                                             }                                                    
                                     }
-                                if random(1) < spawndensity
+                                if random(1) < sporedensity
                                     {
                                         var inst
                                                 inst = instance_create( 64 + (bx * 32) + column * 4 + 0, 64 + (by *32) + ((count+1) *4), obj_spawn)
@@ -1157,7 +1169,7 @@ blocktest = block [bx, by]
                                                 image_angle = 90
                                             }                                                    
                                     }
-                                if random(1) < spawndensity
+                                if random(1) < sporedensity
                                     {
                                         var inst
                                             
@@ -1222,7 +1234,7 @@ blocktest = block [bx, by]
                                                     image_angle = 180
                                                 }                                                    
                                         }
-                                if random(1) < spawndensity
+                                if random(1) < sporedensity
                                     {
                                         var inst
 
@@ -1285,7 +1297,7 @@ blocktest = block [bx, by]
                                                     image_angle = 0
                                                 }                                                    
                                         }
-                                if random(1) < spawndensity
+                                if random(1) < sporedensity
                                     {
                                         var inst
                                                 inst = instance_create( 64 + (bx * 32) + (c) * 4, 64 + (by *32) + (row *4), obj_spawn)
@@ -1346,7 +1358,7 @@ blocktest = block [bx, by]
                                                 image_angle = 270
                                             }                                                    
                                     }
-                                if random(1) < spawndensity
+                                if random(1) < sporedensity
                                     {
                                         var inst
                                         inst = instance_create( 64 + (bx * 32) + column * 4, 64 + (by *32) + ((count+1) *4), obj_spawn)
@@ -1398,7 +1410,7 @@ blocktest = block [bx, by]
                                                 image_angle = 90
                                             }                                                    
                                     }
-                                if random(1) < spawndensity
+                                if random(1) < sporedensity
                                     {
                                         var inst
                                         inst = instance_create( 64 + (bx * 32) + column * 4, 64 + (by *32) + ((7-c) *4), obj_spawn)
@@ -1461,7 +1473,7 @@ blocktest = block [bx, by]
                                                     image_angle = 180
                                                 }                                                    
                                         }
-                                if random(1) < spawndensity
+                                if random(1) < sporedensity
                                     {
                                         var inst
                                         inst = instance_create( 64 + (bx * 32) + (7-c) * 4, 64 + (by *32) + (row *4), obj_spawn)
@@ -1517,7 +1529,7 @@ blocktest = block [bx, by]
                                                     image_angle = 0
                                                 }                                                    
                                         }
-                                if random(1) < spawndensity
+                                if random(1) < sporedensity
                                     {
                                         var inst
                                         inst = instance_create( 64 + (bx * 32) + (c) * 4, 64 + (by *32) + (row *4), obj_spawn)
