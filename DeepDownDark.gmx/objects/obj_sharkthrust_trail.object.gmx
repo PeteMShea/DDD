@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>
-decay = 0.05;
-image_alpha = 1.0;
+decay = 0.075;
+image_alpha = 0.8;
 
 image_angle = obj_player.image_angle;
 

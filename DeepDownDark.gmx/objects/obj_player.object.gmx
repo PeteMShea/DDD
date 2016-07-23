@@ -227,11 +227,11 @@ emissiveMap = sprite_get_texture(spr_shipShark, 0);
 //Set shader variables here. Note that they get sent every frame,
 //so feel free to change these values in script during play.
 celLevel = 0.0;     //0
-shininess = 40.0;   //50
+shininess = 25.0;   //40
 wrapAroundLevel = 0.0;
-aoStrength = 0.4;       //0.3
+aoStrength = 0.4;       //0.4
 emissiveStrength = 0.00;     //0
-amplifyDepth = 1.5;     //0.5
+amplifyDepth = 1.5;     //1.5
 
 //Set texture resolution - needed for self-shadows. Presumably there is some way
 //to automate this process - if you know how, tell me!
@@ -240,13 +240,13 @@ textureHeight = 256;
 
 
 //Ambient colour components.
-upperAmbient_Red = 0.2;     //0.1
-upperAmbient_Green = 0.2;
-upperAmbient_Blue = 0.2;
+upperAmbient_Red = 0.5;     //0.2
+upperAmbient_Green = 0.5;
+upperAmbient_Blue = 0.5;
 
-lowerAmbient_Red = 0.05;     //0.03
-lowerAmbient_Green = 0.05;
-lowerAmbient_Blue = 0.05;
+lowerAmbient_Red = 0.25;     //0.05
+lowerAmbient_Green = 0.25;
+lowerAmbient_Blue = 0.25;
 
 
 //The nearest lightsource.

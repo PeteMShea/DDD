@@ -17,7 +17,7 @@ joystickused = 0;
 if thrustparticles == true effect_create_below(ef_spark, x + lengthdir_x(16, thrustdir), y + lengthdir_y(16, thrustdir), 0.1, thrustcolour);
 if trails == true
     {
-        inst = instance_create(x , y , obj_sharkthrust);
+        inst = instance_create(x , y , obj_sharkthrust_trail);
         with (inst)
             {
                 image_angle = obj_player.image_angle;

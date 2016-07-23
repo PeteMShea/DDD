@@ -21,5 +21,6 @@
   <height>128</height>
   <frames>
     <frame index="0">images\spr_Shark128_0.png</frame>
+    <frame index="1">images\spr_Shark128_1.png</frame>
   </frames>
 </sprite>
