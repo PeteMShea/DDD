@@ -7,7 +7,7 @@
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>0</bbox_left>
+  <bbox_left>2</bbox_left>
   <bbox_right>95</bbox_right>
   <bbox_top>17</bbox_top>
   <bbox_bottom>112</bbox_bottom>
@@ -20,6 +20,6 @@
   <width>128</width>
   <height>128</height>
   <frames>
-    <frame index="0">images\spr_shipSharkSpecGloss_0.png</frame>
+    <frame index="0">images\spr_Shark128_0.png</frame>
   </frames>
 </sprite>

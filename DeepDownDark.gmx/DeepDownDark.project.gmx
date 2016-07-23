@@ -31,6 +31,7 @@
       <sprite>sprites\spr_redtrail</sprite>
       <sprite>sprites\spr_shipSharkNormal</sprite>
       <sprite>sprites\spr_shipSharkSpecGloss</sprite>
+      <sprite>sprites\spr_Shark128</sprite>
     </sprites>
     <sprites name="environment">
       <sprite>sprites\spr_block</sprite>
