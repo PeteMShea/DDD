@@ -3,14 +3,14 @@
   <type>0</type>
   <xorig>64</xorig>
   <yorigin>64</yorigin>
-  <colkind>0</colkind>
+  <colkind>1</colkind>
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>92</bbox_left>
-  <bbox_right>121</bbox_right>
-  <bbox_top>55</bbox_top>
-  <bbox_bottom>76</bbox_bottom>
+  <bbox_left>0</bbox_left>
+  <bbox_right>16</bbox_right>
+  <bbox_top>11</bbox_top>
+  <bbox_bottom>119</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
@@ -20,7 +20,6 @@
   <width>128</width>
   <height>128</height>
   <frames>
-    <frame index="0">images\spr_shipSharkBThrust_0.png</frame>
-    <frame index="1">images\spr_shipSharkBThrust_1.png</frame>
+    <frame index="0">images\spr_redlightglow_0.png</frame>
   </frames>
 </sprite>

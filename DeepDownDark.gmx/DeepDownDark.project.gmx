@@ -29,6 +29,7 @@
       <sprite>sprites\sprite82</sprite>
       <sprite>sprites\spr_bullet</sprite>
       <sprite>sprites\spr_redtrail</sprite>
+      <sprite>sprites\spr_redlightglow</sprite>
       <sprite>sprites\spr_shipSharkNormal</sprite>
       <sprite>sprites\spr_shipSharkSpecGloss</sprite>
       <sprite>sprites\spr_Shark128</sprite>
@@ -193,6 +194,7 @@
       <object>objects\obj_sharkRetro</object>
       <object>objects\obj_sharkSpec</object>
       <object>objects\obj_redtrail</object>
+      <object>objects\obj_redlightglow</object>
       <object>objects\obj_sharkDirt</object>
       <object>objects\obj_sharkDebris</object>
       <object>objects\obj_shipdamage_CR</object>

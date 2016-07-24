@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>
 decay = 0.1;
+image_index = irandom_range(0,1);
 image_alpha = 0.5;
 
 

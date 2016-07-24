@@ -26,8 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>
-decay = 0.1;
-image_alpha = 0.5;
+decay = 0.05;
+image_alpha = 1.0;
+image_speed = 0.25;
+
+
 
 
 
@@ -55,8 +58,14 @@ image_alpha = 0.5;
           <argument>
             <kind>1</kind>
             <string>
-if image_alpha &gt; 0 image_alpha -= decay else instance_destroy();
+if obj_player.backthrust == false image_alpha -= decay
 
+if image_alpha &lt;= 0
+    {
+       instance_destroy();         
+    }
+
+    
 image_angle = obj_player.image_angle;
 
 x = obj_player.x;

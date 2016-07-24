@@ -17,8 +17,9 @@ thrust = clamp(thrust, min_thrust, max_thrust);
 joystickused = 0;
 
 if thrustparticles == true effect_create_below(ef_spark, x + lengthdir_x(16 * global.RM, thrustdir), y + lengthdir_y(16 * global.RM, thrustdir), 0.1, thrustcolour);
-if trails == true
+if trails == true && backthrust == false
     {
+        backthrust = true;
         inst = instance_create(x , y , obj_sharkBThrust);
         with (inst)
             {

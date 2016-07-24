@@ -86,7 +86,7 @@ if ship =="shark"
     thrustcolour = make_colour_rgb(80, 80, 80);
     shipscale = 18 * global.RM;     //radius of collision circle for ship
     trails = true;
-    trailspeed = 0.2;   //minimum speed before trails are drawn
+    trailspeed = 0.75;   //minimum speed before trails are drawn at high alpha- 0 is on all the time
     turret = false;
     retro = true;    
     shoot_rate = 6;     //number of frames between bullets when mouse button held
@@ -111,6 +111,7 @@ image_angle = 270;
 image_speed = 0;
 turn_angle = image_angle;
 turnspeed = 0;
+backthrust = false;
 
 desired_turnspeed = 0;
 turning = 0;    // 0- not turning, 1- turning left, 2- turning right
@@ -140,6 +141,13 @@ joystickused = 0;
 
 // Add turret if wanted
 if turret == true instance_create(x, y, obj_shipgun);
+
+// Add a red light glow
+inst = instance_create(x, y, obj_redlightglow);
+with(inst)
+{
+    decay = 0;
+}
 
 // Add retro boosters if wanted
 //if retro == true instance_create(x, y, obj_sharkRetro);
@@ -332,7 +340,12 @@ if global.autopilot &lt;= 0
         // mouse input calculate direction and apply accelerating thrust    
         if mouse_check_button(mb_left) moveinput = 1 else moveinput = 0;     // 0 no input, 1 mouse input, 2 joy input
         if mouse_check_button(mb_right) fireinput = 1 else fireinput = 0;   // 0 no input, 1 mouse input, 2 joy input
+
         
+if moveinput == 0
+{
+    backthrust = false;     //disable backthrust VFX when button released
+}                
         
 if moveinput == 1 || fireinput == 1           //mouse input on left button or right button
     {
@@ -794,20 +807,20 @@ if fireinput == 1
 }    
 
 
-// add trails
+// add red trails
 
 if trails == true
 {
-    if abs(speed_x) + abs(speed_y) &gt; trailspeed || turnspeed &gt; trailspeed
+    inst = instance_create(x , y , obj_redtrail);
+    testtrails = abs(speed_x) + abs(speed_y) + abs(desired_turnspeed)  
+    with (inst)
         {
-        inst = instance_create(x , y , obj_redtrail);
-        with (inst)
-            {
-                image_angle = other.image_angle;
-            }
-        }
+            image_angle = other.image_angle;
+            image_alpha = other.testtrails * 0.2;
+            decay = other.testtrails * 0.002;
+        }            
 }    
-    
+   
     
     
 // Apply animation to ship if in damage state
