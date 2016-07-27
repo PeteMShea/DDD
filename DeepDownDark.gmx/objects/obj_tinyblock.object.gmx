@@ -3,7 +3,7 @@
   <spriteName>spr_tinyblock</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-10</depth>
+  <depth>-100</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -65,36 +65,17 @@ else
     {
         lifespan -= 1;
     }
-    
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_player">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>// hit the player, turn to dirt
+if distance_to_point(obj_player.x, obj_player.y) &lt;= 32
+{
+// hit the player, turn to dirt
 
 if global.dirtalpha &lt; 1 global.dirtalpha += 0.0005
 
 instance_destroy();
+}
 
+    
 
 </string>
           </argument>

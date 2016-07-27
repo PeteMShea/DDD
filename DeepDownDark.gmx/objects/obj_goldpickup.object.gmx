@@ -29,19 +29,19 @@
 
 
 
-min_speed = 0.2;
-deceleration = 0.001;
+min_speed = 0.01;
+deceleration = 0.0001;
 bouncecount = 0;
 lifespan = 1200;
 
-attractdist = 50;       //distance at which pickups get sucked into player
-attractspeed = 1.5;     //speed pickups get sucked into player
+attractdist = 100;       //distance at which pickups get sucked into player
+attractspeed = 2.0;     //speed pickups get sucked into player
 
-playerdist =0;
+playerdist = 0;
 
-image_speed =0;
+image_speed = 0;
 image_angle = random_range(0,360);
-image_index = irandom_range(0,2);
+image_index = irandom_range(0,6);
 
 // start moving
 
@@ -150,10 +150,14 @@ if lifespan &lt;=0
             <string>// collided with wall- reverse direction and slow
 
 
-hspeed = -hspeed *0.8;
-vspeed = -vspeed *0.8;
+hspeed = -hspeed *0.75;
+vspeed = -vspeed *0.75;
 
 bouncecount += 1;
+
+if bouncecount &gt; 8 direction = random(360);
+
+if bouncecount &gt; 32 lifespan = 0;
 
 
 
@@ -182,10 +186,14 @@ bouncecount += 1;
             <string>// collided with wall- reverse direction and slow
 
 
-hspeed = -hspeed *0.8;
-vspeed = -vspeed *0.8;
+hspeed = -hspeed *0.75;
+vspeed = -vspeed *0.75;
 
 bouncecount += 1;
+
+if bouncecount &gt; 8 direction = random(360);
+
+if bouncecount &gt; 32 lifespan = 0;
 
 
 
@@ -214,10 +222,14 @@ bouncecount += 1;
             <string>// collided with wall- reverse direction and slow
 
 
-hspeed = -hspeed *0.8;
-vspeed = -vspeed *0.8;
+hspeed = -hspeed *0.75;
+vspeed = -vspeed *0.75;
 
 bouncecount += 1;
+
+if bouncecount &gt; 8 direction = random(360);
+
+if bouncecount &gt; 32 lifespan = 0;
 
 
 

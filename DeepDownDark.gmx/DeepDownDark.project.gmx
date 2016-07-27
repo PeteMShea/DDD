@@ -52,8 +52,19 @@
       <sprite>sprites\spr_weeblockSWcap</sprite>
       <sprite>sprites\spr_weeblockSEcap</sprite>
       <sprite>sprites\spr_gold</sprite>
+      <sprite>sprites\spr_goldNCap</sprite>
+      <sprite>sprites\spr_goldSCap</sprite>
+      <sprite>sprites\spr_goldECap</sprite>
+      <sprite>sprites\spr_goldWCap</sprite>
+      <sprite>sprites\spr_goldNBase</sprite>
+      <sprite>sprites\spr_goldSBase</sprite>
+      <sprite>sprites\spr_goldEBase</sprite>
+      <sprite>sprites\spr_goldWBase</sprite>
       <sprite>sprites\spr_moss</sprite>
-      <sprite>sprites\spr_mossTest</sprite>
+      <sprite>sprites\spr_vineNbase</sprite>
+      <sprite>sprites\spr_vineSBase</sprite>
+      <sprite>sprites\spr_vineEBase</sprite>
+      <sprite>sprites\spr_vineWBase</sprite>
       <sprite>sprites\spr_blastblock</sprite>
       <sprite>sprites\spr_vine</sprite>
       <sprite>sprites\spr_vineNcap</sprite>
@@ -62,8 +73,8 @@
       <sprite>sprites\spr_vineScap</sprite>
       <sprite>sprites\spr_tinyblock</sprite>
       <sprite>sprites\spr_borderblock</sprite>
-      <sprite>sprites\spr_bordersideleft</sprite>
       <sprite>sprites\spr_bordersideright</sprite>
+      <sprite>sprites\spr_bordersideleft</sprite>
       <sprite>sprites\spr_asteroid</sprite>
       <sprite>sprites\spr_goldasteroid</sprite>
       <sprite>sprites\spr_asteroidnormal</sprite>
@@ -247,9 +258,21 @@
       <object>objects\obj_floatblock</object>
       <object>objects\obj_tinyblock</object>
       <object>objects\obj_gold</object>
+      <object>objects\obj_goldNBase</object>
+      <object>objects\obj_goldSBase</object>
+      <object>objects\obj_goldEBase</object>
+      <object>objects\obj_goldWBase</object>
+      <object>objects\obj_goldNCap</object>
+      <object>objects\obj_goldSCap</object>
+      <object>objects\obj_goldECap</object>
+      <object>objects\obj_goldWCap</object>
       <object>objects\obj_goldpickup</object>
       <object>objects\obj_blastblock</object>
       <object>objects\obj_vine</object>
+      <object>objects\obj_vineNBase</object>
+      <object>objects\obj_vineSBase</object>
+      <object>objects\obj_vineEBase</object>
+      <object>objects\obj_vineWBase</object>
       <object>objects\obj_vineNcap</object>
       <object>objects\obj_vineScap</object>
       <object>objects\obj_vineWcap</object>
