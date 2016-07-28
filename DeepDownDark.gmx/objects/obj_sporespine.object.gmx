@@ -32,7 +32,9 @@ min_speed = 0.2;
 deceleration = 0.001;
 bouncecount = 0;
 debrisdamage = 0;     //how much damage collision with debris does
-lifespan = random_range(120, 240);
+lifespan = random_range(180, 240);
+lifespanfade = 60;     //how many frames fade to alpha happens over
+fadealpha = 1.0;
 
 image_speed = 0;
 image_index = irandom_range(0,3);
@@ -104,11 +106,13 @@ else
 
 image_angle += rotation_speed;
 
+image_alpha = fadealpha;
+
+if lifespan &lt; lifespanfade fadealpha -= 1.0/lifespanfade;      // reduce the alpha over lifespanfade frames
+
+
 if bouncecount &gt;= 3 || lifespan &lt;=0
    {
-        bx = x ;
-        by = y;
-        script_execute(scr_blockburstvfx, bx, by);
         instance_destroy();
     
     }
@@ -116,100 +120,6 @@ if bouncecount &gt;= 3 || lifespan &lt;=0
 lifespan -= 1;
 
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_weeblock">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>// collided with wall- reverse direction and slow
-
-
-hspeed = -hspeed *0.8;
-vspeed = -vspeed *0.8;
-
-bouncecount += 1;
-
-
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_asteroid">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>// collided with wall- reverse direction and slow
-
-
-hspeed = -hspeed *0.8;
-vspeed = -vspeed *0.8;
-
-bouncecount += 1;
-
-
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_player">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>// collided with player- destroy
-
-
-bx = x ;
-by = y;
-gold = 0;
-script_execute(scr_smalldebris, bx, by, gold);
-instance_destroy();
 </string>
           </argument>
         </arguments>

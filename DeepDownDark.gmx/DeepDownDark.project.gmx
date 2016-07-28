@@ -43,6 +43,7 @@
       <sprite>sprites\spr_weefloatblock</sprite>
       <sprite>sprites\spr_asteroiddebis</sprite>
       <sprite>sprites\spr_weeblock</sprite>
+      <sprite>sprites\testweeblock</sprite>
       <sprite>sprites\spr_weeblockendNcap</sprite>
       <sprite>sprites\spr_weeblockendEcap</sprite>
       <sprite>sprites\spr_weeblockendWcap</sprite>
@@ -61,6 +62,7 @@
       <sprite>sprites\spr_goldEBase</sprite>
       <sprite>sprites\spr_goldWBase</sprite>
       <sprite>sprites\spr_moss</sprite>
+      <sprite>sprites\testplant</sprite>
       <sprite>sprites\spr_vineNbase</sprite>
       <sprite>sprites\spr_vineSBase</sprite>
       <sprite>sprites\spr_vineEBase</sprite>
@@ -109,6 +111,7 @@
     </sprites>
     <sprites name="debug">
       <sprite>sprites\spr_debug</sprite>
+      <sprite>sprites\spr_debug64</sprite>
       <sprite>sprites\spr_weedebug</sprite>
       <sprite>sprites\spr_spotdebug</sprite>
       <sprite>sprites\spr_control</sprite>
@@ -139,7 +142,7 @@
       <sprite>sprites\spr_orangebulletspark</sprite>
       <sprite>sprites\sprite96</sprite>
       <sprite>sprites\spr_orangebullet</sprite>
-      <sprite>sprites\sprite97</sprite>
+      <sprite>sprites\sprite126</sprite>
       <sprite>sprites\spr_goldpickup</sprite>
     </sprites>
   </sprites>
@@ -256,7 +259,6 @@
       <object>objects\obj_bordersideleft</object>
       <object>objects\obj_bordersideright</object>
       <object>objects\obj_floatblock</object>
-      <object>objects\obj_tinyblock</object>
       <object>objects\obj_gold</object>
       <object>objects\obj_goldNBase</object>
       <object>objects\obj_goldSBase</object>
@@ -332,6 +334,7 @@
     <objects name="VFX">
       <object>objects\obj_explosion128</object>
       <object>objects\obj_particle</object>
+      <object>objects\obj_tinyblock</object>
     </objects>
   </objects>
   <rooms name="rooms">

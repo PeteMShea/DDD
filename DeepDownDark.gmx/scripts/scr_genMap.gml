@@ -1081,9 +1081,9 @@ blocktest = block [bx, by]
                         localvinechance = vinechance;
                                 for (column = 0; column < 8; column +=1)           //iterate through each column from north edge down
                                             {
-                                                clampmax = maxweespike + 3 
+                                                clampmax = maxweespike + 2 
                                                 count = count + irandom_range(-1, 1)
-                                                count = clamp(count, minspike, clampmax)
+                                                count = clamp(count, minweespike, clampmax)
                                                  blockswitch = 0;        //wee blocks
                                                  vines = 0;         //used to test first vine placed down
                                                  gold = 0;          //used to test first gold placed down
@@ -1157,9 +1157,9 @@ blocktest = block [bx, by]
                         localvinechance = vinechance;
                         for (column = 0; column < 8; column +=1)           //iterate through each column from south edge up
                             {
-                                clampmax = maxweespike + 3                               
+                                clampmax = maxweespike + 2                               
                                 count = count + irandom_range(-1, 1)
-                                count = clamp(count, minspike, clampmax)
+                                count = clamp(count, minweespike, clampmax)
                                 blockswitch = 0;        //wee blocks
                                 vines = 0;         //used to test first vine placed down
                                 gold = 0;          //used to test first gold placed down                                
@@ -1234,9 +1234,9 @@ blocktest = block [bx, by]
                         localvinechance = vinechance;
                         for (row = 0; row < 8; row +=1)           //iterate through each row
                             {
-                                clampmax = maxweespike + 3    
+                                clampmax = maxweespike + 2    
                                 count = count + irandom_range(-1, 1)
-                                count = clamp(count, minspike, clampmax)
+                                count = clamp(count, minweespike, clampmax)
                                 blockswitch = 0;        //wee blocks
                                 vines = 0;         //used to test first vine placed down
                                 gold = 0;          //used to test first gold placed down                                
@@ -1310,9 +1310,9 @@ blocktest = block [bx, by]
                         localvinechance = vinechance;
                         for (row = 0; row < 8; row +=1)           //iterate through each row
                             {
-                                clampmax = maxweespike + 3   
+                                clampmax = maxweespike + 2   
                                 count = count + irandom_range(-1, 1)
-                                count = clamp(count, minspike, clampmax)
+                                count = clamp(count, minweespike, clampmax)
                                 blockswitch = 0;        //wee blocks
                                 vines = 0;         //used to test first vine placed down
                                 gold = 0;          //used to test first gold placed down 
@@ -1387,7 +1387,7 @@ blocktest = block [bx, by]
                             {
 
                                 count = count + irandom_range(-1, 2)
-                                count = clamp(count, minspike, clampmax)
+                                count = clamp(count, minweespike, clampmax)
                                 blockswitch = 0;        //wee blocks
                                 vines = 0;         //used to test first vine placed down
                                 gold = 0;          //used to test first gold placed down 
@@ -1452,7 +1452,7 @@ blocktest = block [bx, by]
                         for (column = 0; column < 8; column +=1)           //now iterate through each column from south edge up
                             {       
                                 count = count + irandom_range(-1, 2)
-                                count = clamp(count, minspike, clampmax)
+                                count = clamp(count, minweespike, clampmax)
                                 blockswitch = 0;        //wee blocks
                                 vines = 0;         //used to test first vine placed down
                                 gold = 0;          //used to test first gold placed down 
@@ -1527,7 +1527,7 @@ blocktest = block [bx, by]
                             {
 
                                 count = count + irandom_range(-1, 2)
-                                count = clamp(count, minspike, clampmax)
+                                count = clamp(count, minweespike, clampmax)
                                 blockswitch = 0;        //wee blocks
                                 vines = 0;         //used to test first vine placed down
                                 gold = 0;          //used to test first gold placed down 
@@ -1596,7 +1596,7 @@ blocktest = block [bx, by]
                             {
                                 clampmax = maxweespike + 3   
                                 count = count + irandom_range(-1, 1)
-                                count = clamp(count, minspike, clampmax)
+                                count = clamp(count, minweespike, clampmax)
                                 blockswitch = 0;        //wee blocks
                                 vines = 0;         //used to test first vine placed down
                                 gold = 0;          //used to test first gold placed down 
@@ -1670,9 +1670,9 @@ blocktest = block [bx, by]
                         for (column = 7; column > -1; column -=1)           //iterate through each column from north edge down- reverse, west to east
                             {
                                 count = count + irandom_range(0, 2)   //counting up only as corner
-                                count = clamp(count, minspike, clampmax)
+                                count = clamp(count, minweespike, clampmax)
                                 clampmax += 1
-                                if clampmax >=8 clampmax =7 
+                                if clampmax >=8 clampmax = 8 
                                 blockswitch = 0;        //wee blocks
                                 vines = 0;         //used to test first vine placed down
                                 gold = 0;          //used to test first gold placed down       
@@ -1726,9 +1726,9 @@ blocktest = block [bx, by]
                             {
 
                                 count = count + irandom_range(0, 2)   //counting up only as corner
-                                count = clamp(count, minspike, clampmax)
+                                count = clamp(count, minweespike, clampmax)
                                 clampmax +=1
-                                if clampmax >=8 clampmax =7 
+                                if clampmax >=8 clampmax =8 
                                 blockswitch = 0;        //wee blocks
                                 vines = 0;         //used to test first vine placed down
                                 gold = 0;          //used to test first gold placed down                                  
@@ -1781,9 +1781,9 @@ blocktest = block [bx, by]
                         for (column = 7; column > -1; column -=1)           //iterate through each column from south edge up- reverse, west to east
                             {
                                 count = count + irandom_range(0, 2)   //counting up only as corner
-                                count = clamp(count, minspike, clampmax)
+                                count = clamp(count, minweespike, clampmax)
                                 clampmax +=1
-                                if clampmax >=8 clampmax =7 
+                                if clampmax >=8 clampmax =8 
                                 blockswitch = 0;        //wee blocks
                                 vines = 0;         //used to test first vine placed down
                                 gold = 0;          //used to test first gold placed down 
@@ -1837,9 +1837,9 @@ blocktest = block [bx, by]
                             {
 
                                 count = count + irandom_range(0, 2)   //counting up only as corner
-                                count = clamp(count, minspike, clampmax)
+                                count = clamp(count, minweespike, clampmax)
                                 clampmax +=1
-                                if clampmax >=8 clampmax =7 
+                                if clampmax >=8 clampmax =8 
                                 blockswitch = 0;        //wee blocks
                                 vines = 0;         //used to test first vine placed down
                                 gold = 0;          //used to test first gold placed down                     
@@ -1892,7 +1892,7 @@ blocktest = block [bx, by]
                         for (row = 0; row < 8; row +=1)           //iterate through each row
                             {
                                 count = count + irandom_range(-1, 1)
-                                count = clamp(count, minspike, clampmax)
+                                count = clamp(count, 5, 7)
                                 blockswitch = 0;        //wee blocks
                                 vines = 0;         //used to test first vine placed down
                                 gold = 0;          //used to test first gold placed down   
@@ -1945,7 +1945,7 @@ blocktest = block [bx, by]
                         for (column = 0; column < 8; column +=1)           //iterate through each column from north edge down
                             {
                                 count = count + irandom_range(-1, 1)
-                                count = clamp(count, minspike, clampmax)
+                                count = clamp(count, 5, 7)
                                 blockswitch = 0;        //wee blocks
                                 vines = 0;         //used to test first vine placed down
                                 gold = 0;          //used to test first gold placed down                                   
@@ -1998,7 +1998,7 @@ blocktest = block [bx, by]
                         for (column = 0; column < 8; column +=1)           //iterate through each column from south edge up
                             {
                                 count = count + irandom_range(-1, 1)
-                                count = clamp(count, minspike, clampmax)
+                                count = clamp(count, 5, 7)
                                 blockswitch = 0;        //wee blocks
                                 vines = 0;         //used to test first vine placed down
                                 gold = 0;          //used to test first gold placed down                                
@@ -2052,7 +2052,7 @@ blocktest = block [bx, by]
                         for (row = 0; row < 8; row +=1)           //iterate through each row
                             {
                                 count = count + irandom_range(-1, 1)
-                                count = clamp(count, minspike, clampmax)
+                                count = clamp(count, 5, 7)
                                 blockswitch = 0;        //wee blocks
                                 vines = 0;         //used to test first vine placed down
                                 gold = 0;          //used to test first gold placed down                                    

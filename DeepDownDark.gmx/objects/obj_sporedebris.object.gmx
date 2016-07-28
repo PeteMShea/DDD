@@ -32,6 +32,9 @@ deceleration = 0.001;
 bouncecount = 0;
 debrisdamage = 0;     //how much damage collision with debris does
 lifespan = random_range(100, 200);
+lifespanfade = 60;     //how many frames fade to alpha happens over
+fadealpha = 1.0;
+
 
 image_speed = 0;
 image_index = irandom_range(0,3);
@@ -95,11 +98,12 @@ else
 
 image_angle += rotation_speed;
 
+image_alpha = fadealpha;
+
+if lifespan &lt; lifespanfade fadealpha -= 1.0/lifespanfade;      // reduce the alpha over lifespanfade frames
+
 if bouncecount &gt;= 2 || lifespan &lt;=0
    {
-        bx = x ;
-        by = y;
-        script_execute(scr_particleburst, bx, by);
         instance_destroy();
     
     }
