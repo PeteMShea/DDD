@@ -7,10 +7,10 @@
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>70</bbox_left>
-  <bbox_right>103</bbox_right>
+  <bbox_left>56</bbox_left>
+  <bbox_right>84</bbox_right>
   <bbox_top>50</bbox_top>
-  <bbox_bottom>83</bbox_bottom>
+  <bbox_bottom>79</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
@@ -25,6 +25,5 @@
     <frame index="2">images\spr_shipSharkCC_2.png</frame>
     <frame index="3">images\spr_shipSharkCC_3.png</frame>
     <frame index="4">images\spr_shipSharkCC_4.png</frame>
-    <frame index="5">images\spr_shipSharkCC_5.png</frame>
   </frames>
 </sprite>

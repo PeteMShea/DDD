@@ -159,13 +159,13 @@ with(inst)
 //instance_create(x, y, obj_sharkDirt);
 
 // setup visual damage
-//instance_create(x, y, obj_shipdamage_CR);
-//instance_create(x, y, obj_shipdamage_MR);
-//instance_create(x, y, obj_shipdamage_BR);
-//instance_create(x, y, obj_shipdamage_CL);
-//instance_create(x, y, obj_shipdamage_ML);
-//instance_create(x, y, obj_shipdamage_BL);
-//instance_create(x, y, obj_shipdamage_CC);
+instance_create(x, y, obj_shipdamage_CR);
+instance_create(x, y, obj_shipdamage_MR);
+instance_create(x, y, obj_shipdamage_BR);
+instance_create(x, y, obj_shipdamage_CL);
+instance_create(x, y, obj_shipdamage_ML);
+instance_create(x, y, obj_shipdamage_BL);
+instance_create(x, y, obj_shipdamage_CC);
 
 //invert the controls if desired
 invertedthrust = true;
