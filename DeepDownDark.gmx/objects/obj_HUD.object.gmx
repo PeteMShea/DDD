@@ -33,7 +33,7 @@ alarm_set(0, 15);
 
 c_gold = make_colour_rgb(255,204,0);
 
-healthtextright = 80 * global.RM;
+healthtextright = 50 * global.RM;
 HUDtextY = 10 * global.RM;
 goldtextleft = view_wview[0]-150 * global.RM;
 drawicon = obj_HUDHealth100;
@@ -390,8 +390,8 @@ draw_set_alpha(1.0);
 
 
 //Now frame counter
-draw_set_font(fnt_CapsullaTitle);
-draw_text(healthtextright, 42, "FPS = " + string(fps));
+//draw_set_font(fnt_CapsullaTitle);
+//draw_text(healthtextright, 42, "FPS = " + string(fps));
 
 </string>
           </argument>

@@ -101,6 +101,8 @@ damagecost = 10;        //how much gold it costs to repair 1 point of damage
 
 moveinput = 0;      // 0 no input, 1 left mouse input, 2 joy input
 fireinput = 0;      // 0 no input, 1 left mouse input, 2 joy input
+mousemove = false;
+firebutton = 0;
 speed_x = 0;
 speed_y = 0;        //always start with a small downwards thrust- into the map
 destx = x;
@@ -330,16 +332,41 @@ if dead == false
 if global.autopilot &lt;= 0
         {
          // joystick input   
-            joyx = gamepad_axis_value(0, gp_axisrh);
-            joyy = gamepad_axis_value(0, gp_axisrv);
+            joyx = gamepad_axis_value(0, gp_axislh);
+            joyy = gamepad_axis_value(0, gp_axislv);
+            righttrigger = gamepad_button_value(0, gp_shoulderrb);
+            lefttrigger = gamepad_button_value(0, gp_shoulderlb);
+            firebutton = gamepad_button_value(0, gp_face1);
             
             //show_debug_message("X: " + string(joyx) + "Y:" + string(joyy));
             //show_debug_message("X: " + string(joyleftx) + " Y:" + string(joylefty));
         
                 
         // mouse input calculate direction and apply accelerating thrust    
-        if mouse_check_button(mb_left) moveinput = 1 else moveinput = 0;     // 0 no input, 1 mouse input, 2 joy input
-        if mouse_check_button(mb_right) fireinput = 1 else fireinput = 0;   // 0 no input, 1 mouse input, 2 joy input
+        if mouse_check_button(mb_left)
+            {
+                mousemove = true;
+                moveinput = 1
+            }
+      
+        if mousemove == false &amp;&amp; mouse_check_button(mb_right)
+            {
+                mousemove = true;
+                fireinput = 1
+            }
+
+        if mouse_check_button(mb_left) == 0 &amp;&amp; mouse_check_button(mb_right) == 0 mousemove = false;
+        if mouse_check_button(mb_right) == 0 fireinput = 0; 
+        
+        if mousemove == false
+            {
+                if joyx != 0 || joyy != 0 moveinput = 2    // left stick to turn
+                if joyx == 0 &amp;&amp; joyy == 0 moveinput = 0;                
+            }
+
+//show_debug_message("RB: " + string(righttrigger) + ", LB:" + string(lefttrigger)+ ", Moveinput:" + string(moveinput)+ ", Fireinput:" + string(fireinput)+ ", Mousemove:" + string(mousemove));                
+
+
 
         
 if moveinput == 0
@@ -350,14 +377,17 @@ if moveinput == 0
 if moveinput == 1 || fireinput == 1           //mouse input on left button or right button
     {
         angle_mouse = point_direction(x, y, mouse_x, mouse_y);
-        
+    }
+    
+if moveinput == 1 ||  fireinput == 1
+{        
         angle_diff = abs(image_angle - angle_mouse);
-                if angle_diff &gt;= 30 &amp;&amp; angle_diff &lt;= 150 || angle_diff &gt;=210 &amp;&amp; angle_diff &lt;= 330 turntest = true else turntest = false
-                if angle_mouse &lt; image_angle &amp;&amp; turntest == true angle_diff +=180;      //if we have chosen either of the possible turning directions
-                if angle_diff &gt; 360 angle_diff -= 360
+        if angle_diff &gt;= 30 &amp;&amp; angle_diff &lt;= 150 || angle_diff &gt;=210 &amp;&amp; angle_diff &lt;= 330 turntest = true else turntest = false
+        if angle_mouse &lt; image_angle &amp;&amp; turntest == true angle_diff +=180;      //if we have chosen either of the possible turning directions
+        if angle_diff &gt; 360 angle_diff -= 360
 
-                rotcolcheck = noone;
-                if angle_diff &gt;= 30 &amp;&amp; angle_diff &lt;= 150 &amp;&amp; turnspeed &lt;= 0 &amp;&amp; landing != 3 &amp;&amp; turning == 0          // turning left unless landed
+        rotcolcheck = noone;
+        if angle_diff &gt;= 30 &amp;&amp; angle_diff &lt;= 150 &amp;&amp; turnspeed &lt;= 0 &amp;&amp; landing != 3 &amp;&amp; turning == 0          // turning left unless landed
                     {
                         turn_angle = angle_mouse;
                         if invertedturn == false turning = 1 else turning = 2
@@ -375,7 +405,7 @@ if moveinput == 1 || fireinput == 1           //mouse input on left button or ri
                     turn_angle = angle_mouse;
                     fireanglediff = angle_difference(image_angle, turn_angle);
                     if fireanglediff &gt; 0 turning = 2 else turning = 1                    
-                    //show_debug_message("image:" + string(image_angle) + " , mouse:" + string(angle_mouse));
+                    show_debug_message("image:" + string(image_angle) + " , mouse:" + string(angle_mouse));
                 }
             if fireinput == 1 &amp;&amp; turret == false &amp;&amp; angle_diff &lt;= 1     //stop turning ship when firing with no turret when pointing at aim
                 {
@@ -448,40 +478,108 @@ if moveinput == 1 || fireinput == 1           //mouse input on left button or ri
                     }                         
             }                       
         }
-
-
-                
-                         
-        
-    }                
-          
-else
+    }
+else if moveinput == 2
     {
+        jx = joyx
+        jy = joyy
+        angle_joy = point_direction(0, 0, jx, jy);        
+        angle_diff = angle_difference(angle_joy, image_angle);
+        show_debug_message("X: " + string(joyx) + ", Y:" + string(joyy) + ", Angle:" + string(angle_joy) + ", Angle:" + string(angle_diff));
+        if angle_diff != 0 turntest = true else turntest = false;
+        rotcolcheck = noone;
+        if angle_diff &gt;= 2 &amp;&amp; turnspeed &lt;= 0 &amp;&amp; landing != 3 &amp;&amp; turning == 0          // turning left unless landed
+                    {
+                        turning = 1;  
+                        turn_angle = angle_joy;
+                        rotcolcheck = collision_line(x + lengthdir_x(33, image_angle + 135), y + lengthdir_y(33 * global.RM, image_angle + 135), x + lengthdir_x(24 * global.RM, image_angle + 105), y + lengthdir_y(24 * global.RM, image_angle + 105), obj_block, false, true);
+                        //if rotcolcheck != noone show_debug_message(string(rotcolcheck));
+                        if rotcolcheck == noone
+                            {                       
+                                turnspeed += turnacceleration;
+                                turn_angle += 2
+                                if turn_angle &gt;360 turn_angle -= 360;
+                      
+                            }
+                        else turnspeed = 0;
+                    }
+        
+        if angle_diff &lt;= -2 &amp;&amp; turnspeed &lt;= 0 &amp;&amp; landing != 3 &amp;&amp; turning == 0     // turning right unless landed
+                    {
+                        turning = 2;
+                        turn_angle = angle_joy;
+                        rotcolcheck = collision_line(x + lengthdir_x(33 * global.RM, image_angle + 225), y + lengthdir_y(33 * global.RM, image_angle + 225), x + lengthdir_x(24 * global.RM, image_angle + 255), y + lengthdir_y(24 * global.RM, image_angle + 255), obj_block, false, true);
+                        //if rotcolcheck != noone show_debug_message(string(rotcolcheck));
+                        if rotcolcheck == noone
+                            {
+                                turnspeed += turnacceleration
+                                turn_angle -= 2
+                                if turn_angle &lt;0 turn_angle += 360;
+
+                            }
+                        else turnspeed = 0;
+                    }           
+      if angle_diff &lt; 2 &amp;&amp; angle_diff &gt; -2
+      {
         turning = 0;
         turnspeed = 0;
-        //turn_angle = image_angle;
-    }
-
-
-if joyx != 0 || joyy != 0
-    {
-        thrustcounter = 20; //minimum number of frames thrust is applied before deceleration starts
-        jx = -joyx
-        jy = -joyy
-        thrustdir = point_direction(0, 0, jx, jy);
+      }  
         
-        if thrustparticles == true effect_create_below(ef_spark, x + lengthdir_x(16 * global.RM, thrustdir), y + lengthdir_y(16 * global.RM, thrustdir), 0.1, thrustcolour);
-        if trails = true
-        {
-            inst = instance_create(x , y , obj_sharkthrust);
-            with (inst)
-            {
-                image_angle = other.image_angle;
-            }
-        }    
     }   
 
-}  
+} 
+if moveinput == 0 &amp;&amp; fireinput == 0
+        {
+            turning = 0;
+            turnspeed = 0;
+            //turn_angle = image_angle;
+        }
+            
+if global.autopilot &lt;= 0
+    {     
+    if righttrigger &gt; 0 
+        {             
+            if turning == 0          //forwards thrust
+            {
+                turn_angle = image_angle;
+                if invertedthrust == true
+                    {
+                        turn_angle = image_angle;
+                        script_execute(scr_forwardthrust, turn_angle);
+                        backwards = false;
+                    }
+                else
+                    {
+                        turn_angle = image_angle;
+                        script_execute(scr_backthrust);
+                        backwards = true;                    
+                    }
+                landing = 0;
+            }
+        }
+    if lefttrigger &gt; 0  &amp;&amp; global.autopilot &lt;= 0
+        {
+         if landing != 3 &amp;&amp; turning == 0         //backwards thrust- do not allow if landed
+            {
+                turn_angle = image_angle;
+                if invertedthrust == true
+                    {                        
+                        script_execute(scr_backthrust);
+                        backwards = true;
+                    }
+                else
+                    {
+                        script_execute(scr_forwardthrust, turn_angle);
+                        backwards = false;
+                    }                         
+            }                       
+        }        
+    }           
+          
+
+
+
+ 
 
 if global.autopilot &gt; 0
 {
@@ -790,7 +888,7 @@ if desired_turnspeed &gt; 0
 
         
 // Firing
-if fireinput == 1
+if fireinput == 1 || firebutton &gt; 0
 
 {
     if turret == true
@@ -966,6 +1064,35 @@ show_debug_message(string(debug));
 
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="70">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.pause = true; 
+
+vx = view_xport[0];
+vy = view_yport[0];
+instance_create( vx, vy, eff_fadetoblack );
+        
+        
 </string>
           </argument>
         </arguments>
