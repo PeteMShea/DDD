@@ -158,7 +158,7 @@ with(inst)
 //instance_create(x, y, obj_sharkSpec);
 
 // Add dirt mask
-//instance_create(x, y, obj_sharkDirt);
+instance_create(x, y, obj_sharkDirt);
 
 // setup visual damage
 instance_create(x, y, obj_shipdamage_CR);

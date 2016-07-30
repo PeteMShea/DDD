@@ -64,6 +64,8 @@ image_alpha = global.dirtalpha;
 x = obj_player.x;
 y = obj_player.y;
 
+//if global.dirtalpha &gt; 0 &amp;&amp; global.dirtalpha &lt; 10 global.dirtalpha = 10;
+
 image_alpha = global.dirtalpha;
 
 if global.playerHealth &lt;= 0 instance_destroy();
