@@ -6197,7 +6197,7 @@
     <instance objName="obj_blastblock" x="1476" y="32" name="inst_1B03A268" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_blastblock" x="1472" y="36" name="inst_02793663" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_blastblock" x="1468" y="40" name="inst_EE223E22" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_shipgun" x="192" y="96" name="inst_10E31E84" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sharkturret" x="192" y="96" name="inst_10E31E84" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

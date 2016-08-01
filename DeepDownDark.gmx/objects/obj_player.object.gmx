@@ -87,7 +87,7 @@ if ship =="shark"
     shipscale = 18 * global.RM;     //radius of collision circle for ship
     trails = true;
     trailspeed = 0.75;   //minimum speed before trails are drawn at high alpha- 0 is on all the time
-    turret = false;
+    turret = true;
     retro = true;    
     shoot_rate = 6;     //number of frames between bullets when mouse button held
     minlandspeed = 0.25;
@@ -142,7 +142,7 @@ joyy = 0;
 joystickused = 0;
 
 // Add turret if wanted
-if turret == true instance_create(x, y, obj_shipgun);
+if turret == true instance_create(x, y, obj_sharkturret);
 
 // Add a red light glow
 inst = instance_create(x, y, obj_redlightglow);
@@ -381,6 +381,8 @@ if moveinput == 1 || fireinput == 1           //mouse input on left button or ri
     
 if moveinput == 1 ||  fireinput == 1
 {        
+      if fireinput == 0  
+        {
         angle_diff = abs(image_angle - angle_mouse);
         if angle_diff &gt;= 30 &amp;&amp; angle_diff &lt;= 150 || angle_diff &gt;=210 &amp;&amp; angle_diff &lt;= 330 turntest = true else turntest = false
         if angle_mouse &lt; image_angle &amp;&amp; turntest == true angle_diff +=180;      //if we have chosen either of the possible turning directions
@@ -398,7 +400,7 @@ if moveinput == 1 ||  fireinput == 1
                         turn_angle = angle_mouse;
                         if invertedturn == false turning = 2 else turning = 1
                     }             
-            
+           } 
             // Turning the ship using fire input to aim nose
             if fireinput == 1 &amp;&amp; turret == false &amp;&amp; angle_diff &gt; 1           // turn towards aim point if holding fire and not fitted with turret
                 {
@@ -443,7 +445,7 @@ if moveinput == 1 ||  fireinput == 1
                     }
         //if turning &gt; 0 show_debug_message("image angle: " + string(image_angle) + " , angle_mouse: " + string(angle_mouse) + " , angle diff: " + string(angle_diff)); 
 
-        if moveinput == 1
+        if moveinput == 1 &amp;&amp; fireinput == 0
         {             
             if angle_diff &gt; 330 || angle_diff &lt; 30 &amp;&amp; turning == 0          //forwards thrust
             {
@@ -893,15 +895,15 @@ if fireinput == 1 || firebutton &gt; 0
 {
     if turret == true
         {
-            aimx = mouse_x;
-            aimy = mouse_y;
+            bulletaimx = x - lengthdir_x(100 * global.RM, obj_sharkturret.image_angle);
+            bulletaimy = y - lengthdir_y(100 * global.RM, obj_sharkturret.image_angle);
         }
     else
         {
-            aimx = x - lengthdir_x(100 * global.RM, image_angle);
-            aimy = y - lengthdir_y(100 * global.RM, image_angle);
+            bulletaimx = x - lengthdir_x(100 * global.RM, image_angle);
+            bulletaimy = y - lengthdir_y(100 * global.RM, image_angle);
         }
-    script_execute(scr_playerShoot, aimx, aimy, shoot_counter);   
+    script_execute(scr_playerShoot, bulletaimx, bulletaimy, shoot_counter);   
 }    
 
 

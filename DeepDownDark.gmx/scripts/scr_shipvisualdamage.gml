@@ -28,7 +28,7 @@ if damage > minvisualdamage
         disttest = obj_player.shipscale/2
 
         
-        if damage >= minvisualdamage * 5 damagemodifier = 2 else damagemodifier = 1
+        if damage >= minvisualdamage * 10 damagemodifier = 2 else damagemodifier = 1
  
  // DEBUG --------------------------      
 if debug == true show_debug_message("test angle:" + string(test_angle) + "image angle:" + string(image_angle) + " , loc_angle: " + string(loc_angle));

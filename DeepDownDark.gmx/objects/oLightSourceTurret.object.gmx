@@ -33,23 +33,16 @@ cameraSpacePosY = 0.0;
 //Currently sprites appear to be located at z = 0.5. Making the light's z
 //position higher will move it towards the camera and away from the object,
 //making shadows shorter, falloff less dramatic, etc.
-zPosition = 0.7;        //0.7
+zPosition = 1.1;        //0.7
 
 //Simply the colour of the light. Reduce all three to make the light less
 //bright.
-baseLightlevel = 0.8;
+baseLightlevel = 0.9;
 colourRed = baseLightlevel;
 colourGreen = baseLightlevel;
 colourBlue = baseLightlevel;
 
-swoop = false;
-swoopdistancemax = 20;
-swoopdistance = 0;
-swoopdirection =1 ;     //downwards
-damage = 0;
-yellow = false;
-yellowlighttime = 20; //number of frames to fade yellow up and down over when gold collected
-yellowcounter = 0;     //counter for turning light yellow
+
 </string>
           </argument>
         </arguments>
@@ -72,72 +65,11 @@ yellowcounter = 0;     //counter for turning light yellow
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//check if just collected a gold pickup and if so colour light yellow
-
-if yellow == true &amp;&amp; yellowcounter &lt;= 0
-    {
-        yellowcounter = yellowlighttime;
-        leveladjust = (1.0 - baseLightlevel)/yellowcounter
-        yellow = false;
-        leveldir = 1;
-    }
-    
-if yellowcounter &gt; 0
-    {
-        if yellowcounter &lt;= yellowlighttime/2 leveldir = -1;    
-        colourRed += leveladjust * leveldir
-        colourGreen += leveladjust * leveldir
-        colourBlue -= leveladjust*2 * leveldir
-        yellowcounter -= 1;
-       
-        //show_debug_message(string(colourRed) + ", " + string(colourGreen) + ", " + string(colourBlue) + ", " + string(yellowcounter));
-    }
-else
-    {
-        colourRed = baseLightlevel;
-        colourGreen = baseLightlevel;
-        colourBlue = baseLightlevel;
-    
-    }
+            <string>
+x = obj_sharkturret.x + 32;
+y = obj_sharkturret.y - 32;
 
 
-// check if repairing the ship and if so swoop over it
-if swoop == false
-    {
-        x = obj_player.x + 12;
-        y = obj_player.y - 20;
-    }
-if swoop == true
-{
-
-
-//    if swoopspeed &lt; swoopspeedmax &amp;&amp; swoopdistance &lt; swoopdistancemax swoopspeed += swoopacceleration                    
-//    if swoopspeed &lt; swoopspeedmax &amp;&amp; swoopdistance &lt; swoopdistancemax *0.9  swoopspeed -= swoopacceleration
-               
-                
-        if swoopdistance = swoopdistancemax &amp;&amp; swoopdirection == 1
-        {
-            swoopdistance = 0;
-            swoopdirection = -1;
-       
-        } 
-        
-//    x -= swoopspeed * swoopdirection;
-    zPosition -= 0.005 * swoopdirection;
-    colourRed += 0.01 * swoopdirection;
-    colourGreen += 0.01 * swoopdirection;
-    colourBlue += 0.01 * swoopdirection;   
-    swoopdistance +=1
-
-     
-    if swoopdirection == -1 &amp;&amp; swoopdistance == swoopdistancemax
-    {
-        swoop = false;
-        swoopdistance = 0;
-        swoopdirection = 1;
-        zPosition = 0.7;        
-    }  
-}
 </string>
           </argument>
         </arguments>

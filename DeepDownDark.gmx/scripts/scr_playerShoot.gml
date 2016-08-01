@@ -3,14 +3,27 @@
     // shoot counter limits fire rate
     if shoot_counter <= 0
     {
+            
 
+        if turret == false
+            {        
+                bulletangle = image_angle;
+                bulletx = x + lengthdir_x(shipscale, image_angle);
+                bullety = y + lengthdir_y(shipscale, image_angle);
+            }
+        if turret == true
+            { 
+                bulletangle = obj_sharkturret.image_angle;
+                bulletx = x + lengthdir_x(16, obj_sharkturret.image_angle);;
+                bullety = y + lengthdir_y(16, obj_sharkturret.image_angle);
+            }        
         var inst;
-        inst = instance_create(x, y, obj_bullet);
+        inst = instance_create(bulletx, bullety, obj_bullet);        
         with (inst)
         {
-            image_angle = obj_player.image_angle;
-            destx = other.aimx;
-            desty = other.aimy;
+            image_angle = obj_player.bulletangle;
+            destx = other.bulletaimx;
+            desty = other.bulletaimy;
      
         }
         

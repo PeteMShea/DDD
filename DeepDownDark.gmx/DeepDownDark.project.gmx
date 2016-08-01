@@ -7,7 +7,7 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprites name="player">
-      <sprite>sprites\spr_shipShark</sprite>
+      <sprite>sprites\spr_Shark128</sprite>
       <sprite>sprites\spr_shipSharkDead</sprite>
       <sprite>sprites\spr_shipSharkDebris</sprite>
       <sprite>sprites\spr_shipSharkSpec</sprite>
@@ -32,7 +32,10 @@
       <sprite>sprites\spr_redlightglow</sprite>
       <sprite>sprites\spr_shipSharkNormal</sprite>
       <sprite>sprites\spr_shipSharkSpecGloss</sprite>
-      <sprite>sprites\spr_Shark128</sprite>
+      <sprite>sprites\spr_SharkTurretMount</sprite>
+      <sprite>sprites\spr_SharkTurret</sprite>
+      <sprite>sprites\spr_SharkTurretGS</sprite>
+      <sprite>sprites\spr_SharkTurretNormal</sprite>
     </sprites>
     <sprites name="environment">
       <sprite>sprites\spr_block</sprite>
@@ -89,6 +92,7 @@
       <sprite>sprites\spr_light</sprite>
       <sprite>sprites\spr_softlight</sprite>
       <sprite>sprites\spr_fixedgun</sprite>
+      <sprite>sprites\spr_shipShark</sprite>
     </sprites>
     <sprites name="enemies">
       <sprite>sprites\spr_enemybullet</sprite>
@@ -224,11 +228,12 @@
       <object>objects\obj_sharkRThrust</object>
       <object>objects\obj_sharkBThrust</object>
       <object>objects\obj_sharkthrust_trail</object>
-      <object>objects\obj_shipgun</object>
+      <object>objects\obj_sharkturret</object>
       <object>objects\obj_bullet</object>
       <object>objects\obj_bulletspark</object>
       <object>objects\oFlyingHead</object>
       <object>objects\oLightSource</object>
+      <object>objects\oLightSourceTurret</object>
       <object>objects\oLightSourceAsteroid</object>
     </objects>
     <objects name="environment">

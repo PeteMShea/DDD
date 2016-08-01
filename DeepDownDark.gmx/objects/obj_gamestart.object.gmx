@@ -46,7 +46,7 @@ global.locdamage_CL = 0;
 global.locdamage_CC = 0;
 global.loading = false;
 global.autopilot = 0;
-global.dirtalpha = 0;
+global.dirtalpha = 0.0;
 
 
 countdown = 1;

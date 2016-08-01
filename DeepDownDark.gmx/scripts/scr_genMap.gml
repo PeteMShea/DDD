@@ -418,7 +418,7 @@ for (u =0; u < bordersize+2; u+=1)
 
 for (u =0 u < bordersize+2; u+=1)
     {
-                instance_create(0, u*64, obj_borderblock)
+                instance_create(0, u*64 * global.RM , obj_borderblock)
                 instance_create(gridsize*384 * global.RM +64 * global.RM ,u*64 * global.RM  , obj_borderblock)
     }
 
