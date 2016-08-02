@@ -139,6 +139,7 @@
       <sprite>sprites\spr_HUDHealth100Top</sprite>
       <sprite>sprites\spr_HUDHealth100</sprite>
       <sprite>sprites\spr_HUDHealth100Red</sprite>
+      <sprite>sprites\spr_sanityvignette</sprite>
     </sprites>
     <sprites name="VFX">
       <sprite>sprites\spr_explosion</sprite>
@@ -319,6 +320,7 @@
       <object>objects\obj_HUDHealth100</object>
       <object>objects\obj_HUDHealth100Red</object>
       <object>objects\obj_deathmenu</object>
+      <object>objects\obj_sanityvignette</object>
     </objects>
     <objects name="debug">
       <object>objects\debug_line</object>

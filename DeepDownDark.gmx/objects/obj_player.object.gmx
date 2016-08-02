@@ -87,7 +87,7 @@ if ship =="shark"
     shipscale = 18 * global.RM;     //radius of collision circle for ship
     trails = true;
     trailspeed = 0.75;   //minimum speed before trails are drawn at high alpha- 0 is on all the time
-    turret = true;
+    turret = false;
     retro = true;    
     shoot_rate = 6;     //number of frames between bullets when mouse button held
     minlandspeed = 0.25;
@@ -140,6 +140,10 @@ if gamepad_is_connected(0) gamepad_set_axis_deadzone(0, 0.15);
 joyx = 0;
 joyy = 0;
 joystickused = 0;
+
+// Add Sanity Vignette mask
+instance_create(x, y, obj_sanityvignette);
+
 
 // Add turret if wanted
 if turret == true instance_create(x, y, obj_sharkturret);
@@ -381,9 +385,10 @@ if moveinput == 1 || fireinput == 1           //mouse input on left button or ri
     
 if moveinput == 1 ||  fireinput == 1
 {        
+        angle_diff = abs(image_angle - angle_mouse);
       if fireinput == 0  
         {
-        angle_diff = abs(image_angle - angle_mouse);
+
         if angle_diff &gt;= 30 &amp;&amp; angle_diff &lt;= 150 || angle_diff &gt;=210 &amp;&amp; angle_diff &lt;= 330 turntest = true else turntest = false
         if angle_mouse &lt; image_angle &amp;&amp; turntest == true angle_diff +=180;      //if we have chosen either of the possible turning directions
         if angle_diff &gt; 360 angle_diff -= 360
