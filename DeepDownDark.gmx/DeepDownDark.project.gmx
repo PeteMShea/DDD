@@ -140,6 +140,7 @@
       <sprite>sprites\spr_HUDHealth100</sprite>
       <sprite>sprites\spr_HUDHealth100Red</sprite>
       <sprite>sprites\spr_sanityvignette</sprite>
+      <sprite>sprites\spr_sanitymeter80</sprite>
     </sprites>
     <sprites name="VFX">
       <sprite>sprites\spr_explosion</sprite>
