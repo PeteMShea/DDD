@@ -63,6 +63,7 @@ leveltenspeed = 0.3;
 
 image_speed = baselevelspeed;
 mask = false;
+extramask = false;
 spritelevel = 0;
 
 
@@ -174,7 +175,7 @@ if sanity &gt;= levelten &amp;&amp; spritelevel != 10
 if mask == false &amp;&amp; sanity &gt;= levelfive
     {
         mask = true
-        instance_create(x, y, obj_sanityvignette);
+        instance_create(obj_player.x, obj_player.y, obj_sanityvignette);
     
     }
 
@@ -184,7 +185,19 @@ if mask == true &amp;&amp; sanity &lt; levelfive
         mask = false;
     }
 
+// Add extra Sanity  mask if sanity above level or destroy it if not
+if extramask == false &amp;&amp; sanity &gt;= levelnine
+    {
+        extramask = true
+        instance_create(obj_player.x, obj_player.y, obj_sanitymask);
+    
+    }
 
+if extramask == true &amp;&amp; sanity &lt; levelnine
+    {
+        obj_sanitymask.destroy = true;
+        extramask = false;
+    }
 
 
 

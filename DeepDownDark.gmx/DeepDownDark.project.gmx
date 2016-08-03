@@ -144,6 +144,7 @@
       <sprite>sprites\spr_sanitymeter120</sprite>
       <sprite>sprites\spr_sanitymeter150</sprite>
       <sprite>sprites\spr_sanitymeter180</sprite>
+      <sprite>sprites\spr_sanitymask</sprite>
     </sprites>
     <sprites name="VFX">
       <sprite>sprites\spr_explosion</sprite>
@@ -326,6 +327,7 @@
       <object>objects\obj_deathmenu</object>
       <object>objects\obj_sanityvignette</object>
       <object>objects\obj_sanitymeter</object>
+      <object>objects\obj_sanitymask</object>
     </objects>
     <objects name="debug">
       <object>objects\debug_line</object>
