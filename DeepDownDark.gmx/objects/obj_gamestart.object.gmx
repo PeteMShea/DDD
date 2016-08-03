@@ -36,6 +36,10 @@ global.playerspeedY = 0;
 global.playerHealth = 250;  //100
 global.startHealth = 250;
 global.playerGold = 500;
+global.baseSanity = 80;
+global.currentSanity = global.baseSanity;
+
+
 global.playerdamaged = 0;
 global.locdamage_CR = 0;
 global.locdamage_MR = 0;

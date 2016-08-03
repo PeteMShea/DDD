@@ -141,9 +141,6 @@ joyx = 0;
 joyy = 0;
 joystickused = 0;
 
-// Add Sanity Vignette mask
-instance_create(x, y, obj_sanityvignette);
-
 
 // Add turret if wanted
 if turret == true instance_create(x, y, obj_sharkturret);

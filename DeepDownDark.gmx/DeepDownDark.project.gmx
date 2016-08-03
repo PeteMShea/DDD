@@ -42,7 +42,6 @@
       <sprite>sprites\spr_newblock</sprite>
       <sprite>sprites\spr_newblockoverlay</sprite>
       <sprite>sprites\spr_hugeblock</sprite>
-      <sprite>sprites\spr_hugeblockoverlay</sprite>
       <sprite>sprites\spr_weefloatblock</sprite>
       <sprite>sprites\spr_asteroiddebis</sprite>
       <sprite>sprites\spr_weeblock</sprite>
@@ -141,6 +140,10 @@
       <sprite>sprites\spr_HUDHealth100Red</sprite>
       <sprite>sprites\spr_sanityvignette</sprite>
       <sprite>sprites\spr_sanitymeter80</sprite>
+      <sprite>sprites\spr_sanitymeter100</sprite>
+      <sprite>sprites\spr_sanitymeter120</sprite>
+      <sprite>sprites\spr_sanitymeter150</sprite>
+      <sprite>sprites\spr_sanitymeter180</sprite>
     </sprites>
     <sprites name="VFX">
       <sprite>sprites\spr_explosion</sprite>
@@ -322,6 +325,7 @@
       <object>objects\obj_HUDHealth100Red</object>
       <object>objects\obj_deathmenu</object>
       <object>objects\obj_sanityvignette</object>
+      <object>objects\obj_sanitymeter</object>
     </objects>
     <objects name="debug">
       <object>objects\debug_line</object>

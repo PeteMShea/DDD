@@ -297,7 +297,7 @@ for (u = 0; u < gridsize; u +=1)
                         //show_debug_message("blockindex = " + string(other.blockindex));   
                         }
                    instance_deactivate_object(inst);
-                   if random(1) < hugeblockoverlaychance instance_create(u * 384 * global.RM +64 * global.RM , v * 384 * global.RM +64 * global.RM , obj_hugeblockoverlay);             
+                   //if random(1) < hugeblockoverlaychance instance_create(u * 384 * global.RM +64 * global.RM , v * 384 * global.RM +64 * global.RM , obj_hugeblockoverlay);             
                 }
       
         }

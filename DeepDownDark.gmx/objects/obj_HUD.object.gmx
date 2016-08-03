@@ -32,6 +32,7 @@ instance_activate_region(view_xview[0]-64 * global.RM, view_yview[0]-64 * global
 alarm_set(0, 15);
 
 c_gold = make_colour_rgb(255,204,0);
+c_skyblue = make_colour_rgb(21, 148, 225);
 
 healthtextright = 50 * global.RM;
 HUDtextY = 10 * global.RM;
@@ -42,6 +43,8 @@ HealthTens = 0;
 HealthDigits = 0;
 redhealthreshold = 0.3;        //% of health remaining before meter turns red
 healthred = false;
+redsanitythreshold = 180;   //Sanity level at which meter turns red
+
 HUDAlpha = 0.7;
 digitleading = 28;     //how much leading to allow for each numerical digit (in gold counter)
 healthold = global.startHealth; //stores last value of health before any change
@@ -52,6 +55,9 @@ goldold = global.playerGold;
 alphapulse = 0.02;
 golddrawpulse = 0;
 goldalphalevel = HUDAlpha;
+
+// add the sanity meter
+instance_create(view_xport[0] + 64, view_yport[0] + 100, obj_sanitymeter);
 
 
 
@@ -383,15 +389,36 @@ if GoldDigits &gt; 0
 goldold = global.playerGold;
 
 
+// Now the Sanity Meter Text (meter is drawn with an object for animation)
+hudsanity = string_format(floor(global.currentSanity), 3, 0);
+
+if global.currentSanity &gt; 200 global.currentSanity = 200;
+
+
+if global.currentSanity &gt;= redsanitythreshold
+    {
+        draw_set_colour(c_red);
+        //healthred = true;
+    }
+else
+    {
+            draw_set_colour(c_skyblue);
+            //healthred = false;
+    }
+draw_set_font(fnt_HUD);
+draw_set_halign(fa_right);    
+draw_text(healthtextright, HUDtextY+44, hudsanity);
+draw_set_alpha(0.1);
+draw_text(healthtextright-2, HUDtextY+44-2, hudsanity);
+draw_set_alpha(HUDAlpha);
+draw_set_halign(fa_left);
+
 // reset Alpha
 draw_set_alpha(1.0);
 
-
-
-
 //Now frame counter
 draw_set_font(fnt_CapsullaTitle);
-draw_text(healthtextright, 42, "FPS = " + string(fps));
+draw_text(healthtextright, 100, "FPS = " + string(fps));
 
 </string>
           </argument>

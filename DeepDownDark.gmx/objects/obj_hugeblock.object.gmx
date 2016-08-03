@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>// randomise block
 //spriteindex = noone;
+//image_xscale = 2.0;
+//image_yscale = 2.0;
 
 image_speed = 0;
 

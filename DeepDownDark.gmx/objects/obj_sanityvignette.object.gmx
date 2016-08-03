@@ -26,11 +26,21 @@
           <argument>
             <kind>1</kind>
             <string>// initialise
+x = obj_player.x;
+y = obj_player.y;
 
-scale = 24;
+
+alphafade = 0.01;
+maximumscale = 14;
+minimumscale = 3;
+
+scale = maximumscale;
 
 image_xscale = scale;
 image_yscale = scale;
+image_alpha = 0;
+
+destroy = false;
 
 
 
@@ -56,13 +66,44 @@ image_yscale = scale;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// move with player and scale based on sanity level
+            <string>//fade in on appearance
+if destroy = false &amp;&amp; image_alpha &lt; 1.0 image_alpha += alphafade
+
+
+// move with player and scale based on sanity level
 
 x = obj_player.x;
 y = obj_player.y;
 
-image_xscale = scale;
-image_yscale = scale;
+sanity = clamp(global.currentSanity, 120, 180);
+
+scalecalc = maximumscale - (((sanity - 120)/60) * (maximumscale - minimumscale));
+
+
+
+oldscale = scale;
+
+scale = clamp(scalecalc, minimumscale, maximumscale);
+
+if scale != oldscale
+    {
+        image_xscale = scale;
+        image_yscale = scale;
+    }
+    
+if destroy == true
+{
+    show_debug_message("destroying");
+    if image_alpha &gt; 0
+    {
+        image_alpha -= alphafade
+    }
+    else
+    {
+        destroy = false;
+        instance_destroy();
+    }
+}
 
 
 
