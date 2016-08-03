@@ -74,13 +74,23 @@ with (inst)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>HUDwait -=1;
+            <string>// restore sanity
 
+global.baseSanity = 80;
+obj_sanitymeter.sanityrestore = 0.1;
+obj_sanitymeter.sanityrestoretime = 0;
+global.madness = 0;
+
+
+// temp to be replaced by new HUD system
+HUDwait -=1;
+// launch after HUD
 if HUDwait &lt;= 0
 {
 
     if mouse_check_button(mb_left)
         {
+            obj_sanitymeter.sanityrestore = 0.025
             global.autopilot = 60;
             global.pause = false;
             obj_player.landing = 0;
