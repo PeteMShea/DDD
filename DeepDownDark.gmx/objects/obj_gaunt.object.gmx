@@ -49,6 +49,9 @@ attackrange = 8 * global.RM;    //distance from player to switch to attack anima
 homedirectrange = 64 * global.RM// distance from player to switch to direct homing
 gauntdamage = 5;    //damage inflicted on player every damagecountermax frames (see below)
 damagecountermax = 60;  //how often gaunt can damage- i.e. every x frames
+madnessfirstsight = 30;         //how much madness is applied first time player sees enemy
+madnessproximityrange = 500;    //range before proximity madness is applied
+madnessproximity = 0.01;      //how much madness to apply per frame when enemy within range
 
 maxanimspeed = 1.5;   //maximum flying animation speed- speedmult is subtracted from this to get anim speed- so faster flight means less wing strokes
 attackanimspeed = 0.75      //attack animation speed
@@ -123,6 +126,13 @@ if awake == false &amp;&amp; awaketest &lt;= 0
 
 if awake == true
 {    
+
+    //test for first seen by player and apply madness
+    if global.gauntseen == false
+        {
+            global.madness += madnessfirstsight;
+            global.gauntseen = true;    
+        }
     
     // when we first wake up  set a point to travel to             
     if homing == false &amp;&amp; launchtime == 0
@@ -167,6 +177,14 @@ if awake == true
     if homing == true 
     {
         playerdist = distance_to_point(obj_player.x, obj_player.y);
+        
+        //madness
+        if playerdist &lt;= madnessproximityrange
+            {
+                global.madness += madnessproximity;
+            }        
+        
+        //attacking
         if playerdist &lt;= attackrange attack = true else attack = false
         
         //perform LOS check ever Z frames
@@ -325,6 +343,7 @@ if awake == true
             speedmult = speedmax * 0.1;
             global.playerHealth -= gauntdamage;
             global.playerdamaged = 20;
+            global.madness += gauntdamage;
             loc_x = x;
             loc_y = y;
             damage = gauntdamage;

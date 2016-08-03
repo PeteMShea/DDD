@@ -93,7 +93,7 @@ if scale != oldscale
     
 if destroy == true
 {
-    show_debug_message("destroying");
+    //show_debug_message("destroying");
     if image_alpha &gt; 0
     {
         image_alpha -= alphafade

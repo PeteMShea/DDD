@@ -11,7 +11,7 @@ vy = vy / len;
 
 
 
-for (count = 0; count < linedistance; count +=2)
+for (count = 0; count < linedistance; count += 3)
 {
     if hit == 0
         {

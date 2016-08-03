@@ -65,7 +65,7 @@ y= obj_player.y;
 
 // fade in for top 20 of player sanity (180-200)
 sanitymult = global.currentSanity - 180
-sanitymult = clamp(sanitymult, 0, 20);
+sanitymult = clamp(sanitymult, 0, 19);
 
 oldalpha = image_alpha
 

@@ -390,7 +390,7 @@ goldold = global.playerGold;
 
 
 // Now the Sanity Meter Text (meter is drawn with an object for animation)
-hudsanity = string_format(floor(global.currentSanity), 3, 0);
+hudsanity = string_format(ceil(global.currentSanity), 3, 0);
 
 if global.currentSanity &gt; 200 global.currentSanity = 200;
 

@@ -30,6 +30,15 @@
 x = view_xport[0] + 64;
 y = view_yport[0] + 100;
 
+sanityrestore = 0.025;        //how quickly sanity restores per frame in normal peaceful recovery
+sanityrecoverymax = 600;       //how many frames of peacetime before sanity begins to restore on its own
+sanityrestoretime = sanityrecoverymax;      //timer for counting down to peacetime
+basesanityadjust = 0.025;    //how much base sanity increases per frame when player is in madness threshold (level nine+)
+madnessinc = 0.25;      //how much sanity level increases per frame whenever player is fearful
+
+sanity = global.baseSanity;
+
+
 baselevel = global.baseSanity;
 baselevelsprite = spr_sanitymeter80;
 baselevelspeed = 0.2;
@@ -98,9 +107,35 @@ x = view_xview[0] + 104;
 y = view_yview[0] + 54;
 
 
-// adjust meter graphic based upon sanity levels
-sanity = global.currentSanity 
+sanity = global.currentSanity
 
+// logic to control sanity reduction-
+
+// if sanity has increased at all reset the restore timer
+if global.madness &gt; 0
+{
+    global.currentSanity += madnessinc;     //add to sanity level every frame
+    global.madness -= madnessinc; 
+    sanityrestoretime = sanityrecoverymax
+}
+
+sanityrestoretime -= 1;
+
+//  wait for restoretime frames then reduce by restore amount
+if sanityrestoretime &lt;= 0
+{
+    if global.currentSanity &gt; global.baseSanity global.currentSanity -= sanityrestore;  //reduce sanity once restore time is up 
+
+}
+
+// increment base sanity level while player is in madness threshold
+if sanity &gt;= levelten &amp;&amp; global.baseSanity &lt; 180
+    {
+        global.baseSanity += basesanityadjust;
+    }
+
+
+// adjust meter graphic based upon sanity levels
 if sanity &lt; leveltwo &amp;&amp; spritelevel != 1
     {
         sprite_index = baselevelsprite;

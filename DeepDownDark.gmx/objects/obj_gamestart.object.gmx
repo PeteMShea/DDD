@@ -38,6 +38,7 @@ global.startHealth = 250;
 global.playerGold = 500;
 global.baseSanity = 80;
 global.currentSanity = global.baseSanity;
+global.madness = 0;     //amount to increase sanity level by when fearful
 
 
 global.playerdamaged = 0;
@@ -52,6 +53,8 @@ global.loading = false;
 global.autopilot = 0;
 global.dirtalpha = 0.0;
 
+global.sporeseen = false;
+global.gauntseen = false;
 
 countdown = 1;
 

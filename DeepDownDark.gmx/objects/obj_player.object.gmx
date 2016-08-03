@@ -96,6 +96,7 @@ if ship =="shark"
 
 // shared static consts
 damagecost = 10;        //how much gold it costs to repair 1 point of damage
+madnesstopspeed = 0.025      //how much madness to apply per frame whenever player is near top speed
 
 //Declarations
 
@@ -409,7 +410,7 @@ if moveinput == 1 ||  fireinput == 1
                     turn_angle = angle_mouse;
                     fireanglediff = angle_difference(image_angle, turn_angle);
                     if fireanglediff &gt; 0 turning = 2 else turning = 1                    
-                    show_debug_message("image:" + string(image_angle) + " , mouse:" + string(angle_mouse));
+                    //show_debug_message("image:" + string(image_angle) + " , mouse:" + string(angle_mouse));
                 }
             if fireinput == 1 &amp;&amp; turret == false &amp;&amp; angle_diff &lt;= 1     //stop turning ship when firing with no turret when pointing at aim
                 {
@@ -650,6 +651,8 @@ if thrustcounter &gt;= 0 &amp;&amp; global.autopilot &lt;=0
         speed_x = clamp(speed_x, -max_speed, max_speed);
         speed_y = clamp(speed_y, -max_speed, max_speed);
         
+        if speed_x &gt;= max_speed * 0.8 || speed_y &gt;= max_speed * 0.8 global.madness += madnesstopspeed;      //fast speeds make you mad
+        
         thrustcounter -= 1;
         
         thrustdir = point_direction(x, y, x - thrust_x, y - thrust_y); 
@@ -826,7 +829,8 @@ if collisionoff == false            //debug option for disabling collision
         {
             damagespeed = sqrt(speed_x * speed_x + speed_y * speed_y);
             damage = (damagespeed * damagemult * armour)
-            global.playerHealth -= damage ;
+            global.playerHealth -= damage;
+            global.madness += damage;
             
             script_execute(scr_shipvisualdamage, x, y, loc_x, loc_y, damage);
             

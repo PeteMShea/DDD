@@ -148,7 +148,7 @@ if enemy != noone
                 script_execute(scr_blockburstvfx, bx, by);
                 
                 currenthealth -= 1;
-                show_debug_message(string(currenthealth)); 
+                //show_debug_message(string(currenthealth)); 
                 
                 }           
             }
