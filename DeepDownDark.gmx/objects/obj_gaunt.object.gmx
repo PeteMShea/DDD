@@ -39,13 +39,13 @@ awakerange = random_range(250 * global.RM, 400 * global.RM);   //distance from p
 launchtimemax = 120;    //how many frames gaunt will launch for before it begins homing
 launchtime = -60;
 takeoffspeed = 0.12;     //animation speed for take-off sequence 0.2
-speedmax = 1.2;      //max speed of travel
+speedmax = 1.5;      //max speed of travel 1.2
 speedmult = 0;
 acceleration = 0.005;     //acceleratation
 normalturnspeed = 2;      //number of degrees to turn per frame
 maxturnspeed = 4;      //fast turn
 turnspeed = normalturnspeed;
-attackrange = 8 * global.RM;    //distance from player to switch to attack animations
+attackrange = 6 * global.RM;    //distance from player to switch to attack animations
 homedirectrange = 64 * global.RM// distance from player to switch to direct homing
 gauntdamage = 5;    //damage inflicted on player every damagecountermax frames (see below)
 damagecountermax = 60;  //how often gaunt can damage- i.e. every x frames
@@ -56,11 +56,11 @@ madnessproximity = 0.01;      //how much madness to apply per frame when enemy w
 maxanimspeed = 1.5;   //maximum flying animation speed- speedmult is subtracted from this to get anim speed- so faster flight means less wing strokes
 attackanimspeed = 0.75      //attack animation speed
 
-homingtestmax = 30;     //how many frames between each time limpet checks LOS to player and adjusts aim
+homingtestmax = 30;     //how many frames between each time gaunt checks LOS to player and adjusts aim
 homingtest = 0;
-homingoffset = 16 * global.RM;  //maximum number of pixels offset from centre of ship when homing towards it
+homingoffset = 32 * global.RM;  //maximum number of pixels offset from centre of ship when homing towards it  16
 linedistance = 32 * global.RM;     //how long a LOS ray test to perform when pathfinding- shorter equals quicker
-aimoffset = 15;     //max number of degrees for random offset when pathfinding to target
+aimoffset = 30;     //max number of degrees for random offset when pathfinding to target  15
 avoidtest = 0;
 if random(1) &lt;0.5 angleadjust = -45 else angleadjust = +45      //decide whether this gaunt avoids this number of degrees to the left or the right
 
