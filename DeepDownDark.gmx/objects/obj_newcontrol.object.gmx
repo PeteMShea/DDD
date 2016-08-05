@@ -42,6 +42,7 @@ vinechance = 0.1;      //chance of vines being added- overall amount of greenery
 vinethreshold = 0.5;       //how far down weeblock columns before vines can be placed (1 = never)
 asteroidchance = 0.2;       //chance of asteroids being added
 goldasteroidchance = 0.1;   //chance of gold asteroid being added 0.1
+goldnuggetchance = 0.05;     //chance of gold nugget being added
 
 
 minspike = 1;       //minimum number of normal blocks to add to each edge- should always be at least 1
@@ -54,22 +55,22 @@ maxweespike = 3;        //cannot be higher than 4!
 enemychance = 0.00;      //chance of an enemy being spawned 0.005
 
 // nightgaunts
-gauntchance = 0.5;        //chance of a huge square being populated with gaunts 0.3
+gauntchance = 0.3;        //chance of a huge square being populated with gaunts 0.3
 gauntdensitymin = 0.0025;        //how dense gaunts are at start of level 0
 gauntdensitymax = 0.12;          //maximum density of gaunts
 gauntdensityrange = gauntdensitymax - gauntdensitymin;
-gauntstartblock = 0.1;           //gaunts do not start spawning until this % empty huge blocks in
+gauntstartblock = 0.5;           //gaunts do not start spawning until this % empty huge blocks in
 gauntendblock = 0.95;             //no more gaunts after this % huge blocks
 gauntdensity = gauntdensitymin;
 gauntdensitycurrent = 0;
 
 // spores
-sporechance = 0.0;        //chance of a huge square being populated with spores 0.3
+sporechance = 0.4;        //chance of a huge square being populated with spores 0.3
 sporedensitymin = 0.02;        //how dense gaunts are at start of level 0
 sporedensitymax = 0.25;          //maximum density of spores
 sporedensityrange = sporedensitymax - sporedensitymin;
 sporestartblock = 0.05;           //spores do not start spawning until this % empty huge blocks in
-sporeendblock = 0.3;             //no more spores after this % huge blocks
+sporeendblock = 0.45;             //no more spores after this % huge blocks
 sporedensity = sporedensitymin;
 sporedensitycurrent = 0;
 startsporeoffsetangle = 0;

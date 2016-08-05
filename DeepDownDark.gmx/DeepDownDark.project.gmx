@@ -82,6 +82,8 @@
       <sprite>sprites\spr_asteroid</sprite>
       <sprite>sprites\spr_goldasteroid</sprite>
       <sprite>sprites\spr_asteroidnormal</sprite>
+      <sprite>sprites\spr_goldnugget</sprite>
+      <sprite>sprites\spr_goldnuggetnormal</sprite>
     </sprites>
     <sprites name="old">
       <sprite>sprites\spr_bigblock</sprite>
@@ -246,6 +248,7 @@
       <object>objects\obj_asteroid</object>
       <object>objects\obj_asteroidblock</object>
       <object>objects\obj_goldasteroid</object>
+      <object>objects\obj_goldnugget</object>
       <object>objects\obj_block</object>
       <object>objects\obj_hugeblock</object>
       <object>objects\obj_newblock</object>

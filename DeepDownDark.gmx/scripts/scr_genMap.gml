@@ -2268,6 +2268,13 @@ if totalspawnpoints > 0
             if totalspawnpoints > 5 check *= 3
             instance_activate_region(spawnpointx[count]-192 * global.RM , spawnpointy[count]-192 * global.RM , 384 * global.RM , 384 * global.RM , true);
             colcheck = collision_circle(spawnpointx[count], spawnpointy[count], 24 * global.RM , obj_block, false, true)
+            if check < goldnuggetchance && colcheck == noone
+                {
+                    instance_create(spawnpointx[count]+8 * global.RM , spawnpointy[count]-20 * global.RM , oLightSourceAsteroid);
+                    instance_create(spawnpointx[count], spawnpointy[count], obj_goldnugget);
+                    
+                    check = 2;
+                }
             if check < goldasteroidchance && colcheck == noone
                 {
                     instance_create(spawnpointx[count]+8 * global.RM , spawnpointy[count]-20 * global.RM , oLightSourceAsteroid);

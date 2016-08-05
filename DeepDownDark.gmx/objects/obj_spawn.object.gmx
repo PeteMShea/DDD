@@ -36,7 +36,7 @@ lifespanmax = random_range(1200,1500);   //how long spores live for once they ha
 lifespan = 0;
 bouncecount = 10;   //maximum number of bounces before self destruct
 
-awaketestmax = 60;     //how many frames between each time limpet checks to see if it should wake up
+awaketestmax = 60;     //how many frames between each time spore checks to see if it should wake up
 awaketest = 60;
 awakerange = random_range(350 * global.RM, 450 * global.RM);   //distance from player before awakening
 launchtimemax = 150;    //how many frames enemy will launch for before it begins homing
@@ -56,12 +56,12 @@ madnessfirstsight = 20;         //how much madness is applied first time player 
 madnessproximityrange = 500;    //range before proximity madness is applied
 madnessproximity = 0.01;      //how much madness to apply per frame when enemy within range
 
-homingtestmax = 120;     //how many frames between each time enemy checks LOS to target and adjusts aim  30
+homingtestmax = 180;     //how many frames between each time enemy checks LOS to target and adjusts aim  30
 homingtest = 0;
 linedistance = 32 * global.RM;     //how long a LOS ray test to perform when pathfinding- shorter equals quicker
 aimoffset = 15;     //max number of degrees for random offset when pathfinding to target
 avoidtest = 0;
-if random(1) &lt;0.5 angleadjust = -60 else angleadjust = +60      //decide whether this gaunt avoids this number of degrees to the left or the right
+if random(1) &lt;0.5 angleadjust = -60 else angleadjust = +60      //decide whether this enemy avoids this number of degrees to the left or the right
 collision = false;
 
 aimx = x;

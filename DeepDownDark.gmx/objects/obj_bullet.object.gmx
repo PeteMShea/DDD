@@ -224,13 +224,15 @@ if asteroid != noone
                 hitspeed_x = other.vx * other.bulletspd * other.asteroidmult * 0.15;
                 hitspeed_y = other.vy * other.bulletspd * other.asteroidmult * 0.15;
             }
-        //create debris tinyblocks
+
+        //create debris tinyblocks unless a nugget
         bx = x;
         by = y;
-        script_execute(scr_blockburstvfx, bx, by);
+        if asteroid.nugget == false script_execute(scr_blockburstvfx, bx, by);
+        //else script_execute(scr_spawngoldburst, bx, by);
         bx = x
         by = y        
-        script_execute(scr_bulletsparks, bx, by);           
+        script_execute(scr_bulletsparks, bx, by);                   
         instance_destroy();
 
     }         

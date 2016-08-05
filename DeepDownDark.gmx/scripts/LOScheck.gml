@@ -11,7 +11,7 @@ vy = vy / len;
 
 
 
-for (count = 0; count < linedistance; count += 3)
+for (count = 0; count < linedistance; count += 4)           //number here determines spacing between points in ray test- higher, faster but less precise
 {
     if hit == 0
         {
