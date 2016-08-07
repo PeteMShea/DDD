@@ -105,12 +105,22 @@ fireinput = 0;      // 0 no input, 1 left mouse input, 2 joy input
 mousemove = false;
 firebutton = 0;
 speed_x = 0;
-speed_y = 0;        //always start with a small downwards thrust- into the map
+speed_y = 0;
 destx = x;
 desty = y;
-thrustdir = 270;
-thrust_angle = 270;
-image_angle = 270;
+
+if room != 4       //not the start room
+    {
+        thrustdir = 270;
+        thrust_angle = 270;
+        image_angle = 270;
+        
+        //Autopilot
+        global.autopilot = 120;    // was 120
+        auto_x = 0;
+        auto_y = 0.25 * global.RM;   //downwards thrust...
+        autothrust = 10;   
+    }
 image_speed = 0;
 turn_angle = image_angle;
 turnspeed = 0;
@@ -175,11 +185,7 @@ instance_create(x, y, obj_shipdamage_CC);
 invertedthrust = true;
 invertedturn = false;
 
-//Autopilot
-global.autopilot = 120;    // was 120
-auto_x = 0;
-auto_y = 0.25 * global.RM;   //downwards thrust...
-autothrust = 10;            
+         
 
 
 
@@ -845,9 +851,10 @@ if collisionoff == false            //debug option for disabling collision
 }  
   
 // Apply movement to player
-    x += speed_x
-    y += speed_y
-
+    x += speed_x;
+    y += speed_y;
+    
+    if global.autopilot &lt;= 0 &amp;&amp; y &lt;=80 y =80
 
 // rotation
 if turnspeed &gt; 0

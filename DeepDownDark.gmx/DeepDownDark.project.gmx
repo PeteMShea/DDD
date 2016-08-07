@@ -165,6 +165,7 @@
     <background>background\background2</background>
     <background>background\back_LCWsplash</background>
     <background>background\back_titlescreen</background>
+    <background>background\background7</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -359,6 +360,7 @@
     <room>rooms\LCWsplash</room>
     <room>rooms\titlescreen</room>
     <room>rooms\mapgen</room>
+    <room>rooms\room_A0</room>
     <room>rooms\room2</room>
     <room>rooms\room0</room>
   </rooms>

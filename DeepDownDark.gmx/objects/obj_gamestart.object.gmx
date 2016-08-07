@@ -57,8 +57,11 @@ global.sporeseen = false;
 global.gauntseen = false;
 
 countdown = 1;
+global.pause = false;
+global.roomname = room_get_name(room);
 
 global.dead = false;        //temp
+
 
 
 
@@ -102,7 +105,7 @@ global.dead = false;        //temp
 if countdown &lt;= 0
 {
 
-    room_goto(3);       // 1 for splash and title screen, 3 for MapGen, 4 for Test Room 2
+    room_goto(3);       // 1 for splash and title screen, 3 for MapGen, 4 for Room A0
 
 }
 
