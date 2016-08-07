@@ -25,10 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-// pick a random tile
+            <string>// pick a random tile
 image_speed = 0;
 image_index = irandom(59);
+
+
 
 
 

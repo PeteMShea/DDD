@@ -71,7 +71,15 @@ for (bx = 0; bx < 30; bx +=1)
     {
         for (by = 0; by < 17; by +=1)
         {
-                if instance_position(bx * 64 + 8, by * 64 + 8, obj_newblock) != noone block[bx,by] = 1
+                inst = instance_position(bx * 64 + 8, by * 64 + 8, obj_newblock);
+                if inst != noone
+                    {
+                        block[bx,by] = 1;
+                        with (inst)
+                            { 
+                                image_blend = c_black;
+                            }
+                    }
                 if instance_position(bx * 64 + 8, by * 64 + 8, obj_borderblock) != noone block[bx,by] = 1
                 show_debug_message("Block " + string(bx) + " , " + string(by) + " : " + string(block[bx,by]));                        
             }       
@@ -139,6 +147,7 @@ for (bx = 1; bx < 30; bx +=1)
                     {                
                         //instance_create( 64 + bx * 32, 64 + by * 32, obj_debug);
                         //show_debug_message("wee block space found- " + string(bx) + " , " + string(by) + "- n:" + string(n) + " e: " + string(e) + " s: " + string(s) + " w: " + string(w) + " , value:" + string(block[bx,by]));
+                        if bx >= 17 && bx <=20 && by >= 12 && by <=16 goldcount = round(random_range(goldspread/5, goldspread)) else goldcount = 0
                         script_execute(scr_mapGENA0_weeblocks, bx, by, block[bx,by]);
                 
                     }
@@ -1071,6 +1080,11 @@ blocktest = block [bx, by]
                                                 {
                                                     type = weeblock[wbu , wbv];
                                                     inst = instance_create( 64 * bx + wbu * 8 , 64 * by + wbv * 8 , weeblocktype[type]);
+                                                    with (inst)
+                                                        {
+                                                            image_blend = c_black; 
+                                                        
+                                                        }
                                                     //show_debug_message("adding weeblock " + string(type));
                                                     //instance_deactivate_object(inst);  
                                                 }

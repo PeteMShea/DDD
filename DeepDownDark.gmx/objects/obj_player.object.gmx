@@ -109,7 +109,7 @@ speed_y = 0;
 destx = x;
 desty = y;
 
-if room != 4       //not the start room
+if global.startroom == false       //not the start room
     {
         thrustdir = 270;
         thrust_angle = 270;
@@ -121,6 +121,9 @@ if room != 4       //not the start room
         auto_y = 0.25 * global.RM;   //downwards thrust...
         autothrust = 10;   
     }
+else image_angle = 90;
+
+
 image_speed = 0;
 turn_angle = image_angle;
 turnspeed = 0;

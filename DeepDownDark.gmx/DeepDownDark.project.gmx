@@ -156,6 +156,9 @@
       <sprite>sprites\spr_orangebullet</sprite>
       <sprite>sprites\sprite126</sprite>
       <sprite>sprites\spr_goldpickup</sprite>
+      <sprite>sprites\spr_black8</sprite>
+      <sprite>sprites\spr_black64</sprite>
+      <sprite>sprites\spr_black128mask</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -166,6 +169,7 @@
     <background>background\back_LCWsplash</background>
     <background>background\back_titlescreen</background>
     <background>background\background7</background>
+    <background>background\background9</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -334,6 +338,7 @@
       <object>objects\obj_sanityvignette</object>
       <object>objects\obj_sanitymeter</object>
       <object>objects\obj_sanitymask</object>
+      <object>objects\obj_blackplayermask</object>
     </objects>
     <objects name="debug">
       <object>objects\debug_line</object>

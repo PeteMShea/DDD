@@ -93,6 +93,7 @@ spacechance = 0;
 currentblock = 0;
 totalwalkblocks = 0;
 
+global.startroom = false;
 
 
 script_execute(scr_genMap, basechance, spacechance, newbigblockvalue, spikyness, gridsize, maxgold, goldspread, enemychance, bordersize, minspike, maxspike, mingap);
