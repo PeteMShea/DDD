@@ -170,6 +170,7 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_genMap.gml</script>
+    <script>scripts\scr_mapGEN_A0.gml</script>
     <script>scripts\scr_gotonewlevel.gml</script>
     <scripts name="VFX">
       <script>scripts\scr_bulletsparks.gml</script>
@@ -212,6 +213,7 @@
   <objects name="objects">
     <objects name="control_objects">
       <object>objects\obj_newcontrol</object>
+      <object>objects\obj_roomcontrolA0</object>
       <object>objects\obj_gamestart</object>
       <object>objects\obj_PauseLanded</object>
       <object>objects\obj_alarm</object>

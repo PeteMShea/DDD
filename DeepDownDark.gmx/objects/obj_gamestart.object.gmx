@@ -105,7 +105,7 @@ global.dead = false;        //temp
 if countdown &lt;= 0
 {
 
-    room_goto(3);       // 1 for splash and title screen, 3 for MapGen, 4 for Room A0
+    room_goto(4);       // 1 for splash and title screen, 3 for MapGen, 4 for Room A0
 
 }
 
