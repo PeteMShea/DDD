@@ -33,6 +33,10 @@ menuvisible = false;
 menuappeared = false;
 startgame = false;
 newgameselect = false;
+fadeblacktitle = false;
+backalpha = 1.0;
+alphafade = 0.05;
+
 
 </string>
           </argument>
@@ -65,6 +69,7 @@ if mouse_check_button(mb_left) &amp;&amp; menuvisible == false &amp;&amp; menuap
         if instance_exists(eff_titlemask3) eff_titlemask3.x = 1000
         menuvisible = true;
         menuappeared = true;
+        fadeblacktitle = true;
         obj_player.y = 488;
         obj_player.auto_y = 0;
         global.autopilot = 999;           
@@ -72,7 +77,7 @@ if mouse_check_button(mb_left) &amp;&amp; menuvisible == false &amp;&amp; menuap
 
 if playerappear == true
 {
-    if obj_player.y &lt; 388 
+    if obj_player.y &lt; 428 
         {
             //Autopilot
             obj_player.thrustdir = 270;
@@ -84,7 +89,7 @@ if playerappear == true
             obj_player.autothrust = 0;
             obj_player.backwards = true;  
         }
-        if obj_player.y &gt;= 388 &amp;&amp; obj_player.y &lt; 488       //decelerate at this point
+        if obj_player.y &gt;= 428 &amp;&amp; obj_player.y &lt; 516       //decelerate at this point
         {
             //Autopilot
             obj_player.thrustdir = 270;
@@ -96,23 +101,39 @@ if playerappear == true
             obj_player.autothrust = 0;
             obj_player.backwards = true;  
         }
-        if obj_player.y &gt;= 488      //landed
+        if obj_player.y &gt;= 516      //landed
         {
-            obj_player.y = 488
+            obj_player.y = 516
             obj_player.auto_y = 0;
             obj_player.backthrust = false;
             obj_player.backwards = false;  
             global.autopilot = 999;
-            menuvisible = true;
+            fadeblacktitle = true;
         }
           
-}   
-    
+}
+
+//next fade the black title background to reveal the world
+if fadeblacktitle == true
+{
+    background_alpha [3] = backalpha;
+    if backalpha &gt;0 backalpha -= alphafade;
+    if backalpha &lt;=0
+        {
+            fadeblacktitle = false;
+            menuvisible = true;
+        }
+}     
+
+// now menu appears    
 if menuvisible == true
     {
         instance_create(0, 0, obj_titlemenu);
         menuvisible = false;
+        fadeblacktitle = true;
     }
+    
+  
 
 if mouse_check_button(mb_left) &amp;&amp; newgameselect == true startgame = true;
 

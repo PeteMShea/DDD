@@ -95,6 +95,31 @@ if mouse_check_button(mb_left) &amp;&amp; newgame == true
         </arguments>
       </action>
     </event>
+    <event eventtype="5" enumb="88">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>show_debug_message(string(mouse_x) + " , " + string(mouse_y));
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
@@ -113,23 +138,23 @@ if mouse_check_button(mb_left) &amp;&amp; newgame == true
           <argument>
             <kind>1</kind>
             <string>draw_set_font(fnt_CapsullaTitle);
-draw_set_halign(fa_right);        
+draw_set_halign(fa_left);        
 
 highlightcolour = make_colour_rgb(187, 63, 148);
-xpos = 1100;
-ypos = 137;
+xpos = 1297;
+ypos = 79;
 if newgame == false draw_set_colour(c_ltgray) else draw_set_colour(highlightcolour)
 draw_text(xpos, ypos, "NEW GAME");
 
-ypos += 32;
+ypos += 48;
 if options == false draw_set_colour(c_ltgray) else draw_set_colour(highlightcolour)
 draw_text(xpos, ypos, "OPTIONS");
 
-ypos += 32;
+ypos += 48;
 if credits == false draw_set_colour(c_ltgray) else draw_set_colour(highlightcolour)
 draw_text(xpos, ypos, "CREDITS");
 
-ypos += 32;
+ypos += 48;
 if quit == false draw_set_colour(c_ltgray) else draw_set_colour(highlightcolour)
 draw_text(xpos, ypos, "QUIT");
 </string>

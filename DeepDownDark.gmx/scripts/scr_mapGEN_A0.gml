@@ -87,8 +87,8 @@ for (bx = 0; bx < 30; bx +=1)
 
     
 //now set the player start squares as special so ignore for wee blocks
-block[19, 8] = 99;
-block[20, 8] = 99;        
+block[20, 8] = 99;
+block[21, 8] = 99;        
             
 show_debug_message("New Blocks done");
            

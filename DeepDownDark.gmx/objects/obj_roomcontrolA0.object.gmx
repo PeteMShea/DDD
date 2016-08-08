@@ -55,7 +55,7 @@ maxweespike = 3;        //cannot be higher than 4!
 enemychance = 0.00;      //chance of an enemy being spawned 0.005
 
 
-global.startx = 1280;
+global.startx = 1344;       //1280
 global.starty = -64;            //start off screen (old landing point was y = 448)
 global.exitx = 0;
 global.exity = 0;
