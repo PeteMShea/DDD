@@ -27,29 +27,31 @@
             <kind>1</kind>
             <string>/// initialise variables
 
+
+
 newgame = false;
-newgamex1 = 1015;
-newgamey1 = 140;
-newgamex2 = 1100;
-newgamey2 = 160;
+newgamex1 = 1295;
+newgamey1 = 83;
+newgamex2 = 1427;
+newgamey2 = 109;
 
 
 options = false;
-optionsx1 = 1030;
-optionsy1 = 170;
-optionsx2 = 1100;
-optionsy2 = 190;
+optionsx1 = 1295;
+optionsy1 = 132;
+optionsx2 = 1404;
+optionsy2 = 157;
 
 credits = false;
-creditsx1 = 1033;
-creditsy1 = 203;
-creditsx2 = 1100;
-creditsy2 = 222;
+creditsx1 = 1295;
+creditsy1 = 180;
+creditsx2 = 1399;
+creditsy2 = 207;
 
 quit = false;
-quitx1 = 1062;
-quity1 = 236;
-quitx2 = 1100;
+quitx1 = 1295;
+quity1 = 228;
+quitx2 = 1356;
 quity2 = 255;
 
 
@@ -77,6 +79,7 @@ quity2 = 255;
             <kind>1</kind>
             <string>mx = mouse_x;
 my = mouse_y;
+
 
 if mx &gt;= newgamex1 &amp;&amp; mx &lt;= newgamex2 &amp;&amp; my &gt;= newgamey1 &amp;&amp; my &lt;= newgamey2 newgame = true else newgame = false;
 if mx &gt;= optionsx1 &amp;&amp; mx &lt;= optionsx2 &amp;&amp; my &gt;= optionsy1 &amp;&amp; my &lt;= optionsy2 options = true else options = false;
@@ -140,9 +143,10 @@ if mouse_check_button(mb_left) &amp;&amp; newgame == true
             <string>draw_set_font(fnt_CapsullaTitle);
 draw_set_halign(fa_left);        
 
-highlightcolour = make_colour_rgb(187, 63, 148);
-xpos = 1297;
+highlightcolour = make_colour_rgb(187, 63, 148);    
+xpos = 1297;        //top left of menu text
 ypos = 79;
+
 if newgame == false draw_set_colour(c_ltgray) else draw_set_colour(highlightcolour)
 draw_text(xpos, ypos, "NEW GAME");
 

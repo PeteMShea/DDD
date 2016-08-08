@@ -413,12 +413,14 @@ draw_text(healthtextright-2, HUDtextY+44-2, hudsanity);
 draw_set_alpha(HUDAlpha);
 draw_set_halign(fa_left);
 
-// reset Alpha
-draw_set_alpha(1.0);
+
 
 //Now frame counter
-draw_set_font(fnt_CapsullaTitle);
-draw_text(healthtextright, 100, "FPS = " + string(fps));
+//draw_set_font(fnt_CapsullaTitle);
+//draw_text(healthtextright, 100, "FPS = " + string(fps));
+
+// reset Alpha
+draw_set_alpha(1.0);
 
 </string>
           </argument>

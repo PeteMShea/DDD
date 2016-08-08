@@ -31,11 +31,18 @@ global.loading = false;
 playerappear = false;
 menuvisible = false;
 menuappeared = false;
-startgame = false;
+startgame = 0;      //0- in menu, 1- readying for play, 2- start game
 newgameselect = false;
 fadeblacktitle = false;
+fadeblackworld = false;
 backalpha = 1.0;
 alphafade = 0.05;
+objectblendcolour = 0;
+objectcolour = make_colour_rgb(0, 0, 0);
+titlealpha = 1.0;
+titlealphafade = 0.01; 
+finaltitlealpha = 0.20;  //how transparent Logo ends up when game starts
+
 
 
 </string>
@@ -62,7 +69,7 @@ alphafade = 0.05;
             <kind>1</kind>
             <string>// Proceed on mouse press
 
-if mouse_check_button(mb_left) &amp;&amp; menuvisible == false &amp;&amp; menuappeared == false
+if mouse_check_button(mb_left) &amp;&amp; menuvisible == false &amp;&amp; menuappeared == false &amp;&amp; startgame == 0
     {
         if instance_exists(eff_titlemask1) eff_titlemask1.x = 1000
         if instance_exists(eff_titlemask2) eff_titlemask2.y = 700
@@ -75,7 +82,7 @@ if mouse_check_button(mb_left) &amp;&amp; menuvisible == false &amp;&amp; menuap
         global.autopilot = 999;           
     }
 
-if playerappear == true
+if playerappear == true &amp;&amp; startgame &lt; 2
 {
     if obj_player.y &lt; 428 
         {
@@ -89,7 +96,7 @@ if playerappear == true
             obj_player.autothrust = 0;
             obj_player.backwards = true;  
         }
-        if obj_player.y &gt;= 428 &amp;&amp; obj_player.y &lt; 516       //decelerate at this point
+        if obj_player.y &gt;= 428 &amp;&amp; obj_player.y &lt; 512      //decelerate at this point
         {
             //Autopilot
             obj_player.thrustdir = 270;
@@ -101,9 +108,9 @@ if playerappear == true
             obj_player.autothrust = 0;
             obj_player.backwards = true;  
         }
-        if obj_player.y &gt;= 516      //landed
+        if obj_player.y &gt;= 512      //landed
         {
-            obj_player.y = 516
+            obj_player.y = 512
             obj_player.auto_y = 0;
             obj_player.backthrust = false;
             obj_player.backwards = false;  
@@ -114,8 +121,9 @@ if playerappear == true
 }
 
 //next fade the black title background to reveal the world
-if fadeblacktitle == true
+if fadeblacktitle == true &amp;&amp; startgame == 0
 {
+    obj_player.y = 512
     background_alpha [3] = backalpha;
     if backalpha &gt;0 backalpha -= alphafade;
     if backalpha &lt;=0
@@ -126,8 +134,9 @@ if fadeblacktitle == true
 }     
 
 // now menu appears    
-if menuvisible == true
+if menuvisible == true &amp;&amp; startgame == 0
     {
+        obj_player.y = 512    
         instance_create(0, 0, obj_titlemenu);
         menuvisible = false;
         fadeblacktitle = true;
@@ -135,18 +144,66 @@ if menuvisible == true
     
   
 
-if mouse_check_button(mb_left) &amp;&amp; newgameselect == true startgame = true;
+if mouse_check_button(mb_left) &amp;&amp; newgameselect == true &amp;&amp; startgame == 0 startgame = 1;
 
-if startgame == true
+if startgame == 1
     {
-            instance_create(0,0, eff_fadetoblack);
+        fadeblackworld = true;
+        obj_player.y = 512
+        with(obj_titlemenu)
+            {
+                instance_destroy();
+            }
 
     }
 
-if global.loading == true
+if fadeblackworld = true &amp;&amp; startgame == 1
+{
+    global.autopilot = 999;
+    obj_player.y = 512 
+    objectcolour = make_colour_rgb(objectblendcolour, objectblendcolour, objectblendcolour);
+    if objectblendcolour &lt; 255 objectblendcolour += 2;   
+    
+    with(all)
+        {
+            image_blend = other.objectcolour;        
+        }
+    obj_player.image_blend = c_white;
+    obj_redlightglow.image_blend = c_white;
+    obj_redtrail.image_blend = c_white;
+    
+    if titlealpha &gt;= finaltitlealpha
+        {
+            titlealpha -= titlealphafade;
+            background_alpha [2] = titlealpha;
+        }        
+    if objectblendcolour &gt;= 255
     {
-        room_goto(3);
+        fadeblackworld = false;
+        startgame = 2;
     }
+}
+
+if startgame == 2
+{    
+    global.autopilot = 999;
+    obj_player.y = 512 
+    if mouse_check_button(mb_left)
+    {
+        startgame = 3
+        global.autopilot = 60;
+        obj_player.thrustdir = 90;
+        obj_player.thrust_angle = 90;               
+        obj_player.auto_y = -1.0;
+        obj_player.autothrust = 10; 
+        instance_create(0,0, obj_HUD); 
+               
+        instance_destroy();
+    
+    }
+}
+    
+
 
 
 

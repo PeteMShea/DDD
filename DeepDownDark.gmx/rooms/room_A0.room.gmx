@@ -218,6 +218,12 @@
     <instance objName="eff_titlemask2" x="515" y="165" name="inst_FDB48FEB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="eff_titlemask3" x="368" y="797" name="inst_81823787" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_titlecontrol" x="82" y="0" name="inst_6A46D24D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_exittrigger" x="557" y="1025" name="inst_AB637B17" locked="0" code="" scaleX="1.37109375" scaleY="1.3968254327774" colour="4294967295" rotation="0"/>
+    <instance objName="obj_newblock" x="64" y="0" name="inst_E0D73641" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_newblock" x="128" y="0" name="inst_EB857191" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_newblock" x="1792" y="64" name="inst_2B54CC8D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_newblock" x="1792" y="0" name="inst_6F5340A8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_newblock" x="1728" y="0" name="inst_376FE693" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

@@ -958,7 +958,7 @@ else
 
 // check if player has reached exit
 
-if y &gt;= 384 * global.RM * 8 + 120 * global.RM
+if collision_circle(x+ speed_x, y + speed_y, shipscale + 3 * global.RM, obj_exittrigger, false, true)
     {    
         vx = view_xport[0];
         vy = view_yport[0];
