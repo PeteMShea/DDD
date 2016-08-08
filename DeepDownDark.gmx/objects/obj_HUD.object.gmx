@@ -303,7 +303,7 @@ draw_set_alpha(goldalphalevel);
 global.playerGold = floor(global.playerGold);
 draw_set_colour(c_gold);
 draw_set_halign(fa_right);
-draw_x = view_wview[0]-25
+draw_x = view_wview[0]-30
 draw_text(draw_x, HUDtextY, global.playerGold);
 draw_set_alpha(0.1);
 draw_text(draw_x+2, HUDtextY-2, global.playerGold);

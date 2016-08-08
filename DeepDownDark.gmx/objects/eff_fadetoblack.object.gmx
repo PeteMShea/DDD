@@ -158,8 +158,8 @@ vwidth = room_width[0];
 vheight = room_height[0]
 draw_rectangle_color( vx, vy, vwidth, vheight, c_black, c_black, c_black, c_black, false);
 
-obj_HUD.HUDAlpha = 0.95-fadeAlpha;
-obj_sanitymeter.image_alpha = 0.95-fadeAlpha;
+//obj_HUD.HUDAlpha = 0.95-fadeAlpha;
+//obj_sanitymeter.image_alpha = 0.95-fadeAlpha;
 
 draw_set_alpha(1.0);
 </string>
