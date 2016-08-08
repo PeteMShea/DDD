@@ -56,7 +56,7 @@ enemychance = 0.00;      //chance of an enemy being spawned 0.005
 
 
 global.startx = 1280;
-global.starty = 448;
+global.starty = -64;            //start off screen (old landing point was y = 448)
 global.exitx = 0;
 global.exity = 0;
 
@@ -82,8 +82,21 @@ if once == false
 
 global.loading = false;
 
-instance_create(global.startx, global.starty, obj_blackplayermask);
-instance_create(global.startx, global.starty, obj_player);
+//instance_create(global.startx, global.starty, obj_blackplayermask);
+
+// add the player but frozen off screen for now
+inst = instance_create(global.startx, global.starty, obj_player);
+with (inst)
+    {
+        //Autopilot
+        thrustdir = 270;
+        thrust_angle = 270;
+        image_angle = 90;        
+        global.autopilot = 999999999;    // was 120
+        auto_x = 0;
+        auto_y = 0;
+        autothrust = 0;        
+    }
 
 // fade in from black
 vx = view_xport[0];

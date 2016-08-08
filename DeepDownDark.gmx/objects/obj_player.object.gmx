@@ -121,7 +121,7 @@ if global.startroom == false       //not the start room
         auto_y = 0.25 * global.RM;   //downwards thrust...
         autothrust = 10;   
     }
-else image_angle = 90;
+
 
 
 image_speed = 0;
@@ -590,12 +590,8 @@ if global.autopilot &lt;= 0
         }        
     }           
           
-
-
-
- 
-
-if global.autopilot &gt; 0
+// Autopilot control
+if global.autopilot &gt; 0 &amp;&amp; global.autopilot &lt; 999
 {
         global.autopilot -= 1;
         
@@ -612,7 +608,7 @@ if global.autopilot &gt; 0
         joystickused = 0;
                       
         if thrustparticles == true effect_create_below(ef_spark, x + lengthdir_x(16 * global.RM, thrustdir), y + lengthdir_y(16 * global.RM, thrustdir), 0.1, thrustcolour);
-        if trails == true
+        if trails == true &amp;&amp; backwards == false
             {
                 inst = instance_create(x , y , obj_sharkthrust);
                 with (inst)
@@ -620,7 +616,10 @@ if global.autopilot &gt; 0
                     image_angle = other.image_angle;
                 }
             } 
-
+        if backwards == true
+            {
+                script_execute(scr_backthrust);
+            }
 }
 
     
@@ -693,7 +692,7 @@ if thrustcounter &gt;= 0 &amp;&amp; global.autopilot &lt;=0
    
 
 //  collision detection
-if collisionoff == false            //debug option for disabling collision
+if collisionoff == false &amp;&amp; global.autopilot &lt;= 0            //debug option for disabling collision
 {
     colcheck = noone;
     

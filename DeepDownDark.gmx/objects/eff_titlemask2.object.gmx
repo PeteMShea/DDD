@@ -27,10 +27,12 @@
             <kind>1</kind>
             <string>// initialise
 startmoving = false;
-triggerposition = 600;
-endposition = 650;
-movespeed = 4.0;
-
+triggerposition = 700;
+endposition = 750;
+movespeed = 0;
+maxspeed = 4.0;
+acceleration = 0.1;
+playerappearposition = 200;
 
 
 
@@ -65,7 +67,7 @@ if startmoving == true
         if y &lt; endposition
             {
                 y += movespeed;
-            
+                if movespeed &lt; maxspeed movespeed += acceleration
             }
         else
             {
@@ -77,7 +79,11 @@ if startmoving == true
             {
                 eff_titlemask3.startmoving = true;
             }
-
+            
+        if y &gt;= playerappearposition &amp;&amp; obj_titlecontrol.playerappear == false 
+            {
+                obj_titlecontrol.playerappear = true            
+            }
         
         
 }

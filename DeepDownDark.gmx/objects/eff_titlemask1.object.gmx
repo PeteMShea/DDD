@@ -29,7 +29,9 @@
 
 triggerposition = 700;
 endposition = 730;
-movespeed = 4.0;
+movespeed = 0;
+maxspeed = 4.0;
+acceleration = 0.1;
 
 
 
@@ -63,7 +65,7 @@ movespeed = 4.0;
 if x &lt; endposition
     {
         x += movespeed;
-    
+        if movespeed &lt; maxspeed movespeed += acceleration
     }
 else
     {

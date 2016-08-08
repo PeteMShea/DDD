@@ -28,6 +28,7 @@
             <string>/// initialise vars
 
 global.loading = false;
+playerappear = false;
 menuvisible = false;
 menuappeared = false;
 startgame = false;
@@ -63,9 +64,50 @@ if mouse_check_button(mb_left) &amp;&amp; menuvisible == false &amp;&amp; menuap
         if instance_exists(eff_titlemask2) eff_titlemask2.y = 700
         if instance_exists(eff_titlemask3) eff_titlemask3.x = 1000
         menuvisible = true;
-        menuappeared = true;           
+        menuappeared = true;
+        obj_player.y = 488;
+        obj_player.auto_y = 0;
+        global.autopilot = 999;           
     }
 
+if playerappear == true
+{
+    if obj_player.y &lt; 388 
+        {
+            //Autopilot
+            obj_player.thrustdir = 270;
+            obj_player.thrust_angle = 270;
+            obj_player.image_angle = 90;        
+            global.autopilot = 120;    // time to reach landing point
+            obj_player.auto_x = 0;
+            obj_player.auto_y = 2.0;
+            obj_player.autothrust = 0;
+            obj_player.backwards = true;  
+        }
+        if obj_player.y &gt;= 388 &amp;&amp; obj_player.y &lt; 488       //decelerate at this point
+        {
+            //Autopilot
+            obj_player.thrustdir = 270;
+            obj_player.thrust_angle = 270;
+            obj_player.image_angle = 90;        
+            global.autopilot = 60;    // time to reach landing point
+            obj_player.auto_x = 0;
+            obj_player.auto_y = 0.5;
+            obj_player.autothrust = 0;
+            obj_player.backwards = true;  
+        }
+        if obj_player.y &gt;= 488      //landed
+        {
+            obj_player.y = 488
+            obj_player.auto_y = 0;
+            obj_player.backthrust = false;
+            obj_player.backwards = false;  
+            global.autopilot = 999;
+            menuvisible = true;
+        }
+          
+}   
+    
 if menuvisible == true
     {
         instance_create(0, 0, obj_titlemenu);
