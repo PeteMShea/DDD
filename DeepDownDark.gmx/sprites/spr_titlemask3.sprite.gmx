@@ -7,18 +7,18 @@
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>13</bbox_left>
-  <bbox_right>923</bbox_right>
+  <bbox_left>20</bbox_left>
+  <bbox_right>959</bbox_right>
   <bbox_top>0</bbox_top>
-  <bbox_bottom>226</bbox_bottom>
+  <bbox_bottom>262</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>924</width>
-  <height>227</height>
+  <width>960</width>
+  <height>263</height>
   <frames>
     <frame index="0">images\spr_titlemask3_0.png</frame>
   </frames>

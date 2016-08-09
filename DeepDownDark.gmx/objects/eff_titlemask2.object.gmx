@@ -29,7 +29,7 @@
 startmoving = false;
 triggerposition = 700;
 endposition = 750;
-movespeed = 0;
+movespeed = 1.5;
 maxspeed = 5.0;
 acceleration = 0.1;
 playerappearposition = 200;

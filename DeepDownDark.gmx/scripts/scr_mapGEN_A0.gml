@@ -161,12 +161,12 @@ show_debug_message("Wee Blocks done");
         
 //add a gold nugget on P of Deep
 
-inst = instance_create(583, 133, obj_goldnugget);
+inst = instance_create(547, 163, obj_goldnugget);
 with(inst)
     {
         image_blend = c_black;
-        image_xscale = 0.75;
-        image_yscale = 0.75; 
+        //image_xscale = 0.75;
+        //image_yscale = 0.75; 
     }        
         
         

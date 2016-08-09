@@ -127,7 +127,7 @@
       <sprite>sprites\spr_debugline</sprite>
     </sprites>
     <sprites name="GUI">
-      <sprite>sprites\spr_titlemaskl1</sprite>
+      <sprite>sprites\spr_titlemask1</sprite>
       <sprite>sprites\spr_titlemask2</sprite>
       <sprite>sprites\spr_titlemask3</sprite>
       <sprite>sprites\testXXX</sprite>
@@ -172,7 +172,7 @@
     <background>background\back_LCWsplash</background>
     <background>background\back_titlescreen</background>
     <background>background\background7</background>
-    <background>background\background9</background>
+    <background>background\background8</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
