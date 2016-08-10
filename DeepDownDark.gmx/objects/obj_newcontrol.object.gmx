@@ -65,7 +65,7 @@ gauntdensity = gauntdensitymin;
 gauntdensitycurrent = 0;
 
 // spores
-sporechance = 0.4;        //chance of a huge square being populated with spores 0.3
+sporechance = 1.0;        //chance of a huge square being populated with spores 0.3
 sporedensitymin = 0.02;        //how dense gaunts are at start of level 0
 sporedensitymax = 0.25;          //maximum density of spores
 sporedensityrange = sporedensitymax - sporedensitymin;

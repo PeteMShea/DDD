@@ -80,7 +80,7 @@ if ship =="shark"
     bouncemult = 0.5;     //how much ship bounces off walls 1 = inverted velocity on impact
     damagemult = 15;     //how much collision damage does
     armour = 1.0;       // Ship armour reduces damage (1 weak, 0 invincible)
-    minvisualdamage = 1;    //how much damage must be to cause visual change
+    minvisualdamage = 2;    //how much damage must be to cause visual change
     damagecooldown = 2;    //How many seconds player is invincible after taking damage
     thrustparticles = false;
     thrustcolour = make_colour_rgb(80, 80, 80);

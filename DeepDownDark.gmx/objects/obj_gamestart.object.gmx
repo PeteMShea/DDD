@@ -35,7 +35,7 @@ global.playerspeedX = 0;
 global.playerspeedY = 0;
 global.playerHealth = 100;  //100
 global.startHealth = 100;
-global.playerGold = 0;
+global.playerGold = 370;
 global.baseSanity = 80;
 global.currentSanity = global.baseSanity;
 global.madness = 0;     //amount to increase sanity level by when fearful
@@ -51,7 +51,7 @@ global.locdamage_CL = 0;
 global.locdamage_CC = 0;
 global.loading = false;
 global.autopilot = 0;
-global.dirtalpha = 0.0;
+global.dirtalpha = 0.9;
 
 global.sporeseen = false;
 global.gauntseen = false;
@@ -105,7 +105,7 @@ global.dead = false;        //temp
 if countdown &lt;= 0
 {
 
-    room_goto(1);       // 1 for splash, 3 for MapGen, 4 for Room A0
+    room_goto(4);       // 1 for splash, 3 for MapGen, 4 for Room A0
 
 }
 

@@ -102,7 +102,7 @@ by = 1;
 
 for (bx = 1; bx < 30; bx +=1)
     {
-        for (by = 1; by < 17; by +=1)
+        for (by = 0; by < 17; by +=1)
         {
 
             if block[bx, by] == 0

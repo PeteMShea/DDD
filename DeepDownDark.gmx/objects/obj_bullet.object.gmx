@@ -133,11 +133,11 @@ if gold != noone
         instance_destroy();
     }
 
-var enemy;
-enemy = instance_place(x, y, obj_fixedgunbase);
-if enemy != noone
+var darkspawn;
+darkspawn = instance_place(x, y, obj_darkspawn);
+if darkspawn != noone
     {
-        with(enemy) 
+        with(darkspawn) 
             {
                 if currenthealth &gt;0
                 {
@@ -147,12 +147,14 @@ if enemy != noone
                 by = y
                 script_execute(scr_blockburstvfx, bx, by);
                 
-                currenthealth -= 1;
-                //show_debug_message(string(currenthealth)); 
-                
+                currenthealth -= 1;                
                 }           
             }
-
+        //destroy the bullet
+        bx = x
+        by = y        
+        script_execute(scr_bulletsparks, bx, by);
+        instance_destroy();
     }    
 
 var gaunt;

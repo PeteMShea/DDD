@@ -113,6 +113,7 @@
       <sprite>sprites\sporedebris</sprite>
       <sprite>sprites\sporespines</sprite>
       <sprite>sprites\spr_spore_shadow</sprite>
+      <sprite>sprites\spr_darkspawn</sprite>
     </sprites>
     <sprites name="debug">
       <sprite>sprites\spr_debug</sprite>
@@ -173,6 +174,7 @@
     <background>background\back_titlescreen</background>
     <background>background\background7</background>
     <background>background\background8</background>
+    <background>background\background9</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -322,6 +324,7 @@
       <object>objects\obj_gauntTorso</object>
       <object>objects\obj_gauntTail</object>
       <object>objects\obj_enemydebris</object>
+      <object>objects\obj_darkspawn</object>
     </objects>
     <objects name="GUI">
       <object>objects\obj_HUD</object>
