@@ -141,12 +141,12 @@
       <sprite>sprites\spr_HUDHealth100Top</sprite>
       <sprite>sprites\spr_HUDHealth100</sprite>
       <sprite>sprites\spr_HUDHealth100Red</sprite>
-      <sprite>sprites\spr_sanityvignette</sprite>
       <sprite>sprites\spr_sanitymeter80</sprite>
       <sprite>sprites\spr_sanitymeter100</sprite>
       <sprite>sprites\spr_sanitymeter120</sprite>
       <sprite>sprites\spr_sanitymeter150</sprite>
       <sprite>sprites\spr_sanitymeter180</sprite>
+      <sprite>sprites\spr_sanityvignette</sprite>
       <sprite>sprites\spr_sanitymask</sprite>
     </sprites>
     <sprites name="VFX">
@@ -342,8 +342,8 @@
       <object>objects\obj_HUDHealth100</object>
       <object>objects\obj_HUDHealth100Red</object>
       <object>objects\obj_deathmenu</object>
-      <object>objects\obj_sanityvignette</object>
       <object>objects\obj_sanitymeter</object>
+      <object>objects\obj_sanityvignette</object>
       <object>objects\obj_sanitymask</object>
       <object>objects\obj_blackplayermask</object>
     </objects>

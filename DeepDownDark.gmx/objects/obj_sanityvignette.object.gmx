@@ -31,8 +31,9 @@ y = obj_player.y;
 
 
 alphafade = 0.01;
-maximumscale = 14;
-minimumscale = 3;
+targetAlpha = 0.0;
+maximumscale = 8;
+minimumscale = 2;
 
 scale = maximumscale;
 
@@ -67,18 +68,19 @@ destroy = false;
           <argument>
             <kind>1</kind>
             <string>//fade in on appearance
-if destroy = false &amp;&amp; image_alpha &lt; 1.0 image_alpha += alphafade
+if destroy = false &amp;&amp; image_alpha &lt; targetAlpha image_alpha += alphafade
+if destroy = false &amp;&amp; image_alpha &gt; targetAlpha image_alpha -= alphafade
 
-
-// move with player and scale based on sanity level
+// move with player and fade based on sanity level
 
 x = obj_player.x;
 y = obj_player.y;
 
-sanity = clamp(global.currentSanity, 120, 180);
+sanity = clamp(global.currentSanity, 100, 150);
 
-scalecalc = maximumscale - (((sanity - 120)/60) * (maximumscale - minimumscale));
+scalecalc = maximumscale - (((sanity - 100)/50) * (maximumscale - minimumscale));
 
+if sanity &gt; 100 targetAlpha = ((sanity - 100) * 0.01) + 0.5; 
 
 
 oldscale = scale;
@@ -89,6 +91,7 @@ if scale != oldscale
     {
         image_xscale = scale;
         image_yscale = scale;
+        //show_debug_message(string(scale));
     }
     
 if destroy == true

@@ -42,7 +42,7 @@ angleoffset = 50;       //how much left or right to turn when spawning
 extraoffset = 15;        //how much additional random turn to do
 distcheck = 36;     //how far to check along direction for free space before spawning
 
-wakeuprange = 250;      //distance from player to wakeup
+wakeuprange = 700;      //distance from player to wakeup
 wakeup = false;
 
 

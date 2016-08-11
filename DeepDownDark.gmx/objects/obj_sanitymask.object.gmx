@@ -30,8 +30,16 @@
 image_alpha = 0;
 x= obj_player.x;
 y= obj_player.y;
+maximumscale = 2;
+minimumscale = 1;
+
+scale = maximumscale;
+
+image_xscale = scale;
+image_yscale = scale;
 
 sanitymult = 0;
+alphafade = 0.01;
 destroy = false;
 
 
@@ -63,13 +71,34 @@ destroy = false;
 x= obj_player.x;
 y= obj_player.y;
 
-// fade in for top 20 of player sanity (180-200)
-sanitymult = global.currentSanity - 180
-sanitymult = clamp(sanitymult, 0, 19);
+// fade in for top 50 of player sanity (150-200)
+sanitymult = global.currentSanity - 150
+sanitymult = clamp(sanitymult, 0, 50);
 
-oldalpha = image_alpha
 
-if sanitymult * 0.05 != oldalpha image_alpha = sanitymult * 0.05;
+targetalpha = (sanitymult * 0.02);
+
+
+
+if image_alpha &lt; targetalpha image_alpha += alphafade;
+if image_alpha &gt; targetalpha image_alpha -= alphafade;
+
+
+sanity = clamp(global.currentSanity, 135, 180);
+
+scalecalc = maximumscale - (((sanity - 135)/45) * (maximumscale - minimumscale));
+
+oldscale = scale;
+
+scale = clamp(scalecalc, minimumscale, maximumscale);
+
+if scale != oldscale
+    {
+        image_xscale = scale;
+        image_yscale = scale;
+        show_debug_message(string(scale));
+    }
+
 
 
 //destroy    
