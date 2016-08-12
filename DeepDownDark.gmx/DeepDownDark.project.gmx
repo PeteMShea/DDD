@@ -114,6 +114,8 @@
       <sprite>sprites\sporespines</sprite>
       <sprite>sprites\spr_spore_shadow</sprite>
       <sprite>sprites\spr_darkspawn</sprite>
+      <sprite>sprites\spr_ballplant</sprite>
+      <sprite>sprites\spr_ball</sprite>
     </sprites>
     <sprites name="debug">
       <sprite>sprites\spr_debug</sprite>
@@ -202,6 +204,7 @@
     </scripts>
     <scripts name="Enemy">
       <script>scripts\LOScheck.gml</script>
+      <script>scripts\LOScheckPlayer.gml</script>
     </scripts>
     <scripts name="OLD">
       <script>scripts\movementbackup.gml</script>
@@ -325,6 +328,8 @@
       <object>objects\obj_gauntTail</object>
       <object>objects\obj_enemydebris</object>
       <object>objects\obj_darkspawn</object>
+      <object>objects\obj_ballplant</object>
+      <object>objects\obj_ball</object>
     </objects>
     <objects name="GUI">
       <object>objects\obj_HUD</object>
