@@ -32,7 +32,7 @@
 spawnedball = false;
 launchedball = false;
 image_speed = 0;
-image_xscale = random_range(0.85,1)
+//image_xscale = random_range(0.85,1)
 flip = random(1);
 if flip &lt; 0.5
     {
@@ -44,7 +44,7 @@ else flip = 1;
 anim_speed = 0.25;
 lastframe = 7;
 launchframe = 4;        //frame ball is fired on
-wakeuprange = 200;
+wakeuprange = 500;
 awake = false;
 maxtimetoLOS = 30;     //how frequently to perform LOS check
 timetoLOS = maxtimetoLOS;
@@ -86,7 +86,7 @@ testy = y + lengthdir_y(200, image_angle);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>disttoplayer = point_distance(testx, testy, obj_player.x, obj_player.y)
+            <string>disttoplayer = point_distance(x, y, obj_player.x, obj_player.y)
 
 if disttoplayer &lt;= wakeuprange awake = true;
 

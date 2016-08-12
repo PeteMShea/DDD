@@ -331,7 +331,17 @@ for (u = 0; u < gridsize; u +=1)
     {
         for (v = 0; v < gridsize; v +=1)
         {
-            script_execute(scr_genBlocks, u, v, bigblock[u,v], gridsize, starthuge, endhuge)
+                //BALLPLANTS
+                if walkblock[u, v] > 0 && walkblock[u, v] >= (totalwalkblocks * ballplantstartblock) && walkblock[u, v] <= (totalwalkblocks * ballplantendblock)    
+                    {                        
+                                                
+                        ballplantdensity = ballplantdensitymin + (ballplantdensityrange * ((walkblock[u,v]- totalwalkblocks * ballplantstartblock)/(totalwalkblocks * ballplantendblock - totalwalkblocks * ballplantstartblock)))
+                        show_debug_message("Adding ballplants at Walkblock: " + string(walkblock[u,v]) + " with chance: " + string(ballplantdensity));                        
+                    }
+                else ballplantdensity = 0;            
+            
+            
+            script_execute(scr_genBlocks, u, v, bigblock[u,v], gridsize, starthuge, endhuge, ballplantdensity)
 
 
              
@@ -598,7 +608,7 @@ if bigblock[u , v] > 0
                                         
                                     }
                                          enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= enemychance block[column + u * 12, c + v * 12] = 4     //if last block is empty and random chance add enemy
+                                         if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, c + v * 12] = 4     //if last block is empty and random chance add enemy
                                     }                    
                     }                
 
@@ -616,7 +626,7 @@ if bigblock[u , v] > 0
                                         if block[column + u * 12,(11-c) + v * 12] == 0 block[column + u * 12, (11-c) + v * 12] = 1     //if block is empty add one
                                     }
                                          enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= enemychance block[column + u * 12, (11-c) + v * 12] = 3     //if last block is empty and random chance add enemy
+                                         if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, (11-c) + v * 12] = 3     //if last block is empty and random chance add enemy
                             }                    
                     }                  
 
@@ -635,7 +645,7 @@ if bigblock[u , v] > 0
                                         
                                     }
                                          enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= enemychance block[(11-c) + u * 12, row + v * 12] = 5     //if last block is empty and random chance add enemy
+                                         if  c < 11 && enemyspawn <= ballplantdensity block[(11-c) + u * 12, row + v * 12] = 5     //if last block is empty and random chance add enemy
                                     }                    
                     } 
 
@@ -654,7 +664,7 @@ if bigblock[u , v] > 0
                                         
                                     }
                                          enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= enemychance block[c + u * 12, row + v * 12] = 6     //if last block is empty and random chance add enemy
+                                         if  c < 11 && enemyspawn <= ballplantdensity block[c + u * 12, row + v * 12] = 6     //if last block is empty and random chance add enemy
                                     }                    
                     }                                         
 
@@ -675,7 +685,7 @@ if bigblock[u , v] > 0
                                         
                                     }
                                          enemyspawn = random(1);
-                                         if enemyspawn <= enemychance block[column + u * 12, c + v * 12] = 4     //if last block is empty and random chance add enemy
+                                         if enemyspawn <= ballplantdensity block[column + u * 12, c + v * 12] = 4     //if last block is empty and random chance add enemy
                                    
 
                                 clampmax = (12 - count - mingap)
@@ -688,7 +698,7 @@ if bigblock[u , v] > 0
                                         
                                     }
                                          enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= enemychance block[column + u * 12, (11-c) + v * 12] = 3     //if last block is empty and random chance add enemy
+                                         if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, (11-c) + v * 12] = 3     //if last block is empty and random chance add enemy
                               }                         
                     }                                         
 
@@ -709,7 +719,7 @@ if bigblock[u , v] > 0
                                         
                                     }
                                          enemyspawn = random(1);
-                                         if enemyspawn <= enemychance block[c + u * 12, row + v * 12] = 6     //if last block is empty and random chance add enemy
+                                         if enemyspawn <= ballplantdensity block[c + u * 12, row + v * 12] = 6     //if last block is empty and random chance add enemy
                             
                                 clampmax = (12 - count - mingap)
                                 oppositecount = oppositecount + irandom_range(-1, 2)
@@ -721,7 +731,7 @@ if bigblock[u , v] > 0
                                         
                                     }
                                          enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= enemychance block[(11-c) + u * 12, row + v * 12] = 5     //if last block is empty and random chance add enemy
+                                         if  c < 11 && enemyspawn <= ballplantdensity block[(11-c) + u * 12, row + v * 12] = 5     //if last block is empty and random chance add enemy
                             }                     
                     }                     
 
@@ -742,7 +752,7 @@ if bigblock[u , v] > 0
                                         
                                     }
                                          enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= enemychance block[column + u * 12, c + v * 12] = 4     //if last block is empty and random chance add enemy
+                                         if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, c + v * 12] = 4     //if last block is empty and random chance add enemy
                                     }                    
                     } 
                                         
@@ -764,7 +774,7 @@ if bigblock[u , v] > 0
                                         
                                     }
                                          enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= enemychance block[column + u * 12, c + v * 12] = 4     //if last block is empty and random chance add enemy
+                                         if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, c + v * 12] = 4     //if last block is empty and random chance add enemy
                                     }                    
                     } 
 
@@ -785,7 +795,7 @@ if bigblock[u , v] > 0
                                         
                                     }
                                          enemyspawn = random(1);
-                                         if c < 11 && enemyspawn <= enemychance block[column + u * 12, (11-c) + v * 12] = 3     //if last block is empty and random chance add enemy
+                                         if c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, (11-c) + v * 12] = 3     //if last block is empty and random chance add enemy
                                     }                    
                     }                     
 
@@ -807,7 +817,7 @@ if bigblock[u , v] > 0
                                         
                                     }
                                          enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= enemychance block[column + u * 12, (11-c) + v * 12] = 3     //if last block is empty and random chance add enemy
+                                         if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, (11-c) + v * 12] = 3     //if last block is empty and random chance add enemy
                                     }                    
                     }                     
                     
@@ -828,7 +838,7 @@ if bigblock[u , v] > 0
                                         
                                     }
                                          enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= enemychance block[(11-c) + u * 12, row + v * 12] = 5     //if last block is empty and random chance add enemy
+                                         if  c < 11 && enemyspawn <= ballplantdensity block[(11-c) + u * 12, row + v * 12] = 5     //if last block is empty and random chance add enemy
                                     }                    
                     }                    
 
@@ -849,7 +859,7 @@ if bigblock[u , v] > 0
                                         
                                     }
                                          enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= enemychance block[column + u * 12, c + v * 12] = 4     //if last block is empty and random chance add enemy
+                                         if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, c + v * 12] = 4     //if last block is empty and random chance add enemy
                                     }                    
                     }  
 
@@ -870,7 +880,7 @@ if bigblock[u , v] > 0
                                         
                                     }
                                          enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= enemychance block[column + u * 12, (11-c) + v * 12] = 4     //if last block is empty and random chance add enemy
+                                         if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, (11-c) + v * 12] = 4     //if last block is empty and random chance add enemy
                                     }                    
                     }                      
                     
@@ -893,7 +903,7 @@ if bigblock[u , v] > 0
                                         
                                     }
                                          enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= enemychance block[c + u * 12, row + v * 12] = 6     //if last block is empty and random chance add enemy
+                                         if  c < 11 && enemyspawn <= ballplantdensity block[c + u * 12, row + v * 12] = 6     //if last block is empty and random chance add enemy
                                     }                    
                     }                     
                                                         
@@ -917,7 +927,7 @@ if bigblock[u , v] > 0
                                 if block[bu + u * 12, bv + v * 12] == 3      //enemy on south side facing up
                                     {
 
-                                        with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  +16 * global.RM , v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 16 * global.RM , obj_fixedgunbase))
+                                        with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  +32, v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 32, obj_ballplant))
                                                 {
                                                     image_angle = 90;
                                                 }
@@ -926,7 +936,7 @@ if bigblock[u , v] > 0
                                         }
                                 if block[bu + u * 12, bv + v * 12] == 4      //enemy on north side facing down
                                         {
-                                            with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  + 16 * global.RM , v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 16 * global.RM , obj_fixedgunbase))
+                                            with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  + 32, v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 32 , obj_ballplant))
                                                 {
                                                     image_angle = 270;
                                                     
@@ -935,7 +945,7 @@ if bigblock[u , v] > 0
                                         }
                                 if block[bu + u * 12, bv + v * 12] == 5      //enemy on west side facing east
                                         {
-                                          with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  + 16 * global.RM , v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 16 * global.RM , obj_fixedgunbase))
+                                          with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  + 32 , v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 32, obj_ballplant))
                                                 {
                                                 image_angle = 180;
                                                 }
@@ -943,7 +953,7 @@ if bigblock[u , v] > 0
                                         }
                                 if block[bu + u * 12, bv + v * 12] == 6      //enemy on east side facing west
                                         {
-                                          with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  + 16 * global.RM , v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 16 * global.RM , obj_fixedgunbase))
+                                          with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  + 32 , v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 32, obj_ballplant))
                                                 {
                                                 image_angle = 0;
                                                 }
