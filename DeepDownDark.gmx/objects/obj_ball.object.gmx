@@ -7,7 +7,191 @@
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
-  <events/>
+  <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// initialise
+
+scale = 0.2;
+scaleinc = 0.01;
+ballspeed = 0;
+acceleration = 0.2;
+maxspeed = 9.0;
+launch = false;
+lifespan = 180;
+balldamage = irandom_range(18, 23);        //damage to do to the player
+coltest = noone;
+hit = noone;
+startx = x;
+starty = y;
+
+
+
+
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// scale up on spawn
+
+if scale &lt; 1.0
+    {
+        scale += scaleinc;
+        image_xscale = scale;
+        image_yscale = scale;
+    }
+
+ 
+    
+    
+// accelerate on launch
+if launch == true
+    {
+        if ballspeed &lt; maxspeed ballspeed += acceleration        
+       // Movement
+        destx = x + lengthdir_x(500, fireangle);
+        desty = y + lengthdir_y(500, fireangle);
+        
+        vx = (destx - x);
+        vy = (desty - y);
+            
+        len = sqrt(vx * vx + vy * vy);
+            
+        vx = vx / len;
+        vy = vy / len;
+        
+        
+
+        
+        
+        // remove bullets over time if no collision
+        lifespan -= 1;
+        if lifespan &lt;= 0 instance_destroy();
+        
+        cleardist = abs(distance_to_point(startx, starty));
+        
+        //once free from ballplant object
+        if cleardist &gt; 64
+            {
+                //spawn blacksnakes
+                spawnx = x + random_range(-5, 5);
+                spawny = y + random_range(-5, 5);
+                snakeangle = image_angle + random_range(-10,10);                
+                inst = instance_create(spawnx, spawny, obj_blacksnake);
+                with (inst)
+                    {
+                        image_angle = other.snakeangle;
+                        direction = other.snakeangle;
+                        speed = other.ballspeed;
+                        lifespan = irandom_range(15,18)- speed;
+                    }
+                
+                if coltest == noone coltest = instance_place( x + lengthdir_x(10, image_angle) + vx * ballspeed , y+ lengthdir_y(10, image_angle) + vy * ballspeed , obj_player);
+                if coltest == noone coltest = instance_place( x + lengthdir_x(10, image_angle) + vx * ballspeed, y+ lengthdir_y(10, image_angle) + vy * ballspeed, obj_block);
+                //coltest = instance_place( x + vx * ballspeed, y + vy * ballspeed, all);
+
+                
+                            
+            }
+
+        x += vx * ballspeed
+        y += vy * ballspeed
+
+        // Collision detection and resolution
+        if coltest != noone &amp;&amp; hit == noone
+                    {
+                        with(coltest)
+                            {
+                                other.hit = object_get_name(object_index);
+                            }
+                        show_debug_message(string(hit));    
+                        if string(hit) != "obj_blacksnake"
+                        {
+                            lifespan = 1;
+                            obj_blacksnake.lifespan = 10;        //kill any snakes in the air at this point
+                            image_angle = point_direction(x, y, coltest.x, coltest.y);
+                            //instance_create(coltest.x, coltest.y, debug_spot);
+                                for (i= 0; i&lt; random_range(15, 25); i +=1)
+                                    {
+                                        spawnx = x + random_range(-5, 5);
+                                        spawny = y + random_range(-5, 5);
+                                        snakeangle = image_angle + random_range(-20,20);                
+                                        inst = instance_create(spawnx, spawny, obj_blacksnake);                                
+                                        with (inst)
+                                                {
+                                                    image_angle = other.snakeangle;
+                                                    homing = true;
+                                                    target = other.coltest;
+                                                    lifespan = random_range(45,60);
+                                                    speed = 2;
+                                                    deceleration = -0.2;
+                                                }                                    
+                                    }    
+                            
+                            
+                            if string(hit) == "obj_player"                        
+                            {
+                                        lifespan = 1;
+                                        global.playerHealth -= balldamage;
+                                        global.playerdamaged = 20;
+                                        global.madness += balldamage;
+                                        loc_x = x;
+                                        loc_y = y;
+                                        damage = balldamage;
+                                        script_execute(scr_shipvisualdamage, x, y, loc_x, loc_y, damage);
+                                                         
+                            }
+                        
+                                //gaunts and enemies in here
+                        }
+                        else
+                            {
+                                coltest = noone;
+                                hit = noone;
+                            }
+                    }                
+    }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>
