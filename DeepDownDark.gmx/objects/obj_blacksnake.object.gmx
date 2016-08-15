@@ -36,6 +36,11 @@ alphafade = 0.05;
 deceleration = 0.2;
 homing = true;
 target = self;
+xoff = random_range(-6,6);
+yoff = random_range(-6,6);
+
+
+
 
 
 
@@ -75,7 +80,8 @@ if lifespan &lt;= lifeover
 
 if homing == true
 {
-    direction = point_direction(x, y, target.x, target.y);
+    direction = point_direction(x, y, target.x + xoff, target.y + yoff);
+
 
 }
 </string>

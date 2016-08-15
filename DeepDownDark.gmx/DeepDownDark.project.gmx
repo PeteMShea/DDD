@@ -206,6 +206,7 @@
     <scripts name="Enemy">
       <script>scripts\LOScheck.gml</script>
       <script>scripts\LOScheckPlayer.gml</script>
+      <script>scripts\LOScheckEnemy.gml</script>
     </scripts>
     <scripts name="OLD">
       <script>scripts\movementbackup.gml</script>

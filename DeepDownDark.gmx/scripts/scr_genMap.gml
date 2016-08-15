@@ -751,8 +751,8 @@ if bigblock[u , v] > 0
                                         if block[column + u * 12,c + v * 12] == 0 block[column + u * 12, c + v * 12] = 1     //if block is empty add one
                                         
                                     }
-                                         enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, c + v * 12] = 4     //if last block is empty and random chance add enemy
+                                         //enemyspawn = random(1);
+                                         //if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, c + v * 12] = 4     //if last block is empty and random chance add enemy
                                     }                    
                     } 
                                         
@@ -773,8 +773,8 @@ if bigblock[u , v] > 0
                                         if block[column + u * 12,c + v * 12] == 0 block[column + u * 12, c + v * 12] = 1     //if block is empty add one
                                         
                                     }
-                                         enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, c + v * 12] = 4     //if last block is empty and random chance add enemy
+                                         //enemyspawn = random(1);
+                                         //if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, c + v * 12] = 4     //if last block is empty and random chance add enemy
                                     }                    
                     } 
 
@@ -794,8 +794,8 @@ if bigblock[u , v] > 0
                                         if block[column + u * 12,(11-c) + v * 12] == 0 block[column + u * 12, (11-c) + v * 12] = 1     //if block is empty add one
                                         
                                     }
-                                         enemyspawn = random(1);
-                                         if c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, (11-c) + v * 12] = 3     //if last block is empty and random chance add enemy
+                                         //enemyspawn = random(1);
+                                         //if c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, (11-c) + v * 12] = 3     //if last block is empty and random chance add enemy
                                     }                    
                     }                     
 
@@ -816,8 +816,8 @@ if bigblock[u , v] > 0
                                         if block[column + u * 12,(11-c) + v * 12] == 0 block[column + u * 12, (11-c) + v * 12] = 1     //if block is empty add one
                                         
                                     }
-                                         enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, (11-c) + v * 12] = 3     //if last block is empty and random chance add enemy
+                                         //enemyspawn = random(1);
+                                         //if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, (11-c) + v * 12] = 3     //if last block is empty and random chance add enemy
                                     }                    
                     }                     
                     
@@ -837,8 +837,8 @@ if bigblock[u , v] > 0
                                         if block[(11-c)+ u * 12,row + v * 12] == 0 block[(11-c) + u * 12, row + v * 12] = 1     //if block is empty add one
                                         
                                     }
-                                         enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= ballplantdensity block[(11-c) + u * 12, row + v * 12] = 5     //if last block is empty and random chance add enemy
+                                         //enemyspawn = random(1);
+                                         //if  c < 11 && enemyspawn <= ballplantdensity block[(11-c) + u * 12, row + v * 12] = 5     //if last block is empty and random chance add enemy
                                     }                    
                     }                    
 
@@ -858,8 +858,8 @@ if bigblock[u , v] > 0
                                         if block[column + u * 12,c + v * 12] == 0 block[column + u * 12, c + v * 12] = 1     //if block is empty add one
                                         
                                     }
-                                         enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, c + v * 12] = 4     //if last block is empty and random chance add enemy
+                                         //enemyspawn = random(1);
+                                         //if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, c + v * 12] = 4     //if last block is empty and random chance add enemy
                                     }                    
                     }  
 
@@ -879,8 +879,8 @@ if bigblock[u , v] > 0
                                         if block[column + u * 12,(11-c) + v * 12] == 0 block[column + u * 12, (11-c) + v * 12] = 1     //if block is empty add one
                                         
                                     }
-                                         enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, (11-c) + v * 12] = 4     //if last block is empty and random chance add enemy
+                                         //enemyspawn = random(1);
+                                         //if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, (11-c) + v * 12] = 4     //if last block is empty and random chance add enemy
                                     }                    
                     }                      
                     
@@ -902,8 +902,8 @@ if bigblock[u , v] > 0
                                         if block[c+ u * 12,row + v * 12] == 0 block[c + u * 12, row + v * 12] = 1     //if block is empty add one
                                         
                                     }
-                                         enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= ballplantdensity block[c + u * 12, row + v * 12] = 6     //if last block is empty and random chance add enemy
+                                         //enemyspawn = random(1);
+                                         //if  c < 11 && enemyspawn <= ballplantdensity block[c + u * 12, row + v * 12] = 6     //if last block is empty and random chance add enemy
                                     }                    
                     }                     
                                                         

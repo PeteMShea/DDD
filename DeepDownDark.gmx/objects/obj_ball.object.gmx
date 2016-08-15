@@ -176,8 +176,7 @@ if launch == true
                                         script_execute(scr_shipvisualdamage, x, y, loc_x, loc_y, damage);
                                                          
                             }
-                        
-                                //gaunts and enemies in here
+
                         }
                         else
                             {

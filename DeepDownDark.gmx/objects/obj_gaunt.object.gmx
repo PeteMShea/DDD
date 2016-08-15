@@ -134,6 +134,15 @@ if awake == true
             global.gauntseen = true;    
         }
     
+    // test if nearby plant blackball
+    bomb = instance_nearest(x, y, obj_ball);
+        if bomb != noone &amp;&amp; bomb.launch == true
+        {
+            bombdist = distance_to_object(bomb)
+            if bombdist &lt;= 2 currenthealth = 0;
+        }
+    
+        
     // when we first wake up  set a point to travel to             
     if homing == false &amp;&amp; launchtime == 0
         {

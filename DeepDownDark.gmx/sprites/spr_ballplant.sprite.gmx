@@ -28,5 +28,8 @@
     <frame index="5">images\spr_ballplant_5.png</frame>
     <frame index="6">images\spr_ballplant_6.png</frame>
     <frame index="7">images\spr_ballplant_7.png</frame>
+    <frame index="8">images\spr_ballplant_8.png</frame>
+    <frame index="9">images\spr_ballplant_9.png</frame>
+    <frame index="10">images\spr_ballplant_10.png</frame>
   </frames>
 </sprite>

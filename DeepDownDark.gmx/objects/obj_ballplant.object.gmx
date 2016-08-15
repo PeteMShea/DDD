@@ -42,8 +42,9 @@ if flip &lt; 0.5
 else flip = 1;
 
 anim_speed = 0.25;
-lastframe = 7;
-launchframe = 4;        //frame ball is fired on
+lastframe = 10;
+holdframe = 3;
+launchframe = 5;        //frame ball is fired on
 wakeuprange = 500;
 awake = false;
 maxtimetoLOS = 30;     //how frequently to perform LOS check
@@ -54,7 +55,7 @@ done = false;
 ballspeed = 4.0;
 linestartx = x;
 linestarty = y;
-aimadjust = 5;     //number of degrees to look left or right for player- if less than this, fire
+aimadjust = 10;     //number of degrees to look left or right for player- if less than this, fire
 
 testx = x + lengthdir_x(200, image_angle);      //check player proximity from this point in air in front of the plant
 testy = y + lengthdir_y(200, image_angle);
@@ -102,8 +103,19 @@ if awake == true
                     {
                         image_angle = other.ballangle;                
                     }
-                spawnedball = true                  
+                spawnedball = true;
+                
             }
+        if launchedball == false
+        {
+            if image_index &lt; holdframe image_speed = anim_speed                
+            if image_index &gt;= holdframe
+                    {
+                        image_speed = 0;
+                        image_index = holdframe;
+                    }  
+        
+        }
         if spawnedball == true &amp;&amp; launchedball == false
             {
                 playerfrontx = obj_player.x + lengthdir_x(32, obj_player.image_angle);
@@ -118,12 +130,18 @@ if awake == true
                         timetoLOS = maxtimetoLOS;
                         lineendx = x + lengthdir_x(linedistance, image_angle + aimadjust);
                         lineendy = y + lengthdir_y(linedistance, image_angle + aimadjust);
-                        script_execute(LOScheckPlayer, linestartx, linestarty, lineendx, lineendy, linedistance, hit);                                                
+                        script_execute(LOScheckPlayer, linestartx, linestarty, lineendx, lineendy, linedistance, hit);
+                        lineendx = x + lengthdir_x(linedistance, image_angle + 15);
+                        lineendy = y + lengthdir_y(linedistance, image_angle + 15);
+                        script_execute(LOScheckEnemy, linestartx, linestarty, lineendx, lineendy, linedistance, hit);                                                 
                         if hit == 0
                             {
                                 lineendx = x + lengthdir_x(linedistance, image_angle - aimadjust);
                                 lineendy = y + lengthdir_y(linedistance, image_angle - aimadjust);
                                 script_execute(LOScheckPlayer, linestartx, linestarty, lineendx, lineendy, linedistance, hit);
+                                lineendx = x + lengthdir_x(linedistance, image_angle - 15);
+                                lineendy = y + lengthdir_y(linedistance, image_angle - 15);
+                                script_execute(LOScheckEnemy, linestartx, linestarty, lineendx, lineendy, linedistance, hit);
                             }
                     }
                 if hit != 0 launchedball = true;  
