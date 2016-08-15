@@ -45,7 +45,7 @@ anim_speed = 0.25;
 lastframe = 10;
 holdframe = 3;
 launchframe = 5;        //frame ball is fired on
-wakeuprange = 500;
+wakeuprange = 700;
 awake = false;
 maxtimetoLOS = 30;     //how frequently to perform LOS check
 timetoLOS = maxtimetoLOS;
@@ -133,7 +133,10 @@ if awake == true
                         script_execute(LOScheckPlayer, linestartx, linestarty, lineendx, lineendy, linedistance, hit);
                         lineendx = x + lengthdir_x(linedistance, image_angle + 15);
                         lineendy = y + lengthdir_y(linedistance, image_angle + 15);
-                        script_execute(LOScheckEnemy, linestartx, linestarty, lineendx, lineendy, linedistance, hit);                                                 
+                        script_execute(LOScheckEnemy, linestartx, linestarty, lineendx, lineendy, linedistance, hit);
+                        lineendx = x + lengthdir_x(linedistance, image_angle);
+                        lineendy = y + lengthdir_y(linedistance, image_angle);
+                        script_execute(LOScheckAsteroid, linestartx, linestarty, lineendx, lineendy, linedistance, hit);                                                                                                  
                         if hit == 0
                             {
                                 lineendx = x + lengthdir_x(linedistance, image_angle - aimadjust);

@@ -15,8 +15,7 @@ for (count = 0; count < linedistance; count += 4)           //number here determ
 {
     if hit == 0
         {
-            test = collision_point(linestartx + vx*count, linestarty + vy*count, obj_gaunt, false, true);
-            //if test == noone test = collision_point(linestartx + vx*count, linestarty + vy*count, obj_asteroid, false, true);
+            test = collision_point(linestartx + vx*count, linestarty + vy*count, obj_asteroid, false, true);
             //if debug == true instance_create(linestartx + vx*count, linestarty + vy*count, debug_spot);
             if test != noone hit = count else hit = 0        
         } 

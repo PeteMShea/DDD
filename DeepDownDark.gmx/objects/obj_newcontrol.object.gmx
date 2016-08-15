@@ -40,9 +40,10 @@ goldspread = 30;     // how spread out or clumped gold is-  lower numbers for mo
 goldthreshold = 0.5;       //how far down weeblock columns before gold can be placed (1 = never)
 vinechance = 0.1;      //chance of vines being added- overall amount of greenery
 vinethreshold = 0.5;       //how far down weeblock columns before vines can be placed (1 = never)
-asteroidchance = 0.2;       //chance of asteroids being added
-goldasteroidchance = 0.1;   //chance of gold asteroid being added 0.1
-goldnuggetchance = 0.05;     //chance of gold nugget being added
+asteroidchance = 0.25;       //chance of asteroids being added
+goldasteroidchance = 0.15;   //chance of gold asteroid being added 0.1
+goldnuggetchance = 0.04;     //chance of gold nugget being added
+glassasteroidchance = 0.08;     //chance of indestructible asteroid
 
 
 minspike = 1;       //minimum number of normal blocks to add to each edge- should always be at least 1

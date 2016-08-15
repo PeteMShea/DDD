@@ -84,6 +84,8 @@
       <sprite>sprites\spr_asteroidnormal</sprite>
       <sprite>sprites\spr_goldnugget</sprite>
       <sprite>sprites\spr_goldnuggetnormal</sprite>
+      <sprite>sprites\spr_glassasteroid</sprite>
+      <sprite>sprites\spr_glassasteroidnormal</sprite>
     </sprites>
     <sprites name="old">
       <sprite>sprites\spr_bigblock</sprite>
@@ -207,6 +209,7 @@
       <script>scripts\LOScheck.gml</script>
       <script>scripts\LOScheckPlayer.gml</script>
       <script>scripts\LOScheckEnemy.gml</script>
+      <script>scripts\LOScheckAsteroid.gml</script>
     </scripts>
     <scripts name="OLD">
       <script>scripts\movementbackup.gml</script>
@@ -266,6 +269,7 @@
       <object>objects\obj_asteroid</object>
       <object>objects\obj_asteroidblock</object>
       <object>objects\obj_goldasteroid</object>
+      <object>objects\obj_glassasteroid</object>
       <object>objects\obj_goldnugget</object>
       <object>objects\obj_block</object>
       <object>objects\obj_hugeblock</object>

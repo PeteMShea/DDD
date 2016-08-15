@@ -2285,6 +2285,13 @@ if totalspawnpoints > 0
                     
                     check = 2;
                 }
+            if check < glassasteroidchance && colcheck == noone
+                {
+                    instance_create(spawnpointx[count]+8 * global.RM , spawnpointy[count]-20 * global.RM , oLightSourceAsteroid);
+                    instance_create(spawnpointx[count], spawnpointy[count], obj_glassasteroid);
+                    
+                    check = 2;
+                }                
             if check < goldasteroidchance && colcheck == noone
                 {
                     instance_create(spawnpointx[count]+8 * global.RM , spawnpointy[count]-20 * global.RM , oLightSourceAsteroid);
@@ -2301,8 +2308,10 @@ if totalspawnpoints > 0
             //instance_deactivate_region(spawnpointx[count]-192, spawnpointy[count]-192, 384, 384, true, true);
         
         }
-    //instance_deactivate_all(true);
+    //instance_deactivate_all(true);                
 }
+
+
 
 #define scr_sporeoffset
 offsetx = lengthdir_x(sporeoffsetdistance, sporeoffsetangle);
