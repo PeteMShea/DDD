@@ -162,7 +162,7 @@ if repair == true
         draw_set_colour(c_white);
         xpos = 640;
         if obj_player.y &lt; 200 ypos = 300 else ypos = 64  
-        draw_text(xpos, ypos, "LANDED");
+        //draw_text(xpos, ypos, "LANDED");
         intro = true;
     }
 

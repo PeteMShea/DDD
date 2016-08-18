@@ -28,38 +28,7 @@
             <string>
 /// initialise variables
 ship = "shark";
-//ship = "tube";
 
-if ship =="tube"
-{
-    // Constants
-    thrust = 0.001;       //thrust applied per frame of mouse input
-    min_thrust = 0.01;
-    max_forwardthrust = 0.4;
-    max_backthrust = 0.2;
-    thrustcounter = 20; //minimum number of frames thrust is applied before deceleration starts
-    thrustacc = 1.005;    //how thrust accelerates while input is held
-    inertia = 10;     //percentage speed lost per frame
-    deceleration = 10;
-    decay = 0.15;        // how quickly deceleration when not thrusting decays
-    min_speed = 0.2;    // minimum ie terminal velocity
-    max_speed = 3;      //maximum speed achievable
-    maxturnspeed = 1;
-    turnacceleration = 0.1;    //how much turnspeed accelerates over time        
-    turndeceleration = 0.1;    //how much turnspeed decelerates over time
-    bouncemult = 0.5;     //how much ship bounces off walls 1 = inverted velocity on impact
-    damagemult = 20;     //how much collision damage does
-    armour = 1.0;       // Ship armour reduces damage (1 weak, 0 invincible)
-    minvisualdamage = 2;    //how much damage must be to cause visual change
-    damagecooldown = 1;    //How many seconds player is invincible after taking damage
-    thrustparticles = true;    
-    thrustcolour = make_colour_rgb(80, 80, 80);
-    shipscale = 16 * global.RM;      //radius of collision circle for ship
-    turret = true;
-    retro = false;
-    shoot_rate = 6;     //number of frames between bullets when mouse button held
-    trails = false;
-}
 
 if ship =="shark"
 {
@@ -90,7 +59,7 @@ if ship =="shark"
     turret = false;
     retro = true;    
     shoot_rate = 6;     //number of frames between bullets when mouse button held
-    minlandspeed = 0.25;
+    minlandspeed = 0.4;
     
 }
 
@@ -697,8 +666,8 @@ if collisionoff == false &amp;&amp; global.autopilot &lt;= 0            //debug 
     colcheck = noone;
     
     colcheck = collision_circle(x + speed_x, y + speed_y, shipscale, obj_block, false, true) 
-    if colcheck == noone colcheck = collision_circle(x + lengthdir_x(30 * global.RM, image_angle + 135), y + lengthdir_y(30 * global.RM, image_angle + 135), 4, obj_block, false, true)
-    if colcheck == noone colcheck = collision_circle(x + lengthdir_x(30 * global.RM, image_angle + 225), y + lengthdir_y(30 * global.RM, image_angle + 225), 4, obj_block, false, true)  
+    if colcheck == noone colcheck = collision_circle(x + lengthdir_x(32 * global.RM, image_angle + 140), y + lengthdir_y(32 * global.RM, image_angle + 140), 8, obj_block, false, true)
+    if colcheck == noone colcheck = collision_circle(x + lengthdir_x(32 * global.RM, image_angle + 230), y + lengthdir_y(32 * global.RM, image_angle + 230), 8, obj_block, false, true)  
     if colcheck == noone colcheck = collision_circle(x + lengthdir_x(-3 * global.RM, thrustdir) + speed_x, y + speed_y, shipscale, obj_asteroid, true, true)
     
     if colcheck != noone
@@ -745,8 +714,8 @@ if collisionoff == false &amp;&amp; global.autopilot &lt;= 0            //debug 
             }
     
         //now check for leg collisions for landing
-        leftlegcheck = collision_circle(x + lengthdir_x(30 * global.RM, image_angle + 135), y + lengthdir_y(30 * global.RM, image_angle + 135), 4, obj_block, false, true)
-        rightlegcheck = collision_circle(x + lengthdir_x(30 * global.RM, image_angle + 225), y + lengthdir_y(30 * global.RM, image_angle + 225), 4, obj_block, false, true)
+        leftlegcheck = collision_circle(x + lengthdir_x(32 * global.RM, image_angle + 140), y + lengthdir_y(32 * global.RM, image_angle + 140), 8, obj_block, false, true)
+        rightlegcheck = collision_circle(x + lengthdir_x(32 * global.RM, image_angle + 230), y + lengthdir_y(32 * global.RM, image_angle + 230), 8, obj_block, false, true)
         currrentspeed = sqrt(speed_x * speed_x + speed_y * speed_y);          
         if currrentspeed &lt;= minlandspeed landingokay = true else landingokay = false
         if global.autopilot &gt; 0 landingokay = false
@@ -764,8 +733,8 @@ if collisionoff == false &amp;&amp; global.autopilot &lt;= 0            //debug 
                 landing = 1;    //in progress
                 
                 //now check if the right leg is within a reasonable range of the ground before landing sequence
-                landx = x + lengthdir_x(36 * global.RM, image_angle + 210); 
-                landy = y + lengthdir_y(36 * global.RM, image_angle + 210);        
+                landx = x + lengthdir_x(40 * global.RM, image_angle + 215); 
+                landy = y + lengthdir_y(40 * global.RM, image_angle + 215);        
                 //instance_create(landx, landy, obj_debug);
                 
                 var legcheck = collision_point(landx, landy, obj_block, false, false);            
@@ -781,8 +750,8 @@ if collisionoff == false &amp;&amp; global.autopilot &lt;= 0            //debug 
                 landing = 2;    // in progress
                 
                 //now check if the left leg is within a reasonable range of the ground before landing sequence
-                landx = x + lengthdir_x(36 * global.RM, image_angle + 150); 
-                landy = y + lengthdir_y(36 * global.RM, image_angle + 150);            
+                landx = x + lengthdir_x(40 * global.RM, image_angle + 145); 
+                landy = y + lengthdir_y(40 * global.RM, image_angle + 145);            
                 //instance_create(landx, landy, obj_debug);   
                 
                 var legcheck = collision_point(landx, landy, obj_block, false, false);            
