@@ -239,6 +239,7 @@
     <objects name="player">
       <object>objects\obj_player</object>
       <object>objects\obj_sharkRetro</object>
+      <object>objects\obj_sharkturret</object>
       <object>objects\obj_sharkSpec</object>
       <object>objects\obj_redtrail</object>
       <object>objects\obj_redlightglow</object>
@@ -257,7 +258,6 @@
       <object>objects\obj_sharkRThrust</object>
       <object>objects\obj_sharkBThrust</object>
       <object>objects\obj_sharkthrust_trail</object>
-      <object>objects\obj_sharkturret</object>
       <object>objects\obj_bullet</object>
       <object>objects\obj_bulletspark</object>
       <object>objects\oFlyingHead</object>

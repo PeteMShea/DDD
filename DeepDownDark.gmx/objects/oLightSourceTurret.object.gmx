@@ -33,7 +33,7 @@ cameraSpacePosY = 0.0;
 //Currently sprites appear to be located at z = 0.5. Making the light's z
 //position higher will move it towards the camera and away from the object,
 //making shadows shorter, falloff less dramatic, etc.
-zPosition = 1.1;        //0.7
+zPosition = -0.7;        //0.7
 
 //Simply the colour of the light. Reduce all three to make the light less
 //bright.
@@ -66,8 +66,8 @@ colourBlue = baseLightlevel;
           <argument>
             <kind>1</kind>
             <string>
-x = obj_sharkturret.x + 32;
-y = obj_sharkturret.y - 32;
+x = obj_sharkturret.x + 16;
+y = obj_sharkturret.y - 16;
 
 
 </string>

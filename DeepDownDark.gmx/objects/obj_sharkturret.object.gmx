@@ -35,8 +35,8 @@ shoot_counter = 0;
 
 
 // move the turret to start
-x = obj_player.x;
-y = obj_player.y;
+x = obj_player.x + lengthdir_x(14, obj_player.image_angle);
+y = obj_player.y + lengthdir_y(14, obj_player.image_angle);
 image_angle = 270;
 image_speed = 0;
 
@@ -87,7 +87,7 @@ u_LowerAmbientColour = shader_get_uniform(SpriteLampShader, "sl_LowerAmbientColo
 //diffuse comes from whatever image is assigned to the object in the usual fashion.
 normalDepthTexture = sprite_get_texture(spr_SharkTurretNormal, 0);
 //specGlossMap = sprite_get_texture(spr_shipSharkNormal, 0);
-specGlossMap = sprite_get_texture(spr_SharkTurret, 0);
+specGlossMap = sprite_get_texture(spr_SharkTurretGS, 0);
 aoMap = sprite_get_texture(spr_SharkTurret, 0);
 emissiveMap = sprite_get_texture(spr_SharkTurret, 0);
 //(note - this example doesn't have an emissive map so I'm using the diffuse map as
@@ -122,7 +122,7 @@ lowerAmbient_Blue = 0.05;
 
 
 //The nearest lightsource.
-lightSource = instance_nearest(x,y,oLightSourceTurret);
+lightSource = instance_nearest(x,y,oLightSource);
 
 //add the light to follow player
 
@@ -152,8 +152,8 @@ lightSource = instance_nearest(x,y,oLightSourceTurret);
             <kind>1</kind>
             <string>// move the gun with the ship and have it rotate independently
 
-x = obj_player.x;
-y = obj_player.y;
+x = obj_player.x + lengthdir_x(16, obj_player.image_angle);
+y = obj_player.y + lengthdir_y(16, obj_player.image_angle);
 joyleftx = gamepad_axis_value(0, gp_axisrh);
 joylefty = gamepad_axis_value(0, gp_axisrv);
 
