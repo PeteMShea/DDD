@@ -3,7 +3,7 @@
 if fadein = true
 {
     if image_alpha < finalalpha image_alpha += alphafade
-    if image_alpha == finalalpha fadein = false;
+    if image_alpha >= finalalpha fadein = false;
 }
 
 // fade out

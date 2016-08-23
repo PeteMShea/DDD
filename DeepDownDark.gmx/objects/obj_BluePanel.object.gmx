@@ -28,8 +28,8 @@
             <string>// initialise
 
 
-alphafade = 0.05;
-finalalpha = 0.85;
+alphafade = 0.025;
+finalalpha = 0.3;
 
 image_alpha = 0.0;
 

@@ -27,8 +27,10 @@
             <kind>1</kind>
             <string>// initialise
 
-x = view_xport[0] + 64;
-y = view_yport[0] + 100;
+xpos = 102;
+ypos = 50;
+x = view_xview[0] + xpos;
+y = view_yview[0] + ypos;
 
 sanityrestore = 0.025;        //how quickly sanity restores per frame in normal peaceful recovery
 sanityrecoverymax = 420;       //how many frames of peacetime before sanity begins to restore on its own
@@ -101,10 +103,21 @@ spritelevel = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>/*
+if obj_HUD.hidden == true
+{
+    image_alpha = 0.0
+}
+else 
+{ 
+ image_alpha = 1.0
+} 
+*/ 
+ 
 // position relative to the viewport
-x = view_xview[0] + 104;
-y = view_yview[0] + 54;
+x = view_xview[0] + xpos;
+y = view_yview[0] + ypos;
+
 
 
 sanity = global.currentSanity

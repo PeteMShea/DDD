@@ -40,8 +40,8 @@ bluepanely = 8;
 sharkx = xview + 706;
 sharky = yview + 274;
 
-finalalpha = 0.8;
-alphafade = 0.05;
+finalalpha = 0.3;
+alphafade = 0.04;
 fadein = false;
 fadeout = false;
 
@@ -50,13 +50,25 @@ panelappeared = false;
 overlaysappeared = false;
 
 
-// create blue backing panel first
+// create blue backing panel first and hide &amp;amp; move the HUD
 
 //show_debug_message(string(xview) + " , " + string(yview));
 
+obj_HUD.hidden = true;
+obj_HUD.healthtextright = 738;
+obj_HUD.sanitytextright = 1070;
+obj_HUD.healthrightalign = false;
+obj_HUD.goldrightalign = false;
+obj_HUD.HUDtextY = 850;
+obj_HUD.sanitytextY = obj_HUD.HUDtextY;
+obj_HUD.goldtextleft = 738;
+obj_HUD.goldtextY = 894;
+obj_HUD.golddir = -1;
+sanitynewx = 1074;
+sanitynewy = 835;
+
+
 instance_create(xview + bluepanelx, yview + bluepanely, obj_BluePanel);
-
-
 </string>
           </argument>
         </arguments>
@@ -97,7 +109,17 @@ if panelappeared == true &amp;&amp; overlaysappeared == false
         overlaysappeared = true;
     }
 
+if overlaysappeared == true
+{
+// draw the HUD in new positions
+obj_sanitymeter.xpos = sanitynewx;
+obj_sanitymeter.ypos = sanitynewy;
 
+obj_HUD.hidden = false;
+
+
+
+}
 </string>
           </argument>
         </arguments>
