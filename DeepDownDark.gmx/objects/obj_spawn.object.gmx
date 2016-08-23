@@ -54,7 +54,7 @@ damage = 5;    //damage inflicted on player on self destruct
 damageproximity = 8 * global.RM     //how close to player it destructs
 madnessfirstsight = 20;         //how much madness is applied first time player sees enemy
 madnessproximityrange = 500;    //range before proximity madness is applied
-madnessproximity = 0.01;      //how much madness to apply per frame when enemy within range
+madnessproximity = 0.003;      //how much madness to apply per frame when enemy within range
 
 homingtestmax = 180;     //how many frames between each time enemy checks LOS to target and adjusts aim  30
 homingtest = 0;

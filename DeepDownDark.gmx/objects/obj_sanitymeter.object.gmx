@@ -31,7 +31,7 @@ x = view_xport[0] + 64;
 y = view_yport[0] + 100;
 
 sanityrestore = 0.025;        //how quickly sanity restores per frame in normal peaceful recovery
-sanityrecoverymax = 600;       //how many frames of peacetime before sanity begins to restore on its own
+sanityrecoverymax = 420;       //how many frames of peacetime before sanity begins to restore on its own
 sanityrestoretime = sanityrecoverymax;      //timer for counting down to peacetime
 basesanityadjust = 0.025;    //how much base sanity increases per frame when player is in madness threshold (level nine+)
 madnessinc = 0.25;      //how much sanity level increases per frame whenever player is fearful

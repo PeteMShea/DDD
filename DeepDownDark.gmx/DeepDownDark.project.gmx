@@ -153,6 +153,11 @@
       <sprite>sprites\spr_sanitymeter180</sprite>
       <sprite>sprites\spr_sanityvignette</sprite>
       <sprite>sprites\spr_sanitymask</sprite>
+      <sprite>sprites\spr_INVbluepanel</sprite>
+      <sprite>sprites\sprite148</sprite>
+      <sprite>sprites\spr_StatusPanel</sprite>
+      <sprite>sprites\spr_INVshark</sprite>
+      <sprite>sprites\spr_INVsharkdirtmask</sprite>
     </sprites>
     <sprites name="VFX">
       <sprite>sprites\spr_explosion</sprite>
@@ -195,6 +200,7 @@
       <script>scripts\scr_particleburst.gml</script>
       <script>scripts\scr_asteroidburst.gml</script>
       <script>scripts\scr_sporeburst.gml</script>
+      <script>scripts\scr_fadeinout.gml</script>
     </scripts>
     <scripts name="Player">
       <script>scripts\scr_repairdamage.gml</script>
@@ -340,6 +346,10 @@
     </objects>
     <objects name="GUI">
       <object>objects\obj_HUD</object>
+      <object>objects\obj_StatusPanel</object>
+      <object>objects\obj_BluePanel</object>
+      <object>objects\obj_INVshark</object>
+      <object>objects\obj_INVsharkdirt</object>
       <object>objects\obj_splashcontrol</object>
       <object>objects\obj_titlecontrol</object>
       <object>objects\eff_titlemask1</object>

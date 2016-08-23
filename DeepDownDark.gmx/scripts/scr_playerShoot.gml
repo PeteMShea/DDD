@@ -14,8 +14,8 @@
         if turret == true
             { 
                 bulletangle = obj_sharkturret.image_angle;
-                bulletx = x + lengthdir_x(16, obj_sharkturret.image_angle);;
-                bullety = y + lengthdir_y(16, obj_sharkturret.image_angle);
+                bulletx = obj_sharkturret.x + lengthdir_x(32, obj_sharkturret.image_angle);;
+                bullety = obj_sharkturret.y + lengthdir_y(32, obj_sharkturret.image_angle);
             }        
         var inst;
         inst = instance_create(bulletx, bullety, obj_bullet);        
