@@ -32,6 +32,8 @@ HUDwait = 60;
 intro = false;
 repair = false;
 damagecost = obj_player.damagecost;
+panelsappeared = false;
+panelappear = 60;   //how long to wait for Status Panel to appear
 
 
 x = view_xview[0];
@@ -81,24 +83,43 @@ obj_sanitymeter.sanityrestore = 0.1;
 obj_sanitymeter.sanityrestoretime = 0;
 global.madness = 0;
 
-
-// temp to be replaced by new HUD system
 HUDwait -=1;
 // launch after HUD
-if HUDwait &lt;= 0
-{
+if HUDwait &lt;= 0 &amp;&amp; intro == false
+    {
+        instance_create(x,y, obj_StatusPanel);
+        HUDwait = panelappear;       
+        intro = true;
+    }
 
-    if mouse_check_button(mb_left)
-        {
-            obj_sanitymeter.sanityrestore = 0.025
-            global.autopilot = 60;
-            global.pause = false;
-            obj_player.landing = 0;
-            eff_fadelanded.fadeDone = true;
-            instance_destroy();
-        }
+if HUDwait &lt;= 0 &amp;&amp; intro == true
+    {
+        panelsappeared = true;
+    
+    }
 
-}
+if panelsappeared == true
+    {    
+        damage = round(global.startHealth - global.playerHealth)
+        if damage * damagecost &gt;= global.playerGold damage = abs(global.playerGold/damagecost)
+        if damage &gt; 0 &amp;&amp; global.playerGold &gt; 1 * damagecost repair = true;
+        if repair == true
+            {            
+                obj_RepairButton.locked = false;   
+            }
+        
+        if obj_LaunchButton.pressed == true
+            {
+                obj_sanitymeter.sanityrestore = 0.025
+                global.autopilot = 60;
+                global.pause = false;
+                obj_player.landing = 0;
+                eff_fadelanded.fadeDone = true;
+                instance_destroy();
+            }        
+        
+    }
+
 
 
 </string>
@@ -154,30 +175,9 @@ if repair == true
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if HUDwait &lt;= 0
-    {
-        
-        draw_set_font(fnt_CapsullaTitle);
-        draw_set_halign(fa_center);        
-        draw_set_colour(c_white);
-        xpos = 640;
-        if obj_player.y &lt; 200 ypos = 300 else ypos = 64  
-        //draw_text(xpos, ypos, "LANDED");
-        intro = true;
-    }
+            <string>
 
-if intro == true
-    {    
-        damage = round(global.startHealth - global.playerHealth)
-        if damage * damagecost &gt;= global.playerGold damage = abs(global.playerGold/damagecost)
-        if damage &gt; 0 &amp;&amp; global.playerGold &gt; 1 * damagecost repair = true;
-        if repair == true
-            {            
-                draw_set_colour(c_yellow);
-                draw_text(xpos, ypos + 64, "PRESS R TO REPAIR " + string(damage) + " DAMAGE FOR " + string(damage * damagecost) + " GOLD");   
-            }
-        
-    }
+
     
 </string>
           </argument>

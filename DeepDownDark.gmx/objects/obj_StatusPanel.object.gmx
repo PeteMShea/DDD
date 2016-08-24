@@ -40,15 +40,21 @@ bluepanely = 8;
 sharkx = xview + 706;
 sharky = yview + 274;
 
-finalalpha = 0.3;
+finalalpha = 0.85;
 alphafade = 0.04;
 fadein = false;
 fadeout = false;
+fadeDone = false;
 
 appearwait = 15;       //frames until panel appears
 panelappeared = false;
 overlaysappeared = false;
-buttonsappeared = false
+buttonsappeared = false;
+buttony = 60;
+buttonx = 680;
+buttonxoffset = 118;    //distance from one button to next
+
+panelsdismissed = false;
 
 
 // create blue backing panel first and hide &amp;amp; move the HUD
@@ -112,18 +118,75 @@ if panelappeared == true &amp;&amp; overlaysappeared == false
 
 if overlaysappeared == true &amp;&amp; buttonsappeared == false
 {
-// draw the HUD in new positions
-obj_sanitymeter.xpos = sanitynewx;
-obj_sanitymeter.ypos = sanitynewy;
-
-obj_HUD.hidden = false;
-
-// Add the button icons
-instance_create(800, 60, obj_RepairButton);
-
-buttonsappeared = true;
+    // draw the HUD in new positions
+    obj_sanitymeter.xpos = sanitynewx;
+    obj_sanitymeter.ypos = sanitynewy;
+    
+    obj_HUD.hidden = false;
+    
+    // Add the button icons
+    instance_create(xview + buttonx, yview + buttony, obj_LaunchButton);
+    instance_create(xview + buttonx + buttonxoffset, yview + buttony, obj_RepairButton);
+    instance_create(xview + buttonx + buttonxoffset * 2, yview + buttony, obj_EquipButton);
+    instance_create(xview + buttonx + buttonxoffset * 3, yview + buttony, obj_WeaponryButton);
+    instance_create(xview + buttonx + buttonxoffset * 4, yview + buttony, obj_DatabaseButton);
+    
+    buttonsappeared = true;
 
 }
+
+//remove the panels
+if panelsdismissed == true &amp;&amp; fadeout = false
+{
+
+        
+        obj_BluePanel.fadeout = true;
+        obj_BluePanel.fadein = false;
+        obj_INVshark.fadeout = true;
+        obj_INVshark.fadein = false;
+        obj_INVsharkdirt.fadeout = true;
+        obj_INVsharkdirt.fadein = false;
+        obj_RepairButton.fadeDone = true;       //couldn't get these to fade out nicely- so now just insta destroyed... fix?
+        obj_RepairButton.fadein = false;
+        obj_LaunchButton.fadeDone = true;
+        obj_LaunchButton.fadein = false;
+        obj_DatabaseButton.fadeDone = true;
+        obj_DatabaseButton.fadein = false;
+        obj_EquipButton.fadeDone = true;
+        obj_EquipButton.fadein = false;
+        obj_WeaponryButton.fadeDone = true;
+        obj_WeaponryButton.fadein = false;
+
+
+        
+        //destroy and recreate the HUD object to reset its position values
+        with(obj_HUD)
+            {
+                instance_destroy();
+            }
+        instance_create(x,y, obj_HUD);
+        with(obj_sanitymeter)
+            {
+                instance_destroy();
+            }
+        instance_create(x,y, obj_sanitymeter);        
+        //now fade the status Panel                                                            
+        fadein = false;        
+        fadeout = true;
+}
+
+if fadeout == true &amp;&amp; panelsdismissed == true
+{
+    script_execute(scr_fadeinout, fadein, fadeout, finalalpha, alphafade);
+    if fadeDone == true
+        {
+            instance_destroy();
+        }
+
+}
+
+
+
 </string>
           </argument>
         </arguments>

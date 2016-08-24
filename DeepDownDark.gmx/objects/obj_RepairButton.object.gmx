@@ -28,12 +28,12 @@
             <string>// initialise
 
 lockedalpha = 0.15;
-readyalpha = 0.25;
-rolloveralpha = 0.4;
-pressedalpha = 0.75;
+readyalpha = 0.55;
+rolloveralpha = 0.75;
+pressedalpha = 0.95;
 pressed = false;
 rollover = false;
-locked = false;
+locked = true;      //locked by default- unlocked if player has repair options available
 
 
 if locked == false image_alpha = readyalpha else image_alpha = lockedalpha
@@ -41,6 +41,7 @@ targetalpha = image_alpha;
 alphafade = 0.02;
 fadein = false;
 fadeout= false;
+fadeDone = false;
 finalalpha = targetalpha;
 appeared = false;
 
@@ -90,7 +91,15 @@ if appeared == true
         
     
     }
-    
+
+    if fadeout == true script_execute(scr_fadeinout, fadein, fadeout, finalalpha, alphafade);
+        
+
+}
+
+if fadeDone == true
+{
+    instance_destroy();
 
 }
 </string>

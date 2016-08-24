@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-100000</depth>
+  <depth>-10000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -28,7 +28,7 @@
             <string>
 fadeSpeed = 1.0;
 fadeAlpha = 0;
-finalAlpha = 0.5;
+finalAlpha = 0.5;   //0.5
 newRoom = 1;
 fadeDone = false;
 fadeOut = 30;
@@ -88,7 +88,7 @@ if fadeDone == false &amp;&amp; fadeAlpha &lt;= finalAlpha fadeAlpha += 0.02;
 
 if fadeAlpha &gt;= finalAlpha
 {
-    global.loading = true;
+        //
 
 }
 

@@ -28,12 +28,12 @@
             <string>// initialise
 image_alpha = 0;
 alphafade = 0.025;
-finalalpha = 0.35;
+finalalpha = 0.6;
 
 
 fadein = true;
 fadeout = false;
-
+fadeDone = false;
 
 
 
@@ -67,7 +67,11 @@ if fadein == true || fadeout == true
         script_execute(scr_fadeinout, fadein, fadeout, finalalpha, alphafade);
     }
 
+if fadeDone == true
+{
+    instance_destroy();
 
+}
 </string>
           </argument>
         </arguments>

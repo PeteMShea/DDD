@@ -29,13 +29,13 @@
 image_alpha = 0.0;
 
 alphafade = 0.025;
-finalalpha = global.dirtalpha - 0.5;
+finalalpha = global.dirtalpha - 0.25;
 
 
 
 fadein = true;
 fadeout = false;
-
+fadeDone = false;
 
 
 
@@ -73,6 +73,12 @@ if fadein == false &amp;&amp; fadeout == false
     {
         image_alpha = global.dirtalpha - 0.5;
     }
+
+if fadeDone == true
+{
+    instance_destroy();
+
+}
 </string>
           </argument>
         </arguments>

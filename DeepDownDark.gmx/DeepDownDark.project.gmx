@@ -205,7 +205,6 @@
       <script>scripts\scr_particleburst.gml</script>
       <script>scripts\scr_asteroidburst.gml</script>
       <script>scripts\scr_sporeburst.gml</script>
-      <script>scripts\scr_fadeinout.gml</script>
     </scripts>
     <scripts name="Player">
       <script>scripts\scr_repairdamage.gml</script>
@@ -229,6 +228,7 @@
     </scripts>
     <scripts name="GUI">
       <script>scripts\scr_rolloverbutton.gml</script>
+      <script>scripts\scr_fadeinout.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -356,6 +356,10 @@
       <object>objects\obj_HUD</object>
       <object>objects\obj_StatusPanel</object>
       <object>objects\obj_RepairButton</object>
+      <object>objects\obj_LaunchButton</object>
+      <object>objects\obj_DatabaseButton</object>
+      <object>objects\obj_EquipButton</object>
+      <object>objects\obj_WeaponryButton</object>
       <object>objects\obj_BluePanel</object>
       <object>objects\obj_INVshark</object>
       <object>objects\obj_INVsharkdirt</object>
