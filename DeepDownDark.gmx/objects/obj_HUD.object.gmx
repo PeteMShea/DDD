@@ -214,7 +214,8 @@ if !instance_exists(obj_sanitymeter) instance_create(view_xport[0] + 64, view_yp
         {
             offsetx = 28;
             if HealthHundreds &gt;= 10 offsetx += 32
-            if HealthHundreds &gt; 0 &amp;&amp; HealthHundreds &lt; 10 offsetx += 32            
+            if HealthHundreds &gt; 0 &amp;&amp; HealthHundreds &lt; 10 offsetx += 32
+            if HealthHundreds &lt;= 0 &amp;&amp; HealthTens &gt; 0 offsetx += 32            
             draw_x = healthtextright + offsetx;   
         }    
     

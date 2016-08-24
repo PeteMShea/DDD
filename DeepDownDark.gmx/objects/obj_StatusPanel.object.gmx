@@ -54,6 +54,18 @@ buttony = 60;
 buttonx = 680;
 buttonxoffset = 118;    //distance from one button to next
 
+// text consts
+paleblue = make_colour_rgb(207, 252, 245);
+leftx = 740;
+shipnamey = 350;
+percentx = 1190;       //where health % sit- right justify
+statsy = 950;
+statsnumberleftx = 900;
+rightx = 1030;
+statsnumberrightx = 1188;
+statsyoffset = 24;
+
+
 panelsdismissed = false;
 launchnow = false; 
 
@@ -113,7 +125,14 @@ if panelappeared == true &amp;&amp; overlaysappeared == false
     {
         instance_create(sharkx, sharky, obj_INVshark);
         instance_create(sharkx, sharky, obj_INVsharkdirt);       
-    
+        instance_create(sharkx, sharky, obj_INVsharkdamage_ML);
+        instance_create(sharkx, sharky, obj_INVsharkdamage_MR);        
+        instance_create(sharkx, sharky, obj_INVsharkdamage_CL);        
+        instance_create(sharkx, sharky, obj_INVsharkdamage_CR);        
+        instance_create(sharkx, sharky, obj_INVsharkdamage_BL);        
+        instance_create(sharkx, sharky, obj_INVsharkdamage_BR);        
+        instance_create(sharkx, sharky, obj_INVsharkdamage_CC);        
+            
         overlaysappeared = true;
     }
 
@@ -147,6 +166,20 @@ if panelsdismissed == true &amp;&amp; fadeout = false
         obj_INVshark.fadein = false;
         obj_INVsharkdirt.fadeout = true;
         obj_INVsharkdirt.fadein = false;
+        obj_INVsharkdamage_CL.fadeout = true;
+        obj_INVsharkdamage_CL.fadein = false;
+        obj_INVsharkdamage_CR.fadeout = true;
+        obj_INVsharkdamage_CR.fadein = false;
+        obj_INVsharkdamage_ML.fadeout = true;
+        obj_INVsharkdamage_ML.fadein = false;
+        obj_INVsharkdamage_MR.fadeout = true;
+        obj_INVsharkdamage_MR.fadein = false;
+        obj_INVsharkdamage_BL.fadeout = true;
+        obj_INVsharkdamage_BL.fadein = false;
+        obj_INVsharkdamage_BR.fadeout = true;
+        obj_INVsharkdamage_BR.fadein = false;
+        obj_INVsharkdamage_CC.fadeout = true;
+        obj_INVsharkdamage_CC.fadein = false;                                                                          
         obj_RepairButton.fadeDone = true;       //couldn't get these to fade out nicely- so now just insta destroyed... fix?
         obj_RepairButton.fadein = false;
         obj_LaunchButton.fadeDone = true;
@@ -187,6 +220,69 @@ if fadeout == true &amp;&amp; panelsdismissed == true
 
 }
 
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// Draw the overlaid text on the status panel
+
+if overlaysappeared == true &amp;&amp; panelsdismissed == false
+{
+    draw_set_font(fnt_Michroma14);
+    draw_set_alpha(0.7);
+    draw_set_colour(paleblue);
+    draw_set_halign(fa_left);
+    
+    // ship name        
+    draw_text(leftx, shipnamey, global.shipname);
+    
+    //health %
+    draw_set_font(fnt_CapsullaTitle);
+    if obj_HUD.healthred == true draw_set_colour(c_red) else draw_set_colour(paleblue);
+    percenthealth = ceil((global.playerHealth / global.startHealth) * 100) 
+    draw_set_halign(fa_right);
+    draw_text(percentx, shipnamey, string(percenthealth) + " %");        
+    
+    // Attributes
+    draw_set_colour(paleblue);    
+    draw_set_font(fnt_Michroma14);
+    draw_set_halign(fa_left);        
+    draw_text(leftx, statsy, "STR:");
+    draw_text(leftx, statsy + statsyoffset, "ATT:");   
+    draw_text(leftx, statsy + statsyoffset * 2, "DEF:");     
+    draw_text(rightx, statsy, "FWD:");
+    draw_text(rightx, statsy + statsyoffset, "REA:");   
+    draw_text(rightx, statsy + statsyoffset * 2, "SAN:");
+    
+    draw_set_halign(fa_right);
+    draw_text(statsnumberleftx, statsy, global.strength);
+    draw_text(statsnumberleftx, statsy + statsyoffset, global.attack);    
+    draw_text(statsnumberleftx, statsy + statsyoffset * 2, global.defence);       
+    draw_text(statsnumberrightx, statsy, global.forward);    
+    draw_text(statsnumberrightx, statsy + statsyoffset, global.rear);
+    draw_text(statsnumberrightx, statsy + statsyoffset * 2, global.baseSanity);    
+                  
+}
 
 
 </string>

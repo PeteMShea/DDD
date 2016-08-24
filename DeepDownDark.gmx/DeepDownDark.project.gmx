@@ -163,6 +163,13 @@
       <sprite>sprites\spr_INVWeaponryIcon</sprite>
       <sprite>sprites\spr_INVLaunchIcon</sprite>
       <sprite>sprites\spr_INVEquipIcon</sprite>
+      <sprite>sprites\spr_INVsharkdamage_CL</sprite>
+      <sprite>sprites\spr_INVsharkdamage_CR</sprite>
+      <sprite>sprites\spr_INVsharkdamage_ML</sprite>
+      <sprite>sprites\spr_INVsharkdamage_MR</sprite>
+      <sprite>sprites\spr_INVsharkdamage_BL</sprite>
+      <sprite>sprites\spr_INVsharkdamage_BR</sprite>
+      <sprite>sprites\spr_INVsharkdamage_CC</sprite>
     </sprites>
     <sprites name="VFX">
       <sprite>sprites\spr_explosion</sprite>
@@ -240,6 +247,7 @@
     <font>fonts\fnt_CapsullaTitle</font>
     <font>fonts\fnt_CapsullaBig</font>
     <font>fonts\font2</font>
+    <font>fonts\fnt_Michroma14</font>
   </fonts>
   <objects name="objects">
     <objects name="control_objects">
@@ -363,6 +371,13 @@
       <object>objects\obj_BluePanel</object>
       <object>objects\obj_INVshark</object>
       <object>objects\obj_INVsharkdirt</object>
+      <object>objects\obj_INVsharkdamage_ML</object>
+      <object>objects\obj_INVsharkdamage_MR</object>
+      <object>objects\obj_INVsharkdamage_CL</object>
+      <object>objects\obj_INVsharkdamage_CR</object>
+      <object>objects\obj_INVsharkdamage_BL</object>
+      <object>objects\obj_INVsharkdamage_BR</object>
+      <object>objects\obj_INVsharkdamage_CC</object>
       <object>objects\obj_splashcontrol</object>
       <object>objects\obj_titlecontrol</object>
       <object>objects\eff_titlemask1</object>

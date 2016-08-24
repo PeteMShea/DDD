@@ -3,7 +3,7 @@
 global.playerGold -= damagecost;
 global.playerHealth += 1;
 
-/*
+
 repaircount = ceil(damage/14);
 area[0] = global.locdamage_CR;
 area[1] = global.locdamage_CL;
@@ -49,6 +49,6 @@ global.locdamage_BL = area[5];
 global.locdamage_CC = area[6];
 
 
-*/
+
 global.dirtalpha = 0;
 

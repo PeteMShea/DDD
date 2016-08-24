@@ -3,7 +3,7 @@
   <spriteName>spr_INVsharkdirtmask</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-10000004</depth>
+  <depth>-100000003</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -29,7 +29,7 @@
 image_alpha = 0.0;
 
 alphafade = 0.05;
-finalalpha = global.dirtalpha - 0.25;
+finalalpha = global.dirtalpha;
 
 
 
@@ -71,7 +71,7 @@ if fadein == true || fadeout == true
 
 if fadein == false &amp;&amp; fadeout == false
     {
-        image_alpha = global.dirtalpha - 0.5;
+        image_alpha = global.dirtalpha;
     }
 
 if fadeDone == true
@@ -79,6 +79,8 @@ if fadeDone == true
     instance_destroy();
 
 }
+
+
 </string>
           </argument>
         </arguments>
