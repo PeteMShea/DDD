@@ -1164,7 +1164,7 @@ show_debug_message("turning: " + string(turning));
             <kind>1</kind>
             <string>//temp test for inventory
 
-instance_create(x,y, obj_StatusPanel);
+if !instance_exists(obj_PauseLanded) instance_create(x,y, obj_PauseLanded);
 
 
 </string>

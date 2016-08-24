@@ -45,6 +45,9 @@ fadeDone = false;
 finalalpha = targetalpha;
 appeared = false;
 
+repair = false;
+damagecost = obj_player.damagecost;
+
 x2 = x + sprite_width;
 y2 = y + sprite_height;
 
@@ -82,19 +85,43 @@ if appeared == false
 
 if appeared == true
 {    
-
-    script_execute(scr_rolloverbutton);
-
-    if pressed == true
-    {
-        //pressed = false;
-        
+    if image_alpha &lt; targetalpha image_alpha += alphafade
+    if image_alpha &gt; targetalpha image_alpha -= alphafade
     
+    //check for repair validity    
+    damage = round(global.startHealth - global.playerHealth)
+    if damage * damagecost &gt;= global.playerGold damage = abs(global.playerGold/damagecost)
+    if damage &gt; 0 &amp;&amp; global.playerGold &gt; 1 * damagecost
+        {
+            repair = true 
+        }
+    else
+        {
+            repair = false;
+            locked = true;
+            targetalpha = lockedalpha;
+        }
+    if repair == true
+        {            
+            locked = false;
+            targetalpha = readyalpha;
+            fadein = true;   
+        }
+    
+    // unlocked
+    if locked == false
+    {
+        script_execute(scr_rolloverbutton);        
+        if pressed == true
+        {
+            oLightSource.swoop = true;
+            script_execute(scr_repairdamage, damage);        
+            //repair = false;
+            //locked = true;    
+        }
     }
-
     if fadeout == true script_execute(scr_fadeinout, fadein, fadeout, finalalpha, alphafade);
         
-
 }
 
 if fadeDone == true

@@ -18,7 +18,7 @@
 
     if pressed == false && rollover == false
     {
-        targetalpha = readyalpha;
+        if locked == false targetalpha = readyalpha else targetalpha = lockedalpha
     
     }    
     
@@ -26,7 +26,7 @@
     if image_alpha > targetalpha image_alpha -= alphafade
     
     
-    if rollover == true && pressed == false 
+    if rollover == true
     {
         if mouse_check_button_pressed(mb_left)
         {
@@ -34,6 +34,7 @@
             pressed = true;
             show_debug_message("Repair Pressed");
         }
+        else pressed = false;
     }
     
     if image_alpha >= pressedalpha targetalpha = rolloveralpha

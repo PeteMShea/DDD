@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>// initialise
 image_alpha = 0;
-alphafade = 0.025;
+alphafade = 0.05;
 finalalpha = 0.6;
 
 

@@ -55,6 +55,7 @@ buttonx = 680;
 buttonxoffset = 118;    //distance from one button to next
 
 panelsdismissed = false;
+launchnow = false; 
 
 
 // create blue backing panel first and hide &amp;amp; move the HUD
@@ -169,7 +170,8 @@ if panelsdismissed == true &amp;&amp; fadeout = false
             {
                 instance_destroy();
             }
-        instance_create(x,y, obj_sanitymeter);        
+        instance_create(x,y, obj_sanitymeter);
+        launchnow = true;        
         //now fade the status Panel                                                            
         fadein = false;        
         fadeout = true;

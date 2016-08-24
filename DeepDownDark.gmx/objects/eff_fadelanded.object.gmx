@@ -121,7 +121,7 @@ y = view_yview[0];
 if fadeDone == true
     {
     
-        fadeAlpha -= 0.2
+        fadeAlpha -= 0.05
         if fadeAlpha &lt;= 0 instance_destroy();
     }
 
