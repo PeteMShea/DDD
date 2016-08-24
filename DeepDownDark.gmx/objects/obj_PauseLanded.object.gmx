@@ -103,9 +103,15 @@ if panelsappeared == true
             {
                 obj_sanitymeter.sanityrestore = 0.025
                 global.autopilot = 60;
+                autothrust = 10;                   
+                obj_player.backwards = false                
                 global.pause = false;
                 obj_player.landing = 0;
                 eff_fadelanded.fadeDone = true;
+                with(obj_StatusPanel)
+                {
+                    instance_destroy();
+                }
                 instance_destroy();
             }        
         

@@ -156,6 +156,7 @@
       <sprite>sprites\spr_INVbluepanel</sprite>
       <sprite>sprites\sprite148</sprite>
       <sprite>sprites\spr_StatusPanel</sprite>
+      <sprite>sprites\spr_WeaponryPanel</sprite>
       <sprite>sprites\spr_INVshark</sprite>
       <sprite>sprites\spr_INVsharkdirtmask</sprite>
       <sprite>sprites\spr_INVDatabaseIcon</sprite>
@@ -170,6 +171,7 @@
       <sprite>sprites\spr_INVsharkdamage_BL</sprite>
       <sprite>sprites\spr_INVsharkdamage_BR</sprite>
       <sprite>sprites\spr_INVsharkdamage_CC</sprite>
+      <sprite>sprites\spr_DatabasePanel</sprite>
     </sprites>
     <sprites name="VFX">
       <sprite>sprites\spr_explosion</sprite>
@@ -363,6 +365,8 @@
     <objects name="GUI">
       <object>objects\obj_HUD</object>
       <object>objects\obj_StatusPanel</object>
+      <object>objects\obj_WeaponryPanel</object>
+      <object>objects\obj_DatabasePanel</object>
       <object>objects\obj_RepairButton</object>
       <object>objects\obj_LaunchButton</object>
       <object>objects\obj_DatabaseButton</object>
