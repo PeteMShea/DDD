@@ -158,6 +158,11 @@
       <sprite>sprites\spr_StatusPanel</sprite>
       <sprite>sprites\spr_INVshark</sprite>
       <sprite>sprites\spr_INVsharkdirtmask</sprite>
+      <sprite>sprites\spr_INVDatabaseIcon</sprite>
+      <sprite>sprites\spr_INVRepairIcon</sprite>
+      <sprite>sprites\spr_INVWeaponryIcon</sprite>
+      <sprite>sprites\spr_INVLaunchIcon</sprite>
+      <sprite>sprites\spr_INVEquipIcon</sprite>
     </sprites>
     <sprites name="VFX">
       <sprite>sprites\spr_explosion</sprite>
@@ -221,6 +226,9 @@
       <script>scripts\movementbackup.gml</script>
       <script>scripts\scratch.gml</script>
       <script>scripts\scr_genMap_old.gml</script>
+    </scripts>
+    <scripts name="GUI">
+      <script>scripts\scr_rolloverbutton.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -347,6 +355,7 @@
     <objects name="GUI">
       <object>objects\obj_HUD</object>
       <object>objects\obj_StatusPanel</object>
+      <object>objects\obj_RepairButton</object>
       <object>objects\obj_BluePanel</object>
       <object>objects\obj_INVshark</object>
       <object>objects\obj_INVsharkdirt</object>
