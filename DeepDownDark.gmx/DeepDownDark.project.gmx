@@ -172,6 +172,7 @@
       <sprite>sprites\spr_INVsharkdamage_BR</sprite>
       <sprite>sprites\spr_INVsharkdamage_CC</sprite>
       <sprite>sprites\spr_DatabasePanel</sprite>
+      <sprite>sprites\spr_INVInstallIcon</sprite>
     </sprites>
     <sprites name="VFX">
       <sprite>sprites\spr_explosion</sprite>
@@ -187,6 +188,16 @@
     </sprites>
     <sprites name="triggers">
       <sprite>sprites\spr_exittrigger</sprite>
+    </sprites>
+    <sprites name="WeaponItems">
+      <sprite>sprites\spr_01Repeater</sprite>
+      <sprite>sprites\spr_02RapidFire</sprite>
+      <sprite>sprites\spr_03HighSpin</sprite>
+      <sprite>sprites\spr_04TurretA</sprite>
+    </sprites>
+    <sprites name="WeaponGraphics">
+      <sprite>sprites\spr_ItemGraphicPlacholder</sprite>
+      <sprite>sprites\spr_TurretA04</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -238,6 +249,9 @@
     <scripts name="GUI">
       <script>scripts\scr_rolloverbutton.gml</script>
       <script>scripts\scr_fadeinout.gml</script>
+    </scripts>
+    <scripts name="Items">
+      <script>scripts\Items_Weaponry.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">

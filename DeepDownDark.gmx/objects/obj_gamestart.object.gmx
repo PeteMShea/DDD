@@ -33,8 +33,8 @@ global.playerX = x;
 global.playerY = y;
 global.playerspeedX = 0;
 global.playerspeedY = 0;
-global.playerHealth = 100;  //100
-global.startHealth = 100;
+global.playerHealth = 30;  //100
+global.startHealth = 120;
 global.playerGold = 900;
 global.baseSanity = 80;
 global.currentSanity = global.baseSanity;
@@ -68,6 +68,12 @@ global.pause = false;
 global.startroom = false;
 
 global.dead = false;        //temp
+
+//items
+global.lastWeaponViewed = 1;
+script_execute(Items_Weaponry);
+
+
 
 
 
@@ -112,7 +118,7 @@ global.dead = false;        //temp
 if countdown &lt;= 0
 {
 
-    room_goto(4);       // 1 for splash, 3 for MapGen, 4 for Room A0
+    room_goto(3);       // 1 for splash, 3 for MapGen, 4 for Room A0
 
 }
 

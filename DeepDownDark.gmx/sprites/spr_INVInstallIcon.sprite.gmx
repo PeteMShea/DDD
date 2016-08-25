@@ -8,18 +8,18 @@
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
   <bbox_left>0</bbox_left>
-  <bbox_right>578</bbox_right>
-  <bbox_top>1</bbox_top>
-  <bbox_bottom>991</bbox_bottom>
+  <bbox_right>75</bbox_right>
+  <bbox_top>0</bbox_top>
+  <bbox_bottom>77</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>580</width>
-  <height>1000</height>
+  <width>76</width>
+  <height>78</height>
   <frames>
-    <frame index="0">images\spr_WeaponryPanel_0.png</frame>
+    <frame index="0">images\spr_INVInstallIcon_0.png</frame>
   </frames>
 </sprite>
