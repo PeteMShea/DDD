@@ -47,34 +47,40 @@ fadeDone = false;
 appearwait = 20;       //frames until panel appears
 panelappeared = false;
 overlaysappeared = false;
-buttonsappeared = false;
+
+//item buttons
+buttonsappeared = false;        
 buttonx = xview + 70;
 buttony = yview + 608;
 buttonxoffset = 85;    //distance from one button to next
 buttonyoffset = 96;    //vertical distance between rows of buttons
 
+//install/equip button
+installx = xview + 85;      
+instally = yview + 465;
 
-// text consts
+weapongraphicx = xview + 423;
+weapongraphicy = yview + 400;
+
+// text consts- uses drawGUI so no view offset!
 paleblue = make_colour_rgb(207, 252, 245);
-leftx = 740;
-shipnamey = 350;
-percentx = 1190;       //where health % sit- right justify
-statsy = 950;
-statsnumberleftx = 900;
-rightx = 1030;
-statsnumberrightx = 1188;
-statsyoffset = 24;
+c_gold = make_colour_rgb(255,204,0);
+leftx = 78;
+itemnamey = 226;
+statAy = 310;
+statBy = 336;
+installtexty = 430;
+pricex = 272;
+pricey = 490;
+
+
 
 
 panelsdismissed = false;
-launchnow = false; 
 
 
-// create blue backing panel first and hide &amp;amp; move the HUD
 
-//show_debug_message(string(xview) + " , " + string(yview));
-
-
+// create blue backing panel first
 instance_create(xview + bluepanelx, yview + bluepanely, obj_BluePanel);
 </string>
           </argument>
@@ -136,8 +142,38 @@ if panelappeared == true &amp;&amp; buttonsappeared == false
         ypos += buttonyoffset; 
     }
 
+    //add the weapon graphic- only do this once
+    instance_create(weapongraphicx, weapongraphicy, obj_INVWeaponGraphic);
+    
+    
     
     buttonsappeared = true;
+
+}
+
+// now add the top panel detail based upon last button pressed- this updates every step unlike above ** Text is handled in drawGUI event **
+
+if buttonsappeared == true
+{
+    weaponID = global.WeaponViewed;    
+    //add the Install or Equip Button Button
+    if global.WeaponEquipped[weaponID] == false
+        {
+            if !instance_exists(obj_InstallButton) instance_create(installx, instally, obj_InstallButton);
+        
+        }
+    else
+        {
+            //remove button if Item is already equipped
+            if instance_exists(obj_InstallButton)
+            {
+                with(obj_InstallButton)
+                {
+                    instance_destroy();
+                }
+            
+            }
+        }
 
 }
 
@@ -209,6 +245,73 @@ if fadeout == true &amp;&amp; panelappeared == true
 
 }
 
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// draw the Weapon Item Text
+
+if buttonsappeared == true
+{
+    weaponID = global.WeaponViewed; 
+    
+    draw_set_font(fnt_Michroma14);
+    draw_set_alpha(0.9);
+    draw_set_colour(paleblue);
+    draw_set_halign(fa_left);
+    
+    // item name        
+    draw_text(leftx, itemnamey, global.WeaponName[weaponID]);
+    draw_set_alpha(0.7);    
+    //stats
+    draw_text(leftx, statAy, global.WeaponStatA[weaponID]);
+    draw_text(leftx, statBy, global.WeaponStatB[weaponID]);
+    
+    //install text
+    if global.WeaponOwned[weaponID] == false
+        {
+            draw_text(leftx, installtexty, "INSTALL:");
+        }
+    else if global.WeaponEquipped[weaponID] == false
+        {
+            draw_text(leftx, installtexty, "EQUIP:");
+        }
+    else
+        {        
+            draw_text(leftx, installtexty, "EQUIPPED");        
+        }   
+                        
+    //Price if not owned
+    if global.WeaponOwned[weaponID] == false
+        {    
+            draw_set_alpha(0.7);
+            draw_set_font(fnt_HUD);
+            draw_set_halign(fa_right);
+            if global.WeaponCost[weaponID] &lt;= global.playerGold draw_set_colour(c_gold) else draw_set_colour(c_red)
+            draw_text(pricex, pricey, string(global.WeaponCost[weaponID]));     
+        }    
+    
+}    
 
 
 </string>

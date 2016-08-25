@@ -386,8 +386,10 @@
       <object>objects\obj_DatabaseButton</object>
       <object>objects\obj_EquipButton</object>
       <object>objects\obj_WeaponryButton</object>
+      <object>objects\obj_InstallButton</object>
       <object>objects\obj_ItemButton</object>
       <object>objects\obj_BluePanel</object>
+      <object>objects\obj_INVWeaponGraphic</object>
       <object>objects\obj_INVshark</object>
       <object>objects\obj_INVsharkdamage_CC</object>
       <object>objects\obj_INVsharkdirt</object>
