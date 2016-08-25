@@ -38,7 +38,7 @@ y = yview + 58;
 bluepanelx = 18;
 bluepanely = 8;
 
-finalalpha = 0.85;
+finalalpha = 0.75;
 alphafade = 0.04;
 fadein = false;
 fadeout = false;
@@ -48,9 +48,11 @@ appearwait = 20;       //frames until panel appears
 panelappeared = false;
 overlaysappeared = false;
 buttonsappeared = false;
-buttony = 60;
-buttonx = 680;
-buttonxoffset = 118;    //distance from one button to next
+buttonx = xview + 70;
+buttony = yview + 608;
+buttonxoffset = 85;    //distance from one button to next
+buttonyoffset = 96;    //vertical distance between rows of buttons
+
 
 // text consts
 paleblue = make_colour_rgb(207, 252, 245);
@@ -105,41 +107,41 @@ if appearwait &lt;= 0 &amp;&amp; panelappeared == false
         script_execute(scr_fadeinout, fadein, fadeout, finalalpha, alphafade);
         if fadein == false panelappeared = true
     }
-/*
-if panelappeared == true &amp;&amp; overlaysappeared == false
+
+
+if panelappeared == true &amp;&amp; buttonsappeared == false
+{
+    // iterate through all of the Items checking which are unlocked and adding buttons as required
+    weaponcount = 1;
+    xpos = buttonx;
+    ypos = buttony;
+    
+    for (r = 1; r &lt; 5; r += 1)
     {
-        instance_create(sharkx, sharky, obj_INVshark);
-        instance_create(sharkx, sharky, obj_INVsharkdirt);       
-        instance_create(sharkx, sharky, obj_INVsharkdamage_ML);
-        instance_create(sharkx, sharky, obj_INVsharkdamage_MR);        
-        instance_create(sharkx, sharky, obj_INVsharkdamage_CL);        
-        instance_create(sharkx, sharky, obj_INVsharkdamage_CR);        
-        instance_create(sharkx, sharky, obj_INVsharkdamage_BL);        
-        instance_create(sharkx, sharky, obj_INVsharkdamage_BR);        
-        instance_create(sharkx, sharky, obj_INVsharkdamage_CC);        
-            
-        overlaysappeared = true;
+        for(c = 1; c &lt; 7; c += 1)
+            {
+                if global.WeaponUnlocked[weaponcount] == true
+                    {
+                        show_debug_message("Adding Item: " + string(weaponcount));
+                        inst = instance_create(xpos, ypos, obj_ItemButton);
+                        with (inst)
+                            {
+                                weaponID = other.weaponcount;                        
+                            }                                                            
+                    }
+                xpos += buttonxoffset;            
+                if weaponcount &lt;= 24 weaponcount += 1
+            } 
+        xpos = buttonx;
+        ypos += buttonyoffset; 
     }
 
-if overlaysappeared == true &amp;&amp; buttonsappeared == false
-{
-    // draw the HUD in new positions
-    obj_sanitymeter.xpos = sanitynewx;
-    obj_sanitymeter.ypos = sanitynewy;
-    
-    obj_HUD.hidden = false;
-    
-    // Add the button icons
-    instance_create(xview + buttonx, yview + buttony, obj_LaunchButton);
-    instance_create(xview + buttonx + buttonxoffset, yview + buttony, obj_RepairButton);
-    instance_create(xview + buttonx + buttonxoffset * 2, yview + buttony, obj_EquipButton);
-    instance_create(xview + buttonx + buttonxoffset * 3, yview + buttony, obj_WeaponryButton);
-    instance_create(xview + buttonx + buttonxoffset * 4, yview + buttony, obj_DatabaseButton);
     
     buttonsappeared = true;
 
 }
 
+/*
 //remove the panels
 if panelsdismissed == true &amp;&amp; fadeout = false
 {
@@ -195,8 +197,8 @@ if panelsdismissed == true &amp;&amp; fadeout = false
         fadeout = true;
 }
 
-
 */
+
 if fadeout == true &amp;&amp; panelappeared == true
 {
     script_execute(scr_fadeinout, fadein, fadeout, finalalpha, alphafade);

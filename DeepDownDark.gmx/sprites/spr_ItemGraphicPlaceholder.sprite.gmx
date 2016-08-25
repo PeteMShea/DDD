@@ -20,6 +20,6 @@
   <width>197</width>
   <height>197</height>
   <frames>
-    <frame index="0">images\spr_ItemGraphicPlacholder_0.png</frame>
+    <frame index="0">images\spr_ItemGraphicPlaceholder_0.png</frame>
   </frames>
 </sprite>

@@ -32,7 +32,7 @@
         {
             targetalpha = pressedalpha;
             pressed = true;
-            show_debug_message("Repair Pressed");
+            show_debug_message("Button Pressed");
         }
         else pressed = false;
     }
