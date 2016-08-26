@@ -49,16 +49,16 @@ global.shipname = "SHARK 237x";
 
 
 global.playerdamaged = 0;
-global.locdamage_CR = 4;
-global.locdamage_MR = 4;
-global.locdamage_BR = 4;
-global.locdamage_BL = 4;
-global.locdamage_ML = 4;
-global.locdamage_CL = 4;
-global.locdamage_CC = 4;
+global.locdamage_CR = 0;
+global.locdamage_MR = 0;
+global.locdamage_BR = 0;
+global.locdamage_BL = 0;
+global.locdamage_ML = 0;
+global.locdamage_CL = 0;
+global.locdamage_CC = 0;
 global.loading = false;
 global.autopilot = 0;
-global.dirtalpha = 1.0;
+global.dirtalpha = 0.0;
 
 global.sporeseen = false;
 global.gauntseen = false;

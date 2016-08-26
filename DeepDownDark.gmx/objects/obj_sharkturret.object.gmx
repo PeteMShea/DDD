@@ -99,7 +99,7 @@ emissiveMap = sprite_get_texture(spr_SharkTurret, 0);
 //Set shader variables here. Note that they get sent every frame,
 //so feel free to change these values in script during play.
 celLevel = 0.0;     //0
-shininess = 25.0;   //40
+shininess = 100.0;   //40
 wrapAroundLevel = 0.0;
 aoStrength = 0.4;       //0.4
 emissiveStrength = 0.00;     //0
@@ -112,17 +112,18 @@ textureHeight = 256;
 
 
 //Ambient colour components.
-upperAmbient_Red = 0.3;     //0.2
-upperAmbient_Green = 0.3;
-upperAmbient_Blue = 0.3;
+upperAmbient_Red = 0.2;     //0.2
+upperAmbient_Green = 0.2;
+upperAmbient_Blue = 0.2;
 
-lowerAmbient_Red = 0.1;     //0.05
-lowerAmbient_Green = 0.1;
-lowerAmbient_Blue = 0.1;
+lowerAmbient_Red = 0.05;     //0.05
+lowerAmbient_Green = 0.05;
+lowerAmbient_Blue = 0.05;
 
 
 //The nearest lightsource.
-lightSource = instance_nearest(x,y,oLightSource);
+instance_create(x+16, y-16, oLightSourceTurret);
+lightSource = instance_nearest(x,y,oLightSourceTurret);
 
 //add the light to follow player
 
@@ -152,8 +153,7 @@ lightSource = instance_nearest(x,y,oLightSource);
             <kind>1</kind>
             <string>// move the gun with the ship and have it rotate independently
 
-x = obj_player.x + lengthdir_x(18, obj_player.image_angle);
-y = obj_player.y + lengthdir_y(18, obj_player.image_angle);
+
 joyleftx = gamepad_axis_value(0, gp_axisrh);
 joylefty = gamepad_axis_value(0, gp_axisrv);
 
