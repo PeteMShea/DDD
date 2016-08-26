@@ -199,6 +199,9 @@
     <sprites name="WeaponGraphics">
       <sprite>sprites\spr_ItemGraphicPlaceholder</sprite>
       <sprite>sprites\spr_TurretA04</sprite>
+      <sprite>sprites\spr_Repeater01</sprite>
+      <sprite>sprites\spr_RapidFire02</sprite>
+      <sprite>sprites\spr_HighSpin03</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
