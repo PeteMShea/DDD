@@ -6,7 +6,7 @@ global.WeaponName[1] = "BOLT GUN";
 global.WeaponUnlocked[1] = true;
 global.WeaponOwned[1] = true;
 global.WeaponEquipped[1] = true;
-global.WeaponCost[1] = 500;
+global.WeaponCost[1] = 0;
 global.WeaponIcon[1] = spr_01Repeater;
 global.WeaponGraphic[1] = spr_Repeater01;
 global.WeaponStatA[1] = "ROF: 4.0";
@@ -19,9 +19,9 @@ global.WeaponShipArt[1] = noone;
 
 global.WeaponName[2] = "RAPID FIRE";
 global.WeaponUnlocked[2] = true;
-global.WeaponOwned[2] = true;
+global.WeaponOwned[2] = false;
 global.WeaponEquipped[2] = false;
-global.WeaponCost[2] = 1000;
+global.WeaponCost[2] = 600;
 global.WeaponIcon[2] = spr_02RapidFire;
 global.WeaponGraphic[2] = spr_RapidFire02;
 global.WeaponStatA[2] = "ROF: 6.0";
@@ -36,7 +36,7 @@ global.WeaponName[3] = "HIGH SPIN";
 global.WeaponUnlocked[3] = true;
 global.WeaponOwned[3] = false;
 global.WeaponEquipped[3] = false;
-global.WeaponCost[3] = 900;
+global.WeaponCost[3] = 1200;
 global.WeaponIcon[3] = spr_03HighSpin;
 global.WeaponGraphic[3] = spr_HighSpin03;
 global.WeaponStatA[3] = "ROF: 9.0";
@@ -54,11 +54,11 @@ global.WeaponEquipped[4] = false;
 global.WeaponCost[4] = 2000;
 global.WeaponIcon[4] = spr_04TurretA;
 global.WeaponGraphic[4] = spr_TurretA04;
-global.WeaponStatA[4] = "ROF:  3.0";
+global.WeaponStatA[4] = "ROF:  4.0";
 global.WeaponStatB[4] = "TURN: 1.2";
 global.WeaponAttMod[4] =2;
 global.WeaponAttBoost[4] = 10;
-global.WeaponShipArt[4] = noone;
+global.WeaponShipArt[4] = spr_TurretGraphic;
 
 //-------------------------------------------------------
 

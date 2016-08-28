@@ -44,7 +44,7 @@ fadein = false;
 fadeout = false;
 fadeDone = false;
 
-appearwait = 20;       //frames until panel appears
+appearwait = 15;       //frames until panel appears
 panelappeared = false;
 overlaysappeared = false;
 buttonsappeared = false;

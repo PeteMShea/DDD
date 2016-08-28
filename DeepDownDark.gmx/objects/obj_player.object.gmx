@@ -56,12 +56,14 @@ if ship =="shark"
     shipscale = 18 * global.RM;     //radius of collision circle for ship
     trails = true;
     trailspeed = 0.75;   //minimum speed before trails are drawn at high alpha- 0 is on all the time
-    turret = true;
+    turret = false;
     retro = true;    
-    shoot_rate = 6;     //number of frames between bullets when mouse button held
+    shoot_rate = 12;     //number of frames between bullets when mouse button held
     minlandspeed = 0.4;
     
 }
+
+script_execute(scr_updateplayer);       //update attributes based upon purchases
 
 // shared static consts
 damagecost = 10;        //how much gold it costs to repair 1 point of damage
@@ -126,7 +128,11 @@ joystickused = 0;
 
 
 // Add turret if wanted
-if turret == true instance_create(x, y, obj_sharkturret);
+if turret == true
+    {
+        instance_create(x, y, obj_sharkturret);
+        instance_create(x, y, obj_sharkturretmounting);
+    }
 
 // Add a red light glow
 inst = instance_create(x, y, obj_redlightglow);
@@ -301,7 +307,15 @@ show_debug_message("Wait's up");
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.pause == false 
+            <string>//update the ship as required
+if turret == true &amp;&amp; !instance_exists(obj_sharkturret) 
+    {
+        instance_create(x, y, obj_sharkturret);
+        instance_create(x, y, obj_sharkturretmounting);
+    }
+
+
+if global.pause == false 
 {
 
 if dead == false
@@ -828,7 +842,10 @@ if collisionoff == false &amp;&amp; global.autopilot &lt;= 0            //debug 
     if turret == true
     {
         obj_sharkturret.x = x + lengthdir_x(18, image_angle);
-        obj_sharkturret.y  = y + lengthdir_y(18, image_angle);    
+        obj_sharkturret.y = y + lengthdir_y(18, image_angle);
+        obj_sharkturretmounting.x = x + lengthdir_x(18, image_angle);
+        obj_sharkturretmounting.y = y + lengthdir_y(18, image_angle);
+        obj_sharkturretmounting.image_angle = image_angle;               
     }
     
     if global.autopilot &lt;= 0 &amp;&amp; y &lt;=80 y =80

@@ -46,7 +46,7 @@ fadein = false;
 fadeout = false;
 fadeDone = false;
 
-appearwait = 15;       //frames until panel appears
+appearwait = 10;       //frames until panel appears
 panelappeared = false;
 overlaysappeared = false;
 buttonsappeared = false;
@@ -139,6 +139,7 @@ if panelappeared == true &amp;&amp; overlaysappeared == false
 if overlaysappeared == true &amp;&amp; buttonsappeared == false
 {
     // draw the HUD in new positions
+    
     obj_sanitymeter.xpos = sanitynewx;
     obj_sanitymeter.ypos = sanitynewy;
     
@@ -162,11 +163,7 @@ if panelsdismissed == true &amp;&amp; fadeout = false
         
         obj_BluePanel.fadeout = true;
         obj_BluePanel.fadein = false;
-        if instance_exists(obj_WeaponryPanel)
-            {
-                obj_WeaponryPanel.fadeout = true;
-                obj_WeaponryPanel.fadein = false;
-            }
+
         if instance_exists(obj_DatabasePanel)
             {
                 obj_DatabasePanel.fadeout = true;
@@ -199,7 +196,9 @@ if panelsdismissed == true &amp;&amp; fadeout = false
         obj_EquipButton.fadeDone = true;
         obj_EquipButton.fadein = false;
         obj_WeaponryButton.fadeDone = true;
-        obj_WeaponryButton.fadein = false;
+        if instance_exists (obj_WeaponryPanel) obj_WeaponryPanel.panelsdismissed = true;
+//        obj_WeaponryButton.fadeDone = true;
+//        obj_WeaponryButton.fadein = false;
 
 
         

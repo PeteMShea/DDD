@@ -7,18 +7,18 @@
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>0</bbox_left>
-  <bbox_right>75</bbox_right>
-  <bbox_top>0</bbox_top>
-  <bbox_bottom>77</bbox_bottom>
+  <bbox_left>2</bbox_left>
+  <bbox_right>80</bbox_right>
+  <bbox_top>4</bbox_top>
+  <bbox_bottom>86</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>76</width>
-  <height>78</height>
+  <width>84</width>
+  <height>88</height>
   <frames>
     <frame index="0">images\spr_INVInstallIcon_0.png</frame>
   </frames>

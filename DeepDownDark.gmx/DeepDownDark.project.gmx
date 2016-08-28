@@ -36,6 +36,7 @@
       <sprite>sprites\spr_SharkTurret</sprite>
       <sprite>sprites\spr_SharkTurretGS</sprite>
       <sprite>sprites\spr_SharkTurretNormal</sprite>
+      <sprite>sprites\spr_SharkTurretMounting</sprite>
     </sprites>
     <sprites name="environment">
       <sprite>sprites\spr_block</sprite>
@@ -164,6 +165,7 @@
       <sprite>sprites\spr_INVWeaponryIcon</sprite>
       <sprite>sprites\spr_INVLaunchIcon</sprite>
       <sprite>sprites\spr_INVEquipIcon</sprite>
+      <sprite>sprites\spr_INVInstallIcon</sprite>
       <sprite>sprites\spr_INVsharkdamage_CL</sprite>
       <sprite>sprites\spr_INVsharkdamage_CR</sprite>
       <sprite>sprites\spr_INVsharkdamage_ML</sprite>
@@ -172,7 +174,6 @@
       <sprite>sprites\spr_INVsharkdamage_BR</sprite>
       <sprite>sprites\spr_INVsharkdamage_CC</sprite>
       <sprite>sprites\spr_DatabasePanel</sprite>
-      <sprite>sprites\spr_INVInstallIcon</sprite>
     </sprites>
     <sprites name="VFX">
       <sprite>sprites\spr_explosion</sprite>
@@ -195,6 +196,7 @@
       <sprite>sprites\spr_03HighSpin</sprite>
       <sprite>sprites\spr_04TurretA</sprite>
       <sprite>sprites\spr_ItemPlaceholder</sprite>
+      <sprite>sprites\spr_ItemButtonHighlight</sprite>
     </sprites>
     <sprites name="WeaponGraphics">
       <sprite>sprites\spr_ItemGraphicPlaceholder</sprite>
@@ -202,6 +204,7 @@
       <sprite>sprites\spr_Repeater01</sprite>
       <sprite>sprites\spr_RapidFire02</sprite>
       <sprite>sprites\spr_HighSpin03</sprite>
+      <sprite>sprites\spr_TurretGraphic</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -238,6 +241,7 @@
       <script>scripts\scr_landingsequence.gml</script>
       <script>scripts\scr_forwardthrust.gml</script>
       <script>scripts\scr_playerShoot.gml</script>
+      <script>scripts\scr_updateplayer.gml</script>
     </scripts>
     <scripts name="Enemy">
       <script>scripts\LOScheck.gml</script>
@@ -282,6 +286,7 @@
       <object>objects\obj_player</object>
       <object>objects\obj_sharkRetro</object>
       <object>objects\obj_sharkturret</object>
+      <object>objects\obj_sharkturretmounting</object>
       <object>objects\obj_sharkSpec</object>
       <object>objects\obj_redtrail</object>
       <object>objects\obj_redlightglow</object>

@@ -62,6 +62,7 @@ goldold = global.playerGold;
 alphapulse = 0.02;
 golddrawpulse = 0;
 goldalphalevel = HUDAlpha;
+newgold = global.playerGold;
 
 hidden = false;
 
@@ -334,6 +335,11 @@ if !instance_exists(obj_sanitymeter) instance_create(view_xport[0] + 64, view_yp
     draw_set_alpha(goldalphalevel);
     global.playerGold = floor(global.playerGold);
     draw_set_colour(c_gold);
+    
+    if newgold &lt; global.playerGold      //quickly count down the text when purchase made
+    {
+        global.playerGold -= 50;
+    }
 
     if goldrightalign == true draw_set_halign(fa_right) else draw_set_halign(fa_left)
 
@@ -355,9 +361,9 @@ if !instance_exists(obj_sanitymeter) instance_create(view_xport[0] + 64, view_yp
         }
     else
         {
-            offsetx = 28;
-            if GoldThousands &gt;= 10 offsetx += 32
-            if GoldThousands &gt; 0 &amp;&amp; GoldThousands &lt; 10 offsetx += 48
+            offsetx = 32;
+            if GoldThousands &gt;= 10 offsetx += 96
+            if GoldThousands &gt; 0 &amp;&amp; GoldThousands &lt; 10 offsetx += 64
             if GoldThousands == 0 &amp;&amp; GoldHundreds &gt; 0 offsetx += 32
             if GoldThousands == 0 &amp;&amp; GoldHundreds == 0 &amp;&amp; GoldTens &gt; 0 offsetx += 32
             

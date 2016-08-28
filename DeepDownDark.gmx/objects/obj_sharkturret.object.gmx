@@ -3,7 +3,7 @@
   <spriteName>spr_SharkTurret</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1</depth>
+  <depth>-2</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -173,7 +173,8 @@ joylefty = gamepad_axis_value(0, gp_axisrv);
         image_angle = point_direction(x, y, mouse_x, mouse_y);
     }
 
-
+// clean up
+if obj_player.turret == false instance_destroy();
 
 
 

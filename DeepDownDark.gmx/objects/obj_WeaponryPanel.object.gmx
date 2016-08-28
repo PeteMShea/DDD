@@ -44,7 +44,7 @@ fadein = false;
 fadeout = false;
 fadeDone = false;
 
-appearwait = 20;       //frames until panel appears
+appearwait = 15;       //frames until panel appears
 panelappeared = false;
 overlaysappeared = false;
 
@@ -77,7 +77,7 @@ pricey = 490;
 
 
 panelsdismissed = false;
-
+graphicadded = false;
 
 
 // create blue backing panel first
@@ -144,9 +144,8 @@ if panelappeared == true &amp;&amp; buttonsappeared == false
 
     //add the weapon graphic- only do this once
     instance_create(weapongraphicx, weapongraphicy, obj_INVWeaponGraphic);
-    
-    
-    
+
+
     buttonsappeared = true;
 
 }
@@ -177,63 +176,28 @@ if buttonsappeared == true
 
 }
 
-/*
+
 //remove the panels
 if panelsdismissed == true &amp;&amp; fadeout = false
 {
 
         
-        obj_BluePanel.fadeout = true;
-        obj_BluePanel.fadein = false;
-        obj_INVshark.fadeout = true;
-        obj_INVshark.fadein = false;
-        obj_INVsharkdirt.fadeout = true;
-        obj_INVsharkdirt.fadein = false;
-        obj_INVsharkdamage_CL.fadeout = true;
-        obj_INVsharkdamage_CL.fadein = false;
-        obj_INVsharkdamage_CR.fadeout = true;
-        obj_INVsharkdamage_CR.fadein = false;
-        obj_INVsharkdamage_ML.fadeout = true;
-        obj_INVsharkdamage_ML.fadein = false;
-        obj_INVsharkdamage_MR.fadeout = true;
-        obj_INVsharkdamage_MR.fadein = false;
-        obj_INVsharkdamage_BL.fadeout = true;
-        obj_INVsharkdamage_BL.fadein = false;
-        obj_INVsharkdamage_BR.fadeout = true;
-        obj_INVsharkdamage_BR.fadein = false;
-        obj_INVsharkdamage_CC.fadeout = true;
-        obj_INVsharkdamage_CC.fadein = false;                                                                          
-        obj_RepairButton.fadeDone = true;       //couldn't get these to fade out nicely- so now just insta destroyed... fix?
-        obj_RepairButton.fadein = false;
-        obj_LaunchButton.fadeDone = true;
-        obj_LaunchButton.fadein = false;
-        obj_DatabaseButton.fadeDone = true;
-        obj_DatabaseButton.fadein = false;
-        obj_EquipButton.fadeDone = true;
-        obj_EquipButton.fadein = false;
-        obj_WeaponryButton.fadeDone = true;
-        obj_WeaponryButton.fadein = false;
-
+        obj_ItemButton.fadeDone = true;
+        obj_INVWeaponGraphic.fadeDone = true;     
 
         
-        //destroy and recreate the HUD object to reset its position values
-        with(obj_HUD)
-            {
-                instance_destroy();
-            }
-        instance_create(x,y, obj_HUD);
-        with(obj_sanitymeter)
-            {
-                instance_destroy();
-            }
-        instance_create(x,y, obj_sanitymeter);
-        launchnow = true;        
-        //now fade the status Panel                                                            
+        if instance_exists(obj_InstallButton)
+        {        
+            obj_InstallButton.fadeDone = true;
+        }
+
+     
+        //now fade the weaponry Panel                                                            
         fadein = false;        
         fadeout = true;
 }
 
-*/
+
 
 if fadeout == true &amp;&amp; panelappeared == true
 {
@@ -310,7 +274,7 @@ if buttonsappeared == true
             if global.WeaponCost[weaponID] &lt;= global.playerGold draw_set_colour(c_gold) else draw_set_colour(c_red)
             draw_text(pricex, pricey, string(global.WeaponCost[weaponID]));     
         }    
-    
+
 }    
 
 

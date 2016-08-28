@@ -103,16 +103,16 @@ spritelevel = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
+            <string>
 if obj_HUD.hidden == true
 {
     image_alpha = 0.0
 }
 else 
 { 
- image_alpha = 1.0
+    image_alpha = 1.0
 } 
-*/ 
+
  
 // position relative to the viewport
 x = view_xview[0] + xpos;

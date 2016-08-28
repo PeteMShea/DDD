@@ -27,9 +27,9 @@
             <kind>1</kind>
             <string>// initialise
 
-lockedalpha = 0.15;
-readyalpha = 0.55;
-rolloveralpha = 0.75;
+lockedalpha = 0.2;
+readyalpha = 0.6;
+rolloveralpha = 0.85;
 pressedalpha = 0.95;
 pressed = false;
 rollover = false;
@@ -44,6 +44,7 @@ fadeout= false;
 fadeDone = false;
 finalalpha = targetalpha;
 appeared = false;
+once = false;
 
 x2 = x + sprite_width;
 y2 = y + sprite_height;
@@ -88,18 +89,39 @@ if appeared == true
 {    
     weaponID = global.WeaponViewed;
     
-    if global.WeaponCost[weaponID] &lt;= global.playerGold locked = false else locked = true
+    if global.WeaponOwned[weaponID] == false &amp;&amp; global.WeaponCost[weaponID] &lt;= global.playerGold locked = false else locked = true
+    if global.WeaponOwned[weaponID] == true locked = false
     
     if locked == true targetalpha = lockedalpha else targetalpha = readyalpha
     
-    if image_alpha &lt; targetalpha image_alpha += alphafade
-    if image_alpha &gt; targetalpha image_alpha -= alphafade
+//    if image_alpha &lt; targetalpha image_alpha += alphafade
+//    if image_alpha &gt; targetalpha image_alpha -= alphafade
 
     script_execute(scr_rolloverbutton);
 
     if pressed == true
     {
-           
+        if once == false &amp;&amp; global.WeaponOwned[weaponID] == false
+            {
+                obj_HUD.newgold = global.playerGold - global.WeaponCost[weaponID];
+                once = true;
+            }               
+        if global.playerGold == obj_HUD.newgold
+        {
+            //unequip all items in same category first
+            categorycount = ceil(weaponID / 6);
+            firstincategory = categorycount * 6 - 5
+            for (i = firstincategory; i &lt;= firstincategory + 5; i += 1)
+                {
+                    global.WeaponEquipped[i] = false;
+                    show_debug_message("Unequipping Item: " + string(i));
+                }
+            // now equip the new item            
+            global.WeaponOwned[weaponID] = true;
+            global.WeaponEquipped[weaponID] = true;
+            script_execute(scr_updateplayer);
+        }
+          
     }
     
     if fadeout == true script_execute(scr_fadeinout, fadein, fadeout, finalalpha, alphafade);

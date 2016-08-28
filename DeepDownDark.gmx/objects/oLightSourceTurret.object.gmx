@@ -65,9 +65,13 @@ colourBlue = baseLightlevel;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-x = obj_sharkturret.x + 12;
-y = obj_sharkturret.y - 20;
+            <string>if instance_exists(obj_sharkturret)
+    {
+        x = obj_sharkturret.x + 12;
+        y = obj_sharkturret.y - 20;
+    }
+else instance_destroy();
+
 
 
 </string>
