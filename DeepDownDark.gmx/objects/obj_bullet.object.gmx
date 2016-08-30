@@ -99,7 +99,7 @@ if inst != noone
                 {
                     sprite_index = alt_sprite;
                     image_index = irandom_range(0,5);
-                    hitpoints -= 1
+                    hitpoints -= obj_player.bulletdamage;
                 }
             else
                 {
@@ -147,7 +147,7 @@ if darkspawn != noone
                 by = y
                 script_execute(scr_blockburstvfx, bx, by);
                 
-                currenthealth -= 1;                
+                currenthealth -= obj_player.bulletdamage;                
                 }           
             }
         //destroy the bullet
@@ -171,7 +171,7 @@ if gaunt != noone
                 by = y
                 script_execute(scr_smalldebris, bx, by);
                 awake = true;
-                currenthealth -= 1;
+                currenthealth -= obj_player.bulletdamage;
                 if hitanim == 0 hitanim = hitanimmax;
                 //show_debug_message(string(currenthealth)); 
                 
@@ -199,7 +199,7 @@ if spores != noone
                 by = y
                 script_execute(scr_bulletsparks, bx, by);
                 awake = true;
-                currenthealth -= 1;
+                currenthealth -= obj_player.bulletdamage;
                 
                 }           
             }

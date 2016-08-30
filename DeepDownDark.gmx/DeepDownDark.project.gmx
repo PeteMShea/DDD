@@ -199,6 +199,12 @@
       <sprite>sprites\spr_ItemButtonHighlight</sprite>
       <sprite>sprites\spr_05TurretB</sprite>
       <sprite>sprites\spr_06TurretC</sprite>
+      <sprite>sprites\spr_07Shell</sprite>
+      <sprite>sprites\spr_08Shellx2</sprite>
+      <sprite>sprites\spr_09DoubleFire</sprite>
+      <sprite>sprites\spr_10TripleFire</sprite>
+      <sprite>sprites\spr_11Ricochet</sprite>
+      <sprite>sprites\spr_12ArmourPiercing</sprite>
     </sprites>
     <sprites name="WeaponGraphics">
       <sprite>sprites\spr_ItemGraphicPlaceholder</sprite>
@@ -289,6 +295,7 @@
     <objects name="player">
       <object>objects\obj_player</object>
       <object>objects\obj_sharkturret</object>
+      <object>objects\obj_bullet</object>
       <object>objects\obj_sharkRetro</object>
       <object>objects\obj_sharkturretmounting</object>
       <object>objects\obj_sharkSpec</object>
@@ -309,7 +316,6 @@
       <object>objects\obj_sharkRThrust</object>
       <object>objects\obj_sharkBThrust</object>
       <object>objects\obj_sharkthrust_trail</object>
-      <object>objects\obj_bullet</object>
       <object>objects\obj_bulletspark</object>
       <object>objects\oFlyingHead</object>
       <object>objects\oLightSource</object>

@@ -92,92 +92,92 @@ global.WeaponShipArt[6] = spr_TurretGraphic;
 
 //-------------------------------------------------------
 
-global.WeaponName[7] = "";
-global.WeaponUnlocked[7] = false;
-global.WeaponOwned[7] = false;
-global.WeaponEquipped[7] = false;
-global.WeaponCost[7] = 999;
-global.WeaponIcon[7] = spr_ItemPlaceholder;
+global.WeaponName[7] = "STANDARD SHELL";
+global.WeaponUnlocked[7] = true;
+global.WeaponOwned[7] = true;
+global.WeaponEquipped[7] = true;
+global.WeaponCost[7] = 0;
+global.WeaponIcon[7] = spr_07Shell;
 global.WeaponGraphic[7] = spr_ItemGraphicPlaceholder;
-global.WeaponStatA[7] = "";
+global.WeaponStatA[7] = "DAMAGE: 5";
 global.WeaponStatB[7] = "";
-global.WeaponAttMod[7] = 1;
+global.WeaponAttMod[7] = 2;
 global.WeaponAttBoost[7] = 0;
 global.WeaponShipArt[7] = noone;
 
 //-------------------------------------------------------
 
-global.WeaponName[8] = "";
-global.WeaponUnlocked[8] = false;
+global.WeaponName[8] = "PLASMA SHELL";
+global.WeaponUnlocked[8] = true;
 global.WeaponOwned[8] = false;
 global.WeaponEquipped[8] = false;
-global.WeaponCost[8] = 999;
-global.WeaponIcon[8] = spr_ItemPlaceholder;
+global.WeaponCost[8] = 500;
+global.WeaponIcon[8] = spr_08Shellx2;
 global.WeaponGraphic[8] = spr_ItemGraphicPlaceholder;
-global.WeaponStatA[8] = "";
+global.WeaponStatA[8] = "DAMAGE: 10";
 global.WeaponStatB[8] = "";
-global.WeaponAttMod[8] = 1;
-global.WeaponAttBoost[8] = 0;
+global.WeaponAttMod[8] = 2;
+global.WeaponAttBoost[8] = 10;
 global.WeaponShipArt[8] = noone;
 
 //-------------------------------------------------------
 
-global.WeaponName[9] = "";
-global.WeaponUnlocked[9] = false;
+global.WeaponName[9] = "DUAL FIRE";
+global.WeaponUnlocked[9] = true;
 global.WeaponOwned[9] = false;
 global.WeaponEquipped[9] = false;
-global.WeaponCost[9] = 999;
-global.WeaponIcon[9] = spr_ItemPlaceholder;
+global.WeaponCost[9] = 1000;
+global.WeaponIcon[9] = spr_09DoubleFire;
 global.WeaponGraphic[9] = spr_ItemGraphicPlaceholder;
-global.WeaponStatA[9] = "";
-global.WeaponStatB[9] = "";
-global.WeaponAttMod[9] = 1;
-global.WeaponAttBoost[9] = 0;
+global.WeaponStatA[9] = "DAMAGE: 20";
+global.WeaponStatB[9] = "TWIN SHOT";
+global.WeaponAttMod[9] = 2;
+global.WeaponAttBoost[9] = 20;
 global.WeaponShipArt[9] = noone;
 
 //-------------------------------------------------------
 
-global.WeaponName[10] = "";
-global.WeaponUnlocked[10] = false;
+global.WeaponName[10] = "SPREAD FIRE";
+global.WeaponUnlocked[10] = true;
 global.WeaponOwned[10] = false;
 global.WeaponEquipped[10] = false;
-global.WeaponCost[10] = 999;
-global.WeaponIcon[10] = spr_ItemPlaceholder;
+global.WeaponCost[10] = 1500;
+global.WeaponIcon[10] = spr_10TripleFire;
 global.WeaponGraphic[10] = spr_ItemGraphicPlaceholder;
-global.WeaponStatA[10] = "";
-global.WeaponStatB[10] = "";
-global.WeaponAttMod[10] = 1;
-global.WeaponAttBoost[10] = 0;
+global.WeaponStatA[10] = "DAMAGE: 30";
+global.WeaponStatB[10] = "TRIPLE SHOT";
+global.WeaponAttMod[10] = 2;
+global.WeaponAttBoost[10] = 30;
 global.WeaponShipArt[10] = noone;
 
 //-------------------------------------------------------
 
-global.WeaponName[11] = "";
-global.WeaponUnlocked[11] = false;
+global.WeaponName[11] = "RICOCHET";
+global.WeaponUnlocked[11] = true;
 global.WeaponOwned[11] = false;
 global.WeaponEquipped[11] = false;
-global.WeaponCost[11] = 999;
-global.WeaponIcon[11] = spr_ItemPlaceholder;
+global.WeaponCost[11] = 2500;
+global.WeaponIcon[11] = spr_11Ricochet;
 global.WeaponGraphic[11] = spr_ItemGraphicPlaceholder;
-global.WeaponStatA[11] = "";
-global.WeaponStatB[11] = "";
-global.WeaponAttMod[11] = 1;
-global.WeaponAttBoost[11] = 0;
+global.WeaponStatA[11] = "DAMAGE: 20";
+global.WeaponStatB[11] = "RICOCHET SHOTS";
+global.WeaponAttMod[11] = 2;
+global.WeaponAttBoost[11] = 30;
 global.WeaponShipArt[11] = noone;
 
 //-------------------------------------------------------
 
-global.WeaponName[12] = "";
-global.WeaponUnlocked[12] = false;
+global.WeaponName[12] = "ARMOUR PIERCING";
+global.WeaponUnlocked[12] = true;
 global.WeaponOwned[12] = false;
 global.WeaponEquipped[12] = false;
-global.WeaponCost[12] = 999;
-global.WeaponIcon[12] = spr_ItemPlaceholder;
+global.WeaponCost[12] = 4000;
+global.WeaponIcon[12] = spr_12ArmourPiercing;
 global.WeaponGraphic[12] = spr_ItemGraphicPlaceholder;
-global.WeaponStatA[12] = "";
-global.WeaponStatB[12] = "";
-global.WeaponAttMod[12] = 1;
-global.WeaponAttBoost[12] = 0;
+global.WeaponStatA[12] = "DAMAGE: 40";
+global.WeaponStatB[12] = "PIERCES ARMOUR";
+global.WeaponAttMod[12] = 2;
+global.WeaponAttBoost[12] = 40;
 global.WeaponShipArt[12] = noone;
 
 //-------------------------------------------------------

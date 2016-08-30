@@ -257,7 +257,8 @@ if asteroidhit != 0
     }
     
     
-    asteroidhealth -= (abs(hitspeed_x) + abs(hitspeed_y)) * damagemult;
+    if asteroidhit == 1 asteroidhealth -= (abs(hitspeed_x) + abs(hitspeed_y)) * damagemult;
+    if asteroidhit == 2 asteroidhealth -= (abs(hitspeed_x) + abs(hitspeed_y)) * damagemult * obj_player.bulletdamage;
     //show_debug_message(string(asteroidhealth));
     
     if asteroidhealth &lt;=0

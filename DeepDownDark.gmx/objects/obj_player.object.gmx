@@ -60,6 +60,8 @@ if ship =="shark"
     turretturn = 1;   //number of times turret will turn 2 degrees in a frame- increases as turret upgraded for faster speed with continued precision
     retro = true;    
     shoot_rate = 12;     //number of frames between bullets when mouse button held
+    bulletdamage = 0.5;     //default bulletdamage
+    bulletfire = 1.0;       // set to 2 for double fire and 3 for triple spread fire
     minlandspeed = 0.4;
     
 }
