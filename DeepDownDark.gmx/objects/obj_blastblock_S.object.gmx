@@ -30,6 +30,7 @@ image_speed = 0;
 image_index = irandom_range(0, 9);
 alt_sprite = spr_weeblockendScap;
 hitpoints = 1;
+dir = 2;
 
 
 </string>

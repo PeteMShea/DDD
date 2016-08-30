@@ -31,6 +31,7 @@ img = round(random_range(0,4));
 image_index = img;
 image_speed = 0;       //do not animate
 hitpoints = 0;
+dir = 0;
 </string>
           </argument>
         </arguments>

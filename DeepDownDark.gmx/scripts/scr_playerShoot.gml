@@ -87,6 +87,18 @@
                 }                                    
             }
                                     
+        if obj_player.bulletfire == 4
+            {
+                var inst;
+                inst = instance_create(bulletx, bullety, obj_bullet);        
+                with (inst)
+                {
+                    image_angle = obj_player.bulletangle;
+                    destx = other.bulletaimx;
+                    desty = other.bulletaimy;
+                    ricochet = true;             
+                }
+            }
         shoot_counter = shoot_rate;    
     }
 

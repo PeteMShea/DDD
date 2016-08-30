@@ -30,9 +30,19 @@
 bulletspd = 3 * global.RM;
 lifespan = 120;     //number of frames bullet will live for
 asteroidmult = 0.25;       //how much damage done to asteroid
+if obj_player.bulletfire == 4
+    {
+        show_debug_message("R");
+        ricochet = true
+        lifespan = 240;
+    }
+else ricochet = false;
 
 start_x = x;
 start_y = y;
+
+bounce = 0;
+totalbounces = 3;       //number of permitted bounces before bullet is destroyed
 
 //show_debug_message(string(start_x) + " , " +  string(start_y));
 
@@ -93,6 +103,65 @@ if inst != noone
         var ix;
         script_execute(scr_blockburstvfx, bx, by);
         //change state or destroy instance of block hit
+        if ricochet == true
+        {
+            if inst.dir == 0 &amp;&amp; bounce &lt;= 0
+            {
+            show_debug_message("Above")
+            newbulletangle = (360 - image_angle);
+            bounce = 3;
+            totalbounces -= 1;
+            }
+            if inst.dir == 1 &amp;&amp; bounce &lt;= 0
+            {
+            show_debug_message("Right")
+            newbulletangle = (180 - image_angle);
+            bounce = 3;
+            totalbounces -= 1;            
+            }
+            if inst.dir == 2 &amp;&amp; bounce &lt;= 0
+            {
+            show_debug_message("Below")
+            newbulletangle = (360 - image_angle);
+            bounce = 3;
+            totalbounces -= 1;            
+            }
+            if inst.dir == 3 &amp;&amp; bounce &lt;= 0
+            {
+            show_debug_message("Left")
+            newbulletangle = (180 - image_angle);
+            bounce = 3;
+            totalbounces -= 1;            
+            }
+            if bounce == 3
+                {
+                    image_angle = newbulletangle;
+                    destx = x - lengthdir_x(100, newbulletangle);
+                    desty = y - lengthdir_y(100, newbulletangle);
+                }
+            bounce -=1;            
+            if totalbounces &lt;= 0 instance_destroy();
+            /*
+            hx = inst.x + (inst.sprite_width/2);
+            hy = inst.y + (inst.sprite_height/2);
+            
+            
+            if abs(bx - hx) &gt;= abs(by - hy)
+                {
+                    if bx - hx &gt;= 0 show_debug_message("Right")
+                    if bx - hx &lt; 0 show_debug_message("Left")
+                }
+            else
+                {
+                    if by - hy &gt;= 0 show_debug_message("Below")
+                    if by - hy &lt; 0 show_debug_message("Above")
+                }
+           */           
+        }        
+        
+        
+        
+        
         with (inst)
         {
             if hitpoints &gt; 0
@@ -107,11 +176,12 @@ if inst != noone
                 }
         }
         
-        //destroy the bullet
+        //destroy the bullet unless ricochet
         bx = x
         by = y        
         script_execute(scr_bulletsparks, bx, by);        
-        instance_destroy();
+
+        if ricochet == false instance_destroy();
     }
     
 var gold;
@@ -240,12 +310,61 @@ if asteroid != noone
     }         
     
 // Collide with anything else- just kill the bullet
-if place_meeting(x, y, obj_block)
+if place_meeting(x, y, obj_newblock)
     {
         bx = x
         by = y        
         script_execute(scr_bulletsparks, bx, by);
-        instance_destroy();
+        if ricochet == true
+        {
+            inst = instance_place(x, y, obj_block);
+            hx = inst.x + (inst.sprite_width/2);
+            hy = inst.y + (inst.sprite_height/2);                        
+            if abs(bx - hx) &gt;= abs(by - hy)
+                {
+                    if bx - hx &gt;= 0
+                    {
+                        show_debug_message("Right")
+                        newbulletangle = (180 - image_angle);
+                        bounce = 3;
+                        totalbounces -= 1; 
+                    }
+                    if bx - hx &lt; 0
+                    {
+                        show_debug_message("Left")
+                        newbulletangle = (180 - image_angle);
+                        bounce = 3;
+                        totalbounces -= 1;                     
+                    }
+                }
+            else
+                {
+                    if by - hy &gt;= 0
+                    {
+                        show_debug_message("Below")
+                        newbulletangle = (360 - image_angle);
+                        bounce = 3;
+                        totalbounces -= 1;                         
+                    }
+                    if by - hy &lt; 0
+                    {
+                        show_debug_message("Above")
+                        newbulletangle = (360 - image_angle);
+                        bounce = 3;
+                        totalbounces -= 1;                                         
+                    }
+                }
+            if bounce == 3
+                {
+                    image_angle = newbulletangle;
+                    destx = x - lengthdir_x(100, newbulletangle);
+                    desty = y - lengthdir_y(100, newbulletangle);
+                }
+            bounce -=1;            
+            if totalbounces &lt;= 0 instance_destroy();                
+                      
+        }
+        else instance_destroy();
     }
 
 

@@ -61,7 +61,7 @@ if ship =="shark"
     retro = true;    
     shoot_rate = 12;     //number of frames between bullets when mouse button held
     bulletdamage = 0.5;     //default bulletdamage
-    bulletfire = 1.0;       // set to 2 for double fire and 3 for triple spread fire
+    bulletfire = 1.0;       // set to 2 for double fire, 3 for triple spread fire, 4 for Ricochet
     minlandspeed = 0.4;
     
 }
@@ -966,7 +966,6 @@ if collision_circle(x+ speed_x, y + speed_y, shipscale + 3 * global.RM, obj_exit
 if global.playerHealth &lt;= 0 &amp;&amp; dead == false
     {
         dead = true;
-        deathsequence = false;
         sprite_index = spr_shipSharkDead;
         image_speed = 0.1;
         debrisdir[0] = 140;
@@ -1011,9 +1010,8 @@ if dead == true &amp;&amp; deathcounter &lt; deathsequencetime
                 image_index = 4;       //blank sprite- swap ship with new instanced debris objects
                          
             }
-        if image_index &gt;= 1 &amp;&amp; deathsequence == false
+        if image_index &gt;= 1
             {
-                deathsequence = true;
                 script_execute(scr_deathsequence, px, py, startfade, showmenu);        
             }           
 }

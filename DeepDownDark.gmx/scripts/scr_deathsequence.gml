@@ -2,6 +2,7 @@
 
 if deathstart == false
     {
+        obj_HUD.hidden = true;
         instance_create(px, py, obj_explosion128);
         alarm[0] = 10;
         deathstart = true;
@@ -54,17 +55,22 @@ if startfade <=0 && global.dead == false
 if global.dead == true && deathdone == false
 {
     deathdone = true;
-    inst = instance_create(px,py, eff_fadetoblack)      //eff_fadetoblack
-    with(inst)
-        {
-            fadeSpeed = 0.5;
-            fadeAlpha = 0;
-            finalAlpha = 0.8;
-            fadeDone = false;
-            fadeOut = 30;        
-        }
-    instance_create(x,y, obj_deathmenu);
+    if !instance_exists(eff_fadetoblack)
+    {
+        inst = instance_create(px,py, eff_fadetoblack)      //eff_fadetoblack
+        with(inst)
+            {
+                fadeSpeed = 0.5;
+                fadeAlpha = 0;
+                finalAlpha = 0.9;
+                fadeDone = false;
+                fadeOut = 30;        
+            }
+    }
+    if !instance_exists(obj_deathmenu) instance_create(x,y, obj_deathmenu);
     showmenu = true;
 }
+
+return(deathdone)
 
 

@@ -152,10 +152,10 @@ if fadeDone == true
             <kind>1</kind>
             <string>
 draw_set_alpha(fadeAlpha);
-vx = view_xport[0];
-vy = view_yport[0];
-vwidth = room_width[0];
-vheight = room_height[0]
+vx = view_xview[0];
+vy = view_yview[0];
+vwidth = view_wview[0];
+vheight = view_hview[0]
 draw_rectangle_color( vx, vy, vwidth, vheight, c_black, c_black, c_black, c_black, false);
 
 //obj_HUD.HUDAlpha = 0.95-fadeAlpha;
