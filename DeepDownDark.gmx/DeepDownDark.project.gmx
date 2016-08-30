@@ -197,6 +197,8 @@
       <sprite>sprites\spr_04TurretA</sprite>
       <sprite>sprites\spr_ItemPlaceholder</sprite>
       <sprite>sprites\spr_ItemButtonHighlight</sprite>
+      <sprite>sprites\spr_05TurretB</sprite>
+      <sprite>sprites\spr_06TurretC</sprite>
     </sprites>
     <sprites name="WeaponGraphics">
       <sprite>sprites\spr_ItemGraphicPlaceholder</sprite>
@@ -205,6 +207,8 @@
       <sprite>sprites\spr_RapidFire02</sprite>
       <sprite>sprites\spr_HighSpin03</sprite>
       <sprite>sprites\spr_TurretGraphic</sprite>
+      <sprite>sprites\spr_TurretB05</sprite>
+      <sprite>sprites\spr_TurretC06</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -275,9 +279,9 @@
   </fonts>
   <objects name="objects">
     <objects name="control_objects">
+      <object>objects\obj_gamestart</object>
       <object>objects\obj_newcontrol</object>
       <object>objects\obj_roomcontrolA0</object>
-      <object>objects\obj_gamestart</object>
       <object>objects\obj_PauseLanded</object>
       <object>objects\obj_alarm</object>
       <object>objects\obj_exittrigger</object>

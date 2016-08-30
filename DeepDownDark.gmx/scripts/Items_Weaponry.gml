@@ -12,7 +12,7 @@ global.WeaponGraphic[1] = spr_Repeater01;
 global.WeaponStatA[1] = "ROF: 4.0";
 global.WeaponStatB[1] = "";
 global.WeaponAttMod[1] = 2;
-global.WeaponAttBoost[1] = 10;
+global.WeaponAttBoost[1] = 0;
 global.WeaponShipArt[1] = noone;
 
 //-------------------------------------------------------
@@ -27,7 +27,7 @@ global.WeaponGraphic[2] = spr_RapidFire02;
 global.WeaponStatA[2] = "ROF: 6.0";
 global.WeaponStatB[2] = "";
 global.WeaponAttMod[2] = 2;
-global.WeaponAttBoost[2] = 5;
+global.WeaponAttBoost[2] = 10;
 global.WeaponShipArt[2] = noone;
 
 //-------------------------------------------------------
@@ -42,7 +42,7 @@ global.WeaponGraphic[3] = spr_HighSpin03;
 global.WeaponStatA[3] = "ROF: 9.0";
 global.WeaponStatB[3] = "";
 global.WeaponAttMod[3] = 2;
-global.WeaponAttBoost[3] = 5;
+global.WeaponAttBoost[3] = 15;
 global.WeaponShipArt[3] = noone;
 
 //-------------------------------------------------------
@@ -57,38 +57,38 @@ global.WeaponGraphic[4] = spr_TurretA04;
 global.WeaponStatA[4] = "ROF:  4.0";
 global.WeaponStatB[4] = "TURN: 1.2";
 global.WeaponAttMod[4] =2;
-global.WeaponAttBoost[4] = 10;
+global.WeaponAttBoost[4] = 20;
 global.WeaponShipArt[4] = spr_TurretGraphic;
 
 //-------------------------------------------------------
 
-global.WeaponName[5] = "";
-global.WeaponUnlocked[5] = false;
+global.WeaponName[5] = "RAPID FIRE TURRET";
+global.WeaponUnlocked[5] = true;
 global.WeaponOwned[5] = false;
 global.WeaponEquipped[5] = false;
-global.WeaponCost[5] = 999;
-global.WeaponIcon[5] = spr_ItemPlaceholder;
-global.WeaponGraphic[5] = spr_ItemGraphicPlaceholder;
-global.WeaponStatA[5] = "";
-global.WeaponStatB[5] = "";
-global.WeaponAttMod[5] = 1;
-global.WeaponAttBoost[5] = 0;
-global.WeaponShipArt[5] = noone;
+global.WeaponCost[5] = 3500;
+global.WeaponIcon[5] = spr_05TurretB;
+global.WeaponGraphic[5] = spr_TurretB05;
+global.WeaponStatA[5] = "ROF: 6.0";
+global.WeaponStatB[5] = "TURN: 1.5";
+global.WeaponAttMod[5] = 2;
+global.WeaponAttBoost[5] = 25;
+global.WeaponShipArt[5] = spr_TurretGraphic;
 
 //-------------------------------------------------------
 
-global.WeaponName[6] = "";
-global.WeaponUnlocked[6] = false;
+global.WeaponName[6] = "HIGH SPIN TURRET";
+global.WeaponUnlocked[6] = true;
 global.WeaponOwned[6] = false;
 global.WeaponEquipped[6] = false;
-global.WeaponCost[6] = 999;
-global.WeaponIcon[6] = spr_ItemPlaceholder;
-global.WeaponGraphic[6] = spr_ItemGraphicPlaceholder;
-global.WeaponStatA[6] = "";
-global.WeaponStatB[6] = "";
-global.WeaponAttMod[6] = 1;
-global.WeaponAttBoost[6] = 0;
-global.WeaponShipArt[6] = noone;
+global.WeaponCost[6] = 5000;
+global.WeaponIcon[6] = spr_06TurretC;
+global.WeaponGraphic[6] = spr_TurretC06;
+global.WeaponStatA[6] = "ROF: 9.0";
+global.WeaponStatB[6] = "TURN: 2.0";
+global.WeaponAttMod[6] = 2;
+global.WeaponAttBoost[6] = 30;
+global.WeaponShipArt[6] = spr_TurretGraphic;
 
 //-------------------------------------------------------
 
