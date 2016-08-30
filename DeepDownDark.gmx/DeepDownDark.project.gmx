@@ -288,8 +288,8 @@
     </objects>
     <objects name="player">
       <object>objects\obj_player</object>
-      <object>objects\obj_sharkRetro</object>
       <object>objects\obj_sharkturret</object>
+      <object>objects\obj_sharkRetro</object>
       <object>objects\obj_sharkturretmounting</object>
       <object>objects\obj_sharkSpec</object>
       <object>objects\obj_redtrail</object>

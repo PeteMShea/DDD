@@ -105,6 +105,12 @@ if appeared == true
             {
                 obj_HUD.newgold = global.playerGold - global.WeaponCost[weaponID];
                 once = true;
+                //lock out other buttons during the upgrade phase
+                obj_RepairButton.templocked = true;
+                obj_LaunchButton.locked = true;
+                obj_DatabaseButton.locked = true;
+                obj_EquipButton.locked = true;
+                
             }               
         if global.playerGold == obj_HUD.newgold
         {
@@ -120,6 +126,11 @@ if appeared == true
             global.WeaponOwned[weaponID] = true;
             global.WeaponEquipped[weaponID] = true;
             script_execute(scr_updateplayer);
+            //now unlock out other buttons during the upgrade phase
+            obj_RepairButton.templocked = false;
+            obj_LaunchButton.locked = false;
+            obj_DatabaseButton.locked = false;
+            obj_EquipButton.locked = false;            
         }
           
     }

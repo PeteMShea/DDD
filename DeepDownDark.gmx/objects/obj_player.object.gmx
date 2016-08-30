@@ -57,6 +57,7 @@ if ship =="shark"
     trails = true;
     trailspeed = 0.75;   //minimum speed before trails are drawn at high alpha- 0 is on all the time
     turret = false;
+    turretturn = 1;   //number of times turret will turn 2 degrees in a frame- increases as turret upgraded for faster speed with continued precision
     retro = true;    
     shoot_rate = 12;     //number of frames between bullets when mouse button held
     minlandspeed = 0.4;

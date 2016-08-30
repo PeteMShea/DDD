@@ -26,8 +26,21 @@ if global.WeaponEquipped[4] == true
     {
         obj_player.turret = true;
         obj_player.shoot_rate = 9;
+        obj_player.turretturn = 1.0;
     }
-    
+if global.WeaponEquipped[5] == true 
+    {
+        obj_player.turret = true;
+        obj_player.shoot_rate = 6;
+        obj_player.turretturn = 2;
+    }    
+if global.WeaponEquipped[6] == true 
+    {
+        obj_player.turret = true;
+        obj_player.shoot_rate = 4;
+        obj_player.turretturn = 3;  //turns 3 times in a frame
+    }
+        
 //update the player Attributes for all equipped items
 for (i = 1; i < 25; i += 1)
 {

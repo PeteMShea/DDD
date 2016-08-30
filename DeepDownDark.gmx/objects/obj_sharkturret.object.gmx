@@ -40,7 +40,8 @@ y = obj_player.y + lengthdir_y(18, obj_player.image_angle);
 image_angle = 270;
 image_speed = 0;
 
-//instance_create(x+16, y-16, oLightSourceTurret);
+desired_angle = image_angle;
+
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -170,12 +171,24 @@ joylefty = gamepad_axis_value(0, gp_axisrv);
 // Rotation Mouse (left stick not used)
     if joystickused != 1
     {
-        image_angle = point_direction(x, y, mouse_x, mouse_y);
+        desired_angle = point_direction(x, y, mouse_x, mouse_y);
     }
+
+// turn the turret towards the desired angle
+if abs(desired_angle - image_angle) &gt; 2
+    {
+     
+        if angle_difference(desired_angle, image_angle) &lt; -2 image_angle -= 2;
+        if obj_player.turretturn &gt;= 2 &amp;&amp; angle_difference(desired_angle, image_angle) &lt; -2 image_angle -= 2;    // turret turns twice in a frame if turnspeed higher
+        if obj_player.turretturn &gt;= 3 &amp;&amp; angle_difference(desired_angle, image_angle) &lt; -2 image_angle -= 2;      //three times                  
+        if angle_difference(desired_angle, image_angle) &gt; 2 image_angle += 2;
+        if obj_player.turretturn &gt;= 2 &amp;&amp; angle_difference(desired_angle, image_angle) &gt; 2 image_angle += 2;        
+        if obj_player.turretturn &gt;= 3 &amp;&amp; angle_difference(desired_angle, image_angle) &gt; 2 image_angle += 2;                    
+    }
+        
 
 // clean up
 if obj_player.turret == false instance_destroy();
-
 
 
 </string>
