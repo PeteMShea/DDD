@@ -44,14 +44,16 @@ if deathstart == true
 
 startfade -= 1;
 
-if startfade <=0 
+if startfade <=0 && global.dead == false
     {    
-        global.dead = true;        
+        global.dead = true;
+        deathdone = false;        
     }    
     
     
-if global.dead == true
+if global.dead == true && deathdone == false
 {
+    deathdone = true;
     inst = instance_create(px,py, eff_fadetoblack)      //eff_fadetoblack
     with(inst)
         {

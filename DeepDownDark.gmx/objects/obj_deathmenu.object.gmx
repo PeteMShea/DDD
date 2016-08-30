@@ -58,12 +58,13 @@ alphalevel = 0;
 draw_set_font(fnt_CapsullaBig);
 draw_set_halign(fa_center);        
 draw_set_colour(c_ltgray);
-xpos = 640;
+xpos = 1920/2;
+ypos = 400
 draw_set_alpha(alphalevel);
 
 if alphalevel &lt;= 1.0 alphalevel += alphafade;
 
-draw_text(640, 290, "YOU HAVE DIED");       //temporary
+draw_text(xpos, ypos, "YOU HAVE DIED");       //temporary
 
 draw_set_alpha(1);
 </string>

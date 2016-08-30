@@ -966,6 +966,7 @@ if collision_circle(x+ speed_x, y + speed_y, shipscale + 3 * global.RM, obj_exit
 if global.playerHealth &lt;= 0 &amp;&amp; dead == false
     {
         dead = true;
+        deathsequence = false;
         sprite_index = spr_shipSharkDead;
         image_speed = 0.1;
         debrisdir[0] = 140;
@@ -1010,9 +1011,9 @@ if dead == true &amp;&amp; deathcounter &lt; deathsequencetime
                 image_index = 4;       //blank sprite- swap ship with new instanced debris objects
                          
             }
-        if image_index &gt;= 1
+        if image_index &gt;= 1 &amp;&amp; deathsequence == false
             {
-                
+                deathsequence = true;
                 script_execute(scr_deathsequence, px, py, startfade, showmenu);        
             }           
 }

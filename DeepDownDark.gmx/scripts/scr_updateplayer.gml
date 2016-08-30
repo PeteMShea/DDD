@@ -55,7 +55,11 @@ if global.WeaponEquipped[9] == true
         obj_player.bulletdamage = 1.0;
         obj_player.bulletfire = 2;        
     }    
-    
+if global.WeaponEquipped[10] == true 
+    {
+        obj_player.bulletdamage = 1.0;
+        obj_player.bulletfire = 3;        
+    }    
     
                 
 //update the player Attributes for all equipped items
