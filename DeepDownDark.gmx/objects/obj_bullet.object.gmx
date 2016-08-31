@@ -92,10 +92,12 @@ if lifespan &lt;= 0 instance_destroy();
 
 
 // Collision detection and resolution
-var inst;
-inst = instance_place(x, y, obj_blastblock);
+collided = false;
+inst = noone;
+if collided == false inst = instance_place(x, y, obj_blastblock);
 if inst != noone
     {
+        collided = true;
         //create debris tinyblocks
         bx = x
         by = y
@@ -184,10 +186,11 @@ if inst != noone
         if ricochet == false instance_destroy();
     }
     
-var gold;
+gold = noone;
 gold = instance_place(x, y, obj_gold);
 if gold != noone
     {
+        collided = true;
         instance_create(x, y, obj_goldpickup);
         speed_x = hspeed * 0.75
         speed_y = vspeed * 0.75
@@ -203,10 +206,11 @@ if gold != noone
         instance_destroy();
     }
 
-var darkspawn;
-darkspawn = instance_place(x, y, obj_darkspawn);
+darkspawn = noone;
+if collided == false darkspawn = instance_place(x, y, obj_darkspawn);
 if darkspawn != noone
     {
+        collided = true;
         with(darkspawn) 
             {
                 if currenthealth &gt;0
@@ -227,10 +231,11 @@ if darkspawn != noone
         instance_destroy();
     }    
 
-var gaunt;
-gaunt = instance_place(x, y, obj_gaunt);
+gaunt = noone;
+if collided == false gaunt = instance_place(x, y, obj_gaunt);
 if gaunt != noone
     {
+        collided = true;
         with(gaunt) 
             {
                 if currenthealth &gt;0
@@ -255,10 +260,11 @@ if gaunt != noone
 
     }     
 
-var spores;
-spores = instance_place(x, y, obj_spawn);
+spores = noone;
+if collided == false spores = instance_place(x, y, obj_spawn);
 if spores != noone
     {
+        collided = true;
         with(spores) 
             {
                 if currenthealth &gt;0
@@ -277,11 +283,12 @@ if spores != noone
 
     }     
     
-var asteroid;
-asteroid = instance_place(x, y, obj_asteroid);
+asteroid = noone;
+if collided == false asteroid = instance_place(x, y, obj_asteroid);
 if asteroid != noone
 
     {
+    collided = true;
     hitangle = point_direction(start_x, start_y, x, y);
     extended_x = x + lengthdir_x(32 * global.RM, hitangle);
     extended_y = y + lengthdir_y(32 * global.RM, hitangle); 
@@ -309,10 +316,12 @@ if asteroid != noone
 
     }         
     
-// Collide with anything else- just kill the bullet
-newblock = instance_place(x, y, obj_newblock);
+
+newblock = noone;
+if collided == false newblock = instance_place(x, y, obj_newblock);
 if newblock != noone
     {
+        collided = true;
         bx = x
         by = y        
         script_execute(scr_bulletsparks, bx, by);
@@ -369,9 +378,31 @@ if newblock != noone
         else instance_destroy();
     }
 
+// Collide with any other environment block- just kill the bullet
+block = noone;
+if collided == false block = instance_place(x, y, obj_block);
+if block != noone
+    {
+        collided = true;
+        bx = x
+        by = y        
+        script_execute(scr_bulletsparks, bx, by);                        
+        instance_destroy();
+    
+    
+    }
 
-
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </string>
           </argument>
         </arguments>

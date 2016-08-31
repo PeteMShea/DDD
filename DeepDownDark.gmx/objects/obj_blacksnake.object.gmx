@@ -80,7 +80,7 @@ if lifespan &lt;= lifeover
 
 if homing == true
 {
-    direction = point_direction(x, y, target.x + xoff, target.y + yoff);
+    if instance_exists(target) direction = point_direction(x, y, target.x + xoff, target.y + yoff);
 
 
 }
