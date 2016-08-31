@@ -311,9 +311,26 @@ if asteroid != noone
         //else script_execute(scr_spawngoldburst, bx, by);
         bx = x
         by = y        
-        script_execute(scr_bulletsparks, bx, by);                   
-        instance_destroy();
-
+        script_execute(scr_bulletsparks, bx, by);
+        if ricochet == true
+            {
+                ax = asteroid.x;
+                ay = asteroid.y;
+                hx = x;
+                hy = y;
+                
+                asteroid_angle = point_direction(hx, hy, ax, ay);            
+                newbulletangle = image_angle + (image_angle - asteroid_angle);
+                bounce = 5;          
+                if bounce == 5
+                    {
+                        image_angle = newbulletangle;
+                        destx = x - lengthdir_x(100, newbulletangle);
+                        desty = y - lengthdir_y(100, newbulletangle);            
+                    }
+                bounce -=1;                          
+            }                                           
+        else instance_destroy();
     }         
     
 
