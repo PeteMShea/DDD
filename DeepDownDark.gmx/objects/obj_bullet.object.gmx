@@ -32,7 +32,7 @@ lifespan = 120;     //number of frames bullet will live for
 asteroidmult = 0.25;       //how much damage done to asteroid
 if obj_player.bulletfire == 4
     {
-        show_debug_message("R");
+        //show_debug_message("R");
         ricochet = true
         lifespan = 240;
     }
@@ -107,28 +107,28 @@ if inst != noone
         {
             if inst.dir == 0 &amp;&amp; bounce &lt;= 0
             {
-            show_debug_message("Above")
+            //show_debug_message("Above")
             newbulletangle = (360 - image_angle);
             bounce = 3;
             totalbounces -= 1;
             }
             if inst.dir == 1 &amp;&amp; bounce &lt;= 0
             {
-            show_debug_message("Right")
+            //show_debug_message("Right")
             newbulletangle = (180 - image_angle);
             bounce = 3;
             totalbounces -= 1;            
             }
             if inst.dir == 2 &amp;&amp; bounce &lt;= 0
             {
-            show_debug_message("Below")
+            //show_debug_message("Below")
             newbulletangle = (360 - image_angle);
             bounce = 3;
             totalbounces -= 1;            
             }
             if inst.dir == 3 &amp;&amp; bounce &lt;= 0
             {
-            show_debug_message("Left")
+            //show_debug_message("Left")
             newbulletangle = (180 - image_angle);
             bounce = 3;
             totalbounces -= 1;            
@@ -310,50 +310,52 @@ if asteroid != noone
     }         
     
 // Collide with anything else- just kill the bullet
-if place_meeting(x, y, obj_newblock)
+newblock = instance_place(x, y, obj_newblock);
+if newblock != noone
     {
         bx = x
         by = y        
         script_execute(scr_bulletsparks, bx, by);
         if ricochet == true
-        {
-            inst = instance_place(x, y, obj_block);
-            hx = inst.x + (inst.sprite_width/2);
-            hy = inst.y + (inst.sprite_height/2);                        
-            if abs(bx - hx) &gt;= abs(by - hy)
-                {
-                    if bx - hx &gt;= 0
+        {            
+            hx = newblock.x - 2;
+            hy = newblock.y - 2;
+            hx2 = hx + newblock.sprite_width;
+            hy2 = hy + newblock.sprite_height;
+                                 
+                    if bx &gt; hx2 &amp;&amp; bounce &lt;= 0
                     {
                         show_debug_message("Right")
                         newbulletangle = (180 - image_angle);
                         bounce = 3;
                         totalbounces -= 1; 
                     }
-                    if bx - hx &lt; 0
+                    if bx &lt; hx &amp;&amp; bounce &lt;= 0
                     {
                         show_debug_message("Left")
                         newbulletangle = (180 - image_angle);
                         bounce = 3;
                         totalbounces -= 1;                     
                     }
-                }
-            else
-                {
-                    if by - hy &gt;= 0
+
+                    if by &gt; hy2 &amp;&amp; bounce &lt;= 0
                     {
                         show_debug_message("Below")
                         newbulletangle = (360 - image_angle);
                         bounce = 3;
                         totalbounces -= 1;                         
                     }
-                    if by - hy &lt; 0
+                    if by &lt; hy &amp;&amp; bounce &lt;= 0
                     {
                         show_debug_message("Above")
                         newbulletangle = (360 - image_angle);
                         bounce = 3;
                         totalbounces -= 1;                                         
                     }
-                }
+                    
+                    if bx &gt; hx + 1 &amp;&amp; bx &lt; hx2 - 1 &amp;&amp; by &gt; hy + 1 &amp;&amp; by &lt; hy2 - 1 instance_destroy()       //inside the block- just destroy the bullet
+                    
+
             if bounce == 3
                 {
                     image_angle = newbulletangle;
