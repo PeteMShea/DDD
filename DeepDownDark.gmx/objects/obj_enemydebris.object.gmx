@@ -30,7 +30,7 @@
 min_speed = 0.1;
 deceleration = 0.001;
 bouncecount = 0;
-lifespan = irandom_range(120,300);
+lifespan = irandom_range(60, 200);
 debrisdamage = 0;     //how much damage collision with debris does
 
 // start moving

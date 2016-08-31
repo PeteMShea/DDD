@@ -360,14 +360,14 @@ if newblock != noone
                                  
                     if bx &gt; hx2 &amp;&amp; bounce &lt;= 0
                     {
-                        show_debug_message("Right")
+                        //show_debug_message("Right")
                         newbulletangle = (180 - image_angle);
                         bounce = 3;
                         totalbounces -= 1; 
                     }
                     if bx &lt; hx &amp;&amp; bounce &lt;= 0
                     {
-                        show_debug_message("Left")
+                        //show_debug_message("Left")
                         newbulletangle = (180 - image_angle);
                         bounce = 3;
                         totalbounces -= 1;                     
@@ -375,14 +375,14 @@ if newblock != noone
 
                     if by &gt; hy2 &amp;&amp; bounce &lt;= 0
                     {
-                        show_debug_message("Below")
+                        //show_debug_message("Below")
                         newbulletangle = (360 - image_angle);
                         bounce = 3;
                         totalbounces -= 1;                         
                     }
                     if by &lt; hy &amp;&amp; bounce &lt;= 0
                     {
-                        show_debug_message("Above")
+                        //show_debug_message("Above")
                         newbulletangle = (360 - image_angle);
                         bounce = 3;
                         totalbounces -= 1;                                         

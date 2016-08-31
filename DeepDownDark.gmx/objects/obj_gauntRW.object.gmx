@@ -28,10 +28,10 @@
             <string>/// initialise variables
 
 min_speed = 0.2;
-deceleration = 0.001;
+deceleration = 0.005;
 bouncecount = 0;
 debrisdamage = 0;     //how much damage collision with debris does
-lifespan = random_range(500, 900);
+lifespan = random_range(300, 500);
 
 image_speed = 0;
 image_index = irandom_range(0,4);
@@ -39,7 +39,7 @@ image_index = irandom_range(0,4);
 // start moving
 
 direction = random_range(0, 359);
-speed = random_range(0.1, 0.4);
+speed = random_range(0.7, 0.9);
 rotation_speed = random_range(-1,1);
 
 

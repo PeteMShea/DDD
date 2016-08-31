@@ -386,10 +386,10 @@
       <object>objects\obj_gaunt</object>
       <object>objects\obj_sporeshadow</object>
       <object>objects\obj_spawnleader</object>
-      <object>objects\obj_gauntLW</object>
       <object>objects\obj_spawn</object>
       <object>objects\obj_sporespine</object>
       <object>objects\obj_sporedebris</object>
+      <object>objects\obj_gauntLW</object>
       <object>objects\obj_gauntRW</object>
       <object>objects\obj_gauntTorso</object>
       <object>objects\obj_gauntTail</object>

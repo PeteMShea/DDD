@@ -372,11 +372,13 @@ if currenthealth &lt;=0
     with (inst)
         {
             image_angle = other.debrisangle;
+            direction = other.debrisangle + random_range(75, 105);
         }
     inst = instance_create(x, y, obj_gauntRW);
     with (inst)
         {
             image_angle = other.debrisangle;
+            direction = other.debrisangle + random_range(255, 285);
         }
     inst = instance_create(x, y, obj_gauntTorso);
     with (inst)
@@ -387,6 +389,7 @@ if currenthealth &lt;=0
     with (inst)
         {
             image_angle = other.debrisangle;
+            direction = other.debrisangle + random_range(170, 190);
         }                           
     instance_destroy();
 }

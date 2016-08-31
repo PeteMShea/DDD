@@ -139,7 +139,7 @@ if launch == true
                             {
                                 other.hit = object_get_name(object_index);
                             }
-                        show_debug_message(string(hit));    
+                        //show_debug_message(string(hit));    
                         if string(hit) != "obj_blacksnake"
                         {
                             lifespan = 1;

@@ -13,8 +13,8 @@
         if turret == true
             { 
                 bulletangle = obj_sharkturret.image_angle;
-                bulletx = obj_sharkturret.x + lengthdir_x(32, obj_sharkturret.image_angle);;
-                bullety = obj_sharkturret.y + lengthdir_y(32, obj_sharkturret.image_angle);
+                bulletx = obj_sharkturret.x + lengthdir_x(16, obj_sharkturret.image_angle);;
+                bullety = obj_sharkturret.y + lengthdir_y(16, obj_sharkturret.image_angle);
             }
                     
         if obj_player.bulletfire == 0 || obj_player.bulletfire == 1 || obj_player.bulletfire == 5

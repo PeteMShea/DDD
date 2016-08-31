@@ -31,7 +31,7 @@ min_speed = 0.2;
 deceleration = 0.001;
 bouncecount = 0;
 debrisdamage = 0;     //how much damage collision with debris does
-lifespan = random_range(500, 900);
+lifespan = random_range(100, 200);
 
 image_speed = 0;
 image_index = irandom_range(0,4);
