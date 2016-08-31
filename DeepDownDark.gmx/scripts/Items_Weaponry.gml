@@ -154,8 +154,8 @@ global.WeaponShipArt[10] = noone;
 
 global.WeaponName[11] = "RICOCHET";
 global.WeaponUnlocked[11] = true;
-global.WeaponOwned[11] = true;
-global.WeaponEquipped[11] = true;
+global.WeaponOwned[11] = false;
+global.WeaponEquipped[11] = false;
 global.WeaponCost[11] = 2500;
 global.WeaponIcon[11] = spr_11Ricochet;
 global.WeaponGraphic[11] = spr_ItemGraphicPlaceholder;

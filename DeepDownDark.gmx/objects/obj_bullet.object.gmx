@@ -38,6 +38,14 @@ if obj_player.bulletfire == 4
     }
 else ricochet = false;
 
+if obj_player.bulletfire == 5
+    {
+        show_debug_message("P");
+        piercing = true
+        lifespan = 240;
+    }
+else piercing = false;
+
 start_x = x;
 start_y = y;
 
@@ -143,27 +151,8 @@ if inst != noone
                 }
             bounce -=1;            
             if totalbounces &lt;= 0 instance_destroy();
-            /*
-            hx = inst.x + (inst.sprite_width/2);
-            hy = inst.y + (inst.sprite_height/2);
-            
-            
-            if abs(bx - hx) &gt;= abs(by - hy)
-                {
-                    if bx - hx &gt;= 0 show_debug_message("Right")
-                    if bx - hx &lt; 0 show_debug_message("Left")
-                }
-            else
-                {
-                    if by - hy &gt;= 0 show_debug_message("Below")
-                    if by - hy &lt; 0 show_debug_message("Above")
-                }
-           */           
+          
         }        
-        
-        
-        
-        
         with (inst)
         {
             if hitpoints &gt; 0
@@ -178,12 +167,14 @@ if inst != noone
                 }
         }
         
-        //destroy the bullet unless ricochet
-        bx = x
-        by = y        
-        script_execute(scr_bulletsparks, bx, by);        
-
-        if ricochet == false instance_destroy();
+        //destroy the bullet unless ricochet or piercing
+            if piercing == false
+            {
+                bx = x
+                by = y        
+                script_execute(scr_bulletsparks, bx, by);        
+                if ricochet == false instance_destroy();
+            }
     }
     
 gold = noone;
@@ -199,11 +190,14 @@ if gold != noone
         by = y
         script_execute(scr_blockburstvfx, bx, by);
         
-        //destroy the bullet
-        bx = x
-        by = y        
-        script_execute(scr_bulletsparks, bx, by);
-        instance_destroy();
+        //destroy the bullet unless piercing
+        if piercing == false
+        {        
+            bx = x
+            by = y        
+            script_execute(scr_bulletsparks, bx, by);
+            instance_destroy();
+        }
     }
 
 darkspawn = noone;
@@ -224,11 +218,14 @@ if darkspawn != noone
                 currenthealth -= obj_player.bulletdamage;                
                 }           
             }
-        //destroy the bullet
-        bx = x
-        by = y        
-        script_execute(scr_bulletsparks, bx, by);
-        instance_destroy();
+        //destroy the bullet unless piercing
+        if piercing == false
+        {        
+            bx = x
+            by = y        
+            script_execute(scr_bulletsparks, bx, by);
+            instance_destroy();
+        }
     }    
 
 gaunt = noone;
@@ -252,11 +249,14 @@ if gaunt != noone
                 
                 }           
             }
-        //destroy the bullet
-        bx = x
-        by = y        
-        script_execute(scr_bulletsparks, bx, by);
-        instance_destroy();
+        //destroy the bullet unless piercing
+        if piercing == false
+        {        
+            bx = x
+            by = y        
+            script_execute(scr_bulletsparks, bx, by);
+            instance_destroy();
+        }
 
     }     
 
@@ -330,7 +330,7 @@ if asteroid != noone
                     }
                 bounce -=1;                          
             }                                           
-        else instance_destroy();
+        else if piercing == false instance_destroy();
     }         
     
 
