@@ -40,7 +40,7 @@ else ricochet = false;
 
 if obj_player.bulletfire == 5
     {
-        show_debug_message("P");
+        //show_debug_message("P");
         piercing = true
         lifespan = 240;
     }

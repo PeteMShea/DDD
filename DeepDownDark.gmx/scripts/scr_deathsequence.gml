@@ -52,7 +52,7 @@ if startfade <=0 && global.dead == false
     }    
     
     
-if global.dead == true && deathdone == false
+if global.dead == true
 {
     deathdone = true;
     if !instance_exists(eff_fadetoblack)
