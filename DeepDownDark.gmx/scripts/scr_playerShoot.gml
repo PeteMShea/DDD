@@ -17,7 +17,7 @@
                 bullety = obj_sharkturret.y + lengthdir_y(32, obj_sharkturret.image_angle);
             }
                     
-        if obj_player.bulletfire == 1 || obj_player.bulletfire == 5
+        if obj_player.bulletfire == 0 || obj_player.bulletfire == 1 || obj_player.bulletfire == 5
             {
                 var inst;
                 inst = instance_create(bulletx, bullety, obj_bullet);        

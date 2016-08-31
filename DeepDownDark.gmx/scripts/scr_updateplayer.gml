@@ -43,7 +43,7 @@ if global.WeaponEquipped[6] == true
 if global.WeaponEquipped[7] == true 
     {
         obj_player.bulletdamage = 0.5;
-        obj_player.bulletfire = 1;
+        obj_player.bulletfire = 0;
     }
 if global.WeaponEquipped[8] == true 
     {

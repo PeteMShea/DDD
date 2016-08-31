@@ -20,6 +20,11 @@
   <width>12</width>
   <height>12</height>
   <frames>
-    <frame index="0">images\spr_orangebulletspark_0.png</frame>
+    <frame index="0">images\spr_bulletspark_0.png</frame>
+    <frame index="1">images\spr_bulletspark_1.png</frame>
+    <frame index="2">images\spr_bulletspark_2.png</frame>
+    <frame index="3">images\spr_bulletspark_3.png</frame>
+    <frame index="4">images\spr_bulletspark_4.png</frame>
+    <frame index="5">images\spr_bulletspark_5.png</frame>
   </frames>
 </sprite>

@@ -26,8 +26,6 @@
       <sprite>sprites\spr_shipSharkRThrust</sprite>
       <sprite>sprites\spr_sharkthrust_trail</sprite>
       <sprite>sprites\spr_shipDebris</sprite>
-      <sprite>sprites\sprite82</sprite>
-      <sprite>sprites\spr_bullet</sprite>
       <sprite>sprites\spr_redtrail</sprite>
       <sprite>sprites\spr_redlightglow</sprite>
       <sprite>sprites\spr_shipSharkNormal</sprite>
@@ -178,9 +176,9 @@
     <sprites name="VFX">
       <sprite>sprites\spr_explosion</sprite>
       <sprite>sprites\sprite95</sprite>
-      <sprite>sprites\spr_orangebulletspark</sprite>
+      <sprite>sprites\spr_bulletspark</sprite>
       <sprite>sprites\sprite96</sprite>
-      <sprite>sprites\spr_orangebullet</sprite>
+      <sprite>sprites\spr_bullet</sprite>
       <sprite>sprites\sprite126</sprite>
       <sprite>sprites\spr_goldpickup</sprite>
       <sprite>sprites\spr_black8</sprite>
@@ -215,6 +213,12 @@
       <sprite>sprites\spr_TurretGraphic</sprite>
       <sprite>sprites\spr_TurretB05</sprite>
       <sprite>sprites\spr_TurretC06</sprite>
+      <sprite>sprites\spr_Shell07</sprite>
+      <sprite>sprites\spr_Plasma08</sprite>
+      <sprite>sprites\spr_DualShot09</sprite>
+      <sprite>sprites\spr_TripleShot10</sprite>
+      <sprite>sprites\spr_Ricochet11</sprite>
+      <sprite>sprites\spr_ArmourPiercing12</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
