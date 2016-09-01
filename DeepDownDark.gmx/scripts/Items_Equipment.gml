@@ -2,225 +2,225 @@
 
 //-------------------------------------------------------
 
-global.EquipName[1] = "STRENGTHENED HULL";
+global.EquipName[1] = "ALLOY HULL";
 global.EquipUnlocked[1] = true;
 global.EquipOwned[1] = false;
 global.EquipEquipped[1] = false;
 global.EquipCost[1] = 500;
-global.EquipIcon[1] = spr_ItemPlaceholder;
+global.EquipIcon[1] = spr_01ArmourA;
 global.EquipGraphic[1] = spr_ItemGraphicPlaceholder;
 global.EquipStatA[1] = "ARMOUR: 0.5";
-global.EquipStatB[1] = "PROTECTS MINOR COLLISIONS";
+global.EquipStatB[1] = "MINOR COLLISIONS";
 global.EquipAttMod[1] = 1;
 global.EquipAttBoost[1] = 10;
 global.EquipShipArt[1] = noone;
 
 //-------------------------------------------------------
 
-global.EquipName[2] = "PLACEHOLDER";
-global.EquipUnlocked[2] = false;
+global.EquipName[2] = "TITANIUM HULL";
+global.EquipUnlocked[2] = true;
 global.EquipOwned[2] = false;
 global.EquipEquipped[2] = false;
-global.EquipCost[2] = 0;
-global.EquipIcon[2] = spr_ItemPlaceholder;
+global.EquipCost[2] = 2500;
+global.EquipIcon[2] = spr_02ArmourB;
 global.EquipGraphic[2] = spr_ItemGraphicPlaceholder;
-global.EquipStatA[2] = "NULL";
-global.EquipStatB[2] = "";
+global.EquipStatA[2] = "ARMOUR: 1.5";
+global.EquipStatB[2] = "MED COLLISIONS";
 global.EquipAttMod[2] = 1;
-global.EquipAttBoost[2] = 0;
+global.EquipAttBoost[2] = 20;
 global.EquipShipArt[2] = noone;
 
 //-------------------------------------------------------
 
-global.EquipName[3] = "PLACEHOLDER";
-global.EquipUnlocked[3] = false;
+global.EquipName[3] = "CHROMIUM HULL";
+global.EquipUnlocked[3] = true;
 global.EquipOwned[3] = false;
 global.EquipEquipped[3] = false;
-global.EquipCost[3] = 0;
-global.EquipIcon[3] = spr_ItemPlaceholder;
+global.EquipCost[3] = 10000;
+global.EquipIcon[3] = spr_03ArmourC;
 global.EquipGraphic[3] = spr_ItemGraphicPlaceholder;
-global.EquipStatA[3] = "NULL";
-global.EquipStatB[3] = "";
+global.EquipStatA[3] = "ARMOUR: 3.0";
+global.EquipStatB[3] = "HEAVY COLLISIONS";
 global.EquipAttMod[3] = 1;
-global.EquipAttBoost[3] = 0;
+global.EquipAttBoost[3] = 30;
 global.EquipShipArt[3] = noone;
 
 //-------------------------------------------------------
 
-global.EquipName[4] = "PLACEHOLDER";
-global.EquipUnlocked[4] = false;
+global.EquipName[4] = "ENERGY SHIELD";
+global.EquipUnlocked[4] = true;
 global.EquipOwned[4] = false;
 global.EquipEquipped[4] = false;
-global.EquipCost[4] = 0;
-global.EquipIcon[4] = spr_ItemPlaceholder;
+global.EquipCost[4] = 1500;
+global.EquipIcon[4] = spr_04ShieldA;
 global.EquipGraphic[4] = spr_ItemGraphicPlaceholder;
-global.EquipStatA[4] = "NULL";
-global.EquipStatB[4] = "";
-global.EquipAttMod[4] = 1;
-global.EquipAttBoost[4] = 0;
+global.EquipStatA[4] = "PROTECTION: 2.0";
+global.EquipStatB[4] = "RECHARGE: 1.5";
+global.EquipAttMod[4] = 3;
+global.EquipAttBoost[4] = 15;
 global.EquipShipArt[4] = noone;
 
 //-------------------------------------------------------
 
-global.EquipName[5] = "PLACEHOLDER";
-global.EquipUnlocked[5] = false;
+global.EquipName[5] = "PLASMA SHIELD";
+global.EquipUnlocked[5] = true;
 global.EquipOwned[5] = false;
 global.EquipEquipped[5] = false;
-global.EquipCost[5] = 0;
-global.EquipIcon[5] = spr_ItemPlaceholder;
+global.EquipCost[5] = 8000;
+global.EquipIcon[5] = spr_05ShieldB;
 global.EquipGraphic[5] = spr_ItemGraphicPlaceholder;
-global.EquipStatA[5] = "NULL";
-global.EquipStatB[5] = "";
-global.EquipAttMod[5] = 1;
-global.EquipAttBoost[5] = 0;
+global.EquipStatA[5] = "PROTECTION: 4.0";
+global.EquipStatB[5] = "RECHARGE: 2.0";
+global.EquipAttMod[5] = 3;
+global.EquipAttBoost[5] = 30;
 global.EquipShipArt[5] = noone;
 
 //-------------------------------------------------------
 
-global.EquipName[6] = "PLACEHOLDER";
-global.EquipUnlocked[6] = false;
+global.EquipName[6] = "LASER SHIELD";
+global.EquipUnlocked[6] = true;
 global.EquipOwned[6] = false;
 global.EquipEquipped[6] = false;
-global.EquipCost[6] = 0;
-global.EquipIcon[6] = spr_ItemPlaceholder;
+global.EquipCost[6] = 18000;
+global.EquipIcon[6] = spr_06ShieldC;
 global.EquipGraphic[6] = spr_ItemGraphicPlaceholder;
-global.EquipStatA[6] = "NULL";
-global.EquipStatB[6] = "";
-global.EquipAttMod[6] = 1;
-global.EquipAttBoost[6] = 0;
+global.EquipStatA[6] = "PROTECTION: 7.0";
+global.EquipStatB[6] = "RECHARGE: 3.0";
+global.EquipAttMod[6] = 3;
+global.EquipAttBoost[6] = 50;
 global.EquipShipArt[6] = noone;
 
 //-------------------------------------------------------
 
 global.EquipName[7] = "FORWARD ALPHA ENGINE";
 global.EquipUnlocked[7] = true;
-global.EquipOwned[7] = false;
-global.EquipEquipped[7] = false;
-global.EquipCost[7] = 800;
-global.EquipIcon[7] = spr_ItemPlaceholder;
+global.EquipOwned[7] = true;
+global.EquipEquipped[7] = true;
+global.EquipCost[7] = 0;
+global.EquipIcon[7] = spr_07ForwardA;
 global.EquipGraphic[7] = spr_ItemGraphicPlaceholder;
 global.EquipStatA[7] = "THRUST: 15.0";
 global.EquipStatB[7] = "";
 global.EquipAttMod[7] = 4;
-global.EquipAttBoost[7] = 20;
+global.EquipAttBoost[7] = 0;
 global.EquipShipArt[7] = noone;
 
 //-------------------------------------------------------
 
-global.EquipName[8] = "PLACEHOLDER";
-global.EquipUnlocked[8] = false;
+global.EquipName[8] = "FORWARD BETA ENGINE";
+global.EquipUnlocked[8] = true;
 global.EquipOwned[8] = false;
 global.EquipEquipped[8] = false;
-global.EquipCost[8] = 0;
-global.EquipIcon[8] = spr_ItemPlaceholder;
+global.EquipCost[8] = 4000;
+global.EquipIcon[8] = spr_08ForwardB;
 global.EquipGraphic[8] = spr_ItemGraphicPlaceholder;
-global.EquipStatA[8] = "NULL";
+global.EquipStatA[8] = "THRUST: 30.0";
 global.EquipStatB[8] = "";
-global.EquipAttMod[8] = 1;
-global.EquipAttBoost[8] = 0;
+global.EquipAttMod[8] = 4;
+global.EquipAttBoost[8] = 20;
 global.EquipShipArt[8] = noone;
 
 //-------------------------------------------------------
 
-global.EquipName[9] = "PLACEHOLDER";
-global.EquipUnlocked[9] = false;
+global.EquipName[9] = "FORWARD GAMMA ENGINE";
+global.EquipUnlocked[9] = true;
 global.EquipOwned[9] = false;
 global.EquipEquipped[9] = false;
-global.EquipCost[9] = 0;
-global.EquipIcon[9] = spr_ItemPlaceholder;
+global.EquipCost[9] = 9000;
+global.EquipIcon[9] = spr_09ForwardC;
 global.EquipGraphic[9] = spr_ItemGraphicPlaceholder;
-global.EquipStatA[9] = "NULL";
+global.EquipStatA[9] = "THRUST: 50.0";
 global.EquipStatB[9] = "";
-global.EquipAttMod[9] = 1;
-global.EquipAttBoost[9] = 0;
+global.EquipAttMod[9] = 4;
+global.EquipAttBoost[9] = 40;
 global.EquipShipArt[9] = noone;
 
 //-------------------------------------------------------
 
-global.EquipName[10] = "PLACEHOLDER";
-global.EquipUnlocked[10] = false;
+global.EquipName[10] = "BETA RETRO BOOSTER";
+global.EquipUnlocked[10] = true;
 global.EquipOwned[10] = false;
 global.EquipEquipped[10] = false;
-global.EquipCost[10] = 0;
-global.EquipIcon[10] = spr_ItemPlaceholder;
-global.EquipGraphic[10] = spr_ItemGraphicPlaceholder;
-global.EquipStatA[10] = "NULL";
+global.EquipCost[10] = 3000;
+global.EquipIcon[10] = spr_10RearA;
+global.EquipGraphic[10] = spr_10RearA;
+global.EquipStatA[10] = "RETRO: 5.0";
 global.EquipStatB[10] = "";
-global.EquipAttMod[10] = 1;
-global.EquipAttBoost[10] = 0;
+global.EquipAttMod[10] = 5;
+global.EquipAttBoost[10] = 30;
 global.EquipShipArt[10] = noone;
 
 //-------------------------------------------------------
 
-global.EquipName[11] = "PLACEHOLDER";
-global.EquipUnlocked[11] = false;
+global.EquipName[11] = "GAMMA RETRO BOOSTER";
+global.EquipUnlocked[11] = true;
 global.EquipOwned[11] = false;
 global.EquipEquipped[11] = false;
-global.EquipCost[11] = 0;
-global.EquipIcon[11] = spr_ItemPlaceholder;
+global.EquipCost[11] = 8000;
+global.EquipIcon[11] = spr_11RearB;
 global.EquipGraphic[11] = spr_ItemGraphicPlaceholder;
-global.EquipStatA[11] = "NULL";
+global.EquipStatA[11] = "RETRO: 9.0";
 global.EquipStatB[11] = "";
-global.EquipAttMod[11] = 1;
-global.EquipAttBoost[11] = 0;
+global.EquipAttMod[11] = 5;
+global.EquipAttBoost[11] = 50;
 global.EquipShipArt[11] = noone;
 
 //-------------------------------------------------------
 
-global.EquipName[12] = "PLACEHOLDER";
-global.EquipUnlocked[12] = false;
+global.EquipName[12] = "STRAFE BOOSTERS";
+global.EquipUnlocked[12] = true;
 global.EquipOwned[12] = false;
 global.EquipEquipped[12] = false;
-global.EquipCost[12] = 0;
-global.EquipIcon[12] = spr_ItemPlaceholder;
+global.EquipCost[12] = 16000;
+global.EquipIcon[12] = spr_12Strafe;
 global.EquipGraphic[12] = spr_ItemGraphicPlaceholder;
-global.EquipStatA[12] = "NULL";
-global.EquipStatB[12] = "";
-global.EquipAttMod[12] = 1;
-global.EquipAttBoost[12] = 0;
+global.EquipStatA[12] = "BOOST: 3.0";
+global.EquipStatB[12] = "STRAFE MOTION";
+global.EquipAttMod[12] = 4;
+global.EquipAttBoost[12] = 20;
 global.EquipShipArt[12] = noone;
 
 //-------------------------------------------------------
 
-global.EquipName[13] = "PLACEHOLDER";
-global.EquipUnlocked[13] = false;
-global.EquipOwned[13] = false;
-global.EquipEquipped[13] = false;
+global.EquipName[13] = "ELECTRON MAGNET";
+global.EquipUnlocked[13] = true;
+global.EquipOwned[13] = true;
+global.EquipEquipped[13] = true;
 global.EquipCost[13] = 0;
-global.EquipIcon[13] = spr_ItemPlaceholder;
+global.EquipIcon[13] = spr_13MagnetA;
 global.EquipGraphic[13] = spr_ItemGraphicPlaceholder;
-global.EquipStatA[13] = "NULL";
-global.EquipStatB[13] = "";
+global.EquipStatA[13] = "RANGE: 40.0";
+global.EquipStatB[13] = "POWER: 5.0";
 global.EquipAttMod[13] = 1;
 global.EquipAttBoost[13] = 0;
 global.EquipShipArt[13] = noone;
 
 //-------------------------------------------------------
 
-global.EquipName[14] = "PLACEHOLDER";
-global.EquipUnlocked[14] = false;
+global.EquipName[14] = "NEUTRON MAGNET";
+global.EquipUnlocked[14] = true;
 global.EquipOwned[14] = false;
 global.EquipEquipped[14] = false;
-global.EquipCost[14] = 0;
-global.EquipIcon[14] = spr_ItemPlaceholder;
+global.EquipCost[14] = 5000;
+global.EquipIcon[14] = spr_14MagnetB;
 global.EquipGraphic[14] = spr_ItemGraphicPlaceholder;
-global.EquipStatA[14] = "NULL";
-global.EquipStatB[14] = "";
+global.EquipStatA[14] = "RANGE: 100.0";
+global.EquipStatB[14] = "POWER: 10.0";
 global.EquipAttMod[14] = 1;
 global.EquipAttBoost[14] = 0;
 global.EquipShipArt[15] = noone;
 
 //-------------------------------------------------------
 
-global.EquipName[15] = "PLACEHOLDER";
-global.EquipUnlocked[15] = false;
+global.EquipName[15] = "EXTRACTION MAGNET";
+global.EquipUnlocked[15] = true;
 global.EquipOwned[15] = false;
 global.EquipEquipped[15] = false;
-global.EquipCost[15] = 0;
-global.EquipIcon[15] = spr_ItemPlaceholder;
+global.EquipCost[15] = 20000;
+global.EquipIcon[15] = spr_15MagnetExtract;
 global.EquipGraphic[15] = spr_ItemGraphicPlaceholder;
-global.EquipStatA[15] = "NULL";
-global.EquipStatB[15] = "";
+global.EquipStatA[15] = "RANGE: 150.0";
+global.EquipStatB[15] = "EXTRACTS FROM ROCK";
 global.EquipAttMod[15] = 1;
 global.EquipAttBoost[15] = 0;
 global.EquipShipArt[15] = noone;

@@ -222,6 +222,23 @@
       <sprite>sprites\spr_Ricochet11</sprite>
       <sprite>sprites\spr_ArmourPiercing12</sprite>
     </sprites>
+    <sprites name="EquipItems">
+      <sprite>sprites\spr_01ArmourA</sprite>
+      <sprite>sprites\spr_02ArmourB</sprite>
+      <sprite>sprites\spr_03ArmourC</sprite>
+      <sprite>sprites\spr_04ShieldA</sprite>
+      <sprite>sprites\spr_05ShieldB</sprite>
+      <sprite>sprites\spr_06ShieldC</sprite>
+      <sprite>sprites\spr_07ForwardA</sprite>
+      <sprite>sprites\spr_08ForwardB</sprite>
+      <sprite>sprites\spr_09ForwardC</sprite>
+      <sprite>sprites\spr_10RearA</sprite>
+      <sprite>sprites\spr_11RearB</sprite>
+      <sprite>sprites\spr_12Strafe</sprite>
+      <sprite>sprites\spr_13MagnetA</sprite>
+      <sprite>sprites\spr_14MagnetB</sprite>
+      <sprite>sprites\spr_15MagnetExtract</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
