@@ -83,13 +83,16 @@ if appeared == false
 if appeared == true
 {    
 
+    if image_alpha &lt; targetalpha image_alpha += alphafade
+    if image_alpha &gt; targetalpha image_alpha -= alphafade
+
     script_execute(scr_rolloverbutton);
 
     if pressed == true
     {
-        //pressed = false;
-        
-    
+        if !instance_exists(obj_EquipmentPanel) instance_create(18, 8, obj_EquipmentPanel);        
+        locked = true;
+        targetalpha = lockedalpha;            
     }
     
     if fadeout == true script_execute(scr_fadeinout, fadein, fadeout, finalalpha, alphafade);

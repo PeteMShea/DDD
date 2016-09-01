@@ -72,6 +72,22 @@ global.dead = false;        //temp
 //items
 global.WeaponViewed = 1;        //currently viewed (or last viewed) Weapon Item ID
 script_execute(Items_Weaponry);
+global.EquipViewed = 1;
+script_execute(Items_Equipment);
+
+//pointer debug
+global.videocapture = false;
+
+if global.videocapture == true
+{
+window_set_cursor(cr_none);
+cursor_sprite = blackspot;
+}
+else
+{
+window_set_cursor(cr_arrow);
+
+}
 
 
 

@@ -124,6 +124,7 @@
       <sprite>sprites\spr_debug64</sprite>
       <sprite>sprites\spr_weedebug</sprite>
       <sprite>sprites\spr_spotdebug</sprite>
+      <sprite>sprites\blackspot</sprite>
       <sprite>sprites\spr_control</sprite>
       <sprite>sprites\debugN</sprite>
       <sprite>sprites\debugS</sprite>
@@ -172,6 +173,7 @@
       <sprite>sprites\spr_INVsharkdamage_BR</sprite>
       <sprite>sprites\spr_INVsharkdamage_CC</sprite>
       <sprite>sprites\spr_DatabasePanel</sprite>
+      <sprite>sprites\spr_EquipmentPanel</sprite>
     </sprites>
     <sprites name="VFX">
       <sprite>sprites\spr_explosion</sprite>
@@ -274,6 +276,7 @@
     </scripts>
     <scripts name="Items">
       <script>scripts\Items_Weaponry.gml</script>
+      <script>scripts\Items_Equipment.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -402,6 +405,7 @@
     <objects name="Inventory">
       <object>objects\obj_StatusPanel</object>
       <object>objects\obj_WeaponryPanel</object>
+      <object>objects\obj_EquipmentPanel</object>
       <object>objects\obj_DatabasePanel</object>
       <object>objects\obj_RepairButton</object>
       <object>objects\obj_LaunchButton</object>
@@ -409,9 +413,12 @@
       <object>objects\obj_EquipButton</object>
       <object>objects\obj_WeaponryButton</object>
       <object>objects\obj_InstallButton</object>
+      <object>objects\obj_InstallEquipButton</object>
       <object>objects\obj_ItemButton</object>
+      <object>objects\obj_ItemEquipButton</object>
       <object>objects\obj_BluePanel</object>
       <object>objects\obj_INVWeaponGraphic</object>
+      <object>objects\obj_INVEquipGraphic</object>
       <object>objects\obj_INVshark</object>
       <object>objects\obj_INVsharkdamage_CC</object>
       <object>objects\obj_INVsharkdirt</object>

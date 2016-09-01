@@ -27,6 +27,14 @@
             <kind>1</kind>
             <string>global.pause = true;
 
+if global.videocapture == true
+{
+cursor_sprite = -1;
+}
+window_set_cursor(cr_handpoint);
+
+
+
 // initialise
 xview = view_xview[0];
 yview = view_yview[0];
@@ -197,8 +205,7 @@ if panelsdismissed == true &amp;&amp; fadeout = false
         obj_EquipButton.fadein = false;
         obj_WeaponryButton.fadeDone = true;
         if instance_exists (obj_WeaponryPanel) obj_WeaponryPanel.panelsdismissed = true;
-//        obj_WeaponryButton.fadeDone = true;
-//        obj_WeaponryButton.fadein = false;
+        if instance_exists (obj_EquipmentPanel) obj_EquipmentPanel.panelsdismissed = true;
 
 
         
@@ -217,6 +224,13 @@ if panelsdismissed == true &amp;&amp; fadeout = false
         //now fade the status Panel                                                            
         fadein = false;        
         fadeout = true;
+        
+        if global.videocapture == true
+            {
+                window_set_cursor(cr_none);
+                cursor_sprite = blackspot;
+            }
+        else window_set_cursor(cr_arrow);
 }
 
 if fadeout == true &amp;&amp; panelsdismissed == true

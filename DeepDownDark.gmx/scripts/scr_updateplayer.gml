@@ -83,6 +83,15 @@ for (i = 1; i < 25; i += 1)
         if global.WeaponAttMod[i] == 5 baserear += global.WeaponAttBoost[i]
         if global.WeaponAttMod[i] == 6 basesanity += global.WeaponAttBoost[i]                                   
     }
+    if global.EquipEquipped[i] == true
+    {
+        if global.EquipAttMod[i] == 1 basestrength += global.EquipAttBoost[i]
+        if global.EquipAttMod[i] == 2 baseattack += global.EquipAttBoost[i]    
+        if global.EquipAttMod[i] == 3 basedefence += global.EquipAttBoost[i]
+        if global.EquipAttMod[i] == 4 baseforward += global.EquipAttBoost[i]
+        if global.EquipAttMod[i] == 5 baserear += global.EquipAttBoost[i]
+        if global.EquipAttMod[i] == 6 basesanity += global.EquipAttBoost[i]                                   
+    }    
 }
 
 global.strength = basestrength;

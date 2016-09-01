@@ -53,9 +53,9 @@ spikyness = 1;      // how much wee blocks jut in from edges to empty space- min
 minweespike = 1;
 maxweespike = 3;        //cannot be higher than 4!
 
-// nightgaunts
-ballplantdensitymin = 0.05;        //chance of ballplant are at start of level 0.03
-ballplantdensitymax = 0.1;          //maximum chance of ballplant 0.2 is very dense!
+// ballplants
+ballplantdensitymin = 0.0;        //chance of ballplant are at start of level 0.03
+ballplantdensitymax = 0.0;          //maximum chance of ballplant 0.2 is very dense!
 ballplantdensityrange = ballplantdensitymax - ballplantdensitymin;
 ballplantstartblock = 0.05;           //gaunts do not start spawning until this % empty huge blocks in
 ballplantendblock = 0.90;             //no more ballplant after this % huge blocks
