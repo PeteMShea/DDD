@@ -10,6 +10,7 @@
       <sprite>sprites\spr_Shark128</sprite>
       <sprite>sprites\spr_shipSharkDead</sprite>
       <sprite>sprites\spr_shipSharkDebris</sprite>
+      <sprite>sprites\spr_shipSharkDebrisold</sprite>
       <sprite>sprites\spr_shipSharkSpec</sprite>
       <sprite>sprites\spr_shipSharkDirt</sprite>
       <sprite>sprites\spr_shipSharkRetro</sprite>

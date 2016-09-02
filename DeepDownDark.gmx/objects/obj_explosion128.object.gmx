@@ -72,11 +72,12 @@ alphafade = 0.01;   //how quickly final frame fades
 
 
 //if image_index &gt;12 &amp;&amp; image_index &lt; 21 image_speed -= 0.01
-if image_index &gt;= 15 &amp;&amp; image_index &lt; 16
+if image_index &gt;= 15 &amp;&amp; image_index &lt; 22
     {
-        obj_shipdebris.speed = random_range(0.95, 1.05);
+        obj_shipdebris.speed = random_range(0.75, 1.2);        
         obj_sharkDebris.speed = random_range(0.75, 0.90);  
     }
+
 if image_index &gt;= 19
     {
         

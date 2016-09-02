@@ -3,14 +3,14 @@
   <type>0</type>
   <xorig>64</xorig>
   <yorigin>64</yorigin>
-  <colkind>0</colkind>
+  <colkind>1</colkind>
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>10</bbox_left>
-  <bbox_right>109</bbox_right>
-  <bbox_top>16</bbox_top>
-  <bbox_bottom>115</bbox_bottom>
+  <bbox_left>0</bbox_left>
+  <bbox_right>104</bbox_right>
+  <bbox_top>5</bbox_top>
+  <bbox_bottom>127</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
@@ -25,5 +25,6 @@
     <frame index="2">images\spr_shipSharkDead_2.png</frame>
     <frame index="3">images\spr_shipSharkDead_3.png</frame>
     <frame index="4">images\spr_shipSharkDead_4.png</frame>
+    <frame index="5">images\spr_shipSharkDead_5.png</frame>
   </frames>
 </sprite>

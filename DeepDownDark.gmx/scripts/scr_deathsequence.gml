@@ -6,7 +6,7 @@ if deathstart == false
         instance_create(px, py, obj_explosion128);
         alarm[0] = 10;
         deathstart = true;
-        rings = 5;
+        rings = 4;
     }
 
 if deathstart == true
@@ -20,21 +20,21 @@ if deathstart == true
                     {  
                         rings -= 1;
                         debrisangle = 0;
-                        for(i=0; i<12; i+=1)
+                        for(i=0; i<36; i+=1)
                             {
                                 //if alarm[0] <= 0 
                                    // {                    
-                                        debrisangle += random_range(-10,10);
+                                        debrisangle += random_range(-5,5);
                                         debrisspeed = random_range(debrisspeed *0.4, debrisspeed *0.5);    
                                         dx = px + lengthdir_x(16 * global.RM, debrisangle);
-                                        dy = py + lengthdir_x(16 * global.RM, debrisangle);        
+                                        dy = py + lengthdir_y(16 * global.RM, debrisangle);        
                                         inst = instance_create(dx, dy, obj_shipdebris)
                                         with(inst)
                                             {
                                                 direction = other.debrisangle;
                                                 speed = other.debrisspeed;       
                                             }
-                                        debrisangle +=30;
+                                        debrisangle +=10;
                                         alarm[0] = 10.0; 
                                     }
                                 //debrisspeed -= 0.25
@@ -71,6 +71,6 @@ if global.dead == true
     showmenu = true;
 }
 
-return(deathdone)
+//return(deathdone)
 
 
