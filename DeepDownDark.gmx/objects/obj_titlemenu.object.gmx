@@ -141,7 +141,8 @@ if mouse_check_button(mb_left) &amp;&amp; newgame == true
           <argument>
             <kind>1</kind>
             <string>draw_set_font(fnt_Michroma14);
-draw_set_halign(fa_left);        
+draw_set_halign(fa_left);
+draw_set_alpha(0.85);        
 
 highlightcolour = make_colour_rgb(187, 63, 148);    
 xpos = 1297;        //top left of menu text
@@ -161,6 +162,8 @@ draw_text(xpos, ypos, "CREDITS");
 ypos += 48;
 if quit == false draw_set_colour(c_ltgray) else draw_set_colour(highlightcolour)
 draw_text(xpos, ypos, "QUIT");
+
+draw_set_alpha(1.0);   
 </string>
           </argument>
         </arguments>

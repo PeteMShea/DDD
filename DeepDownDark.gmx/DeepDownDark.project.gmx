@@ -247,10 +247,9 @@
     <background>background\background1</background>
     <background>background\background2</background>
     <background>background\back_LCWsplash</background>
-    <background>background\back_titlescreen</background>
     <background>background\background7</background>
-    <background>background\background8</background>
     <background>background\background9</background>
+    <background>background\background8</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
