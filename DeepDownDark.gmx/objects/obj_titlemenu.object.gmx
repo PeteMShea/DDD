@@ -140,7 +140,7 @@ if mouse_check_button(mb_left) &amp;&amp; newgame == true
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_font(fnt_CapsullaTitle);
+            <string>draw_set_font(fnt_Michroma14);
 draw_set_halign(fa_left);        
 
 highlightcolour = make_colour_rgb(187, 63, 148);    

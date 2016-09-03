@@ -33,7 +33,7 @@ global.playerX = x;
 global.playerY = y;
 global.playerspeedX = 0;
 global.playerspeedY = 0;
-global.playerHealth = 10;  //100
+global.playerHealth = 100;  //100
 global.startHealth = 120;
 global.playerGold = 7900;
 global.baseSanity = 80;
@@ -134,7 +134,7 @@ window_set_cursor(cr_arrow);
 if countdown &lt;= 0
 {
 
-    room_goto(3);       // 1 for splash, 3 for MapGen, 4 for Room A0, 5 for Test Bed
+    room_goto(4);       // 1 for splash, 3 for MapGen, 4 for Room A0, 5 for Test Bed
 
 }
 

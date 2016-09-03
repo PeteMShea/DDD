@@ -3,8 +3,8 @@
   <caption></caption>
   <width>1920</width>
   <height>1080</height>
-  <vsnap>32</vsnap>
-  <hsnap>32</hsnap>
+  <vsnap>1</vsnap>
+  <hsnap>1</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
@@ -213,7 +213,7 @@
     <instance objName="obj_newblock" x="512" y="1024" name="inst_A872E066" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="eff_titlemask1" x="-39" y="38" name="inst_F8D2E0E8" locked="0" code="" scaleX="1.25" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="eff_titlemask2" x="504" y="122" name="inst_FDB48FEB" locked="0" code="" scaleX="1" scaleY="1.04999995231628" colour="4294967295" rotation="0"/>
-    <instance objName="eff_titlemask3" x="343" y="771" name="inst_81823787" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="eff_titlemask3" x="356" y="779" name="inst_81823787" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_titlecontrol" x="82" y="0" name="inst_6A46D24D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_exittrigger" x="557" y="1025" name="inst_AB637B17" locked="0" code="" scaleX="1.37109375" scaleY="1.3968254327774" colour="4294967295" rotation="0"/>
     <instance objName="obj_newblock" x="64" y="0" name="inst_E0D73641" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
