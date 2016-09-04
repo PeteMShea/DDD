@@ -30,7 +30,7 @@
 triggerposition = 460;
 endposition = 730;
 movespeed = 0;
-maxspeed = 5.0;
+maxspeed = 8.0;
 acceleration = 0.1;
 
 

@@ -41,8 +41,5 @@
     <frame index="18">images\spr_newblockoverlay_18.png</frame>
     <frame index="19">images\spr_newblockoverlay_19.png</frame>
     <frame index="20">images\spr_newblockoverlay_20.png</frame>
-    <frame index="21">images\spr_newblockoverlay_21.png</frame>
-    <frame index="22">images\spr_newblockoverlay_22.png</frame>
-    <frame index="23">images\spr_newblockoverlay_23.png</frame>
   </frames>
 </sprite>
