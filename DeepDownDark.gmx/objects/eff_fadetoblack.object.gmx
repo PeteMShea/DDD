@@ -88,7 +88,7 @@ fadeAlpha += 0.02;
 
 if fadeAlpha &gt;= finalAlpha
 {
-    //global.loading = true;
+    global.loading = true;
 
 }
 
@@ -154,8 +154,8 @@ if fadeDone == true
 draw_set_alpha(fadeAlpha);
 vx = view_xview[0];
 vy = view_yview[0];
-vwidth = view_wview[0];
-vheight = view_hview[0]
+vwidth = 1920;
+vheight = 1080
 draw_rectangle_color( vx, vy, vwidth, vheight, c_black, c_black, c_black, c_black, false);
 
 //obj_HUD.HUDAlpha = 0.95-fadeAlpha;

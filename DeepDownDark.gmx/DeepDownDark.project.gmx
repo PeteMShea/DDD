@@ -41,6 +41,7 @@
       <sprite>sprites\spr_block</sprite>
       <sprite>sprites\spr_newblock</sprite>
       <sprite>sprites\spr_newblockoverlay</sprite>
+      <sprite>sprites\sprite212</sprite>
       <sprite>sprites\spr_hugeblock</sprite>
       <sprite>sprites\spr_weefloatblock</sprite>
       <sprite>sprites\spr_asteroiddebis</sprite>

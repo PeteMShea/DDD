@@ -31,7 +31,7 @@ global.pause = false;
 randomize(); 
 basechance = 0.1;       //base chance of removing a big block and replacing with an empty one 0.3 good mix- 0 = tight walkblock path only
 
-newblockoverlaychance = 0.33;    //chance of a new block having an overlay added for variety
+newblockoverlaychance = 0.8;    //chance of a new block having an overlay added for variety
 hugeblockoverlaychance = 0.7;   //chance of a huge block having an overlay added for variety
 
 maxgold = 500;

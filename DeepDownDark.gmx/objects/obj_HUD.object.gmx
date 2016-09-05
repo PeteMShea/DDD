@@ -137,8 +137,8 @@ background_y[0] = view_yview[0];
 //background_x[1] = view_xview[0]/1.85;
 //background_y[1] = view_yview[0]/1.10;       //1.1
 
-background_x[2] = view_xview[0];        //used for Banner Logo- promotional shots only
-background_y[2] = view_yview[0];
+//background_x[2] = view_xview[0];        //Uncomment &amp; make Background visible in room to activate- used for Banner Logo- promotional shots only
+//background_y[2] = view_yview[0];
 
 
 //check sanity meter hasn't been deactivated
