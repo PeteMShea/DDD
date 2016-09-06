@@ -119,8 +119,7 @@ if appeared == true
             {
                 script_execute(scr_rolloverbutton);
                 if rollover == true repairtext = true else repairtext = false
-                
-                        
+                                        
                 if pressed == true
                 {
                     oLightSource.swoop = true;

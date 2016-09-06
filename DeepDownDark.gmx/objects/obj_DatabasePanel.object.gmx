@@ -71,9 +71,12 @@ launchnow = false;
 // create blue backing panel first and hide &amp;amp; move the HUD
 
 //show_debug_message(string(xview) + " , " + string(yview));
+// create blue backing panel first unless one already exists
+panelcheck = instance_place(bluepanelx + 4, bluepanely + 4, obj_BluePanel);
+
+if panelcheck == noone instance_create(xview + bluepanelx, yview + bluepanely, obj_BluePanel);
 
 
-instance_create(xview + bluepanelx, yview + bluepanely, obj_BluePanel);
 </string>
           </argument>
         </arguments>
@@ -140,63 +143,21 @@ if overlaysappeared == true &amp;&amp; buttonsappeared == false
 
 }
 
+*/
+
 //remove the panels
 if panelsdismissed == true &amp;&amp; fadeout = false
 {
 
         
-        obj_BluePanel.fadeout = true;
-        obj_BluePanel.fadein = false;
-        obj_INVshark.fadeout = true;
-        obj_INVshark.fadein = false;
-        obj_INVsharkdirt.fadeout = true;
-        obj_INVsharkdirt.fadein = false;
-        obj_INVsharkdamage_CL.fadeout = true;
-        obj_INVsharkdamage_CL.fadein = false;
-        obj_INVsharkdamage_CR.fadeout = true;
-        obj_INVsharkdamage_CR.fadein = false;
-        obj_INVsharkdamage_ML.fadeout = true;
-        obj_INVsharkdamage_ML.fadein = false;
-        obj_INVsharkdamage_MR.fadeout = true;
-        obj_INVsharkdamage_MR.fadein = false;
-        obj_INVsharkdamage_BL.fadeout = true;
-        obj_INVsharkdamage_BL.fadein = false;
-        obj_INVsharkdamage_BR.fadeout = true;
-        obj_INVsharkdamage_BR.fadein = false;
-        obj_INVsharkdamage_CC.fadeout = true;
-        obj_INVsharkdamage_CC.fadein = false;                                                                          
-        obj_RepairButton.fadeDone = true;       //couldn't get these to fade out nicely- so now just insta destroyed... fix?
-        obj_RepairButton.fadein = false;
-        obj_LaunchButton.fadeDone = true;
-        obj_LaunchButton.fadein = false;
-        obj_DatabaseButton.fadeDone = true;
-        obj_DatabaseButton.fadein = false;
-        obj_EquipButton.fadeDone = true;
-        obj_EquipButton.fadein = false;
-        obj_WeaponryButton.fadeDone = true;
-        obj_WeaponryButton.fadein = false;
-
-
-        
-        //destroy and recreate the HUD object to reset its position values
-        with(obj_HUD)
-            {
-                instance_destroy();
-            }
-        instance_create(x,y, obj_HUD);
-        with(obj_sanitymeter)
-            {
-                instance_destroy();
-            }
-        instance_create(x,y, obj_sanitymeter);
-        launchnow = true;        
-        //now fade the status Panel                                                            
+       
+        //now fade the  Panel                                                            
         fadein = false;        
         fadeout = true;
 }
 
 
-*/
+
 if fadeout == true &amp;&amp; panelappeared == true
 {
     script_execute(scr_fadeinout, fadein, fadeout, finalalpha, alphafade);

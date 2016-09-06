@@ -4,13 +4,13 @@
     
     rollover = false;
     
-    if mouse_x >= x && mouse_x <= x2 && mouse_y >= y && mouse_y <= y2 && pressed == false
+    if mouse_x >= x && mouse_x <= x2 && mouse_y >= y && mouse_y <= y2 && locked == false && pressed == false
     {
         rollover = true;
         //show_debug_message("Repair Rollover, TargetAlpha = " + string(image_alpha));
     }
     
-    if pressed == false && rollover == true
+    if pressed == false && rollover == true && locked == false
     {
         targetalpha = rolloveralpha;
     

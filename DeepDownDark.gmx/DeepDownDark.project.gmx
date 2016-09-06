@@ -308,6 +308,7 @@
     <font>fonts\fnt_CapsullaBig</font>
     <font>fonts\font2</font>
     <font>fonts\fnt_Michroma14</font>
+    <font>fonts\fnt_Michroma10</font>
   </fonts>
   <objects name="objects">
     <objects name="control_objects">

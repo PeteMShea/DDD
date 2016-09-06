@@ -44,6 +44,7 @@ fadeout= false;
 fadeDone = false;
 finalalpha = targetalpha;
 appeared = false;
+tooltip = false;
 
 x2 = x + sprite_width;
 y2 = y + sprite_height;
@@ -87,7 +88,7 @@ if appeared == true
     if image_alpha &gt; targetalpha image_alpha -= alphafade
 
     script_execute(scr_rolloverbutton);
-
+    if rollover == true tooltip = true else tooltip = false;
     if pressed == true
     {
         if !instance_exists(obj_EquipmentPanel) instance_create(18, 8, obj_EquipmentPanel);        

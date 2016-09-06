@@ -72,7 +72,8 @@ statsnumberleftx = 900;
 rightx = 1030;
 statsnumberrightx = 1188;
 statsyoffset = 24;
-
+tooltipy = 50;
+tooltipx = 735;
 
 panelsdismissed = false;
 launchnow = false; 
@@ -297,10 +298,40 @@ if overlaysappeared == true &amp;&amp; panelsdismissed == false
             draw_set_colour(obj_HUD.c_gold);
             draw_set_halign(fa_right);
             draw_text(percentx, shipnamey, string(obj_RepairButton.damage * obj_RepairButton.damagecost));
-            draw_set_font(fnt_Michroma14);                                
-        }   
-            
-      
+            draw_set_font(fnt_Michroma10);
+            draw_set_halign(fa_center);
+            draw_set_colour(paleblue);
+            draw_text(tooltipx + buttonxoffset, tooltipy, "REPAIR");                                                                                
+        } 
+    
+    if obj_LaunchButton.tooltip == true
+        {
+            draw_set_font(fnt_Michroma10);
+            draw_set_halign(fa_center);
+            draw_set_colour(paleblue);
+            draw_text(tooltipx, tooltipy, "LAUNCH");                   
+        }  
+    if obj_EquipButton.tooltip == true
+        {
+            draw_set_font(fnt_Michroma10);
+            draw_set_halign(fa_center);
+            draw_set_colour(paleblue);
+            draw_text(tooltipx + buttonxoffset * 2, tooltipy, "UPGRADES");                   
+        }             
+    if obj_WeaponryButton.tooltip == true
+        {
+            draw_set_font(fnt_Michroma10);
+            draw_set_halign(fa_center);
+            draw_set_colour(paleblue);
+            draw_text(tooltipx + buttonxoffset * 3, tooltipy, "WEAPONRY");                              
+        }
+    if obj_DatabaseButton.tooltip == true
+        {
+            draw_set_font(fnt_Michroma10);
+            draw_set_halign(fa_center);
+            draw_set_colour(paleblue);
+            draw_text(tooltipx + buttonxoffset * 4, tooltipy, "DATABASE");                              
+        }                
     
     // Attributes
     draw_set_colour(paleblue);    

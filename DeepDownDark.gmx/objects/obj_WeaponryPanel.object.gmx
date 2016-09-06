@@ -82,8 +82,18 @@ panelsdismissed = false;
 graphicadded = false;
 
 
-// create blue backing panel first
-instance_create(xview + bluepanelx, yview + bluepanely, obj_BluePanel);
+// create blue backing panel first unless one already exists
+panelcheck = instance_place(bluepanelx + 4, bluepanely + 4, obj_BluePanel);
+
+if panelcheck == noone instance_create(xview + bluepanelx, yview + bluepanely, obj_BluePanel);
+
+
+
+
+
+
+
+
 </string>
           </argument>
         </arguments>
