@@ -35,6 +35,7 @@ damagemult = 0;     //how much player speed is transferred into damage amount on
 asteroidhealth = 999999999;     //invinvible
 gold = 0;      //how many pieces of gold in asteroid 
 nugget = true;  //
+counter = 120;
 
 image_speed = 0;
 asteroidimage = irandom_range(0,4);

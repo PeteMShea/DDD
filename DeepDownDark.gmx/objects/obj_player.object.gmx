@@ -49,6 +49,7 @@ if ship =="shark"
     bouncemult = 0.5;     //how much ship bounces off walls 1 = inverted velocity on impact
     damagemult = 15;     //how much collision damage does
     armour = 1.0;       // Ship armour reduces damage (1 weak, 0 invincible)
+    mindamage = 0.5;    //minimum collision damage before health damage applied
     minvisualdamage = 2;    //how much damage must be to cause visual change
     damagecooldown = 2;    //How many seconds player is invincible after taking damage
     thrustparticles = false;
@@ -63,6 +64,9 @@ if ship =="shark"
     bulletdamage = 0.5;     //default bulletdamage
     bulletfire = 0.0;       // set to 1 for plasma, 2 for double fire, 3 for triple spread fire, 4 for Ricochet, 5 for Armour Piercing
     minlandspeed = 0.4;
+    goldmagnetrange = 50;       //range at which gold pickups automatically drawn towards player
+    magnetstrength = 10;        //max speed gold pickups reach when being sucked in by magnet
+    magnetextract = 0;      //whether to extract- 0 means no
     
 }
 
@@ -851,13 +855,16 @@ if collisionoff == false &amp;&amp; global.autopilot &lt;= 0            //debug 
         {
             damagespeed = sqrt(speed_x * speed_x + speed_y * speed_y);
             damage = (damagespeed * damagemult * armour)
-            global.playerHealth -= damage;
-            global.madness += damage;
-            
-            script_execute(scr_shipvisualdamage, x, y, loc_x, loc_y, damage);
-            
-              hitcollide -= 1;
-            global.playerdamaged = 20;
+            if damage &gt;= mindamage        //this prevents minor scrapes from causing any damage- boosted by shields
+            {
+                global.playerHealth -= damage;
+                global.madness += damage;
+                
+                script_execute(scr_shipvisualdamage, x, y, loc_x, loc_y, damage);
+                
+                  hitcollide -= 1;
+                global.playerdamaged = 20;
+            }
          }
     else
         {

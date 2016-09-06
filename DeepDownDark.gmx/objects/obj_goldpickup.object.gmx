@@ -27,15 +27,15 @@
             <kind>1</kind>
             <string>/// initialise variables
 
-
-
 min_speed = 0.01;
 deceleration = 0.0001;
 bouncecount = 0;
 lifespan = 1200;
 
-attractdist = 100;       //distance at which pickups get sucked into player
-attractspeed = 2.0;     //speed pickups get sucked into player
+attractdist = obj_player.goldmagnetrange;       //distance at which pickups get sucked into player
+attractspeed = obj_player.magnetstrength;     //max speed pickups get sucked into player
+acceleration = 0.02;
+sucked = false;
 
 playerdist = 0;
 
@@ -106,7 +106,8 @@ playerdist = distance_to_point(obj_player.x, obj_player.y);
 if playerdist &lt; attractdist
 {
     direction = point_direction(x, y, obj_player.x, obj_player.y)
-    speed = attractspeed;
+    if speed &lt; attractspeed speed += acceleration;
+    sucked = true;
 }   
 
 if playerdist &lt;=1
@@ -149,12 +150,13 @@ if lifespan &lt;=0
             <kind>1</kind>
             <string>// collided with wall- reverse direction and slow
 
-
+if sucked == false
+{
 hspeed = -hspeed *0.75;
 vspeed = -vspeed *0.75;
 
 bouncecount += 1;
-
+}
 if bouncecount &gt; 8 direction = random(360);
 
 if bouncecount &gt; 32 lifespan = 0;
@@ -184,13 +186,14 @@ if bouncecount &gt; 32 lifespan = 0;
           <argument>
             <kind>1</kind>
             <string>// collided with wall- reverse direction and slow
-
+if sucked == false
+{
 
 hspeed = -hspeed *0.75;
 vspeed = -vspeed *0.75;
 
 bouncecount += 1;
-
+}
 if bouncecount &gt; 8 direction = random(360);
 
 if bouncecount &gt; 32 lifespan = 0;
@@ -219,14 +222,17 @@ if bouncecount &gt; 32 lifespan = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// collided with wall- reverse direction and slow
+            <string>// collided with wall- reverse direction and slow  unless being attracted
+
+if sucked == false
+{
 
 
 hspeed = -hspeed *0.75;
 vspeed = -vspeed *0.75;
 
 bouncecount += 1;
-
+}
 if bouncecount &gt; 8 direction = random(360);
 
 if bouncecount &gt; 32 lifespan = 0;

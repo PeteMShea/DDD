@@ -35,6 +35,7 @@ damagemult = 50;     //how much player speed is transferred into damage amount o
 asteroidhealth = irandom_range(350,700); 
 gold = 0;
 nugget = false;
+counter = 120;
 
 image_speed = 0;
 asteroidimage = irandom_range(0,4);
@@ -185,6 +186,22 @@ if abs(speed_y) &gt; terminalvelocity
 if hitcounter &gt;= 0 hitcounter -= 1;
 
 
+//check for magnet extraction
+
+if gold &gt; 0 &amp;&amp; obj_player.magnetextract != 0
+{
+    counter -= 1
+    if counter &lt;= 0
+        {
+            counter = 120;
+            playerdist = distance_to_object(obj_player);
+            if playerdist &lt;= obj_player.magnetextract
+                {
+                    asteroidhealth = 0;                
+                }        
+        }
+}
+
 
 if asteroidhit != 0
 {
@@ -261,16 +278,15 @@ if asteroidhit != 0
     if asteroidhit == 2 asteroidhealth -= (abs(hitspeed_x) + abs(hitspeed_y)) * damagemult * obj_player.bulletdamage;
     //show_debug_message(string(asteroidhealth));
     
-    if asteroidhealth &lt;=0
+}
+// death
+if asteroidhealth &lt;=0
     {
         bx = x ;
         by = y;
         script_execute(scr_asteroidburst, bx, by, gold, nugget);
         instance_destroy();
     }
-    
-
-}
 
 
 </string>

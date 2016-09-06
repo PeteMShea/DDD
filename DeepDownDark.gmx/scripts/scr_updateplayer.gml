@@ -70,7 +70,60 @@ if global.WeaponEquipped[12] == true
         obj_player.bulletdamage = 1.0;
         obj_player.bulletfire = 5;        
     }         
-                
+
+    
+    
+    
+    
+
+    
+//Equipment Upgrades
+
+
+if global.EquipEquipped[1] == true
+    {
+        global.startHealth = 120;
+        global.playerHealth = 120;
+    }
+
+if global.EquipEquipped[2] == true
+    {
+        global.startHealth = 150;
+        global.playerHealth = 150;        
+    }     
+if global.EquipEquipped[3] == true
+    {
+        global.startHealth = 200;
+        global.playerHealth = 200;        
+    }     
+if global.EquipEquipped[4] == true
+    {
+        obj_player.damagemult = 10;     //how much collision damage does- base level 15
+        obj_player.mindamage = 3.0;     //base level 0.5;
+    } 
+    
+
+if global.EquipEquipped[13] == true
+    {
+        obj_player.goldmagnetrange = 120;     //range gold particles drawn to player
+        obj_player.magnetstrength = 50;
+    }    
+if global.EquipEquipped[14] == true
+    {
+        obj_player.goldmagnetrange = 300;     //range gold particles drawn to player
+        obj_player.magnetstrength = 80;
+    }      
+if global.EquipEquipped[15] == true
+    {
+        obj_player.goldmagnetrange = 400;     //range gold particles drawn to player
+        obj_player.magnetstrength = 100;
+        obj_player.magnetextract = 250;
+    } 
+    
+        
+    
+        
+                        
 //update the player Attributes for all equipped items
 for (i = 1; i < 25; i += 1)
 {

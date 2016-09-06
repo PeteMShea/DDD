@@ -30,6 +30,56 @@
 image_speed = 0;
 image_index = irandom_range(0, 12);
 
+counter = 180;      //how often to distance check to player for magnet
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// auto extraction
+
+if obj_player.magnetextract != 0
+{
+    counter -=1
+    
+    if counter &lt;= 0
+    {
+        playerdist = distance_to_point(obj_player.x, obj_player.y);
+        counter = 180;  
+        if playerdist &lt;= obj_player.magnetextract
+            {
+                pickupangle = point_direction(x, y, obj_player.x, obj_player.y);
+                inst = instance_create(x, y, obj_goldpickup);
+                with (inst)
+                    {
+                        speed = 0.5;
+                        direction = other.pickupangle;
+                    }            
+                bx = x
+                by = y
+                script_execute(scr_blockburstvfx, bx, by);
+                instance_destroy();
+            }
+    }
+
+}
 
 </string>
           </argument>

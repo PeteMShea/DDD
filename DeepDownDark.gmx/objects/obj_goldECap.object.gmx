@@ -31,6 +31,7 @@ image_speed = 0;
 image_index = irandom_range(0, 4);
 
 
+counter = 180;      //how often to distance check to player for magnet
 </string>
           </argument>
         </arguments>

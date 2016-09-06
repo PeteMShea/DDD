@@ -2,7 +2,7 @@
 
 //-------------------------------------------------------
 
-global.EquipName[1] = "ALLOY HULL";
+global.EquipName[1] = "STRENGTHENED HULL";
 global.EquipUnlocked[1] = true;
 global.EquipOwned[1] = false;
 global.EquipEquipped[1] = false;
@@ -10,9 +10,9 @@ global.EquipCost[1] = 500;
 global.EquipIcon[1] = spr_01ArmourA;
 global.EquipGraphic[1] = spr_ItemGraphicPlaceholder;
 global.EquipStatA[1] = "ARMOUR: 0.5";
-global.EquipStatB[1] = "MINOR COLLISIONS";
+global.EquipStatB[1] = "STRENGTH + 20";
 global.EquipAttMod[1] = 1;
-global.EquipAttBoost[1] = 10;
+global.EquipAttBoost[1] = 20;
 global.EquipShipArt[1] = noone;
 
 //-------------------------------------------------------
@@ -25,9 +25,9 @@ global.EquipCost[2] = 2500;
 global.EquipIcon[2] = spr_02ArmourB;
 global.EquipGraphic[2] = spr_ItemGraphicPlaceholder;
 global.EquipStatA[2] = "ARMOUR: 1.5";
-global.EquipStatB[2] = "MED COLLISIONS";
+global.EquipStatB[2] = "STRENGTH + 50";
 global.EquipAttMod[2] = 1;
-global.EquipAttBoost[2] = 20;
+global.EquipAttBoost[2] = 50;
 global.EquipShipArt[2] = noone;
 
 //-------------------------------------------------------
@@ -40,14 +40,14 @@ global.EquipCost[3] = 10000;
 global.EquipIcon[3] = spr_03ArmourC;
 global.EquipGraphic[3] = spr_ItemGraphicPlaceholder;
 global.EquipStatA[3] = "ARMOUR: 3.0";
-global.EquipStatB[3] = "HEAVY COLLISIONS";
+global.EquipStatB[3] = "STRENGTH + 100";
 global.EquipAttMod[3] = 1;
-global.EquipAttBoost[3] = 30;
+global.EquipAttBoost[3] = 100;
 global.EquipShipArt[3] = noone;
 
 //-------------------------------------------------------
 
-global.EquipName[4] = "ENERGY SHIELD";
+global.EquipName[4] = "PLATE ARMOUR";
 global.EquipUnlocked[4] = true;
 global.EquipOwned[4] = false;
 global.EquipEquipped[4] = false;
@@ -55,14 +55,14 @@ global.EquipCost[4] = 1500;
 global.EquipIcon[4] = spr_04ShieldA;
 global.EquipGraphic[4] = spr_ItemGraphicPlaceholder;
 global.EquipStatA[4] = "PROTECTION: 2.0";
-global.EquipStatB[4] = "RECHARGE: 1.5";
+global.EquipStatB[4] = "MINOR COLLISIONS";
 global.EquipAttMod[4] = 3;
 global.EquipAttBoost[4] = 15;
 global.EquipShipArt[4] = noone;
 
 //-------------------------------------------------------
 
-global.EquipName[5] = "PLASMA SHIELD";
+global.EquipName[5] = "ENERGY SHIELD";
 global.EquipUnlocked[5] = true;
 global.EquipOwned[5] = false;
 global.EquipEquipped[5] = false;
@@ -184,13 +184,13 @@ global.EquipShipArt[12] = noone;
 
 global.EquipName[13] = "ELECTRON MAGNET";
 global.EquipUnlocked[13] = true;
-global.EquipOwned[13] = true;
-global.EquipEquipped[13] = true;
-global.EquipCost[13] = 0;
+global.EquipOwned[13] = false;
+global.EquipEquipped[13] = false;
+global.EquipCost[13] = 500;
 global.EquipIcon[13] = spr_13MagnetA;
 global.EquipGraphic[13] = spr_ItemGraphicPlaceholder;
-global.EquipStatA[13] = "RANGE: 40.0";
-global.EquipStatB[13] = "POWER: 5.0";
+global.EquipStatA[13] = "RANGE: 120.0";
+global.EquipStatB[13] = "POWER: 4.0";
 global.EquipAttMod[13] = 1;
 global.EquipAttBoost[13] = 0;
 global.EquipShipArt[13] = noone;
@@ -204,8 +204,8 @@ global.EquipEquipped[14] = false;
 global.EquipCost[14] = 5000;
 global.EquipIcon[14] = spr_14MagnetB;
 global.EquipGraphic[14] = spr_ItemGraphicPlaceholder;
-global.EquipStatA[14] = "RANGE: 100.0";
-global.EquipStatB[14] = "POWER: 10.0";
+global.EquipStatA[14] = "RANGE: 250.0";
+global.EquipStatB[14] = "POWER: 8.0";
 global.EquipAttMod[14] = 1;
 global.EquipAttBoost[14] = 0;
 global.EquipShipArt[15] = noone;
@@ -216,7 +216,7 @@ global.EquipName[15] = "EXTRACTION MAGNET";
 global.EquipUnlocked[15] = true;
 global.EquipOwned[15] = false;
 global.EquipEquipped[15] = false;
-global.EquipCost[15] = 20000;
+global.EquipCost[15] = 10000;
 global.EquipIcon[15] = spr_15MagnetExtract;
 global.EquipGraphic[15] = spr_ItemGraphicPlaceholder;
 global.EquipStatA[15] = "RANGE: 150.0";

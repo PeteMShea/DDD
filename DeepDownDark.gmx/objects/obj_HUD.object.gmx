@@ -356,9 +356,9 @@ if !instance_exists(obj_sanitymeter) instance_create(view_xport[0] + 64, view_yp
     //Now draw the meter
     GoldTenThousands = floor(global.playerGold / 10000);
     GoldThousands = floor((global.playerGold - GoldTenThousands * 10000) / 1000);
-    GoldHundreds = floor((global.playerGold - GoldThousands * 1000) / 100);    
-    GoldTens = floor((global.playerGold - (GoldThousands * 1000) - (GoldHundreds*100)) / 10);
-    GoldDigits = global.playerGold - (GoldThousands * 1000) - (GoldHundreds * 100) - (GoldTens * 10);
+    GoldHundreds = floor((global.playerGold - (GoldTenThousands * 10000) - GoldThousands * 1000) / 100);    
+    GoldTens = floor((global.playerGold - (GoldTenThousands * 10000) - (GoldThousands * 1000) - (GoldHundreds*100)) / 10);
+    GoldDigits = global.playerGold - (GoldTenThousands * 10000) - (GoldThousands * 1000) - (GoldHundreds * 100) - (GoldTens * 10);
     //show_debug_message(string(GoldTenThousands) + ", " + string(GoldThousands) + ", " + string(GoldHundreds) + ", " + string(GoldTens) + ", " + string(GoldDigits))
 
     if golddir == 1
@@ -368,7 +368,7 @@ if !instance_exists(obj_sanitymeter) instance_create(view_xport[0] + 64, view_yp
     else
         {
             offsetx = 32;
-            if GoldTenThousands &gt;= 1 offsetx += 96
+            if GoldTenThousands &gt;= 1 offsetx += 68
             if GoldThousands &gt; 0 &amp;&amp; GoldThousands &lt; 10 offsetx += 48
             if GoldThousands == 0 &amp;&amp; GoldHundreds &gt; 0 offsetx += 32
             if GoldThousands == 0 &amp;&amp; GoldHundreds == 0 &amp;&amp; GoldTens &gt; 0 offsetx += 32
@@ -380,6 +380,7 @@ if !instance_exists(obj_sanitymeter) instance_create(view_xport[0] + 64, view_yp
     //leading from text
     if golddir == 1
         {
+            if GoldTenThousands &gt;= 1 draw_x -= digitleading * 2.0
             if GoldThousands &gt; 9 draw_x -= digitleading * 4.75
             if GoldThousands &gt; 1 &amp;&amp; GoldThousands &lt; 10 draw_x -= digitleading * 4.25
             if GoldThousands == 1 &amp;&amp; GoldThousands &lt; 9 draw_x -= digitleading * 4.0
