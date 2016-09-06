@@ -104,6 +104,7 @@ if appeared == true
         if once == false &amp;&amp; global.WeaponOwned[weaponID] == false
             {
                 obj_HUD.newgold = global.playerGold - global.WeaponCost[weaponID];
+                obj_HUD.purchase = true;
                 once = true;
                 //lock out other buttons during the upgrade phase
                 obj_RepairButton.templocked = true;
@@ -114,6 +115,7 @@ if appeared == true
             }               
         if global.playerGold == obj_HUD.newgold
         {
+            obj_HUD.purchase = false;
             //unequip all items in same category first
             categorycount = ceil(weaponID / 6);
             firstincategory = categorycount * 6 - 5

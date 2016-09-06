@@ -1,6 +1,7 @@
 
 
-obj_HUD.newgold = global.playerGold - damagecost;
+
+
 global.playerHealth += 1;
 
 

@@ -63,6 +63,8 @@ alphapulse = 0.02;
 golddrawpulse = 0;
 goldalphalevel = HUDAlpha;
 newgold = global.playerGold;
+purchase = false;
+
 
 hidden = false;
 
@@ -335,12 +337,16 @@ if !instance_exists(obj_sanitymeter) instance_create(view_xport[0] + 64, view_yp
     draw_set_alpha(goldalphalevel);
     global.playerGold = floor(global.playerGold);
     draw_set_colour(c_gold);
-    
-    if newgold &lt; global.playerGold      //quickly count down the text when purchase made
-    {
-        global.playerGold -= 50;
-    }
 
+    //update Gold amount when a purchase or repair is made    
+    if purchase == true &amp;&amp; newgold &lt; global.playerGold      //quickly count down the text when purchase made
+        {
+            if global.playerGold - newgold &gt;= 50 global.playerGold -= 50 else global.playerGold = newgold
+        }    
+    if purchase == true &amp;&amp; global.playerGold &lt;= newgold purchase = false
+
+    
+    
     if goldrightalign == true draw_set_halign(fa_right) else draw_set_halign(fa_left)
 
     draw_text(goldtextleft, goldtextY, global.playerGold);

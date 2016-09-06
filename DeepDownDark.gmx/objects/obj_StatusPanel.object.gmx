@@ -66,7 +66,7 @@ buttonxoffset = 118;    //distance from one button to next
 paleblue = make_colour_rgb(207, 252, 245);
 leftx = 740;
 shipnamey = 350;
-percentx = 1190;       //where health % sit- right justify
+percentx = 1195;       //where health % sit- right justify
 statsy = 950;
 statsnumberleftx = 900;
 rightx = 1030;
@@ -277,15 +277,30 @@ if overlaysappeared == true &amp;&amp; panelsdismissed == false
     draw_set_colour(paleblue);
     draw_set_halign(fa_left);
     
-    // ship name        
-    draw_text(leftx, shipnamey, global.shipname);
-    
-    //health %
-    draw_set_font(fnt_CapsullaTitle);
-    if obj_HUD.healthred == true draw_set_colour(c_red) else draw_set_colour(paleblue);
-    percenthealth = ceil((global.playerHealth / global.startHealth) * 100) 
-    draw_set_halign(fa_right);
-    draw_text(percentx, shipnamey, string(percenthealth) + " %");        
+    // ship name unless rollover on active repair button
+    if obj_RepairButton.repairtext == false
+        {       
+            draw_text(leftx, shipnamey, global.shipname);
+            //health %
+            draw_set_font(fnt_Michroma14);
+            if obj_HUD.healthred == true draw_set_colour(c_red) else draw_set_colour(c_lime);
+            percenthealth = ceil((global.playerHealth / global.startHealth) * 100) 
+            draw_set_halign(fa_right);
+            draw_text(percentx, shipnamey, string(percenthealth));                                      
+        }
+    else if obj_RepairButton.repairtext == true
+        {
+            draw_set_halign(fa_left); 
+            draw_set_font(fnt_Michroma14);
+            draw_text(leftx, shipnamey, "REPAIRS COST:");
+            draw_set_font(fnt_HUD);
+            draw_set_colour(obj_HUD.c_gold);
+            draw_set_halign(fa_right);
+            draw_text(percentx, shipnamey, string(obj_RepairButton.damage * obj_RepairButton.damagecost));
+            draw_set_font(fnt_Michroma14);                                
+        }   
+            
+      
     
     // Attributes
     draw_set_colour(paleblue);    
@@ -305,7 +320,9 @@ if overlaysappeared == true &amp;&amp; panelsdismissed == false
     draw_text(statsnumberrightx, statsy, global.forward);    
     draw_text(statsnumberrightx, statsy + statsyoffset, global.rear);
     draw_text(statsnumberrightx, statsy + statsyoffset * 2, global.baseSanity);    
-                  
+
+  
+                      
 }
 
 

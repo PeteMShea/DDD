@@ -73,12 +73,12 @@ gauntdensity = gauntdensitymin;
 gauntdensitycurrent = 0;
 
 // spores
-sporechance = 0.9;        //chance of a huge square being populated with spores 0.3
-sporedensitymin = 0.15;        //how dense gaunts are at start of level 0
-sporedensitymax = 0.25;          //maximum density of spores
+sporechance = 0.3;        //chance of a huge square being populated with spores 0.3
+sporedensitymin = 0.02;        //how dense gaunts are at start of level 0
+sporedensitymax = 0.20;          //maximum density of spores
 sporedensityrange = sporedensitymax - sporedensitymin;
-sporestartblock = 0.05;           //spores do not start spawning until this % empty huge blocks in
-sporeendblock = 0.55;             //no more spores after this % huge blocks
+sporestartblock = 0.1;           //spores do not start spawning until this % empty huge blocks in
+sporeendblock = 0.85;             //no more spores after this % huge blocks
 sporedensity = sporedensitymin;
 sporedensitycurrent = 0;
 startsporeoffsetangle = 0;

@@ -34,6 +34,8 @@ pressedalpha = 0.95;
 pressed = false;
 rollover = false;
 locked = true;      //locked by default- unlocked if player has repair options available
+once = false;
+repairtext = false;
 
 
 if locked == false image_alpha = readyalpha else image_alpha = lockedalpha
@@ -108,17 +110,28 @@ if appeared == true
                 {            
                     locked = false;
                     targetalpha = readyalpha;
-                    fadein = true;   
+                    fadein = true;
+                       
                 }
             
             // unlocked
             if locked == false
             {
-                script_execute(scr_rolloverbutton);        
+                script_execute(scr_rolloverbutton);
+                if rollover == true repairtext = true else repairtext = false
+                
+                        
                 if pressed == true
                 {
                     oLightSource.swoop = true;
-                    script_execute(scr_repairdamage, damage);        
+                    if once == false
+                        {
+                            once = true;                            
+                            obj_HUD.newgold = global.playerGold - damage * damagecost;
+                            obj_HUD.purchase = true;
+                            show_debug_message("newgold- " + string(obj_HUD.newgold) + " , playerGold:" + string(global.playerGold));
+                        }
+                    script_execute(scr_repairdamage, damage, damagecost);        
                     //repair = false;
                     //locked = true;    
                 }

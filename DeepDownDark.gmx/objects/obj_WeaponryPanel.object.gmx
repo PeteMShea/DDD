@@ -71,7 +71,7 @@ leftx = 1353;
 itemnamey = 226;
 statAy = 310;
 statBy = 336;
-installtexty = 1705;
+installtexty = 430;
 pricex = 1547;
 pricey = 490;
 
@@ -265,8 +265,10 @@ if buttonsappeared == true
         }
     else
         {        
-            draw_text(leftx, installtexty, "EQUIPPED");        
-        }   
+            draw_text(leftx, installtexty, "EQUIPPED");      
+        }
+        
+          
                         
     //Price if not owned
     if global.WeaponOwned[weaponID] == false
