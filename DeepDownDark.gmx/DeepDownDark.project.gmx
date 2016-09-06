@@ -87,6 +87,7 @@
       <sprite>sprites\spr_goldnuggetnormal</sprite>
       <sprite>sprites\spr_glassasteroid</sprite>
       <sprite>sprites\spr_glassasteroidnormal</sprite>
+      <sprite>sprites\spr_hugeblockoverlay</sprite>
     </sprites>
     <sprites name="old">
       <sprite>sprites\spr_bigblock</sprite>

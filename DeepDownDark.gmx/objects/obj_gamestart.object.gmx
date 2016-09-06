@@ -76,7 +76,7 @@ global.EquipViewed = 1;
 script_execute(Items_Equipment);
 
 //pointer debug
-global.videocapture = true;
+global.videocapture = false;
 
 if global.videocapture == true
 {
