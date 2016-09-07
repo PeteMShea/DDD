@@ -121,6 +121,8 @@
       <sprite>sprites\spr_ballplant</sprite>
       <sprite>sprites\spr_ball</sprite>
       <sprite>sprites\blacksnake</sprite>
+      <sprite>sprites\spr_formless</sprite>
+      <sprite>sprites\spr_fswormA</sprite>
     </sprites>
     <sprites name="debug">
       <sprite>sprites\spr_debug</sprite>
@@ -421,6 +423,8 @@
       <object>objects\obj_ballplant</object>
       <object>objects\obj_ball</object>
       <object>objects\obj_blacksnake</object>
+      <object>objects\obj_formless</object>
+      <object>objects\obj_fsworm</object>
     </objects>
     <objects name="Inventory">
       <object>objects\obj_StatusPanel</object>
