@@ -117,13 +117,50 @@ if appeared == true
         {
             obj_HUD.purchase = false;
             //unequip all items in same category first
-            categorycount = ceil(equipID / 6);
-            firstincategory = categorycount * 6 - 5
-            for (i = firstincategory; i &lt;= firstincategory + 5; i += 1)
+            
+            if equipID &gt;= 1 &amp;&amp; equipID &lt;= 3         //Hulls- health
                 {
-                    global.EquipEquipped[i] = false;
-                    show_debug_message("Unequipping Item: " + string(i));
+                    for (i = 1; i &lt;= 3; i += 1)
+                        {
+                            global.EquipEquipped[i] = false;
+                            show_debug_message("Unequipping Item: " + string(i));
+                        }
+                }    
+            if equipID &gt;= 4 &amp;&amp; equipID &lt;= 6         //Armour/shields
+                {
+                    for (i = 4; i &lt;= 6; i += 1)
+                        {
+                            global.EquipEquipped[i] = false;
+                            show_debug_message("Unequipping Item: " + string(i));
+                        }
                 }
+            if equipID &gt;= 7 &amp;&amp; equipID &lt;= 9         //Forward Engines
+                {
+                    for (i = 7; i &lt;= 9; i += 1)
+                        {
+                            global.EquipEquipped[i] = false;
+                            show_debug_message("Unequipping Item: " + string(i));
+                        }
+                }                
+            if equipID &gt;= 10 &amp;&amp; equipID &lt;= 11         //Rear Engines
+                {
+                    for (i = 10; i &lt;= 11; i += 1)
+                        {
+                            global.EquipEquipped[i] = false;
+                            show_debug_message("Unequipping Item: " + string(i));
+                        }
+                }                  
+            if equipID &gt;= 12 &amp;&amp; equipID &lt;= 14         //Gold Magnets
+                {
+                    for (i = 12; i &lt;= 14; i += 1)
+                        {
+                            global.EquipEquipped[i] = false;
+                            show_debug_message("Unequipping Item: " + string(i));
+                        }
+                }  
+                
+                                                   
+                
             // now equip the new item            
             global.EquipOwned[equipID] = true;
             global.EquipEquipped[equipID] = true;

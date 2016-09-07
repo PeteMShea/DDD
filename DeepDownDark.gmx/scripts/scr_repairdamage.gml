@@ -1,9 +1,10 @@
 
 
 
-
-global.playerHealth += 1;
-
+while (newhealth > global.playerHealth)
+{
+    global.playerHealth += 1;
+}
 
 repaircount = ceil(damage/14);
 area[0] = global.locdamage_CR;

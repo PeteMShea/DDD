@@ -128,9 +128,11 @@ if appeared == true
                             once = true;                            
                             obj_HUD.newgold = global.playerGold - damage * damagecost;
                             obj_HUD.purchase = true;
-                            show_debug_message("newgold- " + string(obj_HUD.newgold) + " , playerGold:" + string(global.playerGold));
+                            newhealth = global.playerHealth + damage
+                            show_debug_message("newgold: " + string(obj_HUD.newgold) + " , playerGold:" + string(global.playerGold));
                         }
-                    script_execute(scr_repairdamage, damage, damagecost);        
+                    
+                    script_execute(scr_repairdamage, newhealth, damage, damagecost);        
                     //repair = false;
                     //locked = true;    
                 }

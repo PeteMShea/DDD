@@ -32,17 +32,17 @@ ship = "shark";
 
 if ship =="shark"
 {
-    thrust = 0.001 * global.RM;       //thrust applied per frame of mouse input
-    min_thrust = 0.01 * global.RM;
-    max_forwardthrust = 0.35;
-    max_backthrust = 0.2 * global.RM;
+    thrust = 0.00025;       //thrust applied per frame of mouse input  0.002
+    min_thrust = 0.01;      //0.02
+    max_forwardthrust = 0.1;   // 0.35
+    max_backthrust = 0.1;       //0.4
     thrustcounter = 20; //minimum number of frames thrust is applied before deceleration starts
-    thrustacc = 1.001;    //how thrust accelerates while input is held
+    thrustacc = 1.00025;    //how thrust accelerates while input is held 1.001
     inertia = 5;     //percentage speed lost per frame
     deceleration = 10;
     decay = 0.10;        // how quickly deceleration when not thrusting decays
-    min_speed = 0.4 * global.RM;    // minimum ie terminal velocity
-    max_speed = 2 * global.RM;      //maximum speed achievable
+    min_speed = 0.8;    // minimum ie terminal velocity
+    max_speed = 1.5;      //maximum speed achievable  //4
     maxturnspeed = 1.5;       //rate at which ship turns- degrees per frame 1
     turnacceleration = 0.10;    //how much turnspeed accelerates over time    
     turndeceleration = 0.1;    //how much turnspeed decelerates over time

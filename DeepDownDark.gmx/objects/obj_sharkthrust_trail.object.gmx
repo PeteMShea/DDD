@@ -25,8 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-decay = 0.075;
+            <string>decay = 0.09;
+if global.EquipEquipped[8] == true decay = 0.06;
+else if global.EquipEquipped[9] == true decay = 0.03;
+
+
+
+
 image_alpha = 0.8;
 
 image_angle = obj_player.image_angle;

@@ -73,7 +73,8 @@ if global.WeaponEquipped[12] == true
 
     
     
-    
+
+   
     
 
     
@@ -101,7 +102,54 @@ if global.EquipEquipped[4] == true
         obj_player.damagemult = 10;     //how much collision damage does- base level 15
         obj_player.mindamage = 3.0;     //base level 0.5;
     } 
+
+if global.EquipEquipped[7] == true
+    {
+        obj_player.thrust = 0.00025;       //thrust applied per frame of mouse input  0.002
+        obj_player.min_thrust = 0.01;      //0.02
+        obj_player.max_forwardthrust = 0.1;   // 0.35
+        obj_player.thrustacc = 1.00025;    //how thrust accelerates while input is held 1.001
+        obj_player.max_speed = 2.0;      //maximum speed achievable  //4   
+    }     
     
+if global.EquipEquipped[8] == true
+    {
+        obj_player.thrust = 0.002;       //thrust applied per frame of mouse input  0.002
+        obj_player.min_thrust = 0.02;      //0.02
+        obj_player.max_forwardthrust = 0.2;   // 0.35
+        obj_player.thrustacc = 1.001;    //how thrust accelerates while input is held 1.001
+        obj_player.max_speed = 3.5;      //maximum speed achievable  //4   
+    }     
+    
+if global.EquipEquipped[9] == true
+    {
+        obj_player.thrust = 0.004;       //thrust applied per frame of mouse input  0.002
+        obj_player.min_thrust = 0.02;      //0.02
+        obj_player.max_forwardthrust = 0.4;   // 0.35
+        obj_player.thrustacc = 1.003;    //how thrust accelerates while input is held 1.001
+        obj_player.max_speed = 6.0;      //maximum speed achievable  //4   
+    }     
+    
+if global.EquipEquipped[10] == true
+    {
+        obj_player.max_backthrust = 0.4;       //0.4
+    }  
+
+if global.EquipEquipped[11] == true
+    {
+        obj_player.max_backthrust = 0.9;       //0.4
+    }     
+    
+    
+    
+         
+    
+    
+    
+    
+    
+    
+        
 
 if global.EquipEquipped[13] == true
     {

@@ -276,7 +276,6 @@
       <script>scripts\scr_landingsequence.gml</script>
       <script>scripts\scr_forwardthrust.gml</script>
       <script>scripts\scr_playerShoot.gml</script>
-      <script>scripts\scr_updateplayer.gml</script>
     </scripts>
     <scripts name="Enemy">
       <script>scripts\LOScheck.gml</script>
@@ -296,6 +295,7 @@
     <scripts name="Items">
       <script>scripts\Items_Weaponry.gml</script>
       <script>scripts\Items_Equipment.gml</script>
+      <script>scripts\scr_updateplayer.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
