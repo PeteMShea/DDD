@@ -123,6 +123,9 @@
       <sprite>sprites\blacksnake</sprite>
       <sprite>sprites\spr_formless</sprite>
       <sprite>sprites\spr_fswormA</sprite>
+      <sprite>sprites\spr_fsoverlay</sprite>
+      <sprite>sprites\spr_formless_eat</sprite>
+      <sprite>sprites\spr_formlessball</sprite>
     </sprites>
     <sprites name="debug">
       <sprite>sprites\spr_debug</sprite>
@@ -259,6 +262,7 @@
   <scripts name="scripts">
     <script>scripts\scr_genMap.gml</script>
     <script>scripts\scr_mapGEN_A0.gml</script>
+    <script>scripts\scr_mapGEN_singleroom.gml</script>
     <script>scripts\scr_gotonewlevel.gml</script>
     <scripts name="VFX">
       <script>scripts\scr_bulletsparks.gml</script>
@@ -317,6 +321,7 @@
       <object>objects\obj_gamestart</object>
       <object>objects\obj_newcontrol</object>
       <object>objects\obj_roomcontrolA0</object>
+      <object>objects\obj_singleroomcontrol</object>
       <object>objects\obj_PauseLanded</object>
       <object>objects\obj_alarm</object>
       <object>objects\obj_exittrigger</object>
@@ -424,7 +429,10 @@
       <object>objects\obj_ball</object>
       <object>objects\obj_blacksnake</object>
       <object>objects\obj_formless</object>
+      <object>objects\obj_formlessball</object>
+      <object>objects\obj_fssnake</object>
       <object>objects\obj_fsworm</object>
+      <object>objects\obj_fsoverlay</object>
     </objects>
     <objects name="Inventory">
       <object>objects\obj_StatusPanel</object>
@@ -496,6 +504,11 @@
       <object>objects\obj_tinyblock</object>
     </objects>
   </objects>
+  <timelines name="timelines">
+    <timelines name="enemies">
+      <timeline>timelines\tm_formlessfire</timeline>
+    </timelines>
+  </timelines>
   <rooms name="rooms">
     <room>rooms\start</room>
     <room>rooms\LCWsplash</room>

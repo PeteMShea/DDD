@@ -30,8 +30,10 @@ animspeed = random_range(0.14, 0.18);
 image_speed = animspeed;
 direction = image_angle;
 speed = random_range(2.8, 3.2);
+//speed = 0.2;
+acceleration = 0.1;
 
-scale = 0.2     //starting size
+scale = 0.4     //starting size
 scaleinc = 0.1;
 image_xscale = scale;
 image_yscale = scale;
@@ -44,11 +46,11 @@ columnx2 = obj_formless.x + 25 + random(4);
 insidecolumn = false;
 straight = false;
 
-collisioncounter = 15; //how often to check for collisions with ground
+collisioncounter = 45; //how often to check for collisions with ground
 hitground = false;
-timetofade = 60;        //number of frames on ground before starting to fade
+timetofade = 10;        //number of frames on ground before starting to fade
 startfade = false;
-alphafade = 0.025;
+alphafade = 0.1;
 
 once = false;
 
@@ -84,7 +86,7 @@ once = false;
         startangle = obj_formless.image_angle + 270;       //'downwards' from the spawn
         fanangle = random_range(-45, 45);
         grounddirection = startangle + fanangle;
-        timetofade += abs(fanangle);        //add time based upon how far out fan angle on land is
+        timetofade += abs(fanangle)*2;        //add time based upon how far out fan angle on land is
     }
 
 if scale &lt; 1        //scale up on spawn
@@ -95,6 +97,7 @@ if scale &lt; 1        //scale up on spawn
     }
 
 //move the worm forwards until it reaches the ground
+//if speed &lt; maxspeed speed += acceleration
 
 direction = image_angle;    //face forwards
 
@@ -129,11 +132,12 @@ if hitground == false
     
     if collisioncounter &lt; 0
         {
-            collisioncounter = 30;
+            collisioncounter = 45;
             if instance_place(x, y + 100, obj_newblock)     //check ahead of the worm so it begins slow and fan out ahead of reaching it
             {
                 hitground = true;
-                speed = speed * 0.5;        //slow down            
+                speed = speed * 0.5;        //slow down
+                swerveangle = 2;            
             }
         }
 }
