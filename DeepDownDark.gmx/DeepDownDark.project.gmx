@@ -507,6 +507,7 @@
     <timelines name="enemies">
       <timeline>timelines\tm_formlessfire</timeline>
       <timeline>timelines\tm_formlessidle</timeline>
+      <timeline>timelines\tm_formlesssnarl</timeline>
     </timelines>
   </timelines>
   <rooms name="rooms">

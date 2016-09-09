@@ -21,8 +21,6 @@
             <kind>1</kind>
             <string>image_index = 0;
 
-idle = true;
-
 
 </string>
           </argument>
@@ -49,7 +47,7 @@ idle = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 5;
+            <string>image_index = 7;
 </string>
           </argument>
         </arguments>
@@ -75,7 +73,7 @@ idle = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 6;
+            <string>image_index = 8;
 
 </string>
           </argument>
@@ -84,7 +82,7 @@ idle = true;
     </event>
   </entry>
   <entry>
-    <step>36</step>
+    <step>60</step>
     <event>
       <action>
         <libid>1</libid>
@@ -102,7 +100,39 @@ idle = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 5;
+            <string>image_index = 7;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </entry>
+  <entry>
+    <step>72</step>
+    <event>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// go back to idle loop
+
+timeline_index = tm_formlessidle;
+timeline_running = true;
+timeline_loop = true;
+
+
 </string>
           </argument>
         </arguments>

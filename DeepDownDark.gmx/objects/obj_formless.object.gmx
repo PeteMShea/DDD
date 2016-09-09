@@ -65,6 +65,8 @@ turnspeed = 0.05;
 decelerating = false;
 hovery = 0;         //this is used to move the formless up and down separate from bobbing
 firecounter = 300;      //frames between firing
+snarltime = 300;    //howoften snarl anim plays
+idle = true;
 
 instance_create(x, y, obj_fsoverlay);
 
@@ -118,17 +120,27 @@ if distance_to_object(obj_player) &lt; 500 &amp;&amp; seen == false
 
 if seen == true
 {
-firecounter -= 1;
-
-if firecounter &lt;= 0
-{
-    firecounter = random_range(275, 325);
-    timeline_index = tm_formlessfire;
-    timeline_running = true;
-    timeline_loop = true;    
+    firecounter -= 1;
+    
+    if firecounter &lt;= 0
+    {
+        firecounter = random_range(275, 325);
+        timeline_index = tm_formlessfire;
+        timeline_running = true;
+        timeline_loop = true;    
+    }
 }
 
-
+if idle == true
+{
+    snarltime -= 1;
+    if snarltime &lt;= 0
+        {
+            snarltime = random_range(300, 400);
+            timeline_index = tm_formlesssnarl;
+            timeline_running = true;
+            timeline_loop = true;  
+        }
 }
 
 //bobbing motion
