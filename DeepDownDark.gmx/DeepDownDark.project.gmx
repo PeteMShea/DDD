@@ -121,10 +121,9 @@
       <sprite>sprites\spr_ballplant</sprite>
       <sprite>sprites\spr_ball</sprite>
       <sprite>sprites\blacksnake</sprite>
-      <sprite>sprites\spr_formless</sprite>
       <sprite>sprites\spr_fswormA</sprite>
       <sprite>sprites\spr_fsoverlay</sprite>
-      <sprite>sprites\spr_formless_eat</sprite>
+      <sprite>sprites\spr_formless</sprite>
       <sprite>sprites\spr_formlessball</sprite>
     </sprites>
     <sprites name="debug">
@@ -507,6 +506,7 @@
   <timelines name="timelines">
     <timelines name="enemies">
       <timeline>timelines\tm_formlessfire</timeline>
+      <timeline>timelines\tm_formlessidle</timeline>
     </timelines>
   </timelines>
   <rooms name="rooms">

@@ -33,8 +33,8 @@ global.playerX = x;
 global.playerY = y;
 global.playerspeedX = 0;
 global.playerspeedY = 0;
-global.playerHealth = 100;  //100
-global.startHealth = 100;
+global.playerHealth = 200;  //100
+global.startHealth = 200;
 global.playerGold = 10000;
 global.baseSanity = 80;
 global.currentSanity = global.baseSanity;
@@ -58,10 +58,11 @@ global.locdamage_CL = 0;
 global.locdamage_CC = 0;
 global.loading = false;
 global.autopilot = 0;
-global.dirtalpha = 0.0;
+global.dirtalpha = 1.0;
 
 global.sporeseen = false;
 global.gauntseen = false;
+global.formlessseen = false;
 
 countdown = 1;
 global.pause = false;
