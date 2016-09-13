@@ -151,7 +151,7 @@ idle = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// fire a ball
+            <string>// mouth open fire a ball
 
 inst = instance_create(x, y, obj_formlessball);
 with (inst)
@@ -170,7 +170,7 @@ with (inst)
     </event>
   </entry>
   <entry>
-    <step>102</step>
+    <step>160</step>
     <event>
       <action>
         <libid>1</libid>
@@ -196,7 +196,7 @@ with (inst)
     </event>
   </entry>
   <entry>
-    <step>110</step>
+    <step>168</step>
     <event>
       <action>
         <libid>1</libid>
@@ -222,7 +222,7 @@ with (inst)
     </event>
   </entry>
   <entry>
-    <step>118</step>
+    <step>176</step>
     <event>
       <action>
         <libid>1</libid>
@@ -248,7 +248,7 @@ with (inst)
     </event>
   </entry>
   <entry>
-    <step>126</step>
+    <step>184</step>
     <event>
       <action>
         <libid>1</libid>

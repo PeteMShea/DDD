@@ -3,9 +3,9 @@
   <spriteName>spr_formless</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-10</depth>
   <persistent>0</persistent>
-  <parentName>self</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -67,8 +67,14 @@ hovery = 0;         //this is used to move the formless up and down separate fro
 firecounter = 300;      //frames between firing
 snarltime = 300;    //howoften snarl anim plays
 idle = true;
+shotinmouth = false;    //shot in ma mooth
+shotcounter = 3;       //time in frames to flash red for
+shotcolour = make_colour_rgb(255, 88, 97);
+currenthealth = 200;
 
 instance_create(x, y, obj_fsoverlay);
+instance_create(x, y, obj_fscollision);
+instance_create(x, y, obj_fsmouthcollision);
 
 timeline_index = tm_formlessidle;
 timeline_running = true;
@@ -111,11 +117,9 @@ if global.formlessseen == false
         }
 
 //in range- temp
-if distance_to_object(obj_player) &lt; 500 &amp;&amp; seen == false
+if distance_to_object(obj_player) &lt; 600 &amp;&amp; seen == false
 {
     seen = true;
-
-
 }
 
 if seen == true
@@ -127,7 +131,8 @@ if seen == true
         firecounter = random_range(275, 325);
         timeline_index = tm_formlessfire;
         timeline_running = true;
-        timeline_loop = true;    
+        timeline_loop = true;
+        idle = false;    
     }
 }
 
@@ -238,8 +243,7 @@ if angdif &gt; -1
         inst = instance_create(sx, sy, obj_fsworm);
         with(inst)
             {
-                image_angle = other.sangle;
-            
+                image_angle = other.sangle;            
             }
     
 if random(1) &lt; randomextraworm
@@ -258,6 +262,28 @@ if random(1) &lt; randomextraworm
             }
 }
 
+// flash red when hit
+if shotinmouth == false &amp;&amp; shotcounter &lt;= 0
+    {
+        image_blend = c_white;
+        obj_fsoverlay.image_blend = c_white;
+    }
+if shotinmouth == true
+    {
+        image_blend = shotcolour;
+        obj_fsoverlay.image_blend = shotcolour;
+        shotcounter = 3;
+        shotinmouth = false;
+    }
+shotcounter -= 1;
+
+//death
+if currenthealth &lt;= 0
+{
+    instance_destroy();
+
+
+}
 
 //------------------------------------------------
 }

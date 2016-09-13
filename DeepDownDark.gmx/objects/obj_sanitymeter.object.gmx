@@ -148,6 +148,7 @@ if sanity &gt;= levelten &amp;&amp; global.baseSanity &lt; 180
     }
 
 
+
 // adjust meter graphic based upon sanity levels
 if sanity &lt; leveltwo &amp;&amp; spritelevel != 1
     {
@@ -219,34 +220,37 @@ if sanity &gt;= levelten &amp;&amp; spritelevel != 10
         spritelevel = 10
     }      
 
-// Add Sanity Vignette mask if sanity above level or destroy it if not
-if mask == false &amp;&amp; sanity &gt;= levelthree
-    {
-        mask = true
-        instance_create(obj_player.x, obj_player.y, obj_sanityvignette);
+if global.sanityenabled == true
+{
+    // Add Sanity Vignette mask if sanity above level or destroy it if not
+    if mask == false &amp;&amp; sanity &gt;= levelthree
+        {
+            mask = true
+            instance_create(obj_player.x, obj_player.y, obj_sanityvignette);
+        
+        }
     
-    }
-
-if mask == true &amp;&amp; sanity &lt; levelthree
-    {
-        obj_sanityvignette.destroy = true;
-        mask = false;
-    }
-
-// Add extra Sanity  mask if sanity above level or destroy it if not
-if extramask == false &amp;&amp; sanity &gt;= levelsix
-    {
-        extramask = true
-        instance_create(obj_player.x, obj_player.y, obj_sanitymask);
+    if mask == true &amp;&amp; sanity &lt; levelthree
+        {
+            obj_sanityvignette.destroy = true;
+            mask = false;
+        }
     
-    }
+    // Add extra Sanity  mask if sanity above level or destroy it if not
+    if extramask == false &amp;&amp; sanity &gt;= levelsix
+        {
+            extramask = true
+            instance_create(obj_player.x, obj_player.y, obj_sanitymask);
+        
+        }
+    
+    if extramask == true &amp;&amp; sanity &lt; levelsix       //kill it a level earlier than it was spawned for smoother transition
+        {
+            obj_sanitymask.destroy = true;
+            extramask = false;
+        }
 
-if extramask == true &amp;&amp; sanity &lt; levelsix       //kill it a level earlier than it was spawned for smoother transition
-    {
-        obj_sanitymask.destroy = true;
-        extramask = false;
-    }
-
+}
 
 
 

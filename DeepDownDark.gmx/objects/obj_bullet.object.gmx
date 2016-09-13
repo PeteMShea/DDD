@@ -92,12 +92,15 @@ totalbounces = 3;       //number of permitted bounces before bullet is destroyed
 
 vx = (destx - x);
 vy = (desty - y);
-    
-len = sqrt(vx * vx + vy * vy);
-    
+
+val = sqr(vx) + sqr(vy);    
+if val &gt; 0 len = sqrt(val) else len = 0
+ 
+if len != 0
+{   
 vx = vx / len;
 vy = vy / len;
-
+}
 
 x -= vx * bulletspd
 y -= vy * bulletspd
@@ -291,7 +294,30 @@ if spores != noone
 // don't destroy the bullet when shooting spores
 
     }     
+
+formless = noone;
+if collided == false formless = instance_place(x, y, obj_fsmouthcollision);
+if formless != noone
+    {
+        collided = true;
+        with(obj_formless) 
+            {
+                if currenthealth &gt;0
+                {
+                
+                //create mouth debris
+                bx = x
+                by = y
+                script_execute(scr_formlessmouthdebris, bx, by);
+                shotinmouth = true;
+                currenthealth -= obj_player.bulletdamage;                
+                }           
+            }
+        //destroy the bullet
+        instance_destroy();
+    }     
     
+        
 asteroid = noone;
 if collided == false asteroid = instance_place(x, y, obj_asteroid);
 if asteroid != noone

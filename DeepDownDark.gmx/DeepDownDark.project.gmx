@@ -125,6 +125,9 @@
       <sprite>sprites\spr_fsoverlay</sprite>
       <sprite>sprites\spr_formless</sprite>
       <sprite>sprites\spr_formlessball</sprite>
+      <sprite>sprites\spr_fscollision</sprite>
+      <sprite>sprites\spr_fsmouthcollision</sprite>
+      <sprite>sprites\spr_fsmouthdebris</sprite>
     </sprites>
     <sprites name="debug">
       <sprite>sprites\spr_debug</sprite>
@@ -272,6 +275,7 @@
       <script>scripts\scr_particleburst.gml</script>
       <script>scripts\scr_asteroidburst.gml</script>
       <script>scripts\scr_sporeburst.gml</script>
+      <script>scripts\scr_formlessmouthdebris.gml</script>
     </scripts>
     <scripts name="Player">
       <script>scripts\scr_repairdamage.gml</script>
@@ -431,7 +435,10 @@
       <object>objects\obj_formlessball</object>
       <object>objects\obj_fssnake</object>
       <object>objects\obj_fsworm</object>
+      <object>objects\obj_fsmouthdebris</object>
       <object>objects\obj_fsoverlay</object>
+      <object>objects\obj_fscollision</object>
+      <object>objects\obj_fsmouthcollision</object>
     </objects>
     <objects name="Inventory">
       <object>objects\obj_StatusPanel</object>

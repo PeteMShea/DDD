@@ -35,7 +35,7 @@ global.playerspeedX = 0;
 global.playerspeedY = 0;
 global.playerHealth = 200;  //100
 global.startHealth = 200;
-global.playerGold = 10000;
+global.playerGold = 900;
 global.baseSanity = 80;
 global.currentSanity = global.baseSanity;
 global.madness = 0;     //amount to increase sanity level by when fearful
@@ -58,7 +58,7 @@ global.locdamage_CL = 0;
 global.locdamage_CC = 0;
 global.loading = false;
 global.autopilot = 0;
-global.dirtalpha = 1.0;
+global.dirtalpha = 0.0;
 
 global.sporeseen = false;
 global.gauntseen = false;
@@ -76,8 +76,13 @@ script_execute(Items_Weaponry);
 global.EquipViewed = 1;
 script_execute(Items_Equipment);
 
+
+
+// DEBUG
 //pointer debug
-global.videocapture = true;
+global.videocapture = false;
+
+global.sanityenabled = false;
 
 if global.videocapture == true
 {

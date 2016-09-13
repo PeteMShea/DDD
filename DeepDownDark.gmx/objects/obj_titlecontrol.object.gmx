@@ -171,12 +171,14 @@ if fadeblackworld = true &amp;&amp; startgame == 1
     obj_player.image_blend = c_white;
     obj_redlightglow.image_blend = c_white;
     obj_redtrail.image_blend = c_white;
-    
+
+        
     if titlealpha &gt;= finaltitlealpha
         {
             titlealpha -= titlealphafade;
             background_alpha [2] = titlealpha;
-        }        
+        }
+           
     if objectblendcolour &gt;= 255
     {
         fadeblackworld = false;

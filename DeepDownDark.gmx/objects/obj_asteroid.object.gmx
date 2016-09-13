@@ -221,9 +221,11 @@ if asteroidhit != 0
             
         len = sqrt(vx * vx + vy * vy);
          
-           
+        if len != 0
+        {   
         vx = vx / len;
         vy = vy / len;
+        }
         
         speedlen = sqrt(hitspeed_x * hitspeed_x + hitspeed_y * hitspeed_y); 
         
