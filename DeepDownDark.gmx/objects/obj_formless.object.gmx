@@ -70,7 +70,9 @@ idle = true;
 shotinmouth = false;    //shot in ma mooth
 shotcounter = 3;       //time in frames to flash red for
 shotcolour = make_colour_rgb(255, 88, 97);
-currenthealth = 200;
+currenthealth = 40;         //200
+dying = false;
+dead = false;
 
 instance_create(x, y, obj_fsoverlay);
 instance_create(x, y, obj_fscollision);
@@ -116,174 +118,185 @@ if global.formlessseen == false
             global.formlessseen = true;    
         }
 
-//in range- temp
-if distance_to_object(obj_player) &lt; 600 &amp;&amp; seen == false
-{
-    seen = true;
-}
-
-if seen == true
-{
-    firecounter -= 1;
-    
-    if firecounter &lt;= 0
-    {
-        firecounter = random_range(275, 325);
-        timeline_index = tm_formlessfire;
-        timeline_running = true;
-        timeline_loop = true;
-        idle = false;    
-    }
-}
-
-if idle == true
-{
-    snarltime -= 1;
-    if snarltime &lt;= 0
-        {
-            snarltime = random_range(300, 400);
-            timeline_index = tm_formlesssnarl;
-            timeline_running = true;
-            timeline_loop = true;  
-        }
-}
-
-//bobbing motion
-
-tiltxtime -= 1;
-tiltytime -= 1;
-tiltangletime -= 1;
-
-if tiltxtime &lt;= 0  &amp;&amp; decelerating == false
-    {
-        tiltxtime = maxtiltxtime + random_range(-15, 15);
-        if x &lt; startx - 100 xdir = 1;      //always go right if too far left
-        if x &gt; startx + 100 xdir = -1;        
-        targetx = x + (random_range(bobx, bobx + 10) * xdir);
-        xdir = round(random_range(-1, 1));     //go in random dir next time
-        //currentspeed = 0    
-    }
-if tiltytime &lt;= 0 &amp;&amp; hovery == 0 &amp;&amp; decelerating == false
-    {
-        tiltytime = maxtiltytime + random_range(-15, 15);
-        if y &lt; starty - 100 ydir = 1;      //always go up if lower than start zone
-        if y &gt; starty + 100 ydir = -1;
-        targety = y + (random_range(boby, boby + 15) * ydir);
-        ydir *= -1;     //go in opposite dir next time 
-        //currentspeed = 0   
-    }
-if tiltangletime &lt;= 0
-    {
-        tiltangletime = maxtiltangletime + random_range(-15, 15);
-        targetangle = image_angle + (random_range(bobangle/2, bobangle) * angledir);
-        angledir *= -1;     //go in opposite dir next time    
-    }
-
-//movement
-destx = targetx;
-desty = targety + hovery;       //hovery is set by the timeline
-
-desty = clamp(desty, starty - 150, starty + 200);
-
-if targetx != x || targety != y
-    {        
-        vx = (destx - x);
-        vy = (desty - y);
-                    
-        len = sqrt((vx * vx) + (vy * vy));
-                    
-        vx = vx / len;
-        vy = vy / len;
-    }
-if abs(x - destx) &lt; 5 &amp;&amp; abs(y - desty) &lt; 5 decelerating = true
-if abs(y - desty) &lt;= 1 hovery = 0;    
-
-if currentspeed &lt;= 0
-    {
-        currentspeed = 0;
-        decelerating = false
-    }
-if currentspeed &lt; maxspeed &amp;&amp; decelerating == false currentspeed += acceleration
-if decelerating == true 
-    {
-        currentspeed -= deceleration    
-    }
-
-x += vx * currentspeed
-y += vy * currentspeed
-    
-    
-//rotation
-angdif = angle_difference(image_angle, targetangle);
-if angdif &lt; -1
-    {
-        image_angle += turnspeed 
-    }
-if angdif &gt; -1
-    {
-        image_angle -= turnspeed 
-    }    
-
-
-
-//spawn worms
-        
-        //calculate vars
-        // box in which worms spawn- calculated in step time as formless may be moving
-        spawnx1 = x - 68;
-        spawny1 = y + 37;
-        spawnx2 = x + 57;
-        spawny2 = y + 72;
-                
-        //now spawn a worm
-        sx = irandom_range(spawnx1, spawnx2);
-        sy = irandom_range(spawny1, spawny2);
-        sangle = image_angle + 270;
-        
-        inst = instance_create(sx, sy, obj_fsworm);
-        with(inst)
-            {
-                image_angle = other.sangle;            
-            }
-    
-if random(1) &lt; randomextraworm
-{
-        //now spawn an occasional extra worm outside main zone on top half of head
-        sx = irandom_range(spawnx1 - 20, spawnx2 + 20);
-        sy = irandom_range(spawny1 - 100, spawny1 - 30);
-        sangle = image_angle + 270;;
-        
-        inst = instance_create(sx, sy, obj_fsworm);
-        with(inst)
-            {
-                image_angle = other.sangle;
-                swerveangle = 1;
+// still alive
+if dead == false
+{       
             
+    //in range- temp
+    if distance_to_object(obj_player) &lt; 600 &amp;&amp; seen == false
+    {
+        seen = true;
+    }
+    
+    if seen == true &amp;&amp; dying == false
+    {
+        firecounter -= 1;
+        
+        if firecounter &lt;= 0
+        {
+            firecounter = random_range(275, 325);
+            timeline_index = tm_formlessfire;
+            timeline_running = true;
+            timeline_loop = true;
+            idle = false;    
+        }
+    }
+    
+    if idle == true &amp;&amp; dying == false
+    {
+        snarltime -= 1;
+        if snarltime &lt;= 0
+            {
+                snarltime = random_range(300, 400);
+                timeline_index = tm_formlesssnarl;
+                timeline_running = true;
+                timeline_loop = true;  
             }
-}
+    }
+    
+    //bobbing motion
+    
+    tiltxtime -= 1;
+    tiltytime -= 1;
+    tiltangletime -= 1;
+    
+    if tiltxtime &lt;= 0  &amp;&amp; decelerating == false
+        {
+            tiltxtime = maxtiltxtime + random_range(-15, 15);
+            if x &lt; startx - 100 xdir = 1;      //always go right if too far left
+            if x &gt; startx + 100 xdir = -1;        
+            targetx = x + (random_range(bobx, bobx + 10) * xdir);
+            xdir = round(random_range(-1, 1));     //go in random dir next time
+            //currentspeed = 0    
+        }
+    if tiltytime &lt;= 0 &amp;&amp; hovery == 0 &amp;&amp; decelerating == false
+        {
+            tiltytime = maxtiltytime + random_range(-15, 15);
+            if y &lt; starty - 100 ydir = 1;      //always go up if lower than start zone
+            if y &gt; starty + 100 ydir = -1;
+            targety = y + (random_range(boby, boby + 15) * ydir);
+            ydir *= -1;     //go in opposite dir next time 
+            //currentspeed = 0   
+        }
+    if tiltangletime &lt;= 0
+        {
+            tiltangletime = maxtiltangletime + random_range(-15, 15);
+            targetangle = image_angle + (random_range(bobangle/2, bobangle) * angledir);
+            angledir *= -1;     //go in opposite dir next time    
+        }
+    
+    //movement
+    destx = targetx;
+    desty = targety + hovery;       //hovery is set by the timeline
+    
+    desty = clamp(desty, starty - 150, starty + 200);
+    
+    if targetx != x || targety != y
+        {        
+            vx = (destx - x);
+            vy = (desty - y);
+                        
+            len = sqrt((vx * vx) + (vy * vy));
+                        
+            vx = vx / len;
+            vy = vy / len;
+        }
+    if abs(x - destx) &lt; 5 &amp;&amp; abs(y - desty) &lt; 5 decelerating = true
+    if abs(y - desty) &lt;= 1 hovery = 0;    
+    
+    if currentspeed &lt;= 0
+        {
+            currentspeed = 0;
+            decelerating = false
+        }
+    if currentspeed &lt; maxspeed &amp;&amp; decelerating == false currentspeed += acceleration
+    if decelerating == true 
+        {
+            currentspeed -= deceleration    
+        }
+    
+    x += vx * currentspeed
+    y += vy * currentspeed
+        
+        
+    //rotation
+    angdif = angle_difference(image_angle, targetangle);
+    if angdif &lt; -1
+        {
+            image_angle += turnspeed 
+        }
+    if angdif &gt; -1
+        {
+            image_angle -= turnspeed 
+        }    
+    
+    
+    
+    //spawn worms
+            
+            //calculate vars
+            // box in which worms spawn- calculated in step time as formless may be moving
+            spawnx1 = x - 68;
+            spawny1 = y + 37;
+            spawnx2 = x + 57;
+            spawny2 = y + 72;
+                    
+            //now spawn a worm
+            sx = irandom_range(spawnx1, spawnx2);
+            sy = irandom_range(spawny1, spawny2);
+            sangle = image_angle + 270;
+            
+            inst = instance_create(sx, sy, obj_fsworm);
+            with(inst)
+                {
+                    image_angle = other.sangle;            
+                }
+        
+    if random(1) &lt; randomextraworm
+    {
+            //now spawn an occasional extra worm outside main zone on top half of head
+            sx = irandom_range(spawnx1 - 20, spawnx2 + 20);
+            sy = irandom_range(spawny1 - 100, spawny1 - 30);
+            sangle = image_angle + 270;;
+            
+            inst = instance_create(sx, sy, obj_fsworm);
+            with(inst)
+                {
+                    image_angle = other.sangle;
+                    swerveangle = 1;
+                
+                }
+    }
+    
+    // flash red when hit
+    if shotinmouth == false &amp;&amp; shotcounter &lt;= 0
+        {
+            image_blend = c_white;
+            obj_fsoverlay.image_blend = c_white;
+        }
+    if shotinmouth == true
+        {
+            image_blend = shotcolour;
+            obj_fsoverlay.image_blend = shotcolour;
+            shotcounter = 3;
+            shotinmouth = false;
+        }
+    shotcounter -= 1;
 
-// flash red when hit
-if shotinmouth == false &amp;&amp; shotcounter &lt;= 0
-    {
-        image_blend = c_white;
-        obj_fsoverlay.image_blend = c_white;
-    }
-if shotinmouth == true
-    {
-        image_blend = shotcolour;
-        obj_fsoverlay.image_blend = shotcolour;
-        shotcounter = 3;
-        shotinmouth = false;
-    }
-shotcounter -= 1;
+}
 
 //death
-if currenthealth &lt;= 0
+if currenthealth &lt;= 0 &amp;&amp; dying == false
 {
-    instance_destroy();
-
-
+        show_debug_message("formless dying");
+        dying = true;
+        timeline_index = tm_formlessdeath;
+        timeline_position = 0;
+        timeline_running = true;
+        timeline_loop = false;
 }
+
+
 
 //------------------------------------------------
 }

@@ -515,6 +515,7 @@
       <timeline>timelines\tm_formlessfire</timeline>
       <timeline>timelines\tm_formlessidle</timeline>
       <timeline>timelines\tm_formlesssnarl</timeline>
+      <timeline>timelines\tm_formlessdeath</timeline>
     </timelines>
   </timelines>
   <rooms name="rooms">

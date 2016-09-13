@@ -714,7 +714,7 @@ if collisionoff == false &amp;&amp; global.autopilot &lt;= 0            //debug 
 {
     colcheck = noone;
     
-    colcheck = collision_circle(x + speed_x, y + speed_y, shipscale, obj_block, false, true) 
+    colcheck = collision_circle(x + speed_x, y + speed_y, shipscale, obj_block, true, true) 
     if colcheck == noone colcheck = collision_circle(x + lengthdir_x(32 * global.RM, image_angle + 140), y + lengthdir_y(32 * global.RM, image_angle + 140), 8, obj_block, false, true)
     if colcheck == noone colcheck = collision_circle(x + lengthdir_x(32 * global.RM, image_angle + 230), y + lengthdir_y(32 * global.RM, image_angle + 230), 8, obj_block, false, true)  
     if colcheck == noone colcheck = collision_circle(x + lengthdir_x(-3 * global.RM, thrustdir) + speed_x, y + speed_y, shipscale, obj_asteroid, true, true)
