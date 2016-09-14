@@ -315,8 +315,8 @@ if asteroidhealth &lt;=0
             <kind>1</kind>
             <string>// hit anything else- push away
 
-speed_x = -speed_x *0.8;
-speed_y = -speed_y *0.8;
+speed_x = -speed_x *1.0;
+speed_y = -speed_y *1.0;
 
 asteroidhealth -= (abs(speed_x) + abs(speed_y));
 //show_debug_message(string(health));

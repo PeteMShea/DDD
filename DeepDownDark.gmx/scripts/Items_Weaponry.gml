@@ -5,7 +5,7 @@
 global.WeaponName[1] = "BOLT GUN";
 global.WeaponUnlocked[1] = true;
 global.WeaponOwned[1] = true;
-global.WeaponEquipped[1] = false;
+global.WeaponEquipped[1] = true;
 global.WeaponCost[1] = 0;
 global.WeaponIcon[1] = spr_01Repeater;
 global.WeaponGraphic[1] = spr_Repeater01;
@@ -34,8 +34,8 @@ global.WeaponShipArt[2] = noone;
 
 global.WeaponName[3] = "HIGH SPIN";
 global.WeaponUnlocked[3] = true;
-global.WeaponOwned[3] = true;
-global.WeaponEquipped[3] = true;
+global.WeaponOwned[3] = false;
+global.WeaponEquipped[3] = false;
 global.WeaponCost[3] = 1200;
 global.WeaponIcon[3] = spr_03HighSpin;
 global.WeaponGraphic[3] = spr_HighSpin03;
@@ -154,8 +154,8 @@ global.WeaponShipArt[10] = noone;
 
 global.WeaponName[11] = "RICOCHET";
 global.WeaponUnlocked[11] = true;
-global.WeaponOwned[11] = true;
-global.WeaponEquipped[11] = true;
+global.WeaponOwned[11] = false;
+global.WeaponEquipped[11] = false;
 global.WeaponCost[11] = 2500;
 global.WeaponIcon[11] = spr_11Ricochet;
 global.WeaponGraphic[11] = spr_Ricochet11;

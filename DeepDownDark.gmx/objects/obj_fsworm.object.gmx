@@ -51,7 +51,9 @@ hitground = false;
 timetofade = 10;        //number of frames on ground before starting to fade
 startfade = false;
 alphafade = 0.1;
-fanangle = random_range(-45, 45);   //how much worms fan out when hitting ground (set to zero for launch worms)
+fanangle = random_range(-30, 30);   //how much worms fan out when hitting ground (set to zero for launch worms)
+hitplayer = false;
+damage = 1;     //damage to player on impact
 
 once = false;
 
@@ -147,13 +149,37 @@ if hitground == false
                 swerveangle = 2;            
             }
         }
+        
+    if hitplayer == false
+        {
+            disttoplayer = distance_to_object(obj_player);
+            if disttoplayer &lt; 30
+            {
+                hitground = true;
+                grounddirection = point_direction(x, y, obj_player.x, obj_player.y);            
+            }            
+        }        
+        
+        
 }
 if hitground = true &amp;&amp; startfade == false
     {
         if image_angle &lt; grounddirection - 1 image_angle += swerveangle;
         if image_angle &gt; grounddirection + 1 image_angle -= swerveangle;        
         timetofade -= 1;
-        if timetofade &lt;= 0 startfade = true    
+        if timetofade &lt;= 0 startfade = true
+        disttoplayer = distance_to_point(obj_player.x, obj_player.y);
+        if disttoplayer &lt; 20 &amp;&amp; hitplayer == false
+                {
+                    hitplayer = true;
+                    global.playerHealth -= damage;
+                    global.playerdamaged = 20;
+                    global.madness += damage;
+                    loc_x = x;
+                    loc_y = y;
+                    damage = 10;
+                    script_execute(scr_shipvisualdamage, x, y, loc_x, loc_y, damage);    
+                }            
     }
 
 if startfade == true

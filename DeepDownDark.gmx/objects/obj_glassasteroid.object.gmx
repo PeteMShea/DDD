@@ -27,12 +27,12 @@
             <kind>1</kind>
             <string>// initialise
 deceleration = 3;
-terminalvelocity = 0.5;
+terminalvelocity = 0.1;
 rotdecay = 0.9;
 minrotation = 0.5; 
 massmult = 0.75;     //how much of player speed is transferred to asteroid on collision
 damagemult = 0;     //how much player speed is transferred into damage amount on collision
-asteroidhealth = 999999999;     //invinvible
+asteroidhealth = 999999999;     //invincible
 gold = 0;      //how many pieces of gold in asteroid 
 nugget = true;  //
 counter = 120;
@@ -41,7 +41,7 @@ image_speed = 0;
 asteroidimage = irandom_range(0,4);
 image_index = asteroidimage;
 image_angle = irandom(360);
-scale = random_range(0.6, 1.1);
+scale = random_range(0.9, 1.1);
 image_xscale = scale;
 image_yscale = scale;
 

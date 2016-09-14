@@ -34,12 +34,12 @@ acceleration = 0.2;
 maxspeed = 9.0;
 launch = false;
 lifespan = 180;
-balldamage = 25;
+balldamage = 5;
 coltest = noone;
 hit = noone;
 startx = x;
 starty = y;
-
+disttoclear = 64;
 
 
 
@@ -98,38 +98,32 @@ if launch == true
         vx = vx / len;
         vy = vy / len;
         
-
-
-        
-        
         // remove bullets over time if no collision
         lifespan -= 1;
-        if lifespan &lt;= 0 instance_destroy();
-        
+        if lifespan &lt;= 0 instance_destroy();        
         cleardist = abs(distance_to_point(startx, starty));
-        
-        //once free from mouth
         if cleardist &gt; 32
-            {
+            {   
                 //spawn blacksnakes
                 spawnx = x + random_range(-15, 15);
                 spawny = y + random_range(-15, 15);
                 snakeangle = image_angle;              
                 inst = instance_create(spawnx, spawny, obj_fssnake);
                 with (inst)
-                    {
-                        image_angle = other.snakeangle;
-                        direction = other.snakeangle;
-                        speed = other.ballspeed;
-                        lifespan = irandom_range(30,45);
-                    }
-                
+                            {
+                                image_angle = other.snakeangle;
+                                direction = other.snakeangle;
+                                speed = other.ballspeed;
+                                lifespan = irandom_range(30,45);
+                            }        
+            }     
+        //once completely free from mouth start testing collisions
+        if cleardist &gt; disttoclear
+            {               
                 if coltest == noone coltest = instance_place( x + lengthdir_x(10, image_angle) + vx * ballspeed , y+ lengthdir_y(10, image_angle) + vy * ballspeed , obj_player);
                 if coltest == noone coltest = instance_place( x + lengthdir_x(10, image_angle) + vx * ballspeed, y+ lengthdir_y(10, image_angle) + vy * ballspeed, obj_block);
-                //coltest = instance_place( x + vx * ballspeed, y + vy * ballspeed, all);
-
-                
-                            
+                if coltest == noone coltest = instance_place( x + lengthdir_x(10, image_angle) + vx * ballspeed, y+ lengthdir_y(10, image_angle) + vy * ballspeed, obj_asteroid);
+                //coltest = instance_place( x + vx * ballspeed, y + vy * ballspeed, all);                            
             }
 
         x += vx * ballspeed

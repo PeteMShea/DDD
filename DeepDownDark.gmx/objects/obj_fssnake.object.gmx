@@ -39,7 +39,8 @@ homing = false;
 target = self;
 xoff = random_range(-12,12);
 yoff = random_range(-12,12);
-
+damage = 1; //damage inflicted on player
+hitplayer = false;
 
 paused = false;
 
@@ -77,11 +78,26 @@ paused = false;
 if speed &gt; 0 speed -= deceleration;
 lifespan -= 1;
 if lifespan &lt;= lifeover &amp;&amp; global.pause = false
-{
-     if image_alpha &gt; 0 image_alpha -= alphafade
-     if image_alpha == 0 instance_destroy();
-}
+    {
+         if image_alpha &gt; 0 image_alpha -= alphafade
+         if image_alpha == 0 instance_destroy();
+    }
 
+if hitplayer == false
+    {
+        disttoplayer = distance_to_point(obj_player.x, obj_player.y);
+        if disttoplayer &lt; 40
+            {
+                hitplayer = true;
+                global.playerHealth -= damage;
+                global.playerdamaged = 20;
+                global.madness += damage;
+                loc_x = x;
+                loc_y = y;
+                damage = 10;    //boosted here to trigger visual damage
+                script_execute(scr_shipvisualdamage, x, y, loc_x, loc_y, damage);    
+            }
+    }
 if homing == true
 {
     if instance_exists(target) direction = image_angle + random_range(-30, 30);

@@ -34,7 +34,7 @@ randomextraworm = 0.5;     //chance of spawning a random extra worm higher up
 starty = y;
 startx = x;
 
-madnessfirstsight = 50;
+madnessfirstsight = 40;
 seen = false;
 
 //bobbing
@@ -65,12 +65,13 @@ turnspeed = 0.05;
 decelerating = false;
 hovery = 0;         //this is used to move the formless up and down separate from bobbing
 firecounter = 300;      //frames between firing
-snarltime = 300;    //howoften snarl anim plays
+snarltime = 300;    //how often snarl anim plays
 idle = true;
 shotinmouth = false;    //shot in ma mooth
-shotcounter = 3;       //time in frames to flash red for
-shotcolour = make_colour_rgb(255, 88, 97);
-currenthealth = 40;         //200
+shotcounter = 5;       //time in frames to flash red for
+//shotcolour = make_colour_rgb(255, 88, 97);
+shotcolour = make_colour_rgb(120, 0, 0);
+currenthealth = 250;         //200
 dying = false;
 dead = false;
 
@@ -155,6 +156,7 @@ if launchcomplete == false
                 timeline_index = tm_formlessidle;
                 timeline_running = true;
                 timeline_loop = true;
+                starty = y;     //reset start position
             }
         //spawn worms
                     
@@ -177,18 +179,8 @@ if launchcomplete == false
                 depth = -10;
                 lifespan = other.lifespan;
                 fanangle = 0;           
-            }            
-            
-            
-            
-                
+            }                            
     }
-
-
-
-
-
-
 
 if launchcomplete == true
     {
@@ -205,7 +197,7 @@ if launchcomplete == true
         {       
                     
             //in range- temp
-            if distance_to_object(obj_player) &lt; 600 &amp;&amp; seen == false
+            if distance_to_object(obj_player) &lt; 800 &amp;&amp; seen == false
             {
                 seen = true;
             }
@@ -219,6 +211,7 @@ if launchcomplete == true
                     firecounter = random_range(275, 325);
                     timeline_index = tm_formlessfire;
                     timeline_running = true;
+                    timeline_position = 0;
                     timeline_loop = true;
                     idle = false;    
                 }
@@ -271,7 +264,7 @@ if launchcomplete == true
             destx = targetx;
             desty = targety + hovery;       //hovery is set by the timeline
             
-            desty = clamp(desty, starty - 150, starty + 200);
+            desty = clamp(desty, starty - 250, starty + 120);
             
             if targetx != x || targety != y
                 {        

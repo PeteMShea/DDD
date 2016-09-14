@@ -39,7 +39,7 @@ coltest = noone;
 hit = noone;
 startx = x;
 starty = y;
-
+disttoclear = 32;      //distance from spawn point before collisions begin
 
 
 
@@ -107,11 +107,11 @@ if launch == true
         if lifespan &lt;= 0 instance_destroy();
         
         cleardist = abs(distance_to_point(startx, starty));
-        
+   
         //once free from ballplant object
-        if cleardist &gt; 64
+        if cleardist &gt; disttoclear
             {
-                //spawn blacksnakes
+        //spawn blacksnakes
                 spawnx = x + random_range(-5, 5);
                 spawny = y + random_range(-5, 5);
                 snakeangle = image_angle; // + random_range(-10,10);                
@@ -122,10 +122,10 @@ if launch == true
                         direction = other.snakeangle;
                         speed = other.ballspeed;
                         lifespan = irandom_range(15,18)- speed;
-                    }
-                
+                    }                                 
                 if coltest == noone coltest = instance_place( x + lengthdir_x(10, image_angle) + vx * ballspeed , y+ lengthdir_y(10, image_angle) + vy * ballspeed , obj_player);
                 if coltest == noone coltest = instance_place( x + lengthdir_x(10, image_angle) + vx * ballspeed, y+ lengthdir_y(10, image_angle) + vy * ballspeed, obj_block);
+                if coltest == noone coltest = instance_place( x + lengthdir_x(10, image_angle) + vx * ballspeed, y+ lengthdir_y(10, image_angle) + vy * ballspeed, obj_asteroid);
                 //coltest = instance_place( x + vx * ballspeed, y + vy * ballspeed, all);
 
                 
