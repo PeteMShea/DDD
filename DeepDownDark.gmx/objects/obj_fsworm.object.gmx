@@ -51,8 +51,13 @@ hitground = false;
 timetofade = 10;        //number of frames on ground before starting to fade
 startfade = false;
 alphafade = 0.1;
+fanangle = random_range(-45, 45);   //how much worms fan out when hitting ground (set to zero for launch worms)
 
 once = false;
+
+lifespan = 300;
+
+
 
 
 
@@ -83,12 +88,14 @@ once = false;
             <string>if once == false        //this has to happen here as image_angle has not quite been defined on create 
     {
         once = true;
-        startangle = obj_formless.image_angle + 270;       //'downwards' from the spawn
-        fanangle = random_range(-45, 45);
+        startangle = obj_formless.image_angle + 270;       //'downwards' from the spawn        
         grounddirection = startangle + fanangle;
         timetofade += abs(fanangle)*2;        //add time based upon how far out fan angle on land is
     }
 
+lifespan -= 1;
+if lifespan &lt;= 0 &amp;&amp; hitground == false hitground = true;      // this is only used by the worms spawned during launch sequence    
+    
 if scale &lt; 1        //scale up on spawn
     {
         image_xscale = scale;
