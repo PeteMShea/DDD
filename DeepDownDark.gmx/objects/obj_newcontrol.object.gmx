@@ -63,17 +63,17 @@ ballplantdensity = ballplantdensitymin;
 ballplantdensitycurrent = 0;
 
 // nightgaunts
-gauntchance = 0.0;        //chance of a huge square being populated with gaunts 0.3
-gauntdensitymin = 0.0015;        //how dense gaunts are at start of level 0
-gauntdensitymax = 0.22;          //maximum density of gaunts
+gauntchance = 0.5;        //chance of a huge square being populated with gaunts 0.3
+gauntdensitymin = 0.01;        //how dense gaunts are at start of level 0
+gauntdensitymax = 0.1;          //maximum density of gaunts
 gauntdensityrange = gauntdensitymax - gauntdensitymin;
-gauntstartblock = 0.1;           //gaunts do not start spawning until this % empty huge blocks in
+gauntstartblock = 0.025;           //gaunts do not start spawning until this % empty huge blocks in
 gauntendblock = 0.95;             //no more gaunts after this % huge blocks
 gauntdensity = gauntdensitymin;
 gauntdensitycurrent = 0;
 
 // spores
-sporechance = 0.3;        //chance of a huge square being populated with spores 0.3
+sporechance = 0.0;        //chance of a huge square being populated with spores 0.3
 sporedensitymin = 0.02;        //how dense gaunts are at start of level 0
 sporedensitymax = 0.20;          //maximum density of spores
 sporedensityrange = sporedensitymax - sporedensitymin;
@@ -111,6 +111,12 @@ global.loading = false;
 // fade in from black
 vx = view_xport[0];
 vy = view_yport[0];
+
+//if random(1) &lt; 0.5 xsign = -1 else xsign = 1
+//if random(1) &lt; 0.5 ysign = -1 else ysign = 1
+
+background_xscale[1] = 2.0;
+background_yscale[1] = 2.0;
 
 instance_create(0,0, obj_HUD);
 

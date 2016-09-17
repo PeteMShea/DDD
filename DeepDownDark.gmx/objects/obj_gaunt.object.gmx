@@ -76,6 +76,9 @@ hitanimimagespeed = 0.25;   //anim speed for hit anim
 
 damagecounter = 0;
 explosionproximity = 80 * global.RM;       //how close to an explosion kills enemies
+shadow = false;
+
+
 
 
 
@@ -127,6 +130,17 @@ if awake == false &amp;&amp; awaketest &lt;= 0
 if awake == true
 {    
 
+inst = instance_create(x, y, obj_gauntshadow)
+with (inst)
+    {
+        instanceref = other.object_index
+        sprite_index = other.sprite_index;
+        image_index = other.image_index;
+        image_angle = other.image_angle;
+        image_speed = other.image_speed;
+    }
+
+    
     //test for first seen by player and apply madness
     if global.gauntseen == false
         {
@@ -169,7 +183,6 @@ if awake == true
                         image_speed = 0;
                         frame = 99;
                     } 
-            
             }
             launchtime +=1
             //show_debug_message("L: " + string(launchtime));

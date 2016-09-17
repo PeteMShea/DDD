@@ -260,6 +260,7 @@
     <background>background\background7</background>
     <background>background\background9</background>
     <background>background\background8</background>
+    <background>background\background10</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -443,6 +444,7 @@
       <object>objects\obj_fsoverlay</object>
       <object>objects\obj_fscollision</object>
       <object>objects\obj_fsmouthcollision</object>
+      <object>objects\obj_gauntshadow</object>
     </objects>
     <objects name="Inventory">
       <object>objects\obj_StatusPanel</object>
@@ -520,6 +522,7 @@
       <timeline>timelines\tm_formlessidle</timeline>
       <timeline>timelines\tm_formlesssnarl</timeline>
       <timeline>timelines\tm_formlessdeath</timeline>
+      <timeline>timelines\tm_formlesslaugh</timeline>
     </timelines>
   </timelines>
   <rooms name="rooms">

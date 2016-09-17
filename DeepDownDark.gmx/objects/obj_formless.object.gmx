@@ -74,6 +74,7 @@ shotcolour = make_colour_rgb(120, 0, 0);
 currenthealth = 250;         //200
 dying = false;
 dead = false;
+playerdead = false;
 
 
 // spawning and launch vars
@@ -202,7 +203,7 @@ if launchcomplete == true
                 seen = true;
             }
             
-            if seen == true &amp;&amp; dying == false
+            if seen == true &amp;&amp; dying == false &amp;&amp; playerdead == false
             {
                 firecounter -= 1;
                 
@@ -217,7 +218,7 @@ if launchcomplete == true
                 }
             }
             
-            if idle == true &amp;&amp; dying == false
+            if idle == true &amp;&amp; dying == false &amp;&amp; playerdead == false
             {
                 snarltime -= 1;
                 if snarltime &lt;= 0
@@ -369,6 +370,17 @@ if launchcomplete == true
                 timeline_position = 0;
                 timeline_running = true;
                 timeline_loop = false;
+        }
+        
+        //player death
+        if global.playerHealth &lt;= 0 &amp;&amp; playerdead == false
+        {
+             playerdead = true;
+             timeline_index = tm_formlesslaugh;
+             timeline_running = true;
+             timeline_loop = true;
+             targetangle = image_angle + 45;        
+        
         }
     
     }

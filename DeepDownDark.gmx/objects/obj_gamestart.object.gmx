@@ -82,7 +82,7 @@ script_execute(Items_Equipment);
 //pointer debug
 global.videocapture = false;
 
-global.sanityenabled = true;
+global.sanityenabled = false;
 
 if global.videocapture == true
 {
@@ -140,7 +140,7 @@ window_set_cursor(cr_arrow);
 if countdown &lt;= 0
 {
 
-    room_goto(5);       // 1 for splash, 3 for MapGen, 4 for Room A0, 5 for Test Bed
+    room_goto(3);       // 1 for splash, 3 for MapGen, 4 for Room A0, 5 for Test Bed
 
 }
 
