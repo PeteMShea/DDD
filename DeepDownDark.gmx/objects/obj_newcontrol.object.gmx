@@ -43,7 +43,7 @@ vinethreshold = 0.5;       //how far down weeblock columns before vines can be p
 asteroidchance = 0.25;       //chance of asteroids being added
 goldasteroidchance = 0.15;   //chance of gold asteroid being added 0.1
 goldnuggetchance = 0.04;     //chance of gold nugget being added
-glassasteroidchance = 0.08;     //chance of indestructible asteroid
+glassasteroidchance = 0.0;     //chance of indestructible asteroid
 
 
 minspike = 1;       //minimum number of normal blocks to add to each edge- should always be at least 1
@@ -63,11 +63,11 @@ ballplantdensity = ballplantdensitymin;
 ballplantdensitycurrent = 0;
 
 // nightgaunts
-gauntchance = 0.5;        //chance of a huge square being populated with gaunts 0.3
+gauntchance = 0.75;        //chance of a huge square being populated with gaunts 0.3
 gauntdensitymin = 0.01;        //how dense gaunts are at start of level 0
 gauntdensitymax = 0.1;          //maximum density of gaunts
 gauntdensityrange = gauntdensitymax - gauntdensitymin;
-gauntstartblock = 0.025;           //gaunts do not start spawning until this % empty huge blocks in
+gauntstartblock = 0.05;           //gaunts do not start spawning until this % empty huge blocks in
 gauntendblock = 0.95;             //no more gaunts after this % huge blocks
 gauntdensity = gauntdensitymin;
 gauntdensitycurrent = 0;

@@ -89,6 +89,8 @@
       <sprite>sprites\spr_glassasteroid</sprite>
       <sprite>sprites\spr_glassasteroidnormal</sprite>
       <sprite>sprites\spr_hugeblockoverlay</sprite>
+      <sprite>sprites\spr_blackbox</sprite>
+      <sprite>sprites\spr_blackboxcoll</sprite>
     </sprites>
     <sprites name="old">
       <sprite>sprites\spr_bigblock</sprite>
@@ -417,6 +419,7 @@
       <object>objects\obj_hugeblockoverlay</object>
       <object>objects\obj_fsholenewblock</object>
       <object>objects\obj_fsholeoverlay</object>
+      <object>objects\obj_blackbox</object>
     </objects>
     <objects name="enemies">
       <object>objects\obj_fixedgunbase</object>
