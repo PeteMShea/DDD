@@ -33,10 +33,14 @@ once = false;
 
 /*
 instanceref = instance_nearest(x, y, obj_gaunt);
+if instanceref != noone
+{
 sprite_index = instanceref.sprite_index;
 image_index = instanceref.image_index;
 image_angle = instanceref.image_angle;
 image_speed = instanceref.image_speed;
+}
+else instance_destroy();
 */
 
 </string>
@@ -71,6 +75,7 @@ if instance_exists(instanceref)
         image_angle = instanceref.image_angle;
         image_speed = instanceref.image_speed;
     }
+else instance_destroy();
 
 
 //fade out

@@ -426,6 +426,7 @@
       <object>objects\obj_fixedgunbase</object>
       <object>objects\obj_enemybullet</object>
       <object>objects\obj_gaunt</object>
+      <object>objects\obj_gauntshadow</object>
       <object>objects\obj_sporeshadow</object>
       <object>objects\obj_spawnleader</object>
       <object>objects\obj_spawn</object>
@@ -448,7 +449,6 @@
       <object>objects\obj_fsoverlay</object>
       <object>objects\obj_fscollision</object>
       <object>objects\obj_fsmouthcollision</object>
-      <object>objects\obj_gauntshadow</object>
     </objects>
     <objects name="Inventory">
       <object>objects\obj_StatusPanel</object>

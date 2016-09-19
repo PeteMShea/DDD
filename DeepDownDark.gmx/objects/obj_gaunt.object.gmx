@@ -87,6 +87,48 @@ shadow = false;
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if homing == true
+{
+    //add shadow     
+    inst = instance_create(x, y, obj_gauntshadow)
+    
+    object = id;
+    sprite = sprite_index;
+    image = image_index;
+    angle = image_angle;
+    animspeed = image_speed;
+    with (inst)
+        {
+            instanceref = other.object;
+            sprite_index = other.sprite;
+            image_index = other.image;
+            image_angle = other.angle;
+            image_speed = other.animspeed;
+        }
+         
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -333,7 +375,7 @@ if awake == true
     x += vx * speedmult
     y += vy * speedmult
     
-    if homing == true &amp;&amp; hitanim &lt;= 0 image_speed = maxanimspeed - speedmult;
+    if homing == true &amp;&amp; hitanim &lt;= 0 image_speed = abs(maxanimspeed - speedmult);
     
     if hitanim &gt;0 &amp;&amp; attack == false
         {
@@ -368,19 +410,6 @@ if awake == true
         {
             damagecounter -=1;
         }
-        
-    //add shadow     
-    inst = instance_create(x, y, obj_gauntshadow)
-    with (inst)
-    {
-        instanceref = other.object_index;
-        sprite_index = other.sprite_index;
-        image_index = other.image_index;
-        image_angle = other.image_angle;
-        image_speed = other.image_speed;
-    }        
-        
-        
                                 
 }
 
