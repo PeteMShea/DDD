@@ -38,6 +38,20 @@
       <sprite>sprites\spr_SharkTurretMounting</sprite>
     </sprites>
     <sprites name="environment">
+      <sprites name="InteractiveObjects">
+        <sprite>sprites\spr_blackbox</sprite>
+        <sprite>sprites\spr_blackboxcoll</sprite>
+        <sprite>sprites\spr_asteroid</sprite>
+        <sprite>sprites\spr_goldnuggetnormal</sprite>
+        <sprite>sprites\spr_goldasteroid</sprite>
+        <sprite>sprites\spr_asteroidnormal</sprite>
+        <sprite>sprites\spr_goldnugget</sprite>
+        <sprite>sprites\spr_glassasteroid</sprite>
+        <sprite>sprites\spr_glassasteroidnormal</sprite>
+        <sprite>sprites\spr_tinyblock</sprite>
+        <sprite>sprites\spr_WreckA</sprite>
+        <sprite>sprites\sprite226</sprite>
+      </sprites>
       <sprite>sprites\spr_block</sprite>
       <sprite>sprites\spr_newblock</sprite>
       <sprite>sprites\spr_newblockDark</sprite>
@@ -78,20 +92,10 @@
       <sprite>sprites\spr_vineWcap</sprite>
       <sprite>sprites\spr_vineEcap</sprite>
       <sprite>sprites\spr_vineScap</sprite>
-      <sprite>sprites\spr_tinyblock</sprite>
       <sprite>sprites\spr_borderblock</sprite>
       <sprite>sprites\spr_bordersideright</sprite>
       <sprite>sprites\spr_bordersideleft</sprite>
-      <sprite>sprites\spr_asteroid</sprite>
-      <sprite>sprites\spr_goldasteroid</sprite>
-      <sprite>sprites\spr_asteroidnormal</sprite>
-      <sprite>sprites\spr_goldnugget</sprite>
-      <sprite>sprites\spr_goldnuggetnormal</sprite>
-      <sprite>sprites\spr_glassasteroid</sprite>
-      <sprite>sprites\spr_glassasteroidnormal</sprite>
       <sprite>sprites\spr_hugeblockoverlay</sprite>
-      <sprite>sprites\spr_blackbox</sprite>
-      <sprite>sprites\spr_blackboxcoll</sprite>
     </sprites>
     <sprites name="old">
       <sprite>sprites\spr_bigblock</sprite>
@@ -366,11 +370,16 @@
       <object>objects\oLightSourceAsteroid</object>
     </objects>
     <objects name="environment">
-      <object>objects\obj_asteroid</object>
-      <object>objects\obj_asteroidblock</object>
-      <object>objects\obj_goldasteroid</object>
-      <object>objects\obj_glassasteroid</object>
-      <object>objects\obj_goldnugget</object>
+      <objects name="InteractiveObjects">
+        <object>objects\obj_blackbox</object>
+        <object>objects\obj_Wreck</object>
+        <object>objects\obj_goldasteroid</object>
+        <object>objects\obj_floatblock</object>
+        <object>objects\obj_asteroid</object>
+        <object>objects\obj_goldnugget</object>
+        <object>objects\obj_glassasteroid</object>
+        <object>objects\obj_asteroidblock</object>
+      </objects>
       <object>objects\obj_block</object>
       <object>objects\obj_hugeblock</object>
       <object>objects\obj_newblock</object>
@@ -394,7 +403,6 @@
       <object>objects\obj_borderblock</object>
       <object>objects\obj_bordersideleft</object>
       <object>objects\obj_bordersideright</object>
-      <object>objects\obj_floatblock</object>
       <object>objects\obj_gold</object>
       <object>objects\obj_goldNBase</object>
       <object>objects\obj_goldSBase</object>
@@ -420,7 +428,6 @@
       <object>objects\obj_hugeblockoverlay</object>
       <object>objects\obj_fsholenewblock</object>
       <object>objects\obj_fsholeoverlay</object>
-      <object>objects\obj_blackbox</object>
     </objects>
     <objects name="enemies">
       <object>objects\obj_fixedgunbase</object>
