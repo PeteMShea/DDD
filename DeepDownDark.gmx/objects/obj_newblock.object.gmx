@@ -25,13 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// pick a random tile
+            <string>// pick a random tile or a dark tile
+
+if random(1) &lt; 0.4
+    {
+        image_index = irandom(48);
+    }
+else
+    {
+        sprite_index = spr_newblockDark;
+        image_index = irandom(42);
+    }
 image_speed = 0;
-image_index = irandom(89);
-
-
-
-
 
 
 </string>

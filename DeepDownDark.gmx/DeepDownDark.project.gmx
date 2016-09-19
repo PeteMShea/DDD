@@ -40,6 +40,7 @@
     <sprites name="environment">
       <sprite>sprites\spr_block</sprite>
       <sprite>sprites\spr_newblock</sprite>
+      <sprite>sprites\spr_newblockDark</sprite>
       <sprite>sprites\spr_newblockoverlay</sprite>
       <sprite>sprites\spr_fsholenewblock</sprite>
       <sprite>sprites\sprite212</sprite>

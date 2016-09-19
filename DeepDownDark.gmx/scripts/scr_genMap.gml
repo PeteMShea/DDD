@@ -292,12 +292,15 @@ for (u = 0; u < gridsize; u +=1)
 
                     with (inst)
                         {
-                        image_index = other.blockindex;
-                        //image_index = 14
+                            if random(1) < 0.5
+                                {
+                                image_index = other.blockindex;
+                                }
+                            else image_index = 15;
                         //show_debug_message("blockindex = " + string(other.blockindex));   
                         }
                    instance_deactivate_object(inst);
-                   if random(1) < hugeblockoverlaychance instance_create(u * 384 * global.RM +64 * global.RM , v * 384 * global.RM +64 * global.RM , obj_hugeblockoverlay);             
+                   //if random(1) < hugeblockoverlaychance instance_create(u * 384 * global.RM +64 * global.RM , v * 384 * global.RM +64 * global.RM , obj_hugeblockoverlay);             
                 }
       
         }
@@ -922,7 +925,7 @@ if bigblock[u , v] > 0
                                         instance_create( u * 384 * global.RM+64 * global.RM + bu *32 * global.RM, v * 384 * global.RM+64 * global.RM + bv *32 * global.RM, obj_newblock);
                                         //instance_deactivate_object(obj_newblock);
                                         //show_debug_message("block u: " + string(bu + u * 12) + " , v: " + string(bv + v * 12) + " , value:" + string(block[bu + u * 12 , bv + v * 12]));                  
-                                        if random(1) < newblockoverlaychance instance_create(u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM , v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM , obj_newblockoverlay); 
+                                        //if random(1) < newblockoverlaychance instance_create(u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM , v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM , obj_newblockoverlay); 
                                     }
                                 if block[bu + u * 12, bv + v * 12] == 3      //enemy on south side facing up
                                     {
