@@ -28,7 +28,7 @@
             <string>// initialise
 
 image_speed = 0.2;
-image_angle = 0;
+image_angle = random(360);
 
 
 rotspeed = 0.0;

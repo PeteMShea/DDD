@@ -3,7 +3,7 @@
   <spriteName>spr_WreckA</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-10</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>obj_asteroid</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -26,38 +26,18 @@
           <argument>
             <kind>1</kind>
             <string>// initialise
-
-//colours
-colour[1] = make_colour_rgb(187, 0, 0);     //red
-colour[2] = make_colour_rgb(187, 60, 0);     //orange
-colour[3] = make_colour_rgb(215, 179, 8);     //yellow
-colour[4] = make_colour_rgb(37, 127, 9);     //green
-colour[5] = make_colour_rgb(9, 127, 67);     //green blue
-colour[6] = make_colour_rgb(9, 127, 114);     //turquoise
-colour[7] = make_colour_rgb(64, 127, 179);     //sky blue
-colour[8] = make_colour_rgb(54, 63, 193);     //navy blue
-colour[9] = make_colour_rgb(119, 61, 217);     //blue purple
-colour[10] = make_colour_rgb(150, 49, 100);     //purple red
-colour[11] = make_colour_rgb(201, 207, 255);     //silver
-
-
-image_speed = 0;
-image_index = irandom_range(0, 1);
 image_angle = random(360);
-col = irandom_range(1, 11);
-image_blend = colour[col];
-
-
+image_speed = 0;
 rotspeed = 0.0;
 
-// initialise
+
 deceleration = 3;
-terminalvelocity = 0.5;
-rotdecay = 0.9;
+terminalvelocity = 0.25;
+rotdecay = 0.8;
 minrotation = 0.1;
 massmult = 1.5;     //how much of player speed is transferred to asteroid on collision
 damagemult = 50;     //how much player speed is transferred into damage amount on collision
-asteroidhealth = 1000000000;    //indestructible
+asteroidhealth = 10;    //
 gold = 0;
 nugget = false;
 counter = 120;

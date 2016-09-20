@@ -372,13 +372,14 @@
     <objects name="environment">
       <objects name="InteractiveObjects">
         <object>objects\obj_blackbox</object>
-        <object>objects\obj_Wreck</object>
         <object>objects\obj_goldasteroid</object>
         <object>objects\obj_floatblock</object>
         <object>objects\obj_asteroid</object>
         <object>objects\obj_goldnugget</object>
         <object>objects\obj_glassasteroid</object>
         <object>objects\obj_asteroidblock</object>
+        <object>objects\obj_WreckSpawner</object>
+        <object>objects\obj_Wreck</object>
       </objects>
       <object>objects\obj_block</object>
       <object>objects\obj_hugeblock</object>
