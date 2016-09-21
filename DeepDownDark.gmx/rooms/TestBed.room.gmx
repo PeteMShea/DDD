@@ -296,7 +296,8 @@
     <instance objName="obj_newblock" x="512" y="192" name="inst_8021F373" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_newblock" x="576" y="192" name="inst_1FA963A8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_fsholenewblock" x="320" y="704" name="inst_F4A0886D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_WreckSpawner" x="1504" y="480" name="inst_F2DEF66F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_WreckSpawner" x="1216" y="416" name="inst_F2DEF66F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_blackbox" x="1600" y="352" name="inst_C4C1F99A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

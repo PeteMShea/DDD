@@ -351,12 +351,10 @@ if overlaysappeared == true &amp;&amp; panelsdismissed == false
     draw_text(statsnumberrightx, statsy, global.forward);    
     draw_text(statsnumberrightx, statsy + statsyoffset, global.rear);
     draw_text(statsnumberrightx, statsy + statsyoffset * 2, global.baseSanity);    
-
-  
                       
 }
 
-
+draw_set_alpha(1.0);
 </string>
           </argument>
         </arguments>

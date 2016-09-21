@@ -50,7 +50,7 @@
         <sprite>sprites\spr_glassasteroidnormal</sprite>
         <sprite>sprites\spr_tinyblock</sprite>
         <sprite>sprites\spr_WreckA</sprite>
-        <sprite>sprites\sprite226</sprite>
+        <sprite>sprites\spr_WreckDebris</sprite>
       </sprites>
       <sprite>sprites\spr_block</sprite>
       <sprite>sprites\spr_newblock</sprite>
@@ -192,6 +192,7 @@
       <sprite>sprites\spr_INVsharkdamage_CC</sprite>
       <sprite>sprites\spr_DatabasePanel</sprite>
       <sprite>sprites\spr_EquipmentPanel</sprite>
+      <sprite>sprites\spr_MessagePanel</sprite>
     </sprites>
     <sprites name="VFX">
       <sprite>sprites\spr_explosion</sprite>
@@ -204,6 +205,7 @@
       <sprite>sprites\spr_black8</sprite>
       <sprite>sprites\spr_black64</sprite>
       <sprite>sprites\spr_black128mask</sprite>
+      <sprite>sprites\spr_particle</sprite>
     </sprites>
     <sprites name="triggers">
       <sprite>sprites\spr_exittrigger</sprite>
@@ -280,6 +282,7 @@
       <script>scripts\scr_spawngoldburst.gml</script>
       <script>scripts\scr_smalldebris.gml</script>
       <script>scripts\scr_shipdebrisvfx.gml</script>
+      <script>scripts\scr_wreckdebrisvfx.gml</script>
       <script>scripts\scr_blockburstvfx.gml</script>
       <script>scripts\scr_bigblockburstvfx.gml</script>
       <script>scripts\scr_particleburst.gml</script>
@@ -310,6 +313,7 @@
     <scripts name="GUI">
       <script>scripts\scr_rolloverbutton.gml</script>
       <script>scripts\scr_fadeinout.gml</script>
+      <script>scripts\scr_BlackBoxCollected.gml</script>
     </scripts>
     <scripts name="Items">
       <script>scripts\Items_Weaponry.gml</script>
@@ -376,10 +380,12 @@
         <object>objects\obj_floatblock</object>
         <object>objects\obj_asteroid</object>
         <object>objects\obj_goldnugget</object>
+        <object>objects\obj_goldpickup</object>
         <object>objects\obj_glassasteroid</object>
         <object>objects\obj_asteroidblock</object>
         <object>objects\obj_WreckSpawner</object>
         <object>objects\obj_Wreck</object>
+        <object>objects\obj_WreckDebris</object>
       </objects>
       <object>objects\obj_block</object>
       <object>objects\obj_hugeblock</object>
@@ -413,7 +419,6 @@
       <object>objects\obj_goldSCap</object>
       <object>objects\obj_goldECap</object>
       <object>objects\obj_goldWCap</object>
-      <object>objects\obj_goldpickup</object>
       <object>objects\obj_blastblock</object>
       <object>objects\obj_vine</object>
       <object>objects\obj_vineNBase</object>
@@ -505,6 +510,7 @@
       <object>objects\obj_sanityvignette</object>
       <object>objects\obj_sanitymask</object>
       <object>objects\obj_blackplayermask</object>
+      <object>objects\obj_MessagePanel</object>
     </objects>
     <objects name="debug">
       <object>objects\debug_line</object>

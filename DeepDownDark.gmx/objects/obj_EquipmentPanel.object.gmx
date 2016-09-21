@@ -277,7 +277,7 @@ if buttonsappeared == true
 
 }    
 
-
+draw_set_alpha(1.0);
 </string>
           </argument>
         </arguments>

@@ -339,10 +339,13 @@ if asteroid != noone
                 hitspeed_y = other.vy * other.bulletspd * other.asteroidmult * 0.15;
             }
 
-        //create debris tinyblocks unless a nugget
+        //create debris tinyblocks unless a nugget or a wreck
         bx = x;
         by = y;
-        if asteroid.nugget == false script_execute(scr_blockburstvfx, bx, by);
+        loc_x = x;
+        loc_y = y;
+        if asteroid.nugget == false &amp;&amp; asteroid.wreck == false script_execute(scr_blockburstvfx, bx, by);
+        if asteroid.wreck == true script_execute(scr_wreckdebrisvfx, bx, by, loc_x, loc_y);
         //else script_execute(scr_spawngoldburst, bx, by);
         bx = x
         by = y        

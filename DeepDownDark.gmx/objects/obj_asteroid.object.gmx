@@ -35,6 +35,8 @@ damagemult = 50;     //how much player speed is transferred into damage amount o
 asteroidhealth = irandom_range(350,700); 
 gold = 0;
 nugget = false;
+wreck = false;
+blackbox = false;
 counter = 120;
 
 image_speed = 0;
@@ -284,9 +286,19 @@ if asteroidhit != 0
 // death
 if asteroidhealth &lt;=0
     {
-        bx = x ;
+        bx = x;
         by = y;
-        script_execute(scr_asteroidburst, bx, by, gold, nugget);
+        if wreck == false script_execute(scr_asteroidburst, bx, by, gold, nugget);
+        if wreck == true
+            {
+                for(i = 0; i &lt; 9; i +=1)
+                    {
+                        bx = x + irandom_range(-8, 8);
+                        by = y + irandom_range(-8, 8);
+                        script_execute(scr_wreckdebrisvfx, bx, by);                
+                    }
+            
+            }
         instance_destroy();
     }
 
@@ -350,20 +362,23 @@ if asteroidhealth &lt;=0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// hit anything else- push away
-
-speed_x = -speed_x;
-speed_y = -speed_y;
-
-asteroidhealth -= (abs(speed_x) + abs(speed_y));
-//show_debug_message(string(health));
-
-if asteroidhealth &lt;=0
+            <string>if wreck == false
 {
-        bx = x - 4;
-        by = y - 4;
-        script_execute(scr_asteroidburst, bx, by, gold);
-        instance_destroy();
+    // hit anything else- push away
+    
+    speed_x = -speed_x;
+    speed_y = -speed_y;
+    
+    asteroidhealth -= (abs(speed_x) + abs(speed_y));
+    //show_debug_message(string(health));
+    
+    if asteroidhealth &lt;=0
+    {
+            bx = x - 4;
+            by = y - 4;
+            script_execute(scr_asteroidburst, bx, by, gold);
+            instance_destroy();
+    }
 }
 </string>
           </argument>

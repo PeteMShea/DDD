@@ -731,26 +731,29 @@ if collisionoff == false &amp;&amp; global.autopilot &lt;= 0            //debug 
         
                 
             inst = instance_nearest(x + speed_x, y + speed_y, obj_asteroid);
-            if inst != noone
+            if inst != noone 
                 {
                     ax = (inst).x;
                     ay = (inst).y;
                     avector = point_direction(ax, ay, x, y);
                     loc_x = ax + lengthdir_x(16 * global.RM, avector);
                     loc_y = ay + lengthdir_y(16 * global.RM, avector);
-                    extended_x = x + lengthdir_x(32 * global.RM, thrustdir);
-                    extended_y = y + lengthdir_y(32 * global.RM, thrustdir); 
-                    with(inst)
-                    {    
-                        //show_debug_message(string(inst));
-                        hit_x = other.x;
-                        hit_y = other.y;
-                        ext_x = other.extended_x;
-                        ext_y = other.extended_y;
-                        hitspeed_x = other.speed_x;
-                        hitspeed_y = other.speed_y;
-                        asteroidhit = 1;        // 1 = hit by player
-                    }
+                        if inst.blackbox == false
+                        {
+                            extended_x = x + lengthdir_x(32 * global.RM, thrustdir);
+                            extended_y = y + lengthdir_y(32 * global.RM, thrustdir); 
+                            with(inst)
+                            {    
+                                //show_debug_message(string(inst));
+                                hit_x = other.x;
+                                hit_y = other.y;
+                                ext_x = other.extended_x;
+                                ext_y = other.extended_y;
+                                hitspeed_x = other.speed_x;
+                                hitspeed_y = other.speed_y;
+                                asteroidhit = 1;        // 1 = hit by player
+                            }
+                        }
                 }
             }
         else

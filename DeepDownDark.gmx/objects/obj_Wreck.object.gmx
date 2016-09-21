@@ -35,11 +35,14 @@ deceleration = 3;
 terminalvelocity = 0.25;
 rotdecay = 0.8;
 minrotation = 0.1;
-massmult = 1.5;     //how much of player speed is transferred to asteroid on collision
-damagemult = 50;     //how much player speed is transferred into damage amount on collision
-asteroidhealth = 10;    //
+massmult = 0.5;     //how much of player speed is transferred to asteroid on collision- can be overridden in Step
+damagemult = 10;     //how much player speed is transferred into damage amount on collision
+asteroidhealth = 25;    //
+
 gold = 0;
 nugget = false;
+wreck = true;
+blackbox = false;
 counter = 120;
 
 
@@ -52,6 +55,54 @@ hit_y = 0;
 h_angle = 0;
 hitspeed_x = 0;
 hitspeed_y = 0;
+
+once = false;
+col = obj_WreckSpawner.col;
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if once == false
+    {
+        once = true
+        part = image_index;
+        
+        if part &lt;= 8    //big objects
+            {
+                massmult = 1.5;     //how much of player speed is transferred to asteroid on collision
+                damagemult = 50;     //how much player speed is transferred into damage amount on collision
+                asteroidhealth = 500;    //
+            }
+        else
+            {
+                massmult = 0.5;     //how much of player speed is transferred to asteroid on collision
+                damagemult = 10;     //how much player speed is transferred into damage amount on collision
+                asteroidhealth = 25;    //
+            }
+    }
+
+    
+    
 </string>
           </argument>
         </arguments>

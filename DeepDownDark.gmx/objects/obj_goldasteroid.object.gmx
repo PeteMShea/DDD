@@ -35,6 +35,8 @@ damagemult = 50;     //how much player speed is transferred into damage amount o
 asteroidhealth = irandom_range(350,700); 
 gold = irandom_range(5,10);      //how many pieces of gold in asteroid 
 nugget = false;
+wreck = false;
+blackbox = false;
 counter = 120;
 
 image_speed = 0;
