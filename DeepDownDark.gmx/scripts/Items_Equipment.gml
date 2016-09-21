@@ -3,7 +3,7 @@
 //-------------------------------------------------------
 
 global.EquipName[1] = "STRENGTHENED HULL";
-global.EquipUnlocked[1] = true;
+global.EquipUnlocked[1] = false;
 global.EquipOwned[1] = false;
 global.EquipEquipped[1] = false;
 global.EquipCost[1] = 500;
@@ -18,7 +18,7 @@ global.EquipShipArt[1] = noone;
 //-------------------------------------------------------
 
 global.EquipName[2] = "TITANIUM HULL";
-global.EquipUnlocked[2] = true;
+global.EquipUnlocked[2] = false;
 global.EquipOwned[2] = false;
 global.EquipEquipped[2] = false;
 global.EquipCost[2] = 2500;
@@ -33,7 +33,7 @@ global.EquipShipArt[2] = noone;
 //-------------------------------------------------------
 
 global.EquipName[3] = "CHROMIUM HULL";
-global.EquipUnlocked[3] = true;
+global.EquipUnlocked[3] = false;
 global.EquipOwned[3] = false;
 global.EquipEquipped[3] = false;
 global.EquipCost[3] = 10000;
@@ -48,7 +48,7 @@ global.EquipShipArt[3] = noone;
 //-------------------------------------------------------
 
 global.EquipName[4] = "PLATE ARMOUR";
-global.EquipUnlocked[4] = true;
+global.EquipUnlocked[4] = false;
 global.EquipOwned[4] = false;
 global.EquipEquipped[4] = false;
 global.EquipCost[4] = 1500;
@@ -108,7 +108,7 @@ global.EquipShipArt[7] = noone;
 //-------------------------------------------------------
 
 global.EquipName[8] = "FORWARD BETA ENGINE";
-global.EquipUnlocked[8] = true;
+global.EquipUnlocked[8] = false;
 global.EquipOwned[8] = false;
 global.EquipEquipped[8] = false;
 global.EquipCost[8] = 500;
@@ -123,7 +123,7 @@ global.EquipShipArt[8] = noone;
 //-------------------------------------------------------
 
 global.EquipName[9] = "FORWARD GAMMA ENGINE";
-global.EquipUnlocked[9] = true;
+global.EquipUnlocked[9] = false;
 global.EquipOwned[9] = false;
 global.EquipEquipped[9] = false;
 global.EquipCost[9] = 1200;
@@ -138,7 +138,7 @@ global.EquipShipArt[9] = noone;
 //-------------------------------------------------------
 
 global.EquipName[10] = "BETA RETRO BOOSTER";
-global.EquipUnlocked[10] = true;
+global.EquipUnlocked[10] = false;
 global.EquipOwned[10] = false;
 global.EquipEquipped[10] = false;
 global.EquipCost[10] = 600;
@@ -153,7 +153,7 @@ global.EquipShipArt[10] = noone;
 //-------------------------------------------------------
 
 global.EquipName[11] = "GAMMA RETRO BOOSTER";
-global.EquipUnlocked[11] = true;
+global.EquipUnlocked[11] = false;
 global.EquipOwned[11] = false;
 global.EquipEquipped[11] = false;
 global.EquipCost[11] = 1400;
@@ -183,7 +183,7 @@ global.EquipShipArt[12] = noone;
 //-------------------------------------------------------
 
 global.EquipName[13] = "ELECTRON MAGNET";
-global.EquipUnlocked[13] = true;
+global.EquipUnlocked[13] = false;
 global.EquipOwned[13] = false;
 global.EquipEquipped[13] = false;
 global.EquipCost[13] = 500;
@@ -198,7 +198,7 @@ global.EquipShipArt[13] = noone;
 //-------------------------------------------------------
 
 global.EquipName[14] = "NEUTRON MAGNET";
-global.EquipUnlocked[14] = true;
+global.EquipUnlocked[14] = false;
 global.EquipOwned[14] = false;
 global.EquipEquipped[14] = false;
 global.EquipCost[14] = 5000;
@@ -213,7 +213,7 @@ global.EquipShipArt[15] = noone;
 //-------------------------------------------------------
 
 global.EquipName[15] = "EXTRACTION MAGNET";
-global.EquipUnlocked[15] = true;
+global.EquipUnlocked[15] = false;
 global.EquipOwned[15] = false;
 global.EquipEquipped[15] = false;
 global.EquipCost[15] = 10000;
@@ -359,6 +359,40 @@ global.EquipStatB[24] = "";
 global.EquipAttMod[24] = 1;
 global.EquipAttBoost[24] = 0;
 global.EquipShipArt[24] = noone;
+
+//-------------------------------------------------------------------------------
+global.EquipProgression[1] = 1;
+global.EquipProgression[2] = 7;
+global.EquipProgression[3] = 13;
+global.EquipProgression[4] = 2;
+global.EquipProgression[5] = 10;
+global.EquipProgression[6] = 14;
+global.EquipProgression[7] = 4;
+global.EquipProgression[8] = 8;
+global.EquipProgression[9] = 15;
+global.EquipProgression[10] = 11;   // temp to here
+global.EquipProgression[11] = 3;
+global.EquipProgression[12] = 5;
+global.EquipProgression[13] = 6;
+global.EquipProgression[14] = 9;
+global.EquipProgression[15] = 12;
+global.EquipProgression[16] = 24;
+global.EquipProgression[17] = 16;
+global.EquipProgression[18] = 17;
+global.EquipProgression[19] = 18;
+global.EquipProgression[20] = 19;
+global.EquipProgression[21] = 20;
+global.EquipProgression[22] = 21;
+global.EquipProgression[23] = 22;
+global.EquipProgression[24] = 23;
+
+
+
+
+
+
+
+
 
 
 // debug- unlock all items

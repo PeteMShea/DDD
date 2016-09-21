@@ -18,7 +18,7 @@ global.WeaponShipArt[1] = noone;
 //-------------------------------------------------------
 
 global.WeaponName[2] = "RAPID FIRE";
-global.WeaponUnlocked[2] = true;
+global.WeaponUnlocked[2] = false;
 global.WeaponOwned[2] = false;
 global.WeaponEquipped[2] = false;
 global.WeaponCost[2] = 600;
@@ -33,7 +33,7 @@ global.WeaponShipArt[2] = noone;
 //-------------------------------------------------------
 
 global.WeaponName[3] = "HIGH SPIN";
-global.WeaponUnlocked[3] = true;
+global.WeaponUnlocked[3] = false;
 global.WeaponOwned[3] = false;
 global.WeaponEquipped[3] = false;
 global.WeaponCost[3] = 1200;
@@ -48,7 +48,7 @@ global.WeaponShipArt[3] = noone;
 //-------------------------------------------------------
 
 global.WeaponName[4] = "BOLT GUN TURRET";
-global.WeaponUnlocked[4] = true;
+global.WeaponUnlocked[4] = false;
 global.WeaponOwned[4] = false;
 global.WeaponEquipped[4] = false;
 global.WeaponCost[4] = 2000;
@@ -63,7 +63,7 @@ global.WeaponShipArt[4] = spr_TurretGraphic;
 //-------------------------------------------------------
 
 global.WeaponName[5] = "RAPID FIRE TURRET";
-global.WeaponUnlocked[5] = true;
+global.WeaponUnlocked[5] = false;
 global.WeaponOwned[5] = false;
 global.WeaponEquipped[5] = false;
 global.WeaponCost[5] = 3500;
@@ -78,7 +78,7 @@ global.WeaponShipArt[5] = spr_TurretGraphic;
 //-------------------------------------------------------
 
 global.WeaponName[6] = "HIGH SPIN TURRET";
-global.WeaponUnlocked[6] = true;
+global.WeaponUnlocked[6] = false;
 global.WeaponOwned[6] = false;
 global.WeaponEquipped[6] = false;
 global.WeaponCost[6] = 5000;
@@ -108,7 +108,7 @@ global.WeaponShipArt[7] = noone;
 //-------------------------------------------------------
 
 global.WeaponName[8] = "PLASMA SHELL";
-global.WeaponUnlocked[8] = true;
+global.WeaponUnlocked[8] = false;
 global.WeaponOwned[8] = false;
 global.WeaponEquipped[8] = false;
 global.WeaponCost[8] = 500;
@@ -123,7 +123,7 @@ global.WeaponShipArt[8] = noone;
 //-------------------------------------------------------
 
 global.WeaponName[9] = "DUAL FIRE";
-global.WeaponUnlocked[9] = true;
+global.WeaponUnlocked[9] = false;
 global.WeaponOwned[9] = false;
 global.WeaponEquipped[9] = false;
 global.WeaponCost[9] = 1000;
@@ -138,7 +138,7 @@ global.WeaponShipArt[9] = noone;
 //-------------------------------------------------------
 
 global.WeaponName[10] = "SPREAD FIRE";
-global.WeaponUnlocked[10] = true;
+global.WeaponUnlocked[10] = false;
 global.WeaponOwned[10] = false;
 global.WeaponEquipped[10] = false;
 global.WeaponCost[10] = 1500;
@@ -153,7 +153,7 @@ global.WeaponShipArt[10] = noone;
 //-------------------------------------------------------
 
 global.WeaponName[11] = "RICOCHET";
-global.WeaponUnlocked[11] = true;
+global.WeaponUnlocked[11] = false;
 global.WeaponOwned[11] = false;
 global.WeaponEquipped[11] = false;
 global.WeaponCost[11] = 2500;
@@ -168,7 +168,7 @@ global.WeaponShipArt[11] = noone;
 //-------------------------------------------------------
 
 global.WeaponName[12] = "ARMOUR PIERCING";
-global.WeaponUnlocked[12] = true;
+global.WeaponUnlocked[12] = false;
 global.WeaponOwned[12] = false;
 global.WeaponEquipped[12] = false;
 global.WeaponCost[12] = 4000;
@@ -359,6 +359,38 @@ global.WeaponStatB[24] = "";
 global.WeaponAttMod[24] = 1;
 global.WeaponAttBoost[24] = 0;
 global.WeaponShipArt[24] = noone;
+
+
+
+//-----------------------------------------------------------------------
+
+global.WeaponProgression[1] = 2;
+global.WeaponProgression[2] = 8;
+global.WeaponProgression[3] = 4;
+global.WeaponProgression[4] = 9;
+global.WeaponProgression[5] = 3;
+global.WeaponProgression[6] = 10;
+global.WeaponProgression[7] = 5;
+global.WeaponProgression[8] = 11;
+global.WeaponProgression[9] = 6;
+global.WeaponProgression[10] = 12;   // temp to here
+global.WeaponProgression[11] = 3;
+global.WeaponProgression[12] = 5;
+global.WeaponProgression[13] = 6;
+global.WeaponProgression[14] = 9;
+global.WeaponProgression[15] = 12;
+global.WeaponProgression[16] = 24;
+global.WeaponProgression[17] = 16;
+global.WeaponProgression[18] = 17;
+global.WeaponProgression[19] = 18;
+global.WeaponProgression[20] = 19;
+global.WeaponProgression[21] = 20;
+global.WeaponProgression[22] = 21;
+global.WeaponProgression[23] = 22;
+global.WeaponProgression[24] = 23;
+
+
+
 
 
 // debug- unlock all items

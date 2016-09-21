@@ -739,21 +739,22 @@ if collisionoff == false &amp;&amp; global.autopilot &lt;= 0            //debug 
                     loc_x = ax + lengthdir_x(16 * global.RM, avector);
                     loc_y = ay + lengthdir_y(16 * global.RM, avector);
                         if inst.blackbox == false
-                        {
-                            extended_x = x + lengthdir_x(32 * global.RM, thrustdir);
-                            extended_y = y + lengthdir_y(32 * global.RM, thrustdir); 
-                            with(inst)
-                            {    
-                                //show_debug_message(string(inst));
-                                hit_x = other.x;
-                                hit_y = other.y;
-                                ext_x = other.extended_x;
-                                ext_y = other.extended_y;
-                                hitspeed_x = other.speed_x;
-                                hitspeed_y = other.speed_y;
-                                asteroidhit = 1;        // 1 = hit by player
+                            {
+                                extended_x = x + lengthdir_x(32 * global.RM, thrustdir);
+                                extended_y = y + lengthdir_y(32 * global.RM, thrustdir); 
+                                with(inst)
+                                {    
+                                    //show_debug_message(string(inst));
+                                    hit_x = other.x;
+                                    hit_y = other.y;
+                                    ext_x = other.extended_x;
+                                    ext_y = other.extended_y;
+                                    hitspeed_x = other.speed_x;
+                                    hitspeed_y = other.speed_y;
+                                    asteroidhit = 1;        // 1 = hit by player
+                                }
                             }
-                        }
+                       else if inst.blackbox == true hitcollide = (damagecooldown * 60) - 1;        //hacky fix to stop blackbox damaging player on collision- yuck 
                 }
             }
         else

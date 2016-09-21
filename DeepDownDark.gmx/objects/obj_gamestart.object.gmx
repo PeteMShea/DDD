@@ -75,7 +75,7 @@ global.WeaponViewed = 1;        //currently viewed (or last viewed) Weapon Item 
 script_execute(Items_Weaponry);
 global.EquipViewed = 1;
 script_execute(Items_Equipment);
-
+global.nextitemweapon = 1;       //whether to unlock a weapon or equipment next- alternates (for now) 
 
 
 // DEBUG

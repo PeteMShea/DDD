@@ -33,7 +33,10 @@ cursor_sprite = -1;
 }
 window_set_cursor(cr_handpoint);
 
-
+if instance_exists(obj_MessagePanel)
+    {
+        obj_MessagePanel.fadeout = true;        
+    }
 
 // initialise
 xview = view_xview[0];
