@@ -77,7 +77,13 @@ paleblue = make_colour_rgb(207, 252, 245);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 30;
+            <string>xview = view_xview[0];
+yview = view_yview[0];
+
+x = 960 + xview;
+y = 75 + yview;
+
+alarm[0] = 30;
 
 // fade control
 if fadein == true || fadeout == true

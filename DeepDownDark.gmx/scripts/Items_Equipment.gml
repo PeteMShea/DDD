@@ -3,7 +3,7 @@
 //-------------------------------------------------------
 
 global.EquipName[1] = "STRENGTHENED HULL";
-global.EquipUnlocked[1] = false;
+global.EquipUnlocked[1] = true;
 global.EquipOwned[1] = false;
 global.EquipEquipped[1] = false;
 global.EquipCost[1] = 500;

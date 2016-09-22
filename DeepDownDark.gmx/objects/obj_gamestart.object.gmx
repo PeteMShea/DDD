@@ -75,7 +75,7 @@ global.WeaponViewed = 1;        //currently viewed (or last viewed) Weapon Item 
 script_execute(Items_Weaponry);
 global.EquipViewed = 1;
 script_execute(Items_Equipment);
-global.nextitemweapon = 1;       //whether to unlock a weapon or equipment next- alternates (for now) 
+global.nextitemweapon = -1;       //whether to unlock a weapon or equipment next- alternates (for now) 
 
 
 // DEBUG
@@ -140,7 +140,7 @@ window_set_cursor(cr_arrow);
 if countdown &lt;= 0
 {
 
-    room_goto(5);       // 1 for splash, 3 for MapGen, 4 for Room A0, 5 for Test Bed
+    room_goto(3);       // 1 for splash, 3 for MapGen, 4 for Room A0, 5 for Test Bed
 
 }
 

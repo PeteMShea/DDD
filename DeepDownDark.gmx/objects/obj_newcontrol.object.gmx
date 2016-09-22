@@ -29,7 +29,7 @@
 global.pause = false;
 
 randomize(); 
-basechance = 0.1;       //base chance of removing a big block and replacing with an empty one 0.3 good mix- 0 = tight walkblock path only
+basechance = 0.3;       //base chance of removing a huge block and replacing with an empty one 0.3 good mix- 0 = tight walkblock path only
 
 newblockoverlaychance = 0.7;    //chance of a new block having an overlay added for variety
 hugeblockoverlaychance = 0.7;   //chance of a huge block having an overlay added for variety
@@ -47,8 +47,8 @@ glassasteroidchance = 0.0;     //chance of indestructible asteroid
 
 
 minspike = 1;       //minimum number of normal blocks to add to each edge- should always be at least 1
-maxspike = 4; //how much normal blocks jut in from edges- defines overall corridor width (less equals wider)- normal 4 max possible = 7
-mingap = 5;       //how big a gap there will always be between N/S and E/W corridors (allow for -2 due to wee blocks) 5  min = 4
+maxspike = 3; //how much normal blocks jut in from edges- defines overall corridor width (less equals wider)- normal 4 max possible = 7
+mingap = 6;       //how big a gap there will always be between N/S and E/W corridors (allow for -2 due to wee blocks) 5  min = 4
 spikyness = 1;      // how much wee blocks jut in from edges to empty space- minimum number of wee blocks + 1  /1
 minweespike = 1;
 maxweespike = 3;        //cannot be higher than 4!
@@ -63,7 +63,7 @@ ballplantdensity = ballplantdensitymin;
 ballplantdensitycurrent = 0;
 
 // nightgaunts
-gauntchance = 0.75;        //chance of a huge square being populated with gaunts 0.3
+gauntchance = 0.0;        //chance of a huge square being populated with gaunts 0.3
 gauntdensitymin = 0.01;        //how dense gaunts are at start of level 0
 gauntdensitymax = 0.1;          //maximum density of gaunts
 gauntdensityrange = gauntdensitymax - gauntdensitymin;
@@ -73,7 +73,7 @@ gauntdensity = gauntdensitymin;
 gauntdensitycurrent = 0;
 
 // spores
-sporechance = 0.0;        //chance of a huge square being populated with spores 0.3
+sporechance = 0.3;        //chance of a huge square being populated with spores 0.3
 sporedensitymin = 0.02;        //how dense gaunts are at start of level 0
 sporedensitymax = 0.20;          //maximum density of spores
 sporedensityrange = sporedensitymax - sporedensitymin;
@@ -85,6 +85,11 @@ startsporeoffsetangle = 0;
 startsporeoffsetdistance = 24;
 sporeoffsetangle = startsporeoffsetangle;
 sporeoffsetdistance = startsporeoffsetdistance;
+
+//wreckage
+wreckchance = 1.0;      //chance of a wreck being in level if a free huge block
+wreckadded = false;
+
 
 global.startx = 0;
 global.starty = 0;

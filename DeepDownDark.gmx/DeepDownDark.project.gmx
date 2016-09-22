@@ -550,6 +550,7 @@
     <room>rooms\mapgen</room>
     <room>rooms\room_A0</room>
     <room>rooms\TestBed</room>
+    <room>rooms\TestBed2</room>
     <room>rooms\room2</room>
     <room>rooms\room0</room>
   </rooms>

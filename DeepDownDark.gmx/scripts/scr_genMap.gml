@@ -571,7 +571,21 @@ if bigblock[u , v] > 0
                 block[9 + u * 12, 11 + v * 12] = 1
                 block[10 + u * 12, 11 + v * 12] = 1
                 block[11 + u * 12, 11 + v * 12] = 1             
-        }          
+        }
+        
+        // check for unsurrounded huge blocks to add potential wreckages
+        if n == 0 && s == 0 && w == 0 && e == 0 && wreckadded == false
+        {
+            if random(1) <= wreckchance
+                {
+                    wx = (u * 768) + random_range(200, 568);
+                    wy = (v * 768) + random_range(200, 568);
+                    instance_create(wx, wy, obj_WreckSpawner);
+                    wreckadded = true;     //one per map
+                    show_debug_message("Wreck added at : " + string(u) + " , " + string(v));                        
+                }                
+        }
+                  
                                
         if w !=0 || e !=0 || n !=0 || s !=0 || special == 1                             // we have at least one external edge- so time to add blocks inside             
             {
