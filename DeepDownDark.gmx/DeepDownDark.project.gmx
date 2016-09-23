@@ -274,7 +274,6 @@
     <background>background\tileset_newblocks</background>
     <background>background\tileset_darknewblocks</background>
     <background>background\tileset_hugeblocks</background>
-    <background>background\tileset_DEBUG</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">

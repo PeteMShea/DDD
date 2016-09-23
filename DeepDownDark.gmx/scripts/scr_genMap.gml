@@ -454,7 +454,9 @@ position_destroy(global.startx-64 * global.RM , global.starty);
 position_destroy(global.startx+64 * global.RM , global.starty);
 position_destroy(global.exitx, global.exity);
 position_destroy(global.exitx-64 * global.RM , global.exity);
-position_destroy(global.exitx+64 * global.RM , global.exity);    
+position_destroy(global.exitx+64 * global.RM , global.exity);
+
+global.startx -= 48;    //reposition ship in centre of start trench    
     
 //and add four new borderside blocks
 instance_create(starthuge * 384 * global.RM  + 64 * global.RM  + 64 * global.RM , 0, obj_bordersideleft);
@@ -462,7 +464,8 @@ instance_create(starthuge * 384 * global.RM  + 192 * global.RM  + 64 * global.RM
 instance_create(endhuge * 384 * global.RM  + 64 * global.RM  + 64 * global.RM , gridsize * 384 * global.RM  + 64 * global.RM , obj_bordersideleft);
 instance_create(endhuge * 384 * global.RM  + 192 * global.RM  + 64 * global.RM , gridsize * 384 * global.RM + 64 * global.RM , obj_bordersideright);
 
-
+// add an exit trigger
+instance_create(endhuge * 384 * global.RM  + 64 * global.RM  + 64 * global.RM , gridsize * 384 * global.RM  + 64 * global.RM , obj_exittrigger);
 
 
 
@@ -562,6 +565,10 @@ if bigblock[u , v] > 0
                 special = 1;
                 block[0 + u * 12, 0 + v * 12] = 1
                 block[1 + u * 12, 0 + v * 12] = 1
+                for(i = 3; i < 7; i +=1)
+                    {
+                        block[i + u * 12, 0 + v * 12] = 98;     //used to prevent any blocks being added in these squares directly in front of player
+                    }
                 block[8 + u * 12, 0 + v * 12] = 1
                 block[9 + u * 12, 0 + v * 12] = 1
                 block[10 + u * 12, 0 + v * 12] = 1
@@ -596,6 +603,7 @@ if bigblock[u , v] > 0
         if w !=0 || e !=0 || n !=0 || s !=0 || special == 1                             // we have at least one external edge- so time to add blocks inside             
             {
                     
+              
                 // first check adjacent squares and change the array value to represent neighbouring squares
                 if n != 0 && e == 0 && s == 0 && w == 0 bigblock [u, v] = 1     // North only
                 if n == 0 && e == 0 && s != 0 && w == 0 bigblock [u, v] = 2     // South only          
@@ -611,6 +619,7 @@ if bigblock[u , v] > 0
                 if n != 0 && e != 0 && s == 0 && w != 0 bigblock [u, v] = 12     // North, East and West
                 if n == 0 && e != 0 && s != 0 && w != 0 bigblock [u, v] = 13     // South, East and West
                 if n != 0 && e == 0 && s != 0 && w != 0 bigblock [u, v] = 14     // North, South and West
+                if n == 0 && e == 0 && s == 0 && w == 0 bigblock [u, v] = 15      // No bordering blocks- set array to unused value (from Walk setting)
                 
                 //show_debug_message(string(u) + " , " + string(v) + " : " + string(bigblock [u,v]));                 
 

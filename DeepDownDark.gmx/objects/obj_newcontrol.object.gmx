@@ -29,7 +29,7 @@
 global.pause = false;
 
 randomize(); 
-basechance = 0.3;       //base chance of removing a huge block and replacing with an empty one 0.3 good mix- 0 = tight walkblock path only
+basechance = 0.5;       //base chance of removing a huge block and replacing with an empty one 0.3 good mix- 0 = tight walkblock path only
 
 newblockoverlaychance = 0.7;    //chance of a new block having an overlay added for variety
 hugeblockoverlaychance = 0.7;   //chance of a huge block having an overlay added for variety
@@ -63,11 +63,11 @@ ballplantdensity = ballplantdensitymin;
 ballplantdensitycurrent = 0;
 
 // nightgaunts
-gauntchance = 0.0;        //chance of a huge square being populated with gaunts 0.3
+gauntchance = 0.3;        //chance of a huge square being populated with gaunts 0.3
 gauntdensitymin = 0.01;        //how dense gaunts are at start of level 0
 gauntdensitymax = 0.1;          //maximum density of gaunts
 gauntdensityrange = gauntdensitymax - gauntdensitymin;
-gauntstartblock = 0.05;           //gaunts do not start spawning until this % empty huge blocks in
+gauntstartblock = 0.3;           //gaunts do not start spawning until this % empty huge blocks in
 gauntendblock = 0.95;             //no more gaunts after this % huge blocks
 gauntdensity = gauntdensitymin;
 gauntdensitycurrent = 0;
@@ -78,7 +78,7 @@ sporedensitymin = 0.02;        //how dense gaunts are at start of level 0
 sporedensitymax = 0.20;          //maximum density of spores
 sporedensityrange = sporedensitymax - sporedensitymin;
 sporestartblock = 0.1;           //spores do not start spawning until this % empty huge blocks in
-sporeendblock = 0.85;             //no more spores after this % huge blocks
+sporeendblock = 0.25;             //no more spores after this % huge blocks
 sporedensity = sporedensitymin;
 sporedensitycurrent = 0;
 startsporeoffsetangle = 0;
