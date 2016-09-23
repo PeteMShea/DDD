@@ -32,16 +32,15 @@ ytop = (irandom_range(0, 6) * 68);
 width = 68;
 height = 68;
 
-if random(1) &lt; 1.0
+if random(1) &lt; 0.4
     {
         tile_add(tileset_newblocks, xleft, ytop, width, height, x - 2, y - 2, 10);
     }
 else
     {
-        sprite_index = spr_newblockDark;
-        image_index = irandom(42);
+        tile_add(tileset_darknewblocks, xleft, ytop, width, height, x - 2, y - 2, 10);
     }
-image_speed = 0;
+
 
 
 </string>

@@ -286,21 +286,27 @@ for (u = 0; u < gridsize; u +=1)
                     //show_debug_message("Big Block ref" + string(u) + " , " + string(v) + " , array: " + string(bigblock[u,v]) );   
                     script_execute(scr_genHugeBlocks, u, v, bigblock[u,v]);
                     
-                    blockindex = (bigblock[u, v] * -1) -1;                
-                    //show_debug_message("blockindex = " + string(blockindex));                              
+                    blockindex = (bigblock[u, v] * -1) - 1;
+                    //tile_add(tileset_hugeblocks, leftx, topy, width, height, u * 384 * global.RM +64 * global.RM , v * 384 * global.RM +64 * global.RM, 10);                                                         
+                   // show_debug_message("u: " + string(u) + " ,v: "+ string(v) + " ,blockindex = " + string(blockindex));
+                                                  
                     inst = instance_create( u * 384 * global.RM +64 * global.RM , v * 384 * global.RM +64 * global.RM , obj_hugeblock)
-
                     with (inst)
                         {
                             if random(1) < 0.5
                                 {
-                                image_index = other.blockindex;
+                                    image_index = other.blockindex;
+                                    
                                 }
-                            else image_index = 15;
+                            else
+                                {
+                                    image_index = 15;                                                                    
+                                }
                         //show_debug_message("blockindex = " + string(other.blockindex));   
                         }
-                   instance_deactivate_object(inst);
-                   //if random(1) < hugeblockoverlaychance instance_create(u * 384 * global.RM +64 * global.RM , v * 384 * global.RM +64 * global.RM , obj_hugeblockoverlay);             
+                   //instance_deactivate_object(inst);
+                   //if random(1) < hugeblockoverlaychance instance_create(u * 384 * global.RM +64 * global.RM , v * 384 * global.RM +64 * global.RM , obj_hugeblockoverlay);
+                                
                 }
       
         }

@@ -96,6 +96,7 @@
       <sprite>sprites\spr_bordersideright</sprite>
       <sprite>sprites\spr_bordersideleft</sprite>
       <sprite>sprites\spr_hugeblockoverlay</sprite>
+      <sprite>sprites\spr_hugeblockplace</sprite>
     </sprites>
     <sprites name="old">
       <sprite>sprites\spr_bigblock</sprite>
@@ -271,6 +272,9 @@
     <background>background\background8</background>
     <background>background\background10</background>
     <background>background\tileset_newblocks</background>
+    <background>background\tileset_darknewblocks</background>
+    <background>background\tileset_hugeblocks</background>
+    <background>background\tileset_DEBUG</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
