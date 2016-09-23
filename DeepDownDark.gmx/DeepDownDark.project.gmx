@@ -270,6 +270,7 @@
     <background>background\background9</background>
     <background>background\background8</background>
     <background>background\background10</background>
+    <background>background\tileset_newblocks</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
