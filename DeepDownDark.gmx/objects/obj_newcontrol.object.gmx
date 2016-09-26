@@ -29,7 +29,7 @@
 global.pause = false;
 
 randomize(); 
-basechance = 0.5;       //base chance of removing a huge block and replacing with an empty one 0.3 good mix- 0 = tight walkblock path only
+basechance = 0.4;       //base chance of removing a huge block and replacing with an empty one 0.3 good mix- 0 = tight walkblock path only
 
 newblockoverlaychance = 0.7;    //chance of a new block having an overlay added for variety
 hugeblockoverlaychance = 0.7;   //chance of a huge block having an overlay added for variety
@@ -73,7 +73,7 @@ gauntdensity = gauntdensitymin;
 gauntdensitycurrent = 0;
 
 // spores
-sporechance = 0.3;        //chance of a huge square being populated with spores 0.3
+sporechance = 0.6;        //chance of a huge square being populated with spores 0.3
 sporedensitymin = 0.02;        //how dense gaunts are at start of level 0
 sporedensitymax = 0.20;          //maximum density of spores
 sporedensityrange = sporedensitymax - sporedensitymin;

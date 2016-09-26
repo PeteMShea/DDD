@@ -87,7 +87,11 @@ totalbounces = 3;       //number of permitted bounces before bullet is destroyed
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>if global.pause == false
+{
+
+//--------------------------------------------------
+
 // Movement
 
 vx = (destx - x);
@@ -449,8 +453,8 @@ if block != noone
 
     
     
-    
-    
+//--------------------------------------------------------------------------    
+}    
     
     
     
