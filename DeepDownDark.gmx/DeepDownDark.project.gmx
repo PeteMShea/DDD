@@ -42,6 +42,7 @@
         <sprite>sprites\spr_blackbox</sprite>
         <sprite>sprites\spr_blackboxcoll</sprite>
         <sprite>sprites\spr_asteroid</sprite>
+        <sprite>sprites\spr_grabberasteroid</sprite>
         <sprite>sprites\spr_goldnuggetnormal</sprite>
         <sprite>sprites\spr_goldasteroid</sprite>
         <sprite>sprites\spr_asteroidnormal</sprite>
@@ -310,6 +311,7 @@
       <script>scripts\LOScheckPlayer.gml</script>
       <script>scripts\LOScheckEnemy.gml</script>
       <script>scripts\LOScheckAsteroid.gml</script>
+      <script>scripts\scr_grabberrocks.gml</script>
     </scripts>
     <scripts name="OLD">
       <script>scripts\movementbackup.gml</script>
@@ -392,6 +394,8 @@
         <object>objects\obj_WreckSpawner</object>
         <object>objects\obj_Wreck</object>
         <object>objects\obj_WreckDebris</object>
+        <object>objects\obj_grabberblock</object>
+        <object>objects\obj_grabberasteroid</object>
       </objects>
       <object>objects\obj_block</object>
       <object>objects\obj_hugeblock</object>

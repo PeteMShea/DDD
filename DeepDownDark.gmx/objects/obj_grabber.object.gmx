@@ -3,7 +3,7 @@
   <spriteName>spr_grabber</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-20</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -34,18 +34,26 @@ rotspeed = 2;
 
 grabbing = false;
 awake = false;
-wakeuprange = 700;
-asleeprange = 900;
-nodemindistance = 200;      //minimum travel distance between nodes
+wakeuprange = 900;
+asleeprange = 1900;
+nodemindistance = 170;      //minimum travel distance between nodes
 nodemaxdistance = 480;
 nodefound = false;
 aimx = x;
 aimy = y;
 target_angle = image_angle;
 moving = false;
+dragging = false;
+reached = false;
+maxspeed = 10.0;
+movespeed = 0;
+acceleration = 1.0;
+grabproximity = 64;     //distance from node before grabber stops moving and completes grab
 
 
 
+
+readytofire = false;
 attacking = false;
 
 
@@ -79,8 +87,7 @@ for (i = 1; i &lt;= totalnodes; i += 1)
           <argument>
             <kind>1</kind>
             <string>// rotate
-//if moving == false
-//    {
+
         angledif = angle_difference(image_angle, target_angle);
         if angledif &gt; 2
             {
@@ -90,10 +97,9 @@ for (i = 1; i &lt;= totalnodes; i += 1)
             {
                 image_angle += rotspeed;
             }
-        //else image_angle = target_angle;
-//    }
 
-dist = distance_to_point(obj_player.x, obj_player.y);
+
+dist = point_distance(x, y, obj_player.x, obj_player.y);
 
 if grabbing == false
     {
@@ -113,15 +119,15 @@ if awake == false
 
 if awake == true
 {
-/*
-        if dist &gt;= asleeprange
+
+        if dist &gt;= asleeprange &amp;&amp; moving == false
         {
             awake = false;
             timeline_index = tm_grabberidle;
             timeline_running = true;
             timeline_loop = true;                    
         }
-*/
+
 if grabbing == true &amp;&amp; attacking == false         //grabbing is set in the timeline
 {
     
@@ -154,22 +160,109 @@ if grabbing == true &amp;&amp; attacking == false         //grabbing is set in t
                     if anglealign &lt;= 3 moving = true;                               
                 }
             
-            if moving == true
+            if moving == true &amp;&amp; dragging == false
                 {
                     //calculate how many animation frames to play
                     
                     grabdistance = nodedist - 170;
                     totalframes = ceil(grabdistance / 18) + 15;
                     totalframes = clamp(totalframes, 15, 31);
-                    show_debug_message("Now grabbing, totalframes = " + string(totalframes) + " nodedist: " + string(nodedist));
+                    //show_debug_message("Now grabbing, totalframes = " + string(totalframes) + " nodedist: " + string(nodedist));
                     timeline_index = tm_grabbermove;                    
                     timeline_loop = false;                                        
                     if image_index &lt; totalframes timeline_running = true
                     if image_index &gt;= totalframes
                         {
-                            timeline_running = false;                                                
+                            timeline_running = false;
+                            //timeline_loop = true;
+                            //curpos = timeline_position;
+                            image_speed = -0.6;                                                        
+                            dragging = true;
+                            locx = aimx;
+                            locy = aimy;
+                            script_execute(scr_grabberrocks, locx, locy);                                                                            
                         }
+                }
+            if dragging == true &amp;&amp; reached == false         //move towards aim point
+                {
+                    //timeline_index = tm_grabbermove;                                    
+                    //timeline_running = true;
+                    //timeline_loop = false;
+                    if image_index &lt;= 13
+                        {
+                            obj_grabberblock.homing = true;
+                      
+                        }
+                    if movespeed &lt; maxspeed movespeed += acceleration;
+                    vx = (aimx - x);
+                    vy = (aimy - y);
+
+                    val = sqr(vx) + sqr(vy);    
+                    if val &gt; 0 len = sqrt(val) else len = 0
+ 
+                    if len != 0
+                        {   
+                            vx = vx / len;
+                            vy = vy / len;
+                        }
+                    
+                    x += vx * movespeed
+                    y += vy * movespeed
+                    
+                    movedist = point_distance(x, y, aimx, aimy);
+                        if movedist &lt; grabproximity
+                        {
+                            movespeed = 0;
+                            image_speed = 0;
+                            reached = true;
+                            reverseangle = image_angle + 180;
+                            aimx = x + lengthdir_x(100, reverseangle);
+                            aimy = y + lengthdir_y(100, reverseangle);
+                            movespeed = 1.0;                            
+                            timeline_index = tm_grabberidle;
+                            timeline_running = true;
+                            timeline_loop = true;                                                     
+                        }
+                }
+            if reached == true &amp;&amp; readytofire == false          //now back away a bit
+                {
+                    inst = instance_create(x + random_range(-12, 12), y + random_range(-12, 12), obj_grabberblock);
+                    with(inst)
+                        {
+                            homing = true;
+                        }
+                        
+                    target_angle = point_direction(x, y, obj_player.x, obj_player.y);       //aim at player                    
+                    vx = (aimx - x);
+                    vy = (aimy - y);
+
+                    val = sqr(vx) + sqr(vy);    
+                    if val &gt; 0 len = sqrt(val) else len = 0
+ 
+                    if len != 0
+                        {   
+                            vx = vx / len;
+                            vy = vy / len;
+                        }
+                    
+                    x += vx * movespeed
+                    y += vy * movespeed
+                    
+                    movedist = point_distance(x, y, aimx, aimy);
+                        if movedist &lt; 3
+                            {
+                                movespeed = 0;
+                                readytofire = true;
+                                instance_create(x, y, obj_grabberasteroid);
+                                with(obj_grabberblock)
+                                    {
+                                        lifespan = 60;                                    
+                                    }                         
+                            }                    
                 
+                }
+            if readytofire = true
+                {
                 
                 
                 
@@ -178,9 +271,6 @@ if grabbing == true &amp;&amp; attacking == false         //grabbing is set in t
     
     
 }
-
-
-
 
 }
 
