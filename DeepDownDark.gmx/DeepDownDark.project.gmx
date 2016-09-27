@@ -151,6 +151,7 @@
       <sprite>sprites\debugE</sprite>
       <sprite>sprites\debugW</sprite>
       <sprite>sprites\spr_debugline</sprite>
+      <sprite>sprites\spr_debugarrow</sprite>
     </sprites>
     <sprites name="GUI">
       <sprite>sprites\spr_titlemask1</sprite>
@@ -468,6 +469,7 @@
       <object>objects\obj_fscollision</object>
       <object>objects\obj_fsmouthcollision</object>
       <object>objects\obj_grabber</object>
+      <object>objects\obj_enemynode</object>
     </objects>
     <objects name="Inventory">
       <object>objects\obj_StatusPanel</object>
@@ -542,8 +544,9 @@
   </objects>
   <timelines name="timelines">
     <timelines name="enemies">
-      <timeline>timelines\tm_formlessfire</timeline>
       <timeline>timelines\tm_grabberidle</timeline>
+      <timeline>timelines\tm_grabbermove</timeline>
+      <timeline>timelines\tm_formlessfire</timeline>
       <timeline>timelines\tm_formlessidle</timeline>
       <timeline>timelines\tm_formlesssnarl</timeline>
       <timeline>timelines\tm_formlessdeath</timeline>

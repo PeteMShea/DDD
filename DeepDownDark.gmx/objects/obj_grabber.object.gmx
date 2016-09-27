@@ -27,14 +27,35 @@
             <kind>1</kind>
             <string>// initialise
 
-grabbing = false;
-//image_angle = random(360);
+
 image_speed = 0;    //animated with timeline
 
-if random(1) &lt; 0.5 rotationdir = -1 else rotationdir = 1;
-rotspeed = 0;
+rotspeed = 2;
+
+grabbing = false;
+awake = false;
+wakeuprange = 700;
+asleeprange = 900;
+nodemindistance = 200;      //minimum travel distance between nodes
+nodemaxdistance = 480;
+nodefound = false;
+aimx = x;
+aimy = y;
+target_angle = image_angle;
+moving = false;
 
 
+
+attacking = false;
+
+
+// find all the nodes and store in an array
+totalnodes = instance_number(obj_enemynode);
+var i;
+for (i = 1; i &lt;= totalnodes; i += 1)
+    {
+        enemynode[i] = instance_find(obj_enemynode,i);
+    }
 </string>
           </argument>
         </arguments>
@@ -58,15 +79,112 @@ rotspeed = 0;
           <argument>
             <kind>1</kind>
             <string>// rotate
+//if moving == false
+//    {
+        angledif = angle_difference(image_angle, target_angle);
+        if angledif &gt; 2
+            {
+                image_angle -= rotspeed;
+            }
+        if angledif &lt; -2
+            {
+                image_angle += rotspeed;
+            }
+        //else image_angle = target_angle;
+//    }
 
-image_angle += rotspeed * rotationdir;
+dist = distance_to_point(obj_player.x, obj_player.y);
 
 if grabbing == false
+    {
+        timeline_index = tm_grabberidle;
+        timeline_running = true;
+        timeline_loop = true;
+    }
+
+if awake == false
+    {        
+        if dist &lt;= wakeuprange
+            {
+                awake = true;
+                show_debug_message("Grabber awake!");   
+            }
+    }
+
+if awake == true
 {
-    timeline_index = tm_grabberidle;
-    timeline_running = true;
-    timeline_loop = true;
+/*
+        if dist &gt;= asleeprange
+        {
+            awake = false;
+            timeline_index = tm_grabberidle;
+            timeline_running = true;
+            timeline_loop = true;                    
+        }
+*/
+if grabbing == true &amp;&amp; attacking == false         //grabbing is set in the timeline
+{
+    
+    if nodefound == false
+        {
+            // pick a new node to travel to
+            nodefound = false;
+            while(nodefound == false)
+                {
+                    randomid = irandom_range(1, totalnodes) 
+                    nodeid = enemynode[randomid];                    
+                    nodedist = point_distance(x, y, nodeid.x, nodeid.y);
+                    if nodedist &gt;= nodemindistance &amp;&amp; nodedist &lt; nodemaxdistance
+                        {
+                            aimx = nodeid.x;
+                            aimy = nodeid.y;
+                            nodefound = true;
+                            target_angle = point_direction(x, y, aimx, aimy);                            
+                            show_debug_message("New node found at: " + string(aimx) + " , " + string(aimy) + " angle: " + string(target_angle));
+                            instance_create(aimx, aimy, obj_debug);                              
+                        }
+                }
+        }
+    if nodefound == true
+        {
+            if moving == false      //first turn towards aim point
+                {                    
+                    anglealign = abs(angle_difference(target_angle, image_angle));
+                    show_debug_message(string(anglealign));       
+                    if anglealign &lt;= 3 moving = true;                               
+                }
+            
+            if moving == true
+                {
+                    //calculate how many animation frames to play
+                    
+                    grabdistance = nodedist - 170;
+                    totalframes = ceil(grabdistance / 18) + 15;
+                    totalframes = clamp(totalframes, 15, 31);
+                    show_debug_message("Now grabbing, totalframes = " + string(totalframes) + " nodedist: " + string(nodedist));
+                    timeline_index = tm_grabbermove;                    
+                    timeline_loop = false;                                        
+                    if image_index &lt; totalframes timeline_running = true
+                    if image_index &gt;= totalframes
+                        {
+                            timeline_running = false;                                                
+                        }
+                
+                
+                
+                
+                }
+        }
+    
+    
 }
+
+
+
+
+}
+
+
 
 </string>
           </argument>

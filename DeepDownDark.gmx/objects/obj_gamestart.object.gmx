@@ -80,7 +80,7 @@ global.nextitemweapon = -1;       //whether to unlock a weapon or equipment next
 
 // DEBUG
 //pointer debug
-global.videocapture = true;
+global.videocapture = false;
 
 global.sanityenabled = false;
 
@@ -140,7 +140,7 @@ window_set_cursor(cr_arrow);
 if countdown &lt;= 0
 {
 
-    room_goto(5);       // 1 for splash, 3 for MapGen, 4 for Room A0, 5 for Test Bed
+    room_goto(6);       // 1 for splash, 3 for MapGen, 4 for Room A0, 5 for Test Bed
 
 }
 
