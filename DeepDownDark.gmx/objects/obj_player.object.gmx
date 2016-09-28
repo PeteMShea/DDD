@@ -75,6 +75,7 @@ script_execute(scr_updateplayer);       //update attributes based upon purchases
 // shared static consts
 damagecost = 10;        //how much gold it costs to repair 1 point of damage
 madnesstopspeed = 0.025      //how much madness to apply per frame whenever player is near top speed
+damagemadnessmult = 0.5;    // percentage of physical ship damage to apply as madness when collided
 
 //Declarations
 
@@ -862,7 +863,7 @@ if collisionoff == false &amp;&amp; global.autopilot &lt;= 0            //debug 
             if damage &gt;= mindamage        //this prevents minor scrapes from causing any damage- boosted by shields
             {
                 global.playerHealth -= damage;
-                global.madness += damage;
+                global.madness += damage * damagemadnessmult;
                 
                 script_execute(scr_shipvisualdamage, x, y, loc_x, loc_y, damage);
                 

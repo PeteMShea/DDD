@@ -216,6 +216,9 @@ if gold != noone
         }
     }
 
+    
+        
+/*
 darkspawn = noone;
 if collided == false darkspawn = instance_place(x, y, obj_darkspawn);
 if darkspawn != noone
@@ -227,8 +230,8 @@ if darkspawn != noone
                 {
                 
                 //create debris tinyblocks
-                bx = x
-                by = y
+                bx = other.x
+                by = other.y
                 script_execute(scr_blockburstvfx, bx, by);
                 
                 currenthealth -= obj_player.bulletdamage;                
@@ -244,6 +247,9 @@ if darkspawn != noone
         }
     }    
 
+*/    
+    
+    
 gaunt = noone;
 if collided == false gaunt = instance_place(x, y, obj_gaunt);
 if gaunt != noone
@@ -255,8 +261,8 @@ if gaunt != noone
                 {
                 
                 //create debris tinyblocks
-                bx = x
-                by = y
+                bx = other.x
+                by = other.y
                 script_execute(scr_smalldebris, bx, by);
                 awake = true;
                 currenthealth -= obj_player.bulletdamage;
@@ -276,6 +282,33 @@ if gaunt != noone
 
     }     
 
+grabber = noone;
+if collided == false grabber = instance_place(x, y, obj_grabber);
+if grabber != noone
+    {
+        collided = true;
+        with(grabber) 
+            {
+                if currenthealth &gt; 0
+                    {                
+                    awake = true;
+                    currenthealth -= obj_player.bulletdamage;                
+                    //show_debug_message(string(currenthealth));                 
+                    }           
+            }
+        instance_create(x, y, obj_grabberdebris);
+        //destroy the bullet unless piercing
+        if piercing == false
+        {        
+            bx = x
+            by = y        
+            script_execute(scr_bulletsparks, bx, by);
+            instance_destroy();
+        }
+
+    }      
+    
+    
 spores = noone;
 if collided == false spores = instance_place(x, y, obj_spawn);
 if spores != noone
@@ -287,8 +320,8 @@ if spores != noone
                 {
                 
                 //create debris tinyblocks
-                bx = x
-                by = y
+                bx = other.x
+                by = other.y
                 script_execute(scr_bulletsparks, bx, by);
                 awake = true;
                 currenthealth -= obj_player.bulletdamage;
@@ -310,8 +343,8 @@ if formless != noone
                 {
                 
                 //create mouth debris
-                bx = x
-                by = y
+                bx = other.x
+                by = other.y
                 script_execute(scr_formlessmouthdebris, bx, by);
                 shotinmouth = true;
                 currenthealth -= obj_player.bulletdamage;                

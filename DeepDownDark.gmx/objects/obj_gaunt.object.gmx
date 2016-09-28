@@ -51,7 +51,7 @@ gauntdamage = 5;    //damage inflicted on player every damagecountermax frames (
 damagecountermax = 60;  //how often gaunt can damage- i.e. every x frames
 madnessfirstsight = 30;         //how much madness is applied first time player sees enemy
 madnessproximityrange = 500;    //range before proximity madness is applied
-madnessproximity = 0.005;      //how much madness to apply per frame when enemy within range
+madnessproximity = 0.0025;      //how much madness to apply per frame when enemy within range
 
 maxanimspeed = 1.5;   //maximum flying animation speed- speedmult is subtracted from this to get anim speed- so faster flight means less wing strokes
 attackanimspeed = 0.75      //attack animation speed

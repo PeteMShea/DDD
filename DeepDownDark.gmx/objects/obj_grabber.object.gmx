@@ -52,9 +52,13 @@ grabproximity = 64;     //distance from node before grabber stops moving and com
 
 readytofire = false;
 firepause = 60;     //pause before firing
-firespeed = 10.0;        //force multiplier for firing asteroids at player
+firespeed = 11.0;        //force multiplier for firing asteroids at player
 fired = false;
 attacking = false;
+
+currenthealth = 200;
+scale = 1;
+dead = false;
 
 
 // find all the nodes and store in an array
@@ -64,6 +68,12 @@ for (i = 1; i &lt;= totalnodes; i += 1)
     {
         enemynode[i] = instance_find(obj_enemynode,i);
     }
+
+dead = false;
+
+madnessfirstsight = 10;
+madnessproximityrange = 1000;
+madnessproximity = 0.005;      //how much madness to apply per frame when enemy within range
 </string>
           </argument>
         </arguments>
@@ -86,17 +96,23 @@ for (i = 1; i &lt;= totalnodes; i += 1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// rotate
+            <string>if global.pause == false
 
-        angledif = angle_difference(image_angle, target_angle);
-        if angledif &gt; 2
-            {
-                image_angle -= rotspeed;
-            }
-        if angledif &lt; -2
-            {
-                image_angle += rotspeed;
-            }
+{
+//-----------------------------------------------------------------------
+
+
+// rotate
+
+angledif = angle_difference(image_angle, target_angle);
+if angledif &gt; 2
+    {
+        image_angle -= rotspeed;
+    }
+if angledif &lt; -2
+    {
+        image_angle += rotspeed;
+    }
 
 
 dist = point_distance(x, y, obj_player.x, obj_player.y);
@@ -117,200 +133,257 @@ if awake == false
             }
     }
 
-if awake == true
-{
-
-        if dist &gt;= asleeprange &amp;&amp; moving == false
-        {
-            awake = false;
-            timeline_index = tm_grabberidle;
-            timeline_running = true;
-            timeline_loop = true;                    
-        }
-
-if grabbing == true &amp;&amp; attacking == false         //grabbing is set in the timeline
-{
-    
-    if nodefound == false
-        {
-            // pick a new node to travel to
-            nodefound = false;
-            while(nodefound == false)
-                {
-                    randomid = irandom_range(1, totalnodes) 
-                    nodeid = enemynode[randomid];                    
-                    nodedist = point_distance(x, y, nodeid.x, nodeid.y);
-                    if nodedist &gt;= nodemindistance &amp;&amp; nodedist &lt; nodemaxdistance
-                        {
-                            aimx = nodeid.x;
-                            aimy = nodeid.y;
-                            nodefound = true;
-                            target_angle = point_direction(x, y, aimx, aimy);                            
-                            //show_debug_message("New node found at: " + string(aimx) + " , " + string(aimy) + " angle: " + string(target_angle));
-                            //instance_create(aimx, aimy, obj_debug);                              
-                        }
-                }
-        }
-    if nodefound == true
-        {
-            if moving == false      //first turn towards aim point
-                {                    
-                    anglealign = abs(angle_difference(target_angle, image_angle));
-                    show_debug_message(string(anglealign));       
-                    if anglealign &lt;= 3 moving = true;                               
-                }
+if awake == true &amp;&amp; currenthealth &gt; 0
+    {
+        //test for first seen by player and apply madness
+        if global.gauntseen == false
+            {
+                global.madness += madnessfirstsight;
+                global.gauntseen = true;    
+            }
             
-            if moving == true &amp;&amp; dragging == false
+        //madness
+        if dist &lt;= madnessproximityrange
+            {
+                global.madness += madnessproximity;
+            }            
+    
+    
+        if dist &gt;= asleeprange &amp;&amp; moving == false
+            {
+                awake = false;
+                timeline_index = tm_grabberidle;
+                timeline_running = true;
+                timeline_loop = true;                    
+            }
+    
+    if grabbing == true &amp;&amp; attacking == false         //grabbing is set in the timeline
+        {
+            
+            if nodefound == false
                 {
-                    //calculate how many animation frames to play
-                    
-                    grabdistance = nodedist - 170;
-                    totalframes = ceil(grabdistance / 18) + 15;
-                    totalframes = clamp(totalframes, 15, 31);
-                    //show_debug_message("Now grabbing, totalframes = " + string(totalframes) + " nodedist: " + string(nodedist));
-                    timeline_index = tm_grabbermove;                    
-                    timeline_loop = false;                                        
-                    if image_index &lt; totalframes timeline_running = true
-                    if image_index &gt;= totalframes
+                    // pick a new node to travel to
+                    nodefound = false;
+                    while(nodefound == false)
                         {
-                            timeline_running = false;
-                            //timeline_loop = true;
-                            //curpos = timeline_position;
-                            image_speed = -0.6;                                                        
-                            dragging = true;
-                            locx = aimx;
-                            locy = aimy;
-                            script_execute(scr_grabberrocks, locx, locy);                                                                            
+                            randomid = irandom_range(1, totalnodes) 
+                            nodeid = enemynode[randomid];                    
+                            nodedist = point_distance(x, y, nodeid.x, nodeid.y);
+                            if nodedist &gt;= nodemindistance &amp;&amp; nodedist &lt; nodemaxdistance
+                                {
+                                    aimx = nodeid.x + irandom_range(-4, 4);
+                                    aimy = nodeid.y + irandom_range(-4, 4);
+                                    nodefound = true;
+                                    target_angle = point_direction(x, y, aimx, aimy);                            
+                                    //show_debug_message("New node found at: " + string(aimx) + " , " + string(aimy) + " angle: " + string(target_angle));
+                                    //instance_create(aimx, aimy, obj_debug);                              
+                                }
                         }
                 }
-            if dragging == true &amp;&amp; reached == false         //move towards aim point
+            if nodefound == true
                 {
-                    //timeline_index = tm_grabbermove;                                    
-                    //timeline_running = true;
-                    //timeline_loop = false;
-                    if image_index &lt;= 14
-                        {
-                            obj_grabberblock.homing = true;
-                      
-                        }
-                    if movespeed &lt; maxspeed movespeed += acceleration;
-                    vx = (aimx - x);
-                    vy = (aimy - y);
-
-                    val = sqr(vx) + sqr(vy);    
-                    if val &gt; 0 len = sqrt(val) else len = 0
- 
-                    if len != 0
-                        {   
-                            vx = vx / len;
-                            vy = vy / len;
-                        }
-                    
-                    x += vx * movespeed
-                    y += vy * movespeed
-                    
-                    movedist = point_distance(x, y, aimx, aimy);
-                        if movedist &lt; grabproximity
-                        {
-                            movespeed = 0;
-                            image_speed = 0;
-                            reached = true;
-                            reverseangle = nodeid.image_angle + 180;    //back off in opposite direction of node facing
-                            aimx = x + lengthdir_x(100, reverseangle);
-                            aimy = y + lengthdir_y(100, reverseangle);
-                            movespeed = 1.0;                            
-                            timeline_index = tm_grabberidle;
-                            timeline_running = true;
-                            timeline_loop = true;                                                     
-                        }
-                }
-            if reached == true &amp;&amp; readytofire == false          //now back away a bit
-                {
-                    inst = instance_create(x + random_range(-16, 16), y + random_range(-16, 16), obj_grabberblock);
-                    with(inst)
-                        {
-                            target = other.id;
-                            homing = true;
-                            speed = 6.0;
-                        }
-                        
-                    target_angle = point_direction(x, y, obj_player.x, obj_player.y);       //aim at player                    
-                    vx = (aimx - x);
-                    vy = (aimy - y);
-
-                    val = sqr(vx) + sqr(vy);    
-                    if val &gt; 0 len = sqrt(val) else len = 0
- 
-                    if len != 0
-                        {   
-                            vx = vx / len;
-                            vy = vy / len;
-                        }
-                    
-                    x += vx * movespeed
-                    y += vy * movespeed
-                    
-                    movedist = point_distance(x, y, aimx, aimy);
-                        if movedist &lt; 3
-                            {
-                                movespeed = 0;
-                                readytofire = true;
-                                inst = instance_create(x, y, obj_grabberasteroid);
-                                with(obj_grabberblock)
-                                    {
-                                        //lifespan = 60;
-                                        target = other.inst;
-                                        speed = slowspeed;                                    
-                                    }                         
-                            }                    
-                
-                }
-            if readytofire = true &amp;&amp; fired == false
-                {
-                    target_angle = point_direction(x, y, obj_player.x, obj_player.y);       //aim at player  
-                    firepause -= 1;
-                    if firepause &lt;= 0
+                    if moving == false      //first turn towards aim point
                         {                    
-                            timeline_index = tm_grabberfire;
-                            timeline_position = 0;
-                            timeline_running = true;
-                            timeline_loop = false;
-                            reverseangle = image_angle + 180;               //fire asteroid by applying a hit force to opposite side
-                            hitx = x + lengthdir_x(32, reverseangle);
-                            hity = y + lengthdir_y(32, reverseangle);
-                            extx = x + lengthdir_x(48, reverseangle);
-                            exty = y + lengthdir_y(48, reverseangle);                    
-                            inst = instance_nearest(x, y, obj_grabberasteroid);                     
-                            hvx = (inst.x- hitx);
-                            hvy = (inst.y - hity);
-                            val = sqr(hvx) + sqr(hvy);    
-                            if val &gt; 0 len = sqrt(val) else len = 0 
+                            anglealign = abs(angle_difference(target_angle, image_angle));
+                            show_debug_message(string(anglealign));       
+                            if anglealign &lt;= 3 moving = true;                               
+                        }
+                    
+                    if moving == true &amp;&amp; dragging == false
+                        {
+                            //calculate how many animation frames to play
+                            
+                            grabdistance = nodedist - 170;
+                            totalframes = ceil(grabdistance / 18) + 15;
+                            totalframes = clamp(totalframes, 15, 31);
+                            //show_debug_message("Now grabbing, totalframes = " + string(totalframes) + " nodedist: " + string(nodedist));
+                            timeline_index = tm_grabbermove;                    
+                            timeline_loop = false;                                        
+                            if image_index &lt; totalframes timeline_running = true
+                            if image_index &gt;= totalframes
+                                {
+                                    timeline_running = false;
+                                    //timeline_loop = true;
+                                    //curpos = timeline_position;
+                                    image_speed = -0.6;                                                        
+                                    dragging = true;
+                                    locx = aimx + lengthdir_x(8, point_direction(aimx, aimy, x, y,));
+                                    locy = aimy + lengthdir_y(8, point_direction(aimx, aimy, x, y,));
+                                    script_execute(scr_grabberrocks, locx, locy);                                                                            
+                                }
+                        }
+                    if dragging == true &amp;&amp; reached == false         //move towards aim point
+                        {
+                            //timeline_index = tm_grabbermove;                                    
+                            //timeline_running = true;
+                            //timeline_loop = false;
+                            if image_index &lt;= 14
+                                {
+                                    obj_grabberblock.homing = true;
+                              
+                                }
+                            if movespeed &lt; maxspeed movespeed += acceleration;
+                            vx = (aimx - x);
+                            vy = (aimy - y);
+        
+                            val = sqr(vx) + sqr(vy);    
+                            if val &gt; 0 len = sqrt(val) else len = 0
+         
                             if len != 0
                                 {   
-                                    hvx = hvx / len;
-                                    hvy = hvy / len;
+                                    vx = vx / len;
+                                    vy = vy / len;
                                 }
-                            hvx *= firespeed;
-                            hvy *= firespeed;                    
+                            
+                            x += vx * movespeed
+                            y += vy * movespeed
+                            
+                            movedist = point_distance(x, y, aimx, aimy);
+                                if movedist &lt; grabproximity
+                                {
+                                    movespeed = 0;
+                                    image_speed = 0;
+                                    reached = true;
+                                    reverseangle = nodeid.image_angle + 180;    //back off in opposite direction of node facing
+                                    aimx = x + lengthdir_x(100, reverseangle);
+                                    aimy = y + lengthdir_y(100, reverseangle);
+                                    movespeed = 1.0;                            
+                                    timeline_index = tm_grabberidle;
+                                    timeline_running = true;
+                                    timeline_loop = true;                                                     
+                                }
+                        }
+                    if reached == true &amp;&amp; readytofire == false          //now back away a bit
+                        {
+                            inst = instance_create(x + random_range(-16, 16), y + random_range(-16, 16), obj_grabberblock);
                             with(inst)
                                 {
-                                    asteroidhit = 3;
-                                    hit_x = other.hitx;
-                                    hit_y = other.hity;
-                                    hitspeed_x = other.hvx;
-                                    hitspeed_y = other.hvy;
-                                    ext_x = other.extx;
-                                    ext_y = other.exty;                        
-                                }                   
-                            fired = true;           //asteroid bools are reset in the fire timeline!
-                        }                
+                                    target = other.id;
+                                    homing = true;
+                                    speed = 6.0;
+                                }
+                                
+                            target_angle = point_direction(x, y, obj_player.x, obj_player.y);       //aim at player                    
+                            vx = (aimx - x);
+                            vy = (aimy - y);
+        
+                            val = sqr(vx) + sqr(vy);    
+                            if val &gt; 0 len = sqrt(val) else len = 0
+         
+                            if len != 0
+                                {   
+                                    vx = vx / len;
+                                    vy = vy / len;
+                                }
+                            
+                            x += vx * movespeed
+                            y += vy * movespeed
+                            
+                            movedist = point_distance(x, y, aimx, aimy);
+                                if movedist &lt; 3
+                                    {
+                                        movespeed = 0;
+                                        readytofire = true;
+                                        inst = instance_create(x, y, obj_grabberasteroid);
+                                        with(obj_grabberblock)
+                                            {
+                                                //lifespan = 60;
+                                                target = other.inst;
+                                                speed = slowspeed;                                    
+                                            }                         
+                                    }                    
+                        
+                        }
+                    if readytofire = true &amp;&amp; fired == false
+                        {
+                            target_angle = point_direction(x, y, obj_player.x, obj_player.y);       //aim at player  
+                            firepause -= 1;
+                            if firepause &gt; -1          //extra trail of blocks as asteroid is fired
+                                {
+                                    inst = instance_create(x + random_range(-16, 16), y + random_range(-16, 16), obj_grabberblock);
+                                    asteroid = instance_nearest(x, y, obj_grabberasteroid)
+                                        with(inst)
+                                            {
+                                                target = other.asteroid;
+                                                homing = true;
+                                                speed = slowspeed; 
+                                            }
+                                }
+                            if firepause == 0 timeline_position = 0;
+                            if firepause &lt;= 0
+                                {                    
+                                    timeline_index = tm_grabberfire;                                    
+                                    timeline_running = true;
+                                    timeline_loop = false;
+                                    if image_index &gt;= 37
+                                    {
+                                    reverseangle = image_angle + 180;               //fire asteroid by applying a hit force to opposite side
+                                    hitx = x + lengthdir_x(32, reverseangle);
+                                    hity = y + lengthdir_y(32, reverseangle);
+                                    extx = x + lengthdir_x(48, reverseangle);
+                                    exty = y + lengthdir_y(48, reverseangle);                    
+                                    inst = instance_nearest(x, y, obj_grabberasteroid);
+                                    if instance_exists(inst)
+                                        {                     
+                                            hvx = (inst.x- hitx);
+                                            hvy = (inst.y - hity);
+                                            val = sqr(hvx) + sqr(hvy);    
+                                            if val &gt; 0 len = sqrt(val) else len = 0 
+                                            if len != 0
+                                                {   
+                                                    hvx = hvx / len;
+                                                    hvy = hvy / len;
+                                                }
+                                            hvx *= firespeed;
+                                            hvy *= firespeed;                    
+                                            with(inst)
+                                                {
+                                                    asteroidhit = 3;
+                                                    hit_x = other.hitx;
+                                                    hit_y = other.hity;
+                                                    hitspeed_x = other.hvx;
+                                                    hitspeed_y = other.hvy;
+                                                    ext_x = other.extx;
+                                                    ext_y = other.exty;                        
+                                                }
+                                        }                   
+                                    fired = true;           //asteroid bools are reset in the fire timeline!
+                                    }
+                                }                
+                        }
+                }                        
+        }    
+    }
+
+// death
+if currenthealth &lt;= 0
+{
+    scale -= 0.025;
+    image_xscale = scale;
+    image_yscale = scale;
+    for(i = 0; i &lt; 8; i +=1)
+        {
+            debrisangle = random(360);
+            debrislength = random_range(16, (50 * scale) + 16);
+            dx = x + lengthdir_x(debrislength, debrisangle);
+            dy = y + lengthdir_y(debrislength, debrisangle);
+            inst = instance_create(dx, dy, obj_grabberdebris);
+            with(inst)
+                {
+                    direction = other.debrisangle;
                 }
         }
-    
-    
-}
+    if scale &lt;= 0.1 dead = true;
+    if dead == true instance_destroy();
 
 }
+
+
+//---------------------------------------------------------------------
+}
+
+
+
 
 
 

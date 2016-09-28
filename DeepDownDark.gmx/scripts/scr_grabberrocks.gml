@@ -2,14 +2,14 @@
 
 //first find all blastblocks within range and remove hitpoints from them
 
-radius = 16;
+radius = 36;
 
 num = instance_number(obj_blastblock);
 
 for (var i = 0; i < num; i++ )
     {
         list[i] = instance_find(obj_blastblock, i)
-        if point_distance(locx, locy, list[i].x, list[i].y) <= radius
+        if point_distance(locx, locy, list[i].x + 4, list[i].y+ 4) <= radius
             {
                 //create debris tinyblocks
                 bx = list[i].x
@@ -21,9 +21,9 @@ for (var i = 0; i < num; i++ )
                             {
                                 sprite_index = alt_sprite;
                                 image_index = irandom_range(0,5);
-                                hitpoints -= 1;
+                                hitpoints -= random_range(1.5, 2.5);
                             }
-                        else
+                        if hitpoints <= 0
                             {
                                 instance_destroy();
                             }

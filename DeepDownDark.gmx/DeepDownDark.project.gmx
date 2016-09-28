@@ -139,6 +139,7 @@
       <sprite>sprites\spr_fsmouthcollision</sprite>
       <sprite>sprites\spr_fsmouthdebris</sprite>
       <sprite>sprites\spr_grabber</sprite>
+      <sprite>sprites\spr_grabberdebris</sprite>
     </sprites>
     <sprites name="debug">
       <sprite>sprites\spr_debug</sprite>
@@ -296,6 +297,7 @@
       <script>scripts\scr_asteroidburst.gml</script>
       <script>scripts\scr_sporeburst.gml</script>
       <script>scripts\scr_formlessmouthdebris.gml</script>
+      <script>scripts\scr_grabberdebris.gml</script>
     </scripts>
     <scripts name="Player">
       <script>scripts\scr_repairdamage.gml</script>
@@ -474,6 +476,7 @@
       <object>objects\obj_fsmouthcollision</object>
       <object>objects\obj_grabber</object>
       <object>objects\obj_enemynode</object>
+      <object>objects\obj_grabberdebris</object>
     </objects>
     <objects name="Inventory">
       <object>objects\obj_StatusPanel</object>

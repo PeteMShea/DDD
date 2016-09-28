@@ -125,7 +125,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 12;
+            <string>image_index = 13;
 </string>
           </argument>
         </arguments>
@@ -151,7 +151,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 13;
+            <string>image_index = 12;
 </string>
           </argument>
         </arguments>
@@ -232,7 +232,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 16;
+            <string>image_index = 15;
 </string>
           </argument>
         </arguments>
@@ -258,7 +258,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 17;
+            <string>image_index = 16;
 </string>
           </argument>
         </arguments>
@@ -284,7 +284,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 18;
+            <string>image_index = 17;
 </string>
           </argument>
         </arguments>
@@ -310,7 +310,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 19;
+            <string>image_index = 18;
 </string>
           </argument>
         </arguments>
@@ -336,7 +336,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 20;
+            <string>image_index = 19;
 </string>
           </argument>
         </arguments>
@@ -362,7 +362,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 21;
+            <string>image_index = 20;
 </string>
           </argument>
         </arguments>
@@ -388,7 +388,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 22;
+            <string>image_index = 21;
 </string>
           </argument>
         </arguments>
@@ -414,6 +414,32 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>image_index = 22;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </entry>
+  <entry>
+    <step>55</step>
+    <event>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>image_index = 23;
 </string>
           </argument>
@@ -422,7 +448,7 @@
     </event>
   </entry>
   <entry>
-    <step>54</step>
+    <step>57</step>
     <event>
       <action>
         <libid>1</libid>
@@ -448,7 +474,7 @@
     </event>
   </entry>
   <entry>
-    <step>56</step>
+    <step>59</step>
     <event>
       <action>
         <libid>1</libid>
@@ -474,7 +500,7 @@
     </event>
   </entry>
   <entry>
-    <step>58</step>
+    <step>61</step>
     <event>
       <action>
         <libid>1</libid>
@@ -500,7 +526,7 @@
     </event>
   </entry>
   <entry>
-    <step>60</step>
+    <step>63</step>
     <event>
       <action>
         <libid>1</libid>
@@ -526,7 +552,7 @@
     </event>
   </entry>
   <entry>
-    <step>62</step>
+    <step>65</step>
     <event>
       <action>
         <libid>1</libid>
@@ -552,7 +578,7 @@
     </event>
   </entry>
   <entry>
-    <step>64</step>
+    <step>67</step>
     <event>
       <action>
         <libid>1</libid>
@@ -578,7 +604,7 @@
     </event>
   </entry>
   <entry>
-    <step>66</step>
+    <step>69</step>
     <event>
       <action>
         <libid>1</libid>
@@ -604,7 +630,7 @@
     </event>
   </entry>
   <entry>
-    <step>68</step>
+    <step>71</step>
     <event>
       <action>
         <libid>1</libid>
@@ -630,7 +656,7 @@
     </event>
   </entry>
   <entry>
-    <step>117</step>
+    <step>120</step>
     <event>
       <action>
         <libid>1</libid>
