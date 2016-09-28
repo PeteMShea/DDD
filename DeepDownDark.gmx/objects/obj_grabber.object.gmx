@@ -50,9 +50,6 @@ movespeed = 0;
 acceleration = 1.0;
 grabproximity = 64;     //distance from node before grabber stops moving and completes grab
 
-
-
-
 readytofire = false;
 firepause = 60;     //pause before firing
 firespeed = 10.0;        //force multiplier for firing asteroids at player
@@ -232,7 +229,9 @@ if grabbing == true &amp;&amp; attacking == false         //grabbing is set in t
                     inst = instance_create(x + random_range(-16, 16), y + random_range(-16, 16), obj_grabberblock);
                     with(inst)
                         {
+                            target = other.id;
                             homing = true;
+                            speed = 6.0;
                         }
                         
                     target_angle = point_direction(x, y, obj_player.x, obj_player.y);       //aim at player                    
@@ -256,10 +255,12 @@ if grabbing == true &amp;&amp; attacking == false         //grabbing is set in t
                             {
                                 movespeed = 0;
                                 readytofire = true;
-                                instance_create(x, y, obj_grabberasteroid);
+                                inst = instance_create(x, y, obj_grabberasteroid);
                                 with(obj_grabberblock)
                                     {
-                                        lifespan = 60;                                    
+                                        //lifespan = 60;
+                                        target = other.inst;
+                                        speed = slowspeed;                                    
                                     }                         
                             }                    
                 

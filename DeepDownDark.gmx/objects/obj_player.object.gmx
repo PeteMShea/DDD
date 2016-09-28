@@ -749,8 +749,8 @@ if collisionoff == false &amp;&amp; global.autopilot &lt;= 0            //debug 
                                     hit_y = other.y;
                                     ext_x = other.extended_x;
                                     ext_y = other.extended_y;
-                                    hitspeed_x = other.speed_x;
-                                    hitspeed_y = other.speed_y;
+                                    hitspeed_x = other.speed_x + speed_x;       //player speed and asteroid speed combined
+                                    hitspeed_y = other.speed_y + speed_y;
                                     asteroidhit = 1;        // 1 = hit by player
                                 }
                             }

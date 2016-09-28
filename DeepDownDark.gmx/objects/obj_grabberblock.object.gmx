@@ -31,7 +31,7 @@ min_speed = 0.1;
 deceleration = 0.001;
 bouncecount = 0;
 debrisdamage = 0;     //how much damage collision with debris does
-lifespan = 1000;
+lifespan = random_range(80, 120);
 
 image_speed = 0;
 image_index = irandom_range(0,9);
@@ -45,9 +45,10 @@ image_angle = random(360);
 homing = false;
 aimx = x;
 aimy = y;
-once = false;
+count = 0;     //how often blocks move inside the grabber
+target = instance_nearest(x, y, obj_grabber);
 
-
+slowspeed = random_range(2, 5);
 
 
 </string>
@@ -110,16 +111,19 @@ if lifespan &lt;= random_range(-10, 0)
     
 if homing == true
 {
-    if once = false
+
+    if count &lt;= 0 
         {
-            once = true;
-            offsetx = random_range(-8, 8);
-            offsety = random_range(-8, 8);
-            speed = 6.0;          
+            count = 30;
+            offsetx = random_range(-12, 12);
+            offsety = random_range(-12, 12);                      
         }
-    aimx = obj_grabber.x + offsetx;
-    aimy = obj_grabber.y + offsety;
-    
+    if instance_exists(target)
+        {
+            aimx = target.x + offsetx;
+            aimy = target.y + offsety;
+        }
+    count -= 1;
     direction = point_direction(x, y, aimx, aimy);
 
 }

@@ -273,8 +273,12 @@ if asteroidhit != 0
         //now apply any force from the player collision
         speed_x -= vx * speedmult;
         speed_y -= vy * speedmult;
-        hitcounter = 30;
-        if asteroidhit == 1 asteroidhealth -= (abs(hitspeed_x) + abs(hitspeed_y)) * damagemult;
+        
+        if asteroidhit == 1         //hit by player
+            {
+                hitcounter = 30;
+                asteroidhealth -= (abs(hitspeed_x) + abs(hitspeed_y)) * damagemult;
+            }
         if asteroidhit == 2 asteroidhealth -= (abs(hitspeed_x) + abs(hitspeed_y)) * damagemult * obj_player.bulletdamage;        
         asteroidhit = 0;
     }
@@ -328,10 +332,10 @@ if asteroidhealth &lt;=0
             <kind>1</kind>
             <string>// hit anything else- push away
 
-speed_x = -speed_x * 0.9;
-speed_y = -speed_y * 0.9;
+speed_x = -speed_x * 0.8;
+speed_y = -speed_y * 0.8;
 
-asteroidhealth -= (abs(speed_x) + abs(speed_y));
+asteroidhealth -= (abs(speed_x) + abs(speed_y)) * damagemult;
 //show_debug_message(string(health));
 
 if asteroidhealth &lt;=0
@@ -367,8 +371,8 @@ if asteroidhealth &lt;=0
 {
     // hit anything else- push away
     
-    speed_x = -speed_x;
-    speed_y = -speed_y;
+    speed_x = -speed_x * 0.9;
+    speed_y = -speed_y * 0.9;
     
     asteroidhealth -= (abs(speed_x) + abs(speed_y));
     //show_debug_message(string(health));
