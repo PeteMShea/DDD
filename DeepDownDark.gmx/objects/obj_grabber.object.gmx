@@ -30,7 +30,7 @@
 
 image_speed = 0;    //animated with timeline
 
-rotspeed = 2;
+rotspeed = 3;
 
 grabbing = false;
 awake = false;
@@ -54,6 +54,9 @@ grabproximity = 64;     //distance from node before grabber stops moving and com
 
 
 readytofire = false;
+firepause = 60;     //pause before firing
+firespeed = 10.0;        //force multiplier for firing asteroids at player
+fired = false;
 attacking = false;
 
 
@@ -146,8 +149,8 @@ if grabbing == true &amp;&amp; attacking == false         //grabbing is set in t
                             aimy = nodeid.y;
                             nodefound = true;
                             target_angle = point_direction(x, y, aimx, aimy);                            
-                            show_debug_message("New node found at: " + string(aimx) + " , " + string(aimy) + " angle: " + string(target_angle));
-                            instance_create(aimx, aimy, obj_debug);                              
+                            //show_debug_message("New node found at: " + string(aimx) + " , " + string(aimy) + " angle: " + string(target_angle));
+                            //instance_create(aimx, aimy, obj_debug);                              
                         }
                 }
         }
@@ -188,7 +191,7 @@ if grabbing == true &amp;&amp; attacking == false         //grabbing is set in t
                     //timeline_index = tm_grabbermove;                                    
                     //timeline_running = true;
                     //timeline_loop = false;
-                    if image_index &lt;= 13
+                    if image_index &lt;= 14
                         {
                             obj_grabberblock.homing = true;
                       
@@ -215,7 +218,7 @@ if grabbing == true &amp;&amp; attacking == false         //grabbing is set in t
                             movespeed = 0;
                             image_speed = 0;
                             reached = true;
-                            reverseangle = image_angle + 180;
+                            reverseangle = nodeid.image_angle + 180;    //back off in opposite direction of node facing
                             aimx = x + lengthdir_x(100, reverseangle);
                             aimy = y + lengthdir_y(100, reverseangle);
                             movespeed = 1.0;                            
@@ -226,7 +229,7 @@ if grabbing == true &amp;&amp; attacking == false         //grabbing is set in t
                 }
             if reached == true &amp;&amp; readytofire == false          //now back away a bit
                 {
-                    inst = instance_create(x + random_range(-12, 12), y + random_range(-12, 12), obj_grabberblock);
+                    inst = instance_create(x + random_range(-16, 16), y + random_range(-16, 16), obj_grabberblock);
                     with(inst)
                         {
                             homing = true;
@@ -261,11 +264,45 @@ if grabbing == true &amp;&amp; attacking == false         //grabbing is set in t
                             }                    
                 
                 }
-            if readytofire = true
+            if readytofire = true &amp;&amp; fired == false
                 {
-                
-                
-                
+                    target_angle = point_direction(x, y, obj_player.x, obj_player.y);       //aim at player  
+                    firepause -= 1;
+                    if firepause &lt;= 0
+                        {                    
+                            timeline_index = tm_grabberfire;
+                            timeline_position = 0;
+                            timeline_running = true;
+                            timeline_loop = false;
+                            reverseangle = image_angle + 180;               //fire asteroid by applying a hit force to opposite side
+                            hitx = x + lengthdir_x(32, reverseangle);
+                            hity = y + lengthdir_y(32, reverseangle);
+                            extx = x + lengthdir_x(48, reverseangle);
+                            exty = y + lengthdir_y(48, reverseangle);                    
+                            inst = instance_nearest(x, y, obj_grabberasteroid);                     
+                            hvx = (inst.x- hitx);
+                            hvy = (inst.y - hity);
+                            val = sqr(hvx) + sqr(hvy);    
+                            if val &gt; 0 len = sqrt(val) else len = 0 
+                            if len != 0
+                                {   
+                                    hvx = hvx / len;
+                                    hvy = hvy / len;
+                                }
+                            hvx *= firespeed;
+                            hvy *= firespeed;                    
+                            with(inst)
+                                {
+                                    asteroidhit = 3;
+                                    hit_x = other.hitx;
+                                    hit_y = other.hity;
+                                    hitspeed_x = other.hvx;
+                                    hitspeed_y = other.hvy;
+                                    ext_x = other.extx;
+                                    ext_y = other.exty;                        
+                                }                   
+                            fired = true;           //asteroid bools are reset in the fire timeline!
+                        }                
                 }
         }
     

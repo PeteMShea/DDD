@@ -3,7 +3,7 @@
   <spriteName>spr_asteroiddebis</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-30</depth>
+  <depth>-40</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -115,7 +115,7 @@ if homing == true
             once = true;
             offsetx = random_range(-8, 8);
             offsety = random_range(-8, 8);
-            speed = 4.0;          
+            speed = 6.0;          
         }
     aimx = obj_grabber.x + offsetx;
     aimy = obj_grabber.y + offsety;

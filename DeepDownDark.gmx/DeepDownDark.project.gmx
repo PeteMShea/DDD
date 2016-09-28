@@ -549,6 +549,7 @@
   <timelines name="timelines">
     <timelines name="enemies">
       <timeline>timelines\tm_grabberidle</timeline>
+      <timeline>timelines\tm_grabberfire</timeline>
       <timeline>timelines\tm_grabbermove</timeline>
       <timeline>timelines\tm_formlessfire</timeline>
       <timeline>timelines\tm_formlessidle</timeline>
