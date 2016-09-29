@@ -9,7 +9,7 @@ num = instance_number(obj_blastblock);
 for (var i = 0; i < num; i++ )
     {
         list[i] = instance_find(obj_blastblock, i)
-        if point_distance(locx, locy, list[i].x + 4, list[i].y+ 4) <= radius
+        if point_distance(locx, locy, list[i].x + 4, list[i].y + 4) <= radius
             {
                 //create debris tinyblocks
                 bx = list[i].x
@@ -21,7 +21,7 @@ for (var i = 0; i < num; i++ )
                             {
                                 sprite_index = alt_sprite;
                                 image_index = irandom_range(0,5);
-                                hitpoints -= random_range(1.5, 2.5);
+                                hitpoints -= 3;     // random_range(1.5, 2.5);
                             }
                         if hitpoints <= 0
                             {

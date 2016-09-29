@@ -83,7 +83,7 @@ global.nextitemweapon = -1;       //whether to unlock a weapon or equipment next
 //pointer debug
 global.videocapture = false;
 
-global.sanityenabled = true;
+global.sanityenabled = false;
 
 if global.videocapture == true
 {

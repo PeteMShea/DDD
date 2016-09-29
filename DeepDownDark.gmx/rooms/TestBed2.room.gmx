@@ -3,8 +3,8 @@
   <caption></caption>
   <width>3840</width>
   <height>2160</height>
-  <vsnap>2</vsnap>
-  <hsnap>2</hsnap>
+  <vsnap>32</vsnap>
+  <hsnap>32</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
@@ -51,7 +51,7 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_player" x="1600" y="96" name="inst_6F71B87E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="obj_player" x="1472" y="320" name="inst_6F71B87E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
     <instance objName="oLightSource" x="1056" y="202" name="inst_2CFDE5D7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_newblock" x="704" y="768" name="inst_8525B2B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_newblock" x="128" y="832" name="inst_E2CB9A39" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -243,7 +243,6 @@
     <instance objName="obj_enemynode" x="988" y="618" name="inst_92DFC4EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
     <instance objName="obj_enemynode" x="472" y="614" name="inst_F5702B53" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
     <instance objName="obj_enemynode" x="478" y="278" name="inst_B2B599E7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_grabber" x="722" y="460" name="inst_C7915CC6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_borderblock" x="0" y="0" name="inst_8E7F302A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_borderblock" x="640" y="960" name="inst_5D3A9DB3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_borderblock" x="512" y="960" name="inst_1E0A1D0A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -276,6 +275,7 @@
     <instance objName="obj_enemynode" x="360" y="278" name="inst_010BD910" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
     <instance objName="obj_enemynode" x="426" y="278" name="inst_2C6D1B56" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
     <instance objName="obj_enemynode" x="1050" y="616" name="inst_2E43BB44" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_spiker" x="992" y="640" name="inst_EF0B301D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

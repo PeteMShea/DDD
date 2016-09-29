@@ -140,6 +140,8 @@
       <sprite>sprites\spr_fsmouthdebris</sprite>
       <sprite>sprites\spr_grabber</sprite>
       <sprite>sprites\spr_grabberdebris</sprite>
+      <sprite>sprites\spr_spiker</sprite>
+      <sprite>sprites\spr_spike</sprite>
     </sprites>
     <sprites name="debug">
       <sprite>sprites\spr_debug</sprite>
@@ -477,6 +479,9 @@
       <object>objects\obj_grabber</object>
       <object>objects\obj_enemynode</object>
       <object>objects\obj_grabberdebris</object>
+      <object>objects\obj_spiker</object>
+      <object>objects\obj_spikermask</object>
+      <object>objects\obj_spike</object>
     </objects>
     <objects name="Inventory">
       <object>objects\obj_StatusPanel</object>
