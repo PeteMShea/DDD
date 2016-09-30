@@ -216,24 +216,20 @@ if gold != noone
         }
     }
 
-    
-        
-/*
-darkspawn = noone;
-if collided == false darkspawn = instance_place(x, y, obj_darkspawn);
-if darkspawn != noone
+spiker = noone;
+spiker = instance_place(x, y, obj_spiker);
+if spiker != noone
     {
-        collided = true;
-        with(darkspawn) 
+        with(spiker) 
             {
                 if currenthealth &gt;0
                 {
                 
-                //create debris tinyblocks
+                //create debris particles
+                colour = make_colour_rgb(160, 178, 161);                
                 bx = other.x
                 by = other.y
-                script_execute(scr_blockburstvfx, bx, by);
-                
+                script_execute(scr_particleburst, bx, by, colour);                
                 currenthealth -= obj_player.bulletdamage;                
                 }           
             }
@@ -247,7 +243,7 @@ if darkspawn != noone
         }
     }    
 
-*/    
+    
     
     
 gaunt = noone;

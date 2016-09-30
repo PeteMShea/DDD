@@ -141,6 +141,7 @@
       <sprite>sprites\spr_grabber</sprite>
       <sprite>sprites\spr_grabberdebris</sprite>
       <sprite>sprites\spr_spiker</sprite>
+      <sprite>sprites\spr_spikermask</sprite>
       <sprite>sprites\spr_spike</sprite>
     </sprites>
     <sprites name="debug">

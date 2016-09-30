@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>30</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_block</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -28,7 +28,7 @@
             <string>// initialise
 
 image_speed = 0;
-image_index = 1;
+image_index = 0;
 
 inst = instance_create(x, y, obj_spikermask);
 angle = image_angle;
@@ -40,7 +40,8 @@ with (inst)
 }
 once = false;
 awake = false;
-awakerange = 900;
+spikesready = false;
+awakerange = 600;
 spikeangle[1] = 52;
 spikeangle[2] = 36;
 spikeangle[3] = 18;
@@ -50,12 +51,17 @@ spikeangle[6] = 324;
 spikeangle[7] = 308;
 fired = false;
 
+zoneoffset = 100;       //how far 'above' spiker to test circular firerange against
+firerange = 250;
+firespeed = 2;
 
-firerange = 300;
-firespeed = 1;
-
-sleepmaxtime = 600;    //how quickly reloacs
+sleepmaxtime = 500;    //how quickly reloads
 sleeptime = sleepmaxtime;
+
+maxhealth = 40;
+currenthealth = maxhealth;
+dead = false;
+
 </string>
           </argument>
         </arguments>
@@ -84,37 +90,41 @@ if global.pause == false
 //-------------------------------------------------------------
 if once == false
     {
-        zonex = x + lengthdir_x(200, image_angle);
-        zoney = y + lengthdir_y(200, image_angle);
+        zonex = x + lengthdir_x(zoneoffset, image_angle);
+        zoney = y + lengthdir_y(zoneoffset, image_angle);
         once = true;
     
     }
 
 
 
-if awake == false
+if awake == false &amp;&amp; dead == false
 {
     playerdist = point_distance(x, y, obj_player.x, obj_player.y);
     if playerdist &lt;= awakerange
         {
-            awake = true;
-            for(i = 1; i &lt; 8; i+=1)         //spawn spikes at various angles
-                {
-                    angle = spikeangle[i] + image_angle;
-                    spike[i] = instance_create(x + lengthdir_x(70, angle), y + lengthdir_y(70, angle), obj_spike);
-                        with(spike[i])
-                            {
-                                image_angle = other.angle;
-                            }
-                }
-        
+            awake = true;        
         }
+}
+
+if awake == true &amp;&amp; spikesready == false &amp;&amp; dead == false
+{
+    for(i = 1; i &lt; 8; i+=1)         //spawn spikes at various angles
+        {
+            angle = spikeangle[i] + image_angle;
+            spike[i] = instance_create(x + lengthdir_x(60, angle), y + lengthdir_y(60, angle), obj_spike);
+            with(spike[i])
+                {
+                    image_angle = other.angle;
+                }
+        }
+    spikesready = true;
 }
 
 if awake == true &amp;&amp; fired == false
 {
     playerdist = point_distance(zonex, zoney, obj_player.x, obj_player.y);
-    if playerdist &lt;= firerange
+    if playerdist &lt;= firerange || dead == true
         {
             for(i = 1; i &lt; 8; i+=1)         //fire spikes at various angles using force from behind
                 {                                                               
@@ -130,18 +140,47 @@ if awake == true &amp;&amp; fired == false
 
 }
 
-if fired == true            //reload after sleeptime has passed
+if fired == true &amp;&amp; dead == false            //reload after sleeptime has passed
     {
         sleeptime -=1;
-        if sleeptime &lt;= 0
+        if sleeptime &lt;= 0 &amp;&amp; sleeptime &gt; -10
             {
                 awake = false;
+                spikesready = false;
                 fired = false;
                 sleeptime = sleepmaxtime;    
             }
     }
 
 
+// damage and death
+if currenthealth &lt;= maxhealth * 0.75 &amp;&amp; currenthealth &gt; maxhealth * 0.5 image_index = 1;
+if currenthealth &lt;= maxhealth * 0.5 &amp;&amp; currenthealth &gt; maxhealth * 0.25 image_index = 2;
+if currenthealth &lt;= maxhealth * 0.25 &amp;&amp; currenthealth &gt; 0 image_index = 3;
+
+if currenthealth &lt;= 0 &amp;&amp; dead == false
+{
+    image_index = 4;
+    //inst = instance_nearest(x, y, obj_spikermask)
+    //with (inst) instance_destroy();
+    if instance_exists(obj_spike) obj_spike.fire = true;      //fire any remaining spikes so they clean up
+    colour = make_colour_rgb(160, 178, 161);
+    for (i = 0; i &lt;8; i+=1)            //spawn debris
+        {
+            sx = x + lengthdir_x(30, image_angle);
+            sy = y + lengthdir_y(30, image_angle);
+            bx = sx + random_range(-30, 30);
+            by = sy + random_range(-30, 30);
+            script_execute(scr_grabberdebris, bx, by);
+            bx = sx + random_range(-30, 30);
+            by = sy + random_range(-30, 30);            
+            script_execute(scr_particleburst, bx, by, colour);
+            bx = sx + random_range(-30, 30);
+            by = sy + random_range(-30, 30);            
+            script_execute(scr_particleburst, bx, by, colour);                       
+        }
+    dead = true;
+}
 
 
 

@@ -3,9 +3,9 @@
   <type>0</type>
   <xorig>0</xorig>
   <yorigin>45</yorigin>
-  <colkind>0</colkind>
+  <colkind>1</colkind>
   <coltolerance>0</coltolerance>
-  <sepmasks>-1</sepmasks>
+  <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
   <bbox_left>0</bbox_left>
   <bbox_right>49</bbox_right>
@@ -20,10 +20,10 @@
   <width>54</width>
   <height>90</height>
   <frames>
-    <frame index="0">images\spr_spiker_0.png</frame>
-    <frame index="1">images\spr_spiker_1.png</frame>
-    <frame index="2">images\spr_spiker_2.png</frame>
-    <frame index="3">images\spr_spiker_3.png</frame>
-    <frame index="4">images\spr_spiker_4.png</frame>
+    <frame index="0">images\spr_spikermask_0.png</frame>
+    <frame index="1">images\spr_spikermask_1.png</frame>
+    <frame index="2">images\spr_spikermask_2.png</frame>
+    <frame index="3">images\spr_spikermask_3.png</frame>
+    <frame index="4">images\spr_spikermask_4.png</frame>
   </frames>
 </sprite>

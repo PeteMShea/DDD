@@ -28,11 +28,10 @@
             <string>
 // initialise
 acceleration = 0.2;       //acceleration
-maxspeed = 5;
+maxspeed = 8;
 speedmult = 0;
 damage = 10;     //damage to player
-asteroidhealth = 10;
-gold = 0;
+
 
 speed_x = 0;
 speed_y = 0;
@@ -45,7 +44,7 @@ scaleinc = 0.1;
 
 hitplayer = false;
 hit = false;
-persisttime = 300;      //how long a stuck spike lives for before fading
+persisttime = random_range(180, 240);      //how long a stuck spike lives for before fading
 fade = false;
 alphafade = 0.1;
 image_alpha = 1.0;
@@ -53,6 +52,8 @@ image_alpha = 1.0;
 
 hitangle = 0;
 hitdistance = 0;
+launchcounter = 30;      //frames to allow spikes to clear any collision at fire
+
 
 </string>
           </argument>
@@ -144,10 +145,12 @@ if fired == true &amp;&amp; hit == false
 {
     hx = x + (vx * speedmult); // + lengthdir_x(70, image_angle) + (vx * speedmult);
     hy = y + (vy * speedmult); // + lengthdir_y(70, image_angle) + (vy * speedmult);
+    
+    launchcounter -=1 ;
 
     if collision_point(hx, hy, obj_player, true, true)
         {        
-            instance_create(hx, hy, obj_debug);
+            //instance_create(hx, hy, obj_debug);
             hit = true;
             angle = image_angle;            
             strikeangle = point_direction(obj_player.x, obj_player.y, hx, hy);
@@ -161,7 +164,7 @@ if fired == true &amp;&amp; hit == false
             
             hitplayer = true;
         }
-    else if collision_point(hx, hy, obj_block, false, true)
+    if launchcounter &lt;= 0 &amp;&amp; collision_point(hx, hy, obj_block, false, true)
         {
             bx = hx;
             by = hy;  
@@ -189,8 +192,9 @@ if hit == true
             {
                 for(i = 0; i &lt; 8; i += 1)
                     {
-                        bx = x + lengthdir_x(10 * i, image_angle);
-                        by = y + lengthdir_y(10 * i, image_angle);
+                        bx = x - lengthdir_x(8 * i, image_angle);
+                        by = y - lengthdir_y(8 * i, image_angle);
+                        colour = make_colour_rgb(160, 178, 161);
                         script_execute(scr_particleburst, bx, by)
                     }
                 fade = true;     
