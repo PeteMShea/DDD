@@ -345,12 +345,20 @@ for (u = 0; u < gridsize; u +=1)
                     {                        
                                                 
                         ballplantdensity = ballplantdensitymin + (ballplantdensityrange * ((walkblock[u,v]- totalwalkblocks * ballplantstartblock)/(totalwalkblocks * ballplantendblock - totalwalkblocks * ballplantstartblock)))
-                        show_debug_message("Adding ballplants at Walkblock: " + string(walkblock[u,v]) + " with chance: " + string(ballplantdensity));                        
+                        if ballplantdensity > 0 show_debug_message("Adding ballplants at Walkblock: " + string(walkblock[u,v]) + " with chance: " + string(ballplantdensity));                        
                     }
                 else ballplantdensity = 0;            
+
+                //SPIKERS
+                if walkblock[u, v] > 0 && walkblock[u, v] >= (totalwalkblocks * spikerstartblock) && walkblock[u, v] <= (totalwalkblocks * spikerendblock)    
+                    {                        
+                                                
+                        spikerdensity = spikerdensitymin + (spikerdensityrange * ((walkblock[u,v]- totalwalkblocks * spikerstartblock)/(totalwalkblocks * spikerendblock - totalwalkblocks * spikerstartblock)))
+                        if spikerdensity > 0 show_debug_message("Adding spikers at Walkblock: " + string(walkblock[u,v]) + " with chance: " + string(spikerdensity));                        
+                    }
+                else spikerdensity = 0;                             
             
-            
-            script_execute(scr_genBlocks, u, v, bigblock[u,v], gridsize, starthuge, endhuge, ballplantdensity)
+            script_execute(scr_genBlocks, u, v, bigblock[u,v], gridsize, starthuge, endhuge, ballplantdensity, spikerdensity)
 
 
              
@@ -526,10 +534,14 @@ if  s != 2 && bigblock [u, v+1] > 0 s = 1
 // Array Block Guide
 // 0 = empty
 // 1 = block
-// 3 = enemy on south edge
-// 4 = enemy on north edge
-// 5 = enemy on east edge
-// 6 = enemy on west edge
+// 3 = ballplant on south edge
+// 4 = ballplant on north edge
+// 5 = ballplant on east edge
+// 6 = ballplant on west edge
+// 7 = spiker on south edge
+// 8 = spiker on north edge
+// 9 = spiker on east edge
+// 10 = spiker on west edge
 
 //temp
 bn = 0;
@@ -640,7 +652,12 @@ if bigblock[u , v] > 0
                                         
                                     }
                                          enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, c + v * 12] = 4     //if last block is empty and random chance add enemy
+                                         if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, c + v * 12] = 4     //if last block is empty and random chance add ballplant
+                                         if  c == clampmax && enemyspawn <= spikerdensity
+                                         {
+                                            spikerdensity = 0;      //one per huge block
+                                            block[column + u * 12, c + v * 12] = 8     //if last block is empty & top and random chance add spiker
+                                         }
                                     }                    
                     }                
 
@@ -658,7 +675,12 @@ if bigblock[u , v] > 0
                                         if block[column + u * 12,(11-c) + v * 12] == 0 block[column + u * 12, (11-c) + v * 12] = 1     //if block is empty add one
                                     }
                                          enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, (11-c) + v * 12] = 3     //if last block is empty and random chance add enemy
+                                         if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, (11-c) + v * 12] = 3     //if last block is empty and random chance add ballplant
+                                         if  c == clampmax && enemyspawn <= spikerdensity 
+                                         {
+                                            spikerdensity = 0;      //one per huge block
+                                            block[column + u * 12, (11-c) + v * 12] = 7     //if last block is empty and random chance add spiker
+                                         }
                             }                    
                     }                  
 
@@ -677,7 +699,12 @@ if bigblock[u , v] > 0
                                         
                                     }
                                          enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= ballplantdensity block[(11-c) + u * 12, row + v * 12] = 5     //if last block is empty and random chance add enemy
+                                         if  c < 11 && enemyspawn <= ballplantdensity block[(11-c) + u * 12, row + v * 12] = 5     //if last block is empty and random chance add ballplant
+                                         if  c == clampmax && enemyspawn <= spikerdensity
+                                         {
+                                            spikerdensity = 0;      //one per huge block
+                                            block[(11-c) + u * 12, row + v * 12] = 9     //if last block is empty and random chance add spiker
+                                         }
                                     }                    
                     } 
 
@@ -696,7 +723,12 @@ if bigblock[u , v] > 0
                                         
                                     }
                                          enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= ballplantdensity block[c + u * 12, row + v * 12] = 6     //if last block is empty and random chance add enemy
+                                         if  c < 11 && enemyspawn <= ballplantdensity block[c + u * 12, row + v * 12] = 6     //if last block is empty and random chance add ballplant
+                                         if  c == clampmax && enemyspawn <= spikerdensity
+                                         {
+                                            spikerdensity = 0;      //one per huge block
+                                            block[c + u * 12, row + v * 12] = 10     //if last block is empty and random chance add spiker
+                                         }
                                     }                    
                     }                                         
 
@@ -717,7 +749,12 @@ if bigblock[u , v] > 0
                                         
                                     }
                                          enemyspawn = random(1);
-                                         if enemyspawn <= ballplantdensity block[column + u * 12, c + v * 12] = 4     //if last block is empty and random chance add enemy
+                                         if enemyspawn <= ballplantdensity block[column + u * 12, c + v * 12] = 4     //if last block is empty and random chance add ballplant
+                                         if c == clampmax && enemyspawn <= spikerdensity
+                                         {
+                                            spikerdensity = 0;      //one per huge block
+                                            block[column + u * 12, c + v * 12] = 8     //if last block is empty and random chance add spiker
+                                         } 
                                    
 
                                 clampmax = (12 - count - mingap)
@@ -730,7 +767,12 @@ if bigblock[u , v] > 0
                                         
                                     }
                                          enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, (11-c) + v * 12] = 3     //if last block is empty and random chance add enemy
+                                         if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, (11-c) + v * 12] = 3     //if last block is empty and random chance add ballplant
+                                         if  c == clampmax && enemyspawn <= spikerdensity
+                                         {
+                                            spikerdensity = 0;      //one per huge block
+                                            block[column + u * 12, (11-c) + v * 12] = 7     //if last block is empty and random chance add spiker
+                                         }
                               }                         
                     }                                         
 
@@ -745,13 +787,18 @@ if bigblock[u , v] > 0
                                 count = count + irandom_range(-1, 2)
                                 if row <= 1 || row >= 10 clampmax = 2
                                 count = clamp(count, minspike, clampmax)
-                        for (c = 0; c < count; c +=1)
+                                for (c = 0; c < count; c +=1)
                                     {
                                         if block[c+ u * 12,row + v * 12] == 0 block[c + u * 12, row + v * 12] = 1     //if block is empty add one
                                         
                                     }
                                          enemyspawn = random(1);
-                                         if enemyspawn <= ballplantdensity block[c + u * 12, row + v * 12] = 6     //if last block is empty and random chance add enemy
+                                         if enemyspawn <= ballplantdensity block[c + u * 12, row + v * 12] = 6     //if last block is empty and random chance add ballplant
+                                         if c == clampmax && enemyspawn <= spikerdensity
+                                         {
+                                            spikerdensity = 0;      //one per huge block
+                                            block[c + u * 12, row + v * 12] = 10     //if last block is empty and random chance add spiker
+                                         }   
                             
                                 clampmax = (12 - count - mingap)
                                 oppositecount = oppositecount + irandom_range(-1, 2)
@@ -763,7 +810,12 @@ if bigblock[u , v] > 0
                                         
                                     }
                                          enemyspawn = random(1);
-                                         if  c < 11 && enemyspawn <= ballplantdensity block[(11-c) + u * 12, row + v * 12] = 5     //if last block is empty and random chance add enemy
+                                         if  c < 11 && enemyspawn <= ballplantdensity block[(11-c) + u * 12, row + v * 12] = 5     //if last block is empty and random chance add ballplant
+                                         if  c == clampmax && enemyspawn <= spikerdensity
+                                         {
+                                            spikerdensity = 0;      //one per huge block
+                                            block[(11-c) + u * 12, row + v * 12] = 9     //if last block is empty and random chance add spiker
+                                         }    
                             }                     
                     }                     
 
@@ -785,6 +837,7 @@ if bigblock[u , v] > 0
                                     }
                                          //enemyspawn = random(1);
                                          //if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, c + v * 12] = 4     //if last block is empty and random chance add enemy
+                                         
                                     }                    
                     } 
                                         
@@ -966,7 +1019,7 @@ if bigblock[u , v] > 0
                                               
                   
                                         }
-                                if block[bu + u * 12, bv + v * 12] == 4      //enemy on north side facing down
+                                if block[bu + u * 12, bv + v * 12] == 4      //ballplant on north side facing down
                                         {
                                             with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  + 32, v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 32 , obj_ballplant))
                                                 {
@@ -975,7 +1028,7 @@ if bigblock[u , v] > 0
                                                 }
 
                                         }
-                                if block[bu + u * 12, bv + v * 12] == 5      //enemy on west side facing east
+                                if block[bu + u * 12, bv + v * 12] == 5      //ballplant on west side facing east
                                         {
                                           with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  + 32 , v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 32, obj_ballplant))
                                                 {
@@ -983,13 +1036,49 @@ if bigblock[u , v] > 0
                                                 }
 
                                         }
-                                if block[bu + u * 12, bv + v * 12] == 6      //enemy on east side facing west
+                                if block[bu + u * 12, bv + v * 12] == 6      //ballplant on east side facing west
                                         {
                                           with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  + 32 , v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 32, obj_ballplant))
                                                 {
                                                 image_angle = 0;
                                                 }
+                                         }       
+                                                
+                                if block[bu + u * 12, bv + v * 12] == 7      //spiker on south side facing up
+                                    {
 
+                                        with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  +32, v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 64, obj_spiker))
+                                                {
+                                                    image_angle = 90;
+                                                }
+                                              
+                  
+                                        }
+                                if block[bu + u * 12, bv + v * 12] == 8      //spiker on north side facing down
+                                        {
+                                            with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  + 32, v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 0 , obj_spiker))
+                                                {
+                                                    image_angle = 270;
+                                                    
+                                                }
+
+                                        }
+                                if block[bu + u * 12, bv + v * 12] == 9      //spiker on west side facing east
+                                        {
+                                          with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  + 64 , v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 32, obj_spiker))
+                                                {
+                                                image_angle = 180;
+                                                }
+
+                                        }
+                                if block[bu + u * 12, bv + v * 12] == 10      //spiker on east side facing west
+                                        {
+                                          with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  + 0 , v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 32, obj_spiker))
+                                                {
+                                                image_angle = 0;
+                                                }
+                                                
+                                                
                                         }
                                 if block[bu + u * 12, bv + v * 12] == 99      //debug
                                         {

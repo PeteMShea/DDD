@@ -1,4 +1,5 @@
 // create spines and debris
+colour = c_lime;
 
 spawnangle = random_range(-10, 10);
 
@@ -23,7 +24,7 @@ for (ix = 0; ix < 2; ix +=1)
     for (i = 0; i < 2; i += 1)
         {
             instance_create (bx, by, obj_sporedebris);
-            script_execute(scr_particleburst, bx, by);
+            script_execute(scr_particleburst, bx, by, colour);
             bx += 4
         }
         bx -= 16 * global.RM

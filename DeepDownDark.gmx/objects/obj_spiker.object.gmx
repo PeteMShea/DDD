@@ -58,7 +58,7 @@ firespeed = 2;
 sleepmaxtime = 500;    //how quickly reloads
 sleeptime = sleepmaxtime;
 
-maxhealth = 40;
+maxhealth = 20;
 currenthealth = maxhealth;
 dead = false;
 
