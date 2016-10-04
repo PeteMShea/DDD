@@ -52,6 +52,11 @@
         <sprite>sprites\spr_tinyblock</sprite>
         <sprite>sprites\spr_WreckA</sprite>
         <sprite>sprites\spr_WreckDebris</sprite>
+        <sprite>sprites\sprtemplemirror</sprite>
+        <sprite>sprites\spr_templemirrorinner</sprite>
+      </sprites>
+      <sprites name="temple">
+        <sprite>sprites\spr_templenewblock</sprite>
       </sprites>
       <sprite>sprites\spr_block</sprite>
       <sprite>sprites\spr_newblock</sprite>
@@ -401,10 +406,13 @@
         <object>objects\obj_WreckDebris</object>
         <object>objects\obj_grabberblock</object>
         <object>objects\obj_grabberasteroid</object>
+        <object>objects\obj_templemirror</object>
+        <object>objects\obj_templemirrorinner</object>
       </objects>
       <object>objects\obj_block</object>
       <object>objects\obj_hugeblock</object>
       <object>objects\obj_newblock</object>
+      <object>objects\obj_templenewblock</object>
       <object>objects\obj_weeblock</object>
       <object>objects\obj_weeblock_N</object>
       <object>objects\obj_weeblock_S</object>
@@ -575,6 +583,7 @@
     <room>rooms\room_A0</room>
     <room>rooms\TestBed</room>
     <room>rooms\TestBed2</room>
+    <room>rooms\TempleRoom</room>
     <room>rooms\room2</room>
     <room>rooms\room0</room>
   </rooms>
