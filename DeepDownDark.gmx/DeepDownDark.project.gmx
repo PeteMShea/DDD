@@ -57,6 +57,7 @@
       </sprites>
       <sprites name="temple">
         <sprite>sprites\spr_templenewblock</sprite>
+        <sprite>sprites\spr_templeglyphblock</sprite>
       </sprites>
       <sprite>sprites\spr_block</sprite>
       <sprite>sprites\spr_newblock</sprite>
@@ -286,6 +287,8 @@
     <background>background\tileset_newblocks</background>
     <background>background\tileset_darknewblocks</background>
     <background>background\tileset_hugeblocks</background>
+    <background>background\tileset_templeglyphs</background>
+    <background>background\tileset_temple64x64</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -413,6 +416,7 @@
       <object>objects\obj_hugeblock</object>
       <object>objects\obj_newblock</object>
       <object>objects\obj_templenewblock</object>
+      <object>objects\obj_templeglyphblock</object>
       <object>objects\obj_weeblock</object>
       <object>objects\obj_weeblock_N</object>
       <object>objects\obj_weeblock_S</object>
