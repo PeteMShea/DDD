@@ -373,7 +373,127 @@ for (v = 0; v < 4; v +=1)
 
     }
 
-show_debug_message("Wee Blocks done");    
+    
+//now rebuild array and go through all of the newblocks in lower half of map adding weeblocks
+
+// Initialise 98 x 36 Block Array- (0 = no block)
+xblocks = 98;
+yblocks = 36 
+bu = 0;
+bv = 0;
+for (i = 0; i < yblocks+1; i +=1)
+    {
+        repeat(xblocks+1)
+            {
+                block[bu, bv] = 0;
+                //show_debug_message(string(bu) + " , " + string(bv));
+                bu += 1;
+            }
+            bu = 0;        
+            bv += 1;          
+    }        
+        
+// now iterate through the array assigning big block values
+bx = 0;
+by = 0;
+yoffset = 1664;
+
+for (bx = 0; bx < xblocks; bx +=1)
+    {
+        for (by = 0; by < yblocks; by +=1)
+        {
+                inst = instance_position(bx * 64 + 8,yoffset + by * 64 + 8, obj_newblock);
+                if inst != noone
+                    {
+                        block[bx,by] = 1;
+                            
+                    }
+                if instance_position(bx * 64 + 8,yoffset + by * 64 + 8, obj_borderblock) != noone
+                {                
+                    block[bx,by] = 1;
+                  
+                }
+                //show_debug_message("Block " + string(bx) + " , " + string(by) + " : " + string(block[bx,by]));                        
+            }       
+    }
+
+      
+            
+show_debug_message("Lower half of map New Blocks assigned");
+
+// iterate through all the blocks in lower half of map and calculate neigbour values for them
+goldcount = 0;
+
+bx = 1;
+by = 1;
+
+for (bx = 1; bx < xblocks; bx +=1)
+    {
+        for (by = 0; by < yblocks; by +=1)
+        {
+
+            if block[bx, by] == 0
+            {
+                //show_debug_message("Block " + string(bx) + " , " + string(by));
+                //instance_create( bx * 64, by * 64, obj_debug);
+                // found an empty square- now check for neighbours
+                var n;
+                var e;
+                var s;
+                var w;
+                n = 0;
+                e = 0;
+                s = 0;
+                w = 0;
+                
+                if bx > 0 && block[bx - 1, by] == 1 w = 1   else w = 0
+                if bx < xblocks && block[bx + 1, by] == 1 e = 1   else e = 0            
+                if by > 0 && block[bx, by - 1] == 1 n = 1   else n = 0 
+                if by < xblocks && block[bx, by + 1] == 1 s = 1   else s = 0
+                if by < 12 && bx < 86               //this is the third row of filled huge blocks- up to last column
+                    {
+                        n = 0;
+                        e = 0;
+                        s = 0;
+                        w = 0;                                                            
+                    }
+        
+        
+        if w !=0 || e !=0 || n !=0 || s !=0                             // we have at least one external edge- so time to add blocks inside             
+            {
+              // first check adjacent squares and change the array value to represent neighbouring squares- empty squares with wee blocks use negative array values
+                if n != 0 && e == 0 && s == 0 && w == 0 block [bx, by] = -1     // North only
+                if n == 0 && e == 0 && s != 0 && w == 0 block [bx, by] = -2     // South only          
+                if n == 0 && e != 0 && s == 0 && w == 0 block [bx, by] = -3     // East only                    
+                if n == 0 && e == 0 && s == 0 && w != 0 block [bx, by] = -4     // West only                   
+                if n != 0 && e == 0 && s != 0 && w == 0 block [bx, by] = -5     // North and South                    
+                if n == 0 && e != 0 && s == 0 && w != 0 block [bx, by] = -6     // East and West                  
+                if n != 0 && e == 0 && s == 0 && w != 0 block [bx, by] = -7     // North and West   
+                if n != 0 && e != 0 && s == 0 && w == 0 block [bx, by] = -8     // North and East   
+                if n == 0 && e == 0 && s != 0 && w != 0 block [bx, by] = -9     // South and West   
+                if n == 0 && e != 0 && s != 0 && w == 0 block [bx, by] = -10     // South and East                   
+                if n != 0 && e != 0 && s != 0 && w == 0 block [bx, by] = -11     // North, South and East                    
+                if n != 0 && e != 0 && s == 0 && w != 0 block [bx, by] = -12     // North, East and West
+                if n == 0 && e != 0 && s != 0 && w != 0 block [bx, by] = -13     // South, East and West
+                if n != 0 && e == 0 && s != 0 && w != 0 block [bx, by] = -14     // North, South and West             
+            
+                if block [bx, by] < 0                             // we have at least one external edge- so time to add blocks inside             
+                    {                
+                        //instance_create( 64 + bx * 32, 64 + by * 32, obj_debug);
+                        //show_debug_message("wee block space found- " + string(bx) + " , " + string(by) + "- n:" + string(n) + " e: " + string(e) + " s: " + string(s) + " w: " + string(w) + " , value:" + string(block[bx,by]));
+                        
+                        script_execute(scr_genWeeBlocksSingle, bx, by, block[bx,by], yoffset);
+                
+                    }
+            }
+        }
+
+    }
+}
+
+    
+    
+show_debug_message("Lower half of map wee Blocks done");    
 
 
 //Add light source for normal maps before adding asteroids

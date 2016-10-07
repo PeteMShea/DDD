@@ -101,8 +101,8 @@ if tt &lt;= 0
 // instance deactivation
   //instance_activate_all();
 
-//  instance_deactivate_region(view_xview[0],view_yview[0], view_wview[0],view_hview[0],false,true);
-//  instance_activate_region(view_xview[0]-64, view_yview[0]-64, view_wview[0]+128, view_hview[0]+128, true);
+  instance_deactivate_region(view_xview[0],view_yview[0], view_wview[0],view_hview[0],false,true);
+  instance_activate_region(view_xview[0]-64, view_yview[0]-64, view_wview[0]+128, view_hview[0]+128, true);
   
                         
 alarm_set(0, 15);

@@ -151,7 +151,8 @@ for (bx = 1; bx < 30; bx +=1)
                         //instance_create( 64 + bx * 32, 64 + by * 32, obj_debug);
                         //show_debug_message("wee block space found- " + string(bx) + " , " + string(by) + "- n:" + string(n) + " e: " + string(e) + " s: " + string(s) + " w: " + string(w) + " , value:" + string(block[bx,by]));
                         if bx >= 17 && bx <=20 && by >= 12 && by <=16 goldcount = round(random_range(goldspread/5, goldspread)) else goldcount = 0
-                        script_execute(scr_genWeeBlocksSingle, bx, by, block[bx,by]);
+                        yoffset = 0;
+                        script_execute(scr_genWeeBlocksSingle, bx, by, block[bx,by], yoffset);
                 
                     }
             }
@@ -1082,7 +1083,7 @@ blocktest = block [bx, by]
                                             if weeblock[wbu , wbv] != 0
                                                 {
                                                     type = weeblock[wbu , wbv];
-                                                    inst = instance_create( 64 * bx + wbu * 8 , 64 * by + wbv * 8 , weeblocktype[type]);
+                                                    inst = instance_create( 64 * bx + wbu * 8 ,yoffset + 64 * by + wbv * 8 , weeblocktype[type]);
                                                         
                                                     //show_debug_message("adding weeblock " + string(type));
                                                     //instance_deactivate_object(inst);  
