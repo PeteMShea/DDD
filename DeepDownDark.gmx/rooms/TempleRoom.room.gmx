@@ -167,17 +167,10 @@
     <instance objName="obj_newblock" x="0" y="384" name="inst_79624FF7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_newblock" x="64" y="768" name="inst_637C54E0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_newblock" x="0" y="768" name="inst_7AEF1F2D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templemirror" x="448" y="480" name="inst_85344637" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templenewblock" x="128" y="128" name="inst_D1B11552" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templenewblock" x="192" y="128" name="inst_A0F742DB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templenewblock" x="256" y="128" name="inst_9292DB3C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templenewblock" x="320" y="128" name="inst_DE7E37C1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templenewblock" x="384" y="128" name="inst_0AED66A2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templenewblock" x="448" y="128" name="inst_4942067A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templenewblock" x="512" y="128" name="inst_3E4B7B1A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templenewblock" x="576" y="128" name="inst_0089DD57" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templenewblock" x="640" y="128" name="inst_8648B225" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templenewblock" x="128" y="192" name="inst_B9F787FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_templemirror" x="288" y="544" name="inst_85344637" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_templenewblock" x="160" y="128" name="inst_D1B11552" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_templenewblock" x="608" y="128" name="inst_0089DD57" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_templenewblock" x="160" y="192" name="inst_B9F787FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_newblock" x="0" y="128" name="inst_29254DDA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_newblock" x="64" y="128" name="inst_ED217BA0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_newblock" x="0" y="192" name="inst_8862E2DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -198,35 +191,58 @@
     <instance objName="obj_newblock" x="448" y="0" name="inst_E3A364A2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_newblock" x="512" y="0" name="inst_5A29CB4A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_newblock" x="576" y="0" name="inst_A832F218" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templeglyphblock" x="192" y="192" name="inst_02219E7D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templeglyphblock" x="256" y="192" name="inst_7A6D0AF0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templeglyphblock" x="320" y="192" name="inst_58F78186" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templeglyphblock" x="384" y="192" name="inst_353740C4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templeglyphblock" x="448" y="192" name="inst_58E5B16C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templeglyphblock" x="512" y="192" name="inst_FF57A250" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templeglyphblock" x="576" y="192" name="inst_D206D45B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templenewblock" x="640" y="192" name="inst_98AAD6D7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_templeglyphblock" x="608" y="192" name="inst_D206D45B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_templenewblock" x="128" y="768" name="inst_7FC16DD9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_templenewblock" x="128" y="832" name="inst_FD215949" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_templenewblock" x="128" y="896" name="inst_26605043" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_templenewblock" x="704" y="832" name="inst_AF505CD1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_templenewblock" x="704" y="896" name="inst_53D29D7D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_templenewblock" x="192" y="896" name="inst_C1851A9F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templenewblock" x="256" y="896" name="inst_D0DDDF9C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templenewblock" x="320" y="896" name="inst_0F681EF7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templenewblock" x="384" y="896" name="inst_ADC0B8B9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templenewblock" x="448" y="896" name="inst_DFA708A0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templenewblock" x="512" y="896" name="inst_CAC79CE6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templenewblock" x="576" y="896" name="inst_0E82CB09" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_templenewblock" x="640" y="896" name="inst_EBA6E592" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_templeglyphblock" x="192" y="832" name="inst_3B56B338" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templeglyphblock" x="256" y="832" name="inst_0D235D75" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templeglyphblock" x="320" y="832" name="inst_4041A32C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templeglyphblock" x="384" y="832" name="inst_B7955C3F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templeglyphblock" x="448" y="832" name="inst_3D5F32AF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templeglyphblock" x="512" y="832" name="inst_91EF66C8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_templeglyphblock" x="576" y="832" name="inst_32683DE0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_templeglyphblock" x="640" y="832" name="inst_FD0475A5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_temple128block" x="256" y="896" name="inst_3324A64A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_temple128block" x="384" y="896" name="inst_5AE7868B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_temple128block" x="512" y="896" name="inst_657223F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_temple128block" x="288" y="128" name="inst_B0AE1426" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_temple128block" x="416" y="128" name="inst_C0E29F3A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_temple128glyph" x="288" y="192" name="inst_66F3820B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_temple128glyph" x="416" y="192" name="inst_B37C6EC3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_temple128glyph" x="384" y="832" name="inst_C50978A9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_temple32block" x="672" y="128" name="inst_08A789EE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_temple32block" x="672" y="192" name="inst_6A290018" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_temple32block" x="128" y="128" name="inst_CB776C35" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_temple32block" x="128" y="192" name="inst_25E002ED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_temple32block" x="128" y="256" name="inst_2E2F5D55" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_temple32block" x="672" y="256" name="inst_DCE981D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_temple32glyph" x="224" y="128" name="inst_5E17A7E7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_temple32glyph" x="224" y="192" name="inst_4E0F3607" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_temple32glyph" x="576" y="128" name="inst_B39F0A37" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_temple32glyph" x="576" y="192" name="inst_86EAE0A8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_temple32glyph" x="576" y="256" name="inst_DBDFA4B4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_temple32glyph" x="224" y="256" name="inst_3C6BFAB1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_templeglyphblock" x="160" y="256" name="inst_F79FB66A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_templeglyphblock" x="608" y="256" name="inst_EC377E54" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_temple32glyph" x="256" y="128" name="inst_6041A459" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_temple32glyph" x="256" y="192" name="inst_A49E1855" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_temple32glyph" x="544" y="128" name="inst_A84751FE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_temple32glyph" x="544" y="192" name="inst_C6CF504B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_templeNWGlyph" x="256" y="256" name="inst_8686B180" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_templeNW" x="128" y="320" name="inst_71F7AE33" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_templeNEGlyph" x="544" y="256" name="inst_00B4D8D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_templeglyphblock" x="416" y="768" name="inst_B9E2098C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_templeSEGlyph" x="384" y="768" name="inst_4467B4B0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_templeSWGlyph" x="480" y="768" name="inst_E7AB04EC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_templeSWGlyph" x="192" y="768" name="inst_5A5DCC30" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_templeSWGlyph" x="512" y="832" name="inst_2A538A72" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_templeSEGlyph" x="352" y="832" name="inst_660567AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_templeSW" x="256" y="832" name="inst_C20E9279" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_templeSE" x="608" y="832" name="inst_0153D3DB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_templenewblock" x="608" y="320" name="inst_903A3987" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_templeNE" x="576" y="320" name="inst_F7B6C2AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_templeNW" x="672" y="320" name="inst_EB368A67" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_templeCthulhu" x="608" y="384" name="inst_1A2009F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_templeCthulhuUp" x="416" y="704" name="inst_24793DBD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

@@ -58,6 +58,20 @@
       <sprites name="temple">
         <sprite>sprites\spr_templenewblock</sprite>
         <sprite>sprites\spr_templeglyphblock</sprite>
+        <sprite>sprites\spr_temple128block</sprite>
+        <sprite>sprites\spr_temple128glyphs</sprite>
+        <sprite>sprites\spr_temple32pillar</sprite>
+        <sprite>sprites\spr_temple32glyph</sprite>
+        <sprite>sprites\spr_templeCornerNE</sprite>
+        <sprite>sprites\spr_templeNEGlyph</sprite>
+        <sprite>sprites\spr_templeCornerSE</sprite>
+        <sprite>sprites\spr_templeSEGlyph</sprite>
+        <sprite>sprites\spr_templeCornerNW</sprite>
+        <sprite>sprites\spr_templeNWGlyph</sprite>
+        <sprite>sprites\spr_templeCornerSW</sprite>
+        <sprite>sprites\spr_templeSWGlyph</sprite>
+        <sprite>sprites\spr_templecthulhublock</sprite>
+        <sprite>sprites\spr_templecthulhuUp</sprite>
       </sprites>
       <sprite>sprites\spr_block</sprite>
       <sprite>sprites\spr_newblock</sprite>
@@ -293,6 +307,7 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_genMap.gml</script>
+    <script>scripts\scr_mapGEN_A7.gml</script>
     <script>scripts\scr_mapGEN_A0.gml</script>
     <script>scripts\scr_mapGEN_singleroom.gml</script>
     <script>scripts\scr_gotonewlevel.gml</script>
@@ -358,6 +373,7 @@
     <objects name="control_objects">
       <object>objects\obj_gamestart</object>
       <object>objects\obj_newcontrol</object>
+      <object>objects\obj_levelA7Setup</object>
       <object>objects\obj_roomcontrolA0</object>
       <object>objects\obj_singleroomcontrol</object>
       <object>objects\obj_PauseLanded</object>
@@ -412,11 +428,27 @@
         <object>objects\obj_templemirror</object>
         <object>objects\obj_templemirrorinner</object>
       </objects>
+      <objects name="Temple">
+        <object>objects\obj_temple32block</object>
+        <object>objects\obj_templenewblock</object>
+        <object>objects\obj_templeglyphblock</object>
+        <object>objects\obj_temple32glyph</object>
+        <object>objects\obj_temple128glyph</object>
+        <object>objects\obj_temple128block</object>
+        <object>objects\obj_templeNE</object>
+        <object>objects\obj_templeNEGlyph</object>
+        <object>objects\obj_templeSE</object>
+        <object>objects\obj_templeSEGlyph</object>
+        <object>objects\obj_templeNW</object>
+        <object>objects\obj_templeNWGlyph</object>
+        <object>objects\obj_templeSW</object>
+        <object>objects\obj_templeSWGlyph</object>
+        <object>objects\obj_templeCthulhu</object>
+        <object>objects\obj_templeCthulhuUp</object>
+      </objects>
       <object>objects\obj_block</object>
       <object>objects\obj_hugeblock</object>
       <object>objects\obj_newblock</object>
-      <object>objects\obj_templenewblock</object>
-      <object>objects\obj_templeglyphblock</object>
       <object>objects\obj_weeblock</object>
       <object>objects\obj_weeblock_N</object>
       <object>objects\obj_weeblock_S</object>
@@ -587,6 +619,7 @@
     <room>rooms\room_A0</room>
     <room>rooms\TestBed</room>
     <room>rooms\TestBed2</room>
+    <room>rooms\level_A7</room>
     <room>rooms\TempleRoom</room>
     <room>rooms\room2</room>
     <room>rooms\room0</room>
