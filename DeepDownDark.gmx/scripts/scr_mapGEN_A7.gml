@@ -521,9 +521,6 @@ if asteroidchance > 0
     
 show_debug_message("Asteroids done");        
     
-//generate outer border
-
-
 
 
 // caculate start and exit points for the map- in centre of each huge empty square (plus border of 64)
@@ -539,7 +536,7 @@ global.startx -= 48;    //reposition ship in centre of start trench
 
 
 // add an exit trigger
-instance_create(endhuge * 384 * global.RM  + 64 * global.RM  + 64 * global.RM , 4 * 384 * global.RM  + 64 * global.RM , obj_exittrigger);
+instance_create(endhuge * 384 * global.RM  + 64 * global.RM  + 64 * global.RM , 5 * 384 * global.RM  + 64 * global.RM , obj_exittrigger);
 
 
 

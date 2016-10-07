@@ -30,9 +30,12 @@
 image_index = 0;
 image_speed = 0;
 
-spawnrangex = 1100;      //distance player must be to begin the spawn sequence
-spawnrangey = 300;
 spawnedformless = false;
+
+sx = x + lengthdir_x(250, 90);
+sy = y + lengthdir_y(250, 90);
+spawndist = 800;
+
 
 
 instance_create(x, y, obj_fsholeoverlay);
@@ -67,8 +70,11 @@ instance_create(x, y, obj_fsholeoverlay);
 
 if spawnedformless == false
 {
-    if abs(obj_player.x - x) &lt;= spawnrangex &amp;&amp; abs(obj_player.y - y) &lt;= spawnrangey
+    dist = point_distance(sx, sy, obj_player.x, obj_player.y)
+    
+            if dist &lt;= spawndist
         {
+            show_debug_message("in range of Formless- spawning");
             spawnedformless = true;
             spawnx = x + 32;
             spawny = y + 32;

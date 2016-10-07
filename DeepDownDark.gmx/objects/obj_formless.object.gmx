@@ -57,6 +57,8 @@ tiltxtime = maxtiltxtime;
 tiltytime = maxtiltytime;
 tiltangletime = maxtiltangletime;
 
+clampy = 430;       //how far up from initial rest point formless can travel- defines height of corridor
+
 maxspeed = 0.5;
 currentspeed = 0.01;            //begin with a tiny amount of speed as we detect zero speed as slowed to a stop at launch
 acceleration = 0.0025;
@@ -84,7 +86,7 @@ scaleincaccleration = 0.0005;
 scaledelay = 20;        //frames to wait before scaling begins
 image_xscale = scale;
 image_yscale = scale;
-launchheight = y - 200;     //how far up ball launches at spawn time
+launchheight = y - 300;     //how far up ball launches at spawn time
 launchcomplete = false;
 launchmaxspeed = 5.0;
 launchacceleration = 0.25;
@@ -198,7 +200,7 @@ if launchcomplete == true
         {       
                     
             //in range- temp
-            if distance_to_object(obj_player) &lt; 800 &amp;&amp; seen == false
+            if distance_to_object(obj_player) &lt; 600 &amp;&amp; seen == false
             {
                 seen = true;
             }
@@ -265,7 +267,7 @@ if launchcomplete == true
             destx = targetx;
             desty = targety + hovery;       //hovery is set by the timeline
             
-            desty = clamp(desty, starty - 250, starty + 120);
+            desty = clamp(desty, starty - clampy, starty + 120);
             
             if targetx != x || targety != y
                 {        
@@ -348,12 +350,12 @@ if launchcomplete == true
             if shotinmouth == false &amp;&amp; shotcounter &lt;= 0
                 {
                     image_blend = c_white;
-                    obj_fsoverlay.image_blend = c_white;
+                    if instance_exists(obj_fsoverlay) obj_fsoverlay.image_blend = c_white;
                 }
             if shotinmouth == true
                 {
                     image_blend = shotcolour;
-                    obj_fsoverlay.image_blend = shotcolour;
+                    if instance_exists(obj_fsoverlay) obj_fsoverlay.image_blend = shotcolour;
                     shotcounter = 3;
                     shotinmouth = false;
                 }
