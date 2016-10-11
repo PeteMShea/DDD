@@ -59,7 +59,7 @@ if mouse_check_button(mb_left)
 
 if global.loading == true
 {
-        room_goto(4);
+        room_goto(2);
 }
 
 

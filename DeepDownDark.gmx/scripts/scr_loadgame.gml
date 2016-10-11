@@ -19,7 +19,17 @@ if (file_exists("Save.sav"))
         
     //next item in a blackbox
     global.nextitemweapon = ini_read_real("GameplayGlobals","NextItem:",blank);
+
+    //story progress
+    global.nextcategory = ini_read_real("StoryGlobals","NextCategory:", 1);
+    global.categorycap[1] = ini_read_real("StoryGlobals","categorycap1:", blank);  
+    global.categorycap[2] = ini_read_real("StoryGlobals","categorycap2:", blank); 
+    global.categorycap[3] = ini_read_real("StoryGlobals","categorycap3:", blank); 
     
+    global.categorycount[1] = ini_read_real("StoryGlobals","categorycount1:", 1); 
+    global.categorycount[2] = ini_read_real("StoryGlobals","categorycount2:", 1); 
+    global.categorycount[3] = ini_read_real("StoryGlobals","categorycount3:", 1); 
+
     
     
     ini_close();

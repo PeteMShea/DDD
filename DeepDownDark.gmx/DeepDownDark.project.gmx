@@ -359,6 +359,7 @@
     </scripts>
     <script>scripts\scr_loadgame.gml</script>
     <script>scripts\scr_savegame.gml</script>
+    <script>scripts\scr_readstory.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_multiply.shader</shader>
@@ -375,7 +376,8 @@
   <objects name="objects">
     <objects name="control_objects">
       <object>objects\obj_gamestart</object>
-      <object>objects\obj_newcontrol</object>
+      <object>objects\obj_levelA1</object>
+      <object>objects\obj_levelA2</object>
       <object>objects\obj_levelA7Setup</object>
       <object>objects\obj_roomcontrolA0</object>
       <object>objects\obj_singleroomcontrol</object>
@@ -618,9 +620,9 @@
   <rooms name="rooms">
     <room>rooms\start</room>
     <room>rooms\LCWsplash</room>
-    <room>rooms\titlescreen</room>
-    <room>rooms\mapgen</room>
     <room>rooms\room_A0</room>
+    <room>rooms\room_A1</room>
+    <room>rooms\room_A2</room>
     <room>rooms\TestBed</room>
     <room>rooms\TestBed2</room>
     <room>rooms\level_A7</room>

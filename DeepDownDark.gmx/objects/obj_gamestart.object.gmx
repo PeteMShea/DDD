@@ -60,15 +60,35 @@ global.loading = false;
 global.autopilot = 0;
 global.dirtalpha = 0.0;
 
+//monsters
 global.sporeseen = false;
 global.gauntseen = false;
 global.formlessseen = false;
 global.grabberseen = false;
 
+
+//story
+global.nextcategory = 1;        //next category to draw story from- 1 Backstory 2 General 3 Monsters 4 Equipment 5 Weapons
+global.categorycap[1] = 9;      //max number of lines in this chapter
+global.categorycap[2] = 0;      //max number of lines in this level- starts at 0 as each level advances it by 6
+global.categorycap[3] = 0;      //max number of lines for monsters to read (starts at none seen yet)
+
+for(i = 1; i&lt;7; i+=1)
+    {
+        global.categorycount[i] = 1;        //current story position in each category
+    }
+
+global.categoryfilename[1] = "StoryBackstory";
+global.categoryfilename[2] = "StoryGeneral";
+global.categoryfilename[3] = "StoryMonsters";
+
+global.displaystring = "LOADING";
+
+
 countdown = 1;
 global.pause = false;
 global.startroom = false;
-
+global.nextroom = 2;       // 1 for splash, 2 for A0, 3, for A1, 4, for A2
 global.dead = false;        //temp
 
 //first set all items to their default first ever boot values
@@ -155,7 +175,7 @@ window_set_cursor(cr_arrow);
 if countdown &lt;= 0
 {
 
-    room_goto(4);       // 1 for splash, 3 for MapGen, 4 for Room A0, 5 for Test Bed
+    room_goto(global.nextroom);       // 1 for splash, 2 for A0, 3, for A1, 4, for A2
 
 }
 

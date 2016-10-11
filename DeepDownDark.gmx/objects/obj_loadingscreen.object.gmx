@@ -38,12 +38,17 @@ text2y = 32;
 text3y = 64;
 
 visible = false;
+read = false;
 
 if !persistent
     {
     persistent = true;
     }
 
+maxdisplaytime = 240;
+displaytime = 0;
+
+    
 </string>
           </argument>
         </arguments>
@@ -72,6 +77,19 @@ x = obj_player.x;
 y = obj_player.y;
 }
 
+if visible == true &amp;&amp; read = false
+{
+    if read == false
+        {
+            script_execute(scr_readstory);
+            read = true;    
+            displaytime = maxdisplaytime;
+        }
+    displaytime -= 1;
+    if displaytime &lt;=0 visible = false;
+}
+
+
 </string>
           </argument>
         </arguments>
@@ -98,14 +116,13 @@ y = obj_player.y;
 
 if visible == true
 {
-    draw_set_font(fnt_Michroma14);
+    draw_set_font(fnt_CapsullaTitle);
     draw_set_alpha(0.7);
     draw_set_colour(c_white);
     draw_set_halign(fa_center);
       
-    draw_text(textx, text1y, "LOADING");
-    //draw_text(textx, text2y, messagestring2);
-    //draw_text(textx, text3y, messagestring3);
+    draw_text(textx, text1y, global.displaystring);
+
         
 }
 

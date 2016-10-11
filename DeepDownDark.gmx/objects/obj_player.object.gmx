@@ -118,7 +118,7 @@ landing = 0;    // 0- not happening, 1- left leg down, right leg down, 3 - lande
 
 hitcollide = 0;
 shoot_counter = 0;
-
+exited = false;
 dead = false;
 burst = false;
 deathcounter = 0;
@@ -994,10 +994,15 @@ else
 // check if player has reached exit
 if distance_to_object(obj_exittrigger) &lt;= 16
     {    
-        vx = view_xport[0];
-        vy = view_yport[0];
-        instance_create( vx, vy, eff_fadetoblack );
-        obj_loadingscreen.visible = true;
+        if exited == false
+            {        
+                vx = view_xview[0];
+                vy = view_yview[0];
+                instance_create( vx, vy, eff_fadetoblack );        
+                exited = true;
+                obj_loadingscreen.visible = true;
+                obj_loadingscreen.read = false;
+            }
         if global.loading == true script_execute(scr_gotonewlevel);    
     
     }
@@ -1149,33 +1154,6 @@ instance_create( vx, vy, eff_fadetoblack );
         </arguments>
       </action>
     </event>
-    <event eventtype="5" enumb="67">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>// debug key for disabling player collision
-
-if collisionoff == false collisionoff = true else collisionoff = false;
-
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="5" enumb="49">
       <action>
         <libid>1</libid>
@@ -1288,6 +1266,63 @@ shader_set_uniform_f(u_LowerAmbientColour,
 draw_self();
 
 shader_reset();
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="78">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// debug next level- move exit trigger to where player is
+
+if instance_exists(obj_exittrigger)
+{
+obj_exittrigger.x = x;
+obj_exittrigger.y = y;
+}
+else instance_create(x, y, obj_exittrigger);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="67">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// debug key for disabling player collision
+
+if collisionoff == false collisionoff = true else collisionoff = false;
+
 
 </string>
           </argument>
