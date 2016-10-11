@@ -41,6 +41,9 @@ while(unlockeditem == false)
             }  
     }
 
+//now update the Save file
+script_execute(scr_savegame);    
+    
 
 //now create the message panel
 inst = instance_create(0, 0, obj_MessagePanel);

@@ -397,6 +397,6 @@ global.WeaponProgression[24] = 23;
 
 for (i =1; i <25; i+=1)
 {
-global.WeaponUnlocked[i] = true;
+//global.WeaponUnlocked[i] = true;
 }
 

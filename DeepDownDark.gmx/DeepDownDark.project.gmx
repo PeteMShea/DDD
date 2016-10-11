@@ -303,6 +303,7 @@
     <background>background\tileset_hugeblocks</background>
     <background>background\tileset_templeglyphs</background>
     <background>background\tileset_temple64x64</background>
+    <background>background\templeentrance</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -356,6 +357,8 @@
       <script>scripts\Items_Equipment.gml</script>
       <script>scripts\scr_updateplayer.gml</script>
     </scripts>
+    <script>scripts\scr_loadgame.gml</script>
+    <script>scripts\scr_savegame.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_multiply.shader</shader>
@@ -379,6 +382,7 @@
       <object>objects\obj_PauseLanded</object>
       <object>objects\obj_alarm</object>
       <object>objects\obj_exittrigger</object>
+      <object>objects\obj_loadingscreen</object>
     </objects>
     <objects name="player">
       <object>objects\obj_player</object>

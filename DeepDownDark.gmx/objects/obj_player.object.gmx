@@ -992,12 +992,12 @@ else
     
 
 // check if player has reached exit
-
-if collision_circle(x+ speed_x, y + speed_y, shipscale + 3 * global.RM, obj_exittrigger, false, true)
+if distance_to_object(obj_exittrigger) &lt;= 16
     {    
         vx = view_xport[0];
         vy = view_yport[0];
         instance_create( vx, vy, eff_fadetoblack );
+        obj_loadingscreen.visible = true;
         if global.loading == true script_execute(scr_gotonewlevel);    
     
     }
