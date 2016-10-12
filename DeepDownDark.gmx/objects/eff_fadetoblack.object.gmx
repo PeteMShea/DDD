@@ -34,9 +34,10 @@ fadeDone = false;
 fadeOut = 30;
 
 
+vx = view_xview[0];
+vy = view_yview[0];
 
-
-
+show_debug_message("Creating Fade to Black object");
 </string>
           </argument>
         </arguments>
@@ -89,6 +90,7 @@ fadeAlpha += 0.02;
 if fadeAlpha &gt;= finalAlpha
 {
     global.loading = true;
+    fadeDone = true;
 
 }
 
@@ -122,10 +124,14 @@ if fadeDone == true
     {
     
         fadeAlpha -= 0.2
-        if fadeAlpha &lt;= 0 instance_destroy();
+        if fadeAlpha &lt;= 0 
+        {
+        show_debug_message("Destroying Fade to Black object");
+        instance_destroy();
+        }
     }
 
-
+//show_debug_message("x: " + string(x) + "y: " + string(y));
     
     
 </string>
@@ -133,7 +139,7 @@ if fadeDone == true
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -152,11 +158,10 @@ if fadeDone == true
             <kind>1</kind>
             <string>
 draw_set_alpha(fadeAlpha);
-vx = view_xview[0];
-vy = view_yview[0];
+
 vwidth = 1920;
 vheight = 1080
-draw_rectangle_color( vx, vy, vwidth, vheight, c_black, c_black, c_black, c_black, false);
+draw_rectangle_color( 0, 0, vwidth, vheight, c_black, c_black, c_black, c_black, false);
 
 //obj_HUD.HUDAlpha = 0.95-fadeAlpha;
 //obj_sanitymeter.image_alpha = 0.95-fadeAlpha;

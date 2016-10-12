@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>// Procedural Map Generator
+global.startroom = true;
+
 global.pause = false;
 
 randomize(); 
@@ -72,7 +74,7 @@ totalwalkblocks = 0;
 
 once = false;
 
-global.startroom = true;
+
 
 if once == false
     {

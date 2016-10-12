@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>-50000</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -104,7 +104,7 @@ if startFade == true
 draw_set_alpha(fadeAlpha);
 vx = view_xport[0];
 vy = view_yport[0];
-draw_rectangle_color( vx, vy, view_wview[0], view_hview[0], c_black, c_black, c_black, c_black, false);
+draw_rectangle_color( 0, 0, view_wview[0], view_hview[0], c_black, c_black, c_black, c_black, false);
 draw_set_alpha(1.0);
 </string>
           </argument>

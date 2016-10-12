@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-999999</depth>
   <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -33,7 +33,7 @@ yview = view_yview[0];
 x = 960 + xview;        //only used if decide to add a graphic panel at some point
 y = 500 + yview;
 textx = 960;
-text1y = 500;
+text1y = 300;
 text2y = 32;
 text3y = 64;
 
@@ -45,9 +45,11 @@ if !persistent
     persistent = true;
     }
 
-maxdisplaytime = 240;
+maxdisplaytime = 180;
 displaytime = 0;
-
+alphalevel = 0;
+maxalpha = 0.8;
+alphafade = 0.01
     
 </string>
           </argument>
@@ -77,16 +79,29 @@ x = obj_player.x;
 y = obj_player.y;
 }
 
-if visible == true &amp;&amp; read = false
+if visible == true
 {
     if read == false
         {
             script_execute(scr_readstory);
             read = true;    
             displaytime = maxdisplaytime;
+            alphalevel = 0;
+
         }
+    if alphalevel &lt; maxalpha alphalevel += alphafade
     displaytime -= 1;
-    if displaytime &lt;=0 visible = false;
+    if displaytime &lt;= 0
+    {
+        visible = false;
+        alphalevel = 0;
+        global.autopilot = 120;    //start playing moving
+        obj_player.auto_x = 0;
+        obj_player.auto_y = 0.5;   //downwards thrust
+        obj_player.autothrust = 10;   
+
+        if instance_exists(eff_fadefromblack) eff_fadefromblack.fadeWait = 10.0;       //frames 
+    }
 }
 
 
@@ -117,7 +132,7 @@ if visible == true &amp;&amp; read = false
 if visible == true
 {
     draw_set_font(fnt_CapsullaTitle);
-    draw_set_alpha(0.7);
+    draw_set_alpha(alphalevel);
     draw_set_colour(c_white);
     draw_set_halign(fa_center);
       

@@ -455,6 +455,7 @@
       <object>objects\obj_block</object>
       <object>objects\obj_hugeblock</object>
       <object>objects\obj_newblock</object>
+      <object>objects\obj_newblocksprite</object>
       <object>objects\obj_weeblock</object>
       <object>objects\obj_weeblock_N</object>
       <object>objects\obj_weeblock_S</object>
@@ -621,8 +622,10 @@
     <room>rooms\start</room>
     <room>rooms\LCWsplash</room>
     <room>rooms\room_A0</room>
+    <room>rooms\room13</room>
     <room>rooms\room_A1</room>
     <room>rooms\room_A2</room>
+    <room>rooms\room_A3</room>
     <room>rooms\TestBed</room>
     <room>rooms\TestBed2</room>
     <room>rooms\level_A7</room>

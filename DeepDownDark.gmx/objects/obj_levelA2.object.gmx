@@ -25,10 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Level A2
+            <string>// Procedural Map Generator
 global.pause = false;
 
-global.categorycap[2] = 12;      //unlock story lines for this level
+global.categorycap[2] = 6;      //unlock story lines for this level
 
 obj_loadingscreen.visible = true;
 
@@ -125,9 +125,7 @@ script_execute(scr_genMap, basechance, spacechance, newbigblockvalue, spikyness,
 
 global.loading = false;
 
-// fade in from black
-vx = view_xport[0];
-vy = view_yport[0];
+
 
 //if random(1) &lt; 0.5 xsign = -1 else xsign = 1
 //if random(1) &lt; 0.5 ysign = -1 else ysign = 1
@@ -139,9 +137,17 @@ instance_create(0,0, obj_HUD);
 
 instance_create(global.startx, global.starty, obj_player);
 
+// fade in from black
+vx = view_xview[0];
+vy = view_yview[0];
+inst = instance_create(vx, vy, eff_fadefromblack)
+with(inst)
+{
+fadeWait = 999.0;       //wait indefinitely- timer set by loading screen instead
 
-instance_create( vx, vy, eff_fadefromblack );
-obj_loadingscreen.visible = false;      //hide loading screen
+}
+
+//obj_loadingscreen.visible = false;      //hide loading screen
 
 
 

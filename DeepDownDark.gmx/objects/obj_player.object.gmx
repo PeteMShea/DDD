@@ -27,11 +27,7 @@
             <kind>1</kind>
             <string>
 /// initialise variables
-ship = "shark";
 
-
-if ship =="shark"
-{
     thrust = 0.00025;       //thrust applied per frame of mouse input  0.002
     min_thrust = 0.01;      //0.02
     max_forwardthrust = 0.1;   // 0.35
@@ -68,7 +64,7 @@ if ship =="shark"
     magnetstrength = 10;        //max speed gold pickups reach when being sucked in by magnet
     magnetextract = 0;      //whether to extract- 0 means no
     
-}
+
 
 script_execute(scr_updateplayer);       //update attributes based upon purchases
 
@@ -95,12 +91,12 @@ if global.startroom == false       //not the start room
         image_angle = 270;
         
         //Autopilot
-        global.autopilot = 120;    // was 120
+        global.autopilot = 120;    // now set externally by loadingscreen
         auto_x = 0;
-        auto_y = 0.25 * global.RM;   //downwards thrust...
-        autothrust = 10;   
+        auto_y = 0.01;   //downwards thrust... very tiny to begin with, then increased by loading screen
+        autothrust = 1;   
     }
-
+else autothrust = 0;
 
 
 image_speed = 0;
@@ -115,6 +111,7 @@ max_thrust = max_forwardthrust;
 backwards = false;
 landingokay = false;
 landing = 0;    // 0- not happening, 1- left leg down, right leg down, 3 - landed
+currrentspeed = 0;  //used for landing speed detection
 
 hitcollide = 0;
 shoot_counter = 0;
@@ -652,7 +649,7 @@ if thrustcounter &gt;= 0 &amp;&amp; global.autopilot &lt;=0
         vx = (destx - x);
         vy = (desty - y);
     
-        len = sqrt(vx * vx + vy * vy);
+        if vx!= 0 || vy != 0 len = sqrt(vx * vx + vy * vy) else len = 0;
     
         vx = vx / len;
         vy = vy / len;
@@ -770,7 +767,9 @@ if collisionoff == false &amp;&amp; global.autopilot &lt;= 0            //debug 
         //now check for leg collisions for landing
         leftlegcheck = collision_circle(x + lengthdir_x(32 * global.RM, image_angle + 140), y + lengthdir_y(32 * global.RM, image_angle + 140), 8, obj_block, false, true)
         rightlegcheck = collision_circle(x + lengthdir_x(32 * global.RM, image_angle + 230), y + lengthdir_y(32 * global.RM, image_angle + 230), 8, obj_block, false, true)
-        currrentspeed = sqrt(speed_x * speed_x + speed_y * speed_y);          
+        cs = (speed_x * speed_x + speed_y * speed_y)
+        cs = abs(cs)
+        if cs &gt; 0 currrentspeed = sqrt(cs);          
         if currrentspeed &lt;= minlandspeed landingokay = true else landingokay = false
         if global.autopilot &gt; 0 landingokay = false
         if leftlegcheck == noone &amp;&amp; rightlegcheck == noone landing = 0      //not landing as no legs in contact with ground       
@@ -827,11 +826,13 @@ if collisionoff == false &amp;&amp; global.autopilot &lt;= 0            //debug 
         ox = (x - objhit_x);
         oy = (y - objhit_y);
         
-        len = sqrt(ox * ox + oy * oy);
+        if ox != 0 || oy !=0 len = sqrt(ox * ox + oy * oy) else len = 0;
         
-        ox = ox / len;
-        oy = oy / len;
-        
+        if len != 0
+            {
+                ox = ox / len;
+                oy = oy / len;
+            }
         //now bounce away unless landing or trying to
         if landing == 0
         {
@@ -858,7 +859,8 @@ if collisionoff == false &amp;&amp; global.autopilot &lt;= 0            //debug 
     // Player has collided with bad thing
     if hitcollide &gt;= (damagecooldown * 60)
         {
-            damagespeed = sqrt(speed_x * speed_x + speed_y * speed_y);
+            ds = (speed_x * speed_x + speed_y * speed_y);
+            if ds &gt; 0 damagespeed = sqrt(ds) else damagespeed = 0;
             damage = (damagespeed * damagemult * armour)
             if damage &gt;= mindamage        //this prevents minor scrapes from causing any damage- boosted by shields
             {
@@ -993,17 +995,22 @@ else
 
 // check if player has reached exit
 if distance_to_object(obj_exittrigger) &lt;= 16
-    {    
+    {                          
         if exited == false
             {        
                 vx = view_xview[0];
                 vy = view_yview[0];
                 instance_create( vx, vy, eff_fadetoblack );        
                 exited = true;
+                obj_loadingscreen.alphalevel = 0;
                 obj_loadingscreen.visible = true;
                 obj_loadingscreen.read = false;
             }
-        if global.loading == true script_execute(scr_gotonewlevel);    
+        if global.loading == true
+            {
+                
+                script_execute(scr_gotonewlevel);
+            }    
     
     }
 // Death

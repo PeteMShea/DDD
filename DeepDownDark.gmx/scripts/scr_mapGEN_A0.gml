@@ -71,7 +71,7 @@ for (bx = 0; bx < 30; bx +=1)
     {
         for (by = 0; by < 17; by +=1)
         {
-                inst = instance_position(bx * 64 + 8, by * 64 + 8, obj_newblock);
+                inst = instance_position(bx * 64 + 8, by * 64 + 8, obj_newblocksprite);
                 if inst != noone
                     {
                         block[bx,by] = 1;
@@ -79,21 +79,14 @@ for (bx = 0; bx < 30; bx +=1)
                             { 
                                 image_blend = c_black;
                             }
-                    if random(1) < newblockoverlaychance
-                        {                    
-                            overinst = instance_create(bx * 64, by * 64, obj_newblockoverlay); 
-                            with (overinst)
-                                { 
-                                    image_blend = c_black;
-                                }                    
-                        }                             
+                             
                     }
                 if instance_position(bx * 64 + 8, by * 64 + 8, obj_borderblock) != noone
                 {                
                     block[bx,by] = 1;
                   
                 }
-                show_debug_message("Block " + string(bx) + " , " + string(by) + " : " + string(block[bx,by]));                        
+                //show_debug_message("Block " + string(bx) + " , " + string(by) + " : " + string(block[bx,by]));                        
             }       
     }
 
