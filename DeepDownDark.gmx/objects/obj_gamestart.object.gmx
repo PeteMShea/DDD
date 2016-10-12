@@ -91,7 +91,7 @@ global.displaystring = "LOADING";
 countdown = 1;
 global.pause = false;
 global.startroom = false;
-global.nextroom = 2;       // 1 for splash, 2 for A0, 3, for A1, 4, for A2
+global.nextroom = 3;       // 1 for splash, 2 for A0, 3, for A1, 4, for A2
 global.dead = false;        //temp
 
 //first set all items to their default first ever boot values
@@ -99,7 +99,7 @@ global.WeaponViewed = 1;        //currently viewed (or last viewed) Weapon Item 
 script_execute(Items_Weaponry);
 global.EquipViewed = 1;
 script_execute(Items_Equipment);
-global.nextitemweapon = -1;       //whether to unlock a weapon or equipment next- alternates (for now) 
+global.nextitemweapon = 1;       //whether to unlock a weapon or equipment next- alternates (for now) 
 
 
 //now check for save file- if it exists load it and overwrite the globals that have changed else create it with the default first ever values

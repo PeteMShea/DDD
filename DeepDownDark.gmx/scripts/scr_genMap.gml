@@ -598,7 +598,7 @@ if bigblock[u , v] > 0
                 block[11 + u * 12, 11 + v * 12] = 1             
         }
         
-        // check for unsurrounded huge blocks to add potential wreckages
+        // check for unsurrounded huge blocks to add potential ages
         if n == 0 && s == 0 && w == 0 && e == 0 && wreckadded == false
         {
             if random(1) <= wreckchance
@@ -653,7 +653,7 @@ if bigblock[u , v] > 0
                                     }
                                          enemyspawn = random(1);
                                          if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, c + v * 12] = 4     //if last block is empty and random chance add ballplant
-                                         if  c == clampmax && enemyspawn <= spikerdensity
+                                         if  c == (maxspike + 3) && enemyspawn <= spikerdensity
                                          {
                                             spikerdensity = 0;      //one per huge block
                                             block[column + u * 12, c + v * 12] = 8     //if last block is empty & top and random chance add spiker
@@ -676,7 +676,7 @@ if bigblock[u , v] > 0
                                     }
                                          enemyspawn = random(1);
                                          if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, (11-c) + v * 12] = 3     //if last block is empty and random chance add ballplant
-                                         if  c == clampmax && enemyspawn <= spikerdensity 
+                                         if  c == (maxspike + 3) && enemyspawn <= spikerdensity 
                                          {
                                             spikerdensity = 0;      //one per huge block
                                             block[column + u * 12, (11-c) + v * 12] = 7     //if last block is empty and random chance add spiker
@@ -700,7 +700,7 @@ if bigblock[u , v] > 0
                                     }
                                          enemyspawn = random(1);
                                          if  c < 11 && enemyspawn <= ballplantdensity block[(11-c) + u * 12, row + v * 12] = 5     //if last block is empty and random chance add ballplant
-                                         if  c == clampmax && enemyspawn <= spikerdensity
+                                         if  c == (maxspike + 3) && enemyspawn <= spikerdensity
                                          {
                                             spikerdensity = 0;      //one per huge block
                                             block[(11-c) + u * 12, row + v * 12] = 9     //if last block is empty and random chance add spiker
@@ -724,7 +724,7 @@ if bigblock[u , v] > 0
                                     }
                                          enemyspawn = random(1);
                                          if  c < 11 && enemyspawn <= ballplantdensity block[c + u * 12, row + v * 12] = 6     //if last block is empty and random chance add ballplant
-                                         if  c == clampmax && enemyspawn <= spikerdensity
+                                         if  c == (maxspike + 3) && enemyspawn <= spikerdensity
                                          {
                                             spikerdensity = 0;      //one per huge block
                                             block[c + u * 12, row + v * 12] = 10     //if last block is empty and random chance add spiker
@@ -750,7 +750,7 @@ if bigblock[u , v] > 0
                                     }
                                          enemyspawn = random(1);
                                          if enemyspawn <= ballplantdensity block[column + u * 12, c + v * 12] = 4     //if last block is empty and random chance add ballplant
-                                         if c == clampmax && enemyspawn <= spikerdensity
+                                         if c == maxspike && enemyspawn <= spikerdensity
                                          {
                                             spikerdensity = 0;      //one per huge block
                                             block[column + u * 12, c + v * 12] = 8     //if last block is empty and random chance add spiker
@@ -768,7 +768,7 @@ if bigblock[u , v] > 0
                                     }
                                          enemyspawn = random(1);
                                          if  c < 11 && enemyspawn <= ballplantdensity block[column + u * 12, (11-c) + v * 12] = 3     //if last block is empty and random chance add ballplant
-                                         if  c == clampmax && enemyspawn <= spikerdensity
+                                         if  c == maxspike && enemyspawn <= spikerdensity
                                          {
                                             spikerdensity = 0;      //one per huge block
                                             block[column + u * 12, (11-c) + v * 12] = 7     //if last block is empty and random chance add spiker
@@ -794,7 +794,7 @@ if bigblock[u , v] > 0
                                     }
                                          enemyspawn = random(1);
                                          if enemyspawn <= ballplantdensity block[c + u * 12, row + v * 12] = 6     //if last block is empty and random chance add ballplant
-                                         if c == clampmax && enemyspawn <= spikerdensity
+                                         if c == maxspike && enemyspawn <= spikerdensity
                                          {
                                             spikerdensity = 0;      //one per huge block
                                             block[c + u * 12, row + v * 12] = 10     //if last block is empty and random chance add spiker
@@ -811,7 +811,7 @@ if bigblock[u , v] > 0
                                     }
                                          enemyspawn = random(1);
                                          if  c < 11 && enemyspawn <= ballplantdensity block[(11-c) + u * 12, row + v * 12] = 5     //if last block is empty and random chance add ballplant
-                                         if  c == clampmax && enemyspawn <= spikerdensity
+                                         if  c == maxspike && enemyspawn <= spikerdensity
                                          {
                                             spikerdensity = 0;      //one per huge block
                                             block[(11-c) + u * 12, row + v * 12] = 9     //if last block is empty and random chance add spiker

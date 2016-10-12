@@ -60,8 +60,8 @@
     bulletdamage = 0.5;     //default bulletdamage
     bulletfire = 0.0;       // set to 1 for plasma, 2 for double fire, 3 for triple spread fire, 4 for Ricochet, 5 for Armour Piercing
     minlandspeed = 0.4;
-    goldmagnetrange = 50;       //range at which gold pickups automatically drawn towards player
-    magnetstrength = 10;        //max speed gold pickups reach when being sucked in by magnet
+    goldmagnetrange = 75;       //range at which gold pickups automatically drawn towards player
+    magnetstrength = 20;        //max speed gold pickups reach when being sucked in by magnet
     magnetextract = 0;      //whether to extract- 0 means no
     
 

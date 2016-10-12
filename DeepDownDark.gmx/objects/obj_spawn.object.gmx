@@ -32,33 +32,33 @@ homing = false;
 attack = false;
 
 currenthealth = 1;     //HP
-lifespanmax = random_range(1200,1500);   //how long spores live for once they have launched
+lifespanmax = random_range(1500,1800);   //how long spores live for once they have launched
 lifespan = 0;
-bouncecount = 10;   //maximum number of bounces before self destruct
+bouncecount = 20;   //maximum number of bounces before self destruct
 
 awaketestmax = 60;     //how many frames between each time spore checks to see if it should wake up
 awaketest = 60;
-awakerange = random_range(350 * global.RM, 450 * global.RM);   //distance from player before awakening
+awakerange = random_range(200, 900);   //distance from player before awakening
 launchtimemax = 150;    //how many frames enemy will launch for before it begins homing
 launchtime = 0;
 takeoffspeed = 0.12;     //animation speed for take-off sequence 0.2
-speedmax = 0.6;      //max speed of travel
+speedmax = 1.2;      //max speed of travel was 0.8
 speedmult = 0;
-acceleration = 0.003;     //acceleratation
+acceleration = 0.002;     //acceleratation
 normalturnspeed = 4;      //number of degrees to turn per frame  4
 maxturnspeed = 8;      //fast turn  8
 turnspeed = normalturnspeed;
-attackrange = 8 * global.RM;    //distance from player to switch to attack
-homedirectrange = 64 * global.RM// distance from player to switch to direct homing
+attackrange = 16;    //distance from player to switch to attack
+homedirectrange = 128// distance from player to switch to direct homing
 damage = 5;    //damage inflicted on player on self destruct
-damageproximity = 8 * global.RM     //how close to player it destructs
+damageproximity = 32     //how close to player it destructs
 madnessfirstsight = 20;         //how much madness is applied first time player sees enemy
 madnessproximityrange = 500;    //range before proximity madness is applied
-madnessproximity = 0.001;      //how much madness to apply per frame when enemy within range
+madnessproximity = 0.0015;      //how much madness to apply per frame when enemy within range
 
 homingtestmax = 180;     //how many frames between each time enemy checks LOS to target and adjusts aim  30
 homingtest = 0;
-linedistance = 32 * global.RM;     //how long a LOS ray test to perform when pathfinding- shorter equals quicker
+linedistance = 64;     //how long a LOS ray test to perform when pathfinding- shorter equals quicker
 aimoffset = 15;     //max number of degrees for random offset when pathfinding to target
 avoidtest = 0;
 if random(1) &lt;0.5 angleadjust = -60 else angleadjust = +60      //decide whether this enemy avoids this number of degrees to the left or the right
@@ -353,7 +353,7 @@ if distance_to_point(obj_player.x, obj_player.y) &lt;= damageproximity
     {
     // blow up and destroy and damage player
     
-    effect_create_above(ef_explosion, x, y, 0, c_lime);
+    effect_create_above(ef_explosion, x, y, 1, c_lime);
     bx = x;
     by = y;
     script_execute(scr_sporeburst, bx, by);

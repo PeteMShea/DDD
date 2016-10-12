@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>// initialise
 
-alphafade = 0.0005;    //how quickly the text fades in
+alphafade = 0.001;    //how quickly the text fades in
 alphalevel = 0;
 
 
@@ -36,7 +36,7 @@ alphalevel = 0;
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="7">
+    <event eventtype="6" enumb="4">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -56,7 +56,10 @@ alphalevel = 0;
             <string>// temp restart on level A1
 
 global.nextroom = 3;
-room_goto(0)
+//room_goto(0);
+
+game_restart();
+
 </string>
           </argument>
         </arguments>

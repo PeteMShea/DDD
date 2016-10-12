@@ -368,8 +368,8 @@ if asteroid != noone
                 //instance_create(hit_x, hit_y, obj_debug);
                 ext_x = other.extended_x;
                 ext_y = other.extended_y;
-                hitspeed_x = other.vx * other.bulletspd * other.asteroidmult * 0.15;
-                hitspeed_y = other.vy * other.bulletspd * other.asteroidmult * 0.15;
+                hitspeed_x = other.vx * other.bulletspd * other.asteroidmult * 0.025;
+                hitspeed_y = other.vy * other.bulletspd * other.asteroidmult * 0.025;
             }
 
         //create debris tinyblocks unless a nugget or a wreck

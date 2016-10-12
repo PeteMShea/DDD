@@ -9,7 +9,7 @@ basesanity = 80;
 
 if global.WeaponEquipped[1] == true
     {
-        obj_player.shoot_rate = 9;
+        obj_player.shoot_rate = 10;
         obj_player.turret = false;
     }
 if global.WeaponEquipped[2] == true
@@ -42,7 +42,7 @@ if global.WeaponEquipped[6] == true
     }
 if global.WeaponEquipped[7] == true 
     {
-        obj_player.bulletdamage = 0.5;
+        obj_player.bulletdamage = 0.8;
         obj_player.bulletfire = 0;
     }
 if global.WeaponEquipped[8] == true 
@@ -52,22 +52,22 @@ if global.WeaponEquipped[8] == true
     }
 if global.WeaponEquipped[9] == true 
     {
-        obj_player.bulletdamage = 1.0;
+        obj_player.bulletdamage = 1.1;
         obj_player.bulletfire = 2;        
     }    
 if global.WeaponEquipped[10] == true 
     {
-        obj_player.bulletdamage = 1.0;
+        obj_player.bulletdamage = 1.2;
         obj_player.bulletfire = 3;        
     }    
 if global.WeaponEquipped[11] == true 
     {
-        obj_player.bulletdamage = 1.0;
+        obj_player.bulletdamage = 1.2;
         obj_player.bulletfire = 4;        
     }
 if global.WeaponEquipped[12] == true 
     {
-        obj_player.bulletdamage = 1.0;
+        obj_player.bulletdamage = 1.5;
         obj_player.bulletfire = 5;        
     }         
 
@@ -153,7 +153,7 @@ if global.EquipEquipped[11] == true
 
 if global.EquipEquipped[13] == true
     {
-        obj_player.goldmagnetrange = 120;     //range gold particles drawn to player
+        obj_player.goldmagnetrange = 125;     //range gold particles drawn to player
         obj_player.magnetstrength = 50;
     }    
 if global.EquipEquipped[14] == true

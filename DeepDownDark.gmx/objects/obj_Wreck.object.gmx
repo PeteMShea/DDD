@@ -91,13 +91,13 @@ col = obj_WreckSpawner.col;
             {
                 massmult = 1.5;     //how much of player speed is transferred to asteroid on collision
                 damagemult = 50;     //how much player speed is transferred into damage amount on collision
-                asteroidhealth = 500;    //
+                asteroidhealth = 60;    //
             }
         else
             {
                 massmult = 0.5;     //how much of player speed is transferred to asteroid on collision
                 damagemult = 10;     //how much player speed is transferred into damage amount on collision
-                asteroidhealth = 25;    //
+                asteroidhealth = 10;    //
             }
     }
 
