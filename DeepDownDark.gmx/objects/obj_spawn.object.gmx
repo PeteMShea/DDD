@@ -139,7 +139,8 @@ if awake == true
     if global.sporeseen == false
     {
         global.madness += madnessfirstsight;
-        global.sporeseen = true;    
+        global.sporeseen = true;
+        global.categorycap[3] = 4;    
     }
 
     

@@ -378,7 +378,11 @@
       <object>objects\obj_gamestart</object>
       <object>objects\obj_levelA1</object>
       <object>objects\obj_levelA2</object>
-      <object>objects\obj_levelA7Setup</object>
+      <object>objects\obj_levelA3</object>
+      <object>objects\obj_levelA4</object>
+      <object>objects\obj_levelA5</object>
+      <object>objects\obj_levelA6</object>
+      <object>objects\obj_levelA7</object>
       <object>objects\obj_roomcontrolA0</object>
       <object>objects\obj_singleroomcontrol</object>
       <object>objects\obj_PauseLanded</object>
@@ -622,15 +626,18 @@
     <room>rooms\start</room>
     <room>rooms\LCWsplash</room>
     <room>rooms\room_A0</room>
-    <room>rooms\room13</room>
     <room>rooms\room_A1</room>
     <room>rooms\room_A2</room>
     <room>rooms\room_A3</room>
+    <room>rooms\room_A4</room>
+    <room>rooms\room_A5</room>
+    <room>rooms\room_A6</room>
+    <room>rooms\room_A7</room>
     <room>rooms\TestBed</room>
     <room>rooms\TestBed2</room>
-    <room>rooms\level_A7</room>
     <room>rooms\TempleRoom</room>
     <room>rooms\room2</room>
+    <room>rooms\room13</room>
     <room>rooms\room0</room>
   </rooms>
   <help>

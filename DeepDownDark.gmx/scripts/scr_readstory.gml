@@ -24,7 +24,7 @@ global.nextcategory +=1;
 if global.nextcategory > 3 global.nextcategory = 1;
 index = global.nextcategory;
 
-if global.categorycap[index] == 0 global.nextcategory = 1; //nothign here, revert to backstory
+if global.categorycap[index] == 0 global.nextcategory = 1; //nothing here, revert to backstory
 
 script_execute(scr_savegame);
 

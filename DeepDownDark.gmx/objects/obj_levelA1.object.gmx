@@ -33,26 +33,26 @@ global.categorycap[2] = 6;      //unlock story lines for this level
 obj_loadingscreen.visible = true;
 
 randomize(); 
-basechance = 0.4;       //base chance of removing a huge block and replacing with an empty one 0.3 good mix- 0 = tight walkblock path only
+basechance = 0.2;       //base chance of removing a huge block and replacing with an empty one 0.3 good mix- 0 = tight walkblock path only
 
 newblockoverlaychance = 0.7;    //chance of a new block having an overlay added for variety
 hugeblockoverlaychance = 0.7;   //chance of a huge block having an overlay added for variety
 
 maxgold = 500;
-goldchance = 0.015;     //0.012
-goldspread = 30;     // how spread out or clumped gold is-  lower numbers for more spread/less clumping
+goldchance = 0.010;     //0.012
+goldspread = 20;     // how spread out or clumped gold is-  lower numbers for more spread/less clumping
 goldthreshold = 0.5;       //how far down weeblock columns before gold can be placed (1 = never)
-vinechance = 0.1;      //chance of vines being added- overall amount of greenery
+vinechance = 0.15;      //chance of vines being added- overall amount of greenery
 vinethreshold = 0.5;       //how far down weeblock columns before vines can be placed (1 = never)
-asteroidchance = 0.25;       //chance of asteroids being added
-goldasteroidchance = 0.15;   //chance of gold asteroid being added 0.1
-goldnuggetchance = 0.04;     //chance of gold nugget being added
+asteroidchance = 0.15;       //chance of asteroids being added
+goldasteroidchance = 0.1;   //chance of gold asteroid being added 0.1
+goldnuggetchance = 0.01;     //chance of gold nugget being added
 glassasteroidchance = 0.0;     //chance of indestructible asteroid
 
 
 minspike = 1;       //minimum number of normal blocks to add to each edge- should always be at least 1
-maxspike = 3; //how much normal blocks jut in from edges- defines overall corridor width (less equals wider)- normal 4 max possible = 7
-mingap = 6;       //how big a gap there will always be between N/S and E/W corridors (allow for -2 due to wee blocks) 5  min = 4
+maxspike = 2; //how much normal blocks jut in from edges- defines overall corridor width (less equals wider)- normal 4 max possible = 7
+mingap = 7;       //how big a gap there will always be between N/S and E/W corridors (allow for -2 due to wee blocks) 5  min = 4
 spikyness = 1;      // how much wee blocks jut in from edges to empty space- minimum number of wee blocks + 1  /1
 minweespike = 1;
 maxweespike = 3;        //cannot be higher than 4!
@@ -86,11 +86,11 @@ gauntdensity = gauntdensitymin;
 gauntdensitycurrent = 0;
 
 // spores
-sporechance = 0.0;        //chance of a huge square being populated with spores 0.3
-sporedensitymin = 0.1;        //how dense gaunts are at start of level 0
-sporedensitymax = 0.20;          //maximum density of spores
+sporechance = 0.1;        //chance of a huge square being populated with spores 0.3
+sporedensitymin = 0.03;        //how dense gaunts are at start of level 0
+sporedensitymax = 0.1;          //maximum density of spores
 sporedensityrange = sporedensitymax - sporedensitymin;
-sporestartblock = 0.1;           //spores do not start spawning until this % empty huge blocks in
+sporestartblock = 0.5;           //spores do not start spawning until this % empty huge blocks in
 sporeendblock = 0.95;             //no more spores after this % huge blocks
 sporedensity = sporedensitymin;
 sporedensitycurrent = 0;
@@ -100,7 +100,7 @@ sporeoffsetangle = startsporeoffsetangle;
 sporeoffsetdistance = startsporeoffsetdistance;
 
 //wreckage
-wreckchance = 1.0;      //chance of a wreck being in level if a free huge block
+if global.WeaponUnlocked[4] == false wreckchance = 0.25 else wreckchance = 0;      //chance of a wreck being in level if a free huge block
 wreckadded = false;
 
 
@@ -125,10 +125,6 @@ script_execute(scr_genMap, basechance, spacechance, newbigblockvalue, spikyness,
 
 global.loading = false;
 
-
-
-//if random(1) &lt; 0.5 xsign = -1 else xsign = 1
-//if random(1) &lt; 0.5 ysign = -1 else ysign = 1
 
 background_xscale[1] = 2.0;
 background_yscale[1] = 2.0;

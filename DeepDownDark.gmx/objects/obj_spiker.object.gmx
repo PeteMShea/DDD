@@ -103,7 +103,12 @@ if awake == false &amp;&amp; dead == false
     playerdist = point_distance(x, y, obj_player.x, obj_player.y);
     if playerdist &lt;= awakerange
         {
-            awake = true;        
+            awake = true;
+            if global.spikerseen == false
+            {
+                global.spikerseen = true;
+                global.categorycap[3] = 8;    
+            }        
         }
 }
 

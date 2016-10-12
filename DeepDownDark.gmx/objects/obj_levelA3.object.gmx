@@ -28,25 +28,25 @@
             <string>// Procedural Map Generator
 global.pause = false;
 
-global.categorycap[2] = 12;      //unlock story lines for this level
+global.categorycap[2] = 18;      //unlock story lines for this level
 
 obj_loadingscreen.visible = true;
 
 randomize(); 
-basechance = 0.2;       //base chance of removing a huge block and replacing with an empty one 0.3 good mix- 0 = tight walkblock path only
+basechance = 0.3;       //base chance of removing a huge block and replacing with an empty one 0.3 good mix- 0 = tight walkblock path only
 
 newblockoverlaychance = 0.7;    //chance of a new block having an overlay added for variety
 hugeblockoverlaychance = 0.7;   //chance of a huge block having an overlay added for variety
 
 maxgold = 500;
 goldchance = 0.02;     //0.012
-goldspread = 25;     // how spread out or clumped gold is-  lower numbers for more spread/less clumping
+goldspread = 30;     // how spread out or clumped gold is-  lower numbers for more spread/less clumping
 goldthreshold = 0.5;       //how far down weeblock columns before gold can be placed (1 = never)
-vinechance = 0.12;      //chance of vines being added- overall amount of greenery
+vinechance = 0.1;      //chance of vines being added- overall amount of greenery
 vinethreshold = 0.6;       //how far down weeblock columns before vines can be placed (1 = never)
-asteroidchance = 0.20;       //chance of asteroids being added
-goldasteroidchance = 0.15;   //chance of gold asteroid being added 0.1
-goldnuggetchance = 0.02;     //chance of gold nugget being added
+asteroidchance = 0.25;       //chance of asteroids being added
+goldasteroidchance = 0.2;   //chance of gold asteroid being added 0.1
+goldnuggetchance = 0.03;     //chance of gold nugget being added
 glassasteroidchance = 0.0;     //chance of indestructible asteroid
 
 
@@ -55,11 +55,11 @@ maxspike = 2; //how much normal blocks jut in from edges- defines overall corrid
 mingap = 6;       //how big a gap there will always be between N/S and E/W corridors (allow for -2 due to wee blocks) 5  min = 4
 spikyness = 1;      // how much wee blocks jut in from edges to empty space- minimum number of wee blocks + 1  /1
 minweespike = 1;
-maxweespike = 2;        //cannot be higher than 4!
+maxweespike = 3;        //cannot be higher than 4!
 
 // spikers
-spikerdensitymin = 0.05;        //chance of spiker are at start of level 0.03
-spikerdensitymax = 0.1;          //maximum chance of spiker 0.2 is very dense!
+spikerdensitymin = 0.01;        //chance of spiker are at start of level 0.03
+spikerdensitymax = 0.01;          //maximum chance of spiker 0.2 is very dense!
 spikerdensityrange = spikerdensitymax - spikerdensitymin;
 spikerstartblock = 0.1;           //spikers do not start spawning until this % empty huge blocks in
 spikerendblock = 0.9;             //no more spikers after this % huge blocks
@@ -76,22 +76,22 @@ ballplantdensity = ballplantdensitymin;
 ballplantdensitycurrent = 0;
 
 // nightgaunts
-gauntchance = 0.0;        //chance of a huge square being populated with gaunts 0.3
-gauntdensitymin = 0.05;        //how dense gaunts are at start of level 0
-gauntdensitymax = 0.1;          //maximum density of gaunts
+gauntchance = 0.1;        //chance of a huge square being populated with gaunts 0.3
+gauntdensitymin = 0.02;        //how dense gaunts are at start of level 0
+gauntdensitymax = 0.05;          //maximum density of gaunts
 gauntdensityrange = gauntdensitymax - gauntdensitymin;
-gauntstartblock = 0.1;           //gaunts do not start spawning until this % empty huge blocks in
+gauntstartblock = 0.6;           //gaunts do not start spawning until this % empty huge blocks in
 gauntendblock = 0.95;             //no more gaunts after this % huge blocks
 gauntdensity = gauntdensitymin;
 gauntdensitycurrent = 0;
 
 // spores
-sporechance = 0.2;        //chance of a huge square being populated with spores 0.3
+sporechance = 0.25;        //chance of a huge square being populated with spores 0.3
 sporedensitymin = 0.05;        //how dense gaunts are at start of level 0
-sporedensitymax = 0.14;          //maximum density of spores
+sporedensitymax = 0.15;          //maximum density of spores
 sporedensityrange = sporedensitymax - sporedensitymin;
-sporestartblock = 0.4;           //spores do not start spawning until this % empty huge blocks in
-sporeendblock = 0.95;             //no more spores after this % huge blocks
+sporestartblock = 0.1;           //spores do not start spawning until this % empty huge blocks in
+sporeendblock = 0.5;             //no more spores after this % huge blocks
 sporedensity = sporedensitymin;
 sporedensitycurrent = 0;
 startsporeoffsetangle = 0;
@@ -100,7 +100,7 @@ sporeoffsetangle = startsporeoffsetangle;
 sporeoffsetdistance = startsporeoffsetdistance;
 
 //wreckage
-if global.WeaponUnlocked[6] == false wreckchance = 0.05 else wreckchance = 0;      //chance of a wreck being in level if a free huge block
+if global.WeaponUnlocked[8] == false wreckchance = 0.05 else wreckchance = 0;      //chance of a wreck being in level if a free huge block
 wreckadded = false;
 
 

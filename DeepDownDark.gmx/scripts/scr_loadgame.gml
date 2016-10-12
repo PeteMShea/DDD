@@ -19,6 +19,15 @@ if (file_exists("Save.sav"))
         
     //next item in a blackbox
     global.nextitemweapon = ini_read_real("GameplayGlobals","NextItem:",blank);
+    
+    //monsters seen
+    global.sporeseen = ini_read_real("GameplayGlobals","sporeseen:",blank);
+    global.spikerseen = ini_read_real("GameplayGlobals","spikerseen:",blank);
+    global.ballplantseen = ini_read_real("GameplayGlobals","ballplantseen:",blank);
+    global.gauntseen = ini_read_real("GameplayGlobals","gauntseen:",blank);
+    global.grabberseen = ini_read_real("GameplayGlobals","grabberseen:",blank);
+    global.formlessseen = ini_read_real("GameplayGlobals","formlessseen:",blank);
+    
 
     //story progress
     global.nextcategory = ini_read_real("StoryGlobals","NextCategory:", 1);
