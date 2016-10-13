@@ -28,60 +28,60 @@
             <string>// Procedural Map Generator
 global.pause = false;
 
-global.categorycap[2] = 6;      //unlock story lines for this level
+global.categorycap[2] = 18;      //unlock story lines for this level- should be 36
 
 obj_loadingscreen.visible = true;
 
 randomize(); 
-basechance = 0.4;       //base chance of removing a huge block and replacing with an empty one 0.3 good mix- 0 = tight walkblock path only
+basechance = 0.1;       //base chance of removing a huge block and replacing with an empty one 0.3 good mix- 0 = tight walkblock path only
 
 newblockoverlaychance = 0.7;    //chance of a new block having an overlay added for variety
 hugeblockoverlaychance = 0.7;   //chance of a huge block having an overlay added for variety
 
 maxgold = 500;
-goldchance = 0.015;     //0.012
-goldspread = 30;     // how spread out or clumped gold is-  lower numbers for more spread/less clumping
-goldthreshold = 0.5;       //how far down weeblock columns before gold can be placed (1 = never)
-vinechance = 0.1;      //chance of vines being added- overall amount of greenery
-vinethreshold = 0.5;       //how far down weeblock columns before vines can be placed (1 = never)
-asteroidchance = 0.25;       //chance of asteroids being added
-goldasteroidchance = 0.15;   //chance of gold asteroid being added 0.1
-goldnuggetchance = 0.04;     //chance of gold nugget being added
-glassasteroidchance = 0.0;     //chance of indestructible asteroid
+goldchance = 0.03;     //0.012
+goldspread = 20;     // how spread out or clumped gold is-  lower numbers for more spread/less clumping
+goldthreshold = 0.7;       //how far down weeblock columns before gold can be placed (1 = never)
+vinechance = 0.01;      //chance of vines being added- overall amount of greenery
+vinethreshold = 0.75;       //how far down weeblock columns before vines can be placed (1 = never)
+asteroidchance = 0.05;       //chance of asteroids being added
+goldasteroidchance = 0.05;   //chance of gold asteroid being added 0.1
+goldnuggetchance = 0.05;     //chance of gold nugget being added
+glassasteroidchance = 0.01;     //chance of indestructible asteroid
 
 
 minspike = 1;       //minimum number of normal blocks to add to each edge- should always be at least 1
-maxspike = 3; //how much normal blocks jut in from edges- defines overall corridor width (less equals wider)- normal 4 max possible = 7
-mingap = 6;       //how big a gap there will always be between N/S and E/W corridors (allow for -2 due to wee blocks) 5  min = 4
+maxspike = 5; //how much normal blocks jut in from edges- defines overall corridor width (less equals wider)- normal 4 max possible = 7
+mingap = 4;       //how big a gap there will always be between N/S and E/W corridors (allow for -2 due to wee blocks) 5  min = 4
 spikyness = 1;      // how much wee blocks jut in from edges to empty space- minimum number of wee blocks + 1  /1
 minweespike = 1;
-maxweespike = 3;        //cannot be higher than 4!
+maxweespike = 4;        //cannot be higher than 4!
 
 // spikers
-spikerdensitymin = 0.0;        //chance of spiker are at start of level 0.03
-spikerdensitymax = 0.0;          //maximum chance of spiker 0.2 is very dense!
+spikerdensitymin = 0.01;        //chance of spiker are at start of level 0.03
+spikerdensitymax = 0.01;          //maximum chance of spiker 0.2 is very dense!
 spikerdensityrange = spikerdensitymax - spikerdensitymin;
 spikerstartblock = 0.1;           //spikers do not start spawning until this % empty huge blocks in
-spikerendblock = 0.9;             //no more spikers after this % huge blocks
+spikerendblock = 0.4;             //no more spikers after this % huge blocks
 spikerdensity = spikerdensitymin;
 spikerdensitycurrent = 0;
 
 // ballplants
-ballplantdensitymin = 0.00;        //chance of ballplant are at start of level 0.03
-ballplantdensitymax = 0.00;          //maximum chance of ballplant 0.2 is very dense!
+ballplantdensitymin = 0.02;        //chance of ballplant are at start of level 0.03
+ballplantdensitymax = 0.04;          //maximum chance of ballplant 0.2 is very dense!
 ballplantdensityrange = ballplantdensitymax - ballplantdensitymin;
-ballplantstartblock = 0.1;           //ballplants do not start spawning until this % empty huge blocks in
-ballplantendblock = 0.90;             //no more ballplant after this % huge blocks
+ballplantstartblock = 0.45;           //ballplants do not start spawning until this % empty huge blocks in
+ballplantendblock = 0.95;             //no more ballplant after this % huge blocks
 ballplantdensity = ballplantdensitymin;
 ballplantdensitycurrent = 0;
 
 // nightgaunts
-gauntchance = 0.0;        //chance of a huge square being populated with gaunts 0.3
+gauntchance = 0.3;        //chance of a huge square being populated with gaunts 0.3
 gauntdensitymin = 0.05;        //how dense gaunts are at start of level 0
-gauntdensitymax = 0.1;          //maximum density of gaunts
+gauntdensitymax = 0.15;          //maximum density of gaunts
 gauntdensityrange = gauntdensitymax - gauntdensitymin;
-gauntstartblock = 0.1;           //gaunts do not start spawning until this % empty huge blocks in
-gauntendblock = 0.95;             //no more gaunts after this % huge blocks
+gauntstartblock = 0.3;           //gaunts do not start spawning until this % empty huge blocks in
+gauntendblock = 0.7;             //no more gaunts after this % huge blocks
 gauntdensity = gauntdensitymin;
 gauntdensitycurrent = 0;
 
@@ -99,8 +99,20 @@ startsporeoffsetdistance = 24;
 sporeoffsetangle = startsporeoffsetangle;
 sporeoffsetdistance = startsporeoffsetdistance;
 
+//grabbers
+grabberone = true;              //one grabber
+grabberoneblockmin = 0.02;      //% minimum through huge blocks to look for a N/S or E/W square
+grabberoneblockmax = 0.25;       //% max to look for free square
+grabbertwo = true;              //second grabber
+grabbertwoblockmin = 0.75;      //% minimum through huge blocks to look for a N/S or E/W square
+grabbertwoblockmax = 0.99;       //% max to look for free square
+
 //wreckage
-wreckchance = 1.0;      //chance of a wreck being in level if a free huge block
+weapon = global.WeaponProgression[14]
+weaponB = global.WeaponProgression[20]
+if global.WeaponUnlocked[weapon] == false wreckchance = 0.5
+else if global.WeaponUnlocked[weaponB] == false wreckchance = 0.25 
+else wreckchance = 0.05;      //chance of a wreck being in level if a free huge block
 wreckadded = false;
 
 

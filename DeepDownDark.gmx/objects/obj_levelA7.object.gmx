@@ -99,12 +99,19 @@ startsporeoffsetdistance = 24;
 sporeoffsetangle = startsporeoffsetangle;
 sporeoffsetdistance = startsporeoffsetdistance;
 
+//grabbers
+grabberone = false;              //one grabber
+grabberoneblockmin = 0.05;      //% minimum through huge blocks to look for a N/S or E/W square
+grabberoneblockmax = 0.2;       //% max to look for free square
+grabbertwo = false;              //second grabber
+grabbertwoblockmin = 0.25;      //% minimum through huge blocks to look for a N/S or E/W square
+grabbertwoblockmax = 0.8;       //% max to look for free square
 
 
 
 
 //wreckage
-wreckchance = 1.0;      //chance of a wreck being in level if a free huge block
+wreckchance = 0.0;      //chance of a wreck being in level if a free huge block
 wreckadded = false;
 
 

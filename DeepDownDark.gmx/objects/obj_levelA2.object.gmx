@@ -30,6 +30,8 @@ global.pause = false;
 
 global.categorycap[2] = 12;      //unlock story lines for this level
 
+show_debug_message("Entering Room A2");
+
 obj_loadingscreen.visible = true;
 
 randomize(); 
@@ -58,8 +60,8 @@ minweespike = 1;
 maxweespike = 2;        //cannot be higher than 4!
 
 // spikers
-spikerdensitymin = 0.05;        //chance of spiker are at start of level 0.03
-spikerdensitymax = 0.1;          //maximum chance of spiker 0.2 is very dense!
+spikerdensitymin = 0.15;        //chance of spiker are at start of level 0.03
+spikerdensitymax = 0.25;          //maximum chance of spiker 0.2 is very dense!
 spikerdensityrange = spikerdensitymax - spikerdensitymin;
 spikerstartblock = 0.1;           //spikers do not start spawning until this % empty huge blocks in
 spikerendblock = 0.9;             //no more spikers after this % huge blocks
@@ -86,7 +88,7 @@ gauntdensity = gauntdensitymin;
 gauntdensitycurrent = 0;
 
 // spores
-sporechance = 0.2;        //chance of a huge square being populated with spores 0.3
+sporechance = 0.6;        //chance of a huge square being populated with spores 0.3
 sporedensitymin = 0.05;        //how dense gaunts are at start of level 0
 sporedensitymax = 0.14;          //maximum density of spores
 sporedensityrange = sporedensitymax - sporedensitymin;
@@ -99,8 +101,21 @@ startsporeoffsetdistance = 24;
 sporeoffsetangle = startsporeoffsetangle;
 sporeoffsetdistance = startsporeoffsetdistance;
 
+//grabbers
+grabberone = false;              //one grabber
+grabberoneblockmin = 0.05;      //% minimum through huge blocks to look for a N/S or E/W square
+grabberoneblockmax = 0.2;       //% max to look for free square
+grabbertwo = false;              //second grabber
+grabbertwoblockmin = 0.25;      //% minimum through huge blocks to look for a N/S or E/W square
+grabbertwoblockmax = 0.8;       //% max to look for free square
+
+
 //wreckage
-if global.WeaponUnlocked[6] == false wreckchance = 0.05 else wreckchance = 0;      //chance of a wreck being in level if a free huge block
+weapon = global.WeaponProgression[4]
+weaponB = global.WeaponProgression[6]
+if global.WeaponUnlocked[weapon] == false wreckchance = 0.25
+else if global.WeaponUnlocked[weaponB] == false wreckchance = 0.1 
+else wreckchance = 0;      //chance of a wreck being in level if a free huge block
 wreckadded = false;
 
 

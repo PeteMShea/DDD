@@ -345,7 +345,7 @@ for (u = 0; u < gridsize; u +=1)
                     {                        
                                                 
                         ballplantdensity = ballplantdensitymin + (ballplantdensityrange * ((walkblock[u,v]- totalwalkblocks * ballplantstartblock)/(totalwalkblocks * ballplantendblock - totalwalkblocks * ballplantstartblock)))
-                        if ballplantdensity > 0 show_debug_message("Adding ballplants at Walkblock: " + string(walkblock[u,v]) + " with chance: " + string(ballplantdensity));                        
+                        //if ballplantdensity > 0 show_debug_message("Adding ballplants at Walkblock: " + string(walkblock[u,v]) + " with chance: " + string(ballplantdensity));                        
                     }
                 else ballplantdensity = 0;            
 
@@ -354,7 +354,7 @@ for (u = 0; u < gridsize; u +=1)
                     {                        
                                                 
                         spikerdensity = spikerdensitymin + (spikerdensityrange * ((walkblock[u,v]- totalwalkblocks * spikerstartblock)/(totalwalkblocks * spikerendblock - totalwalkblocks * spikerstartblock)))
-                        if spikerdensity > 0 show_debug_message("Adding spikers at Walkblock: " + string(walkblock[u,v]) + " with chance: " + string(spikerdensity));                        
+                        //if spikerdensity > 0 show_debug_message("Adding spikers at Walkblock: " + string(walkblock[u,v]) + " with chance: " + string(spikerdensity));                        
                     }
                 else spikerdensity = 0;
                 
@@ -626,7 +626,50 @@ if bigblock[u , v] > 0
                     show_debug_message("Wreck added at : " + string(u) + " , " + string(v));                        
                 }                
         }
-                  
+        if n == 1 && s == 0 && w == 0 && e == 0 && wreckadded == false
+        {
+            if random(1) <= wreckchance
+                {
+                    wx = (u * 768) + random_range(200, 568);
+                    wy = (v * 768) + random_range(500, 768);
+                    instance_create(wx, wy, obj_WreckSpawner);
+                    wreckadded = true;     //one per map
+                    show_debug_message("Wreck added at : " + string(u) + " , " + string(v));                        
+                }                
+        }
+        if n == 0 && s == 1 && w == 0 && e == 0 && wreckadded == false
+        {
+            if random(1) <= wreckchance
+                {
+                    wx = (u * 768) + random_range(200, 568);
+                    wy = (v * 768) + random_range(0, 268);
+                    instance_create(wx, wy, obj_WreckSpawner);
+                    wreckadded = true;     //one per map
+                    show_debug_message("Wreck added at : " + string(u) + " , " + string(v));                        
+                }                
+        }        
+        if n == 0 && s == 0 && w == 1 && e == 0 && wreckadded == false
+        {
+            if random(1) <= wreckchance
+                {
+                    wx = (u * 768) + random_range(500, 768);
+                    wy = (v * 768) + random_range(200, 568);
+                    instance_create(wx, wy, obj_WreckSpawner);
+                    wreckadded = true;     //one per map
+                    show_debug_message("Wreck added at : " + string(u) + " , " + string(v));                        
+                }                
+        }        
+        if n == 0 && s == 0 && w == 0 && e == 1 && wreckadded == false
+        {
+            if random(1) <= wreckchance
+                {
+                    wx = (u * 768) + random_range(0, 268);
+                    wy = (v * 768) + random_range(200, 568);
+                    instance_create(wx, wy, obj_WreckSpawner);
+                    wreckadded = true;     //one per map
+                    show_debug_message("Wreck added at : " + string(u) + " , " + string(v));                        
+                }                
+        }                          
                                
         if w !=0 || e !=0 || n !=0 || s !=0 || special == 1                             // we have at least one external edge- so time to add blocks inside             
             {
@@ -1055,7 +1098,7 @@ if bigblock[u , v] > 0
                                                     image_angle = 270;
                                                     
                                                 }
-
+                                            show_debug_message("Adding Ballplant in square: " + string(u) + " , " + string(v));
                                         }
                                 if block[bu + u * 12, bv + v * 12] == 5      //ballplant on west side facing east
                                         {
@@ -1063,7 +1106,7 @@ if bigblock[u , v] > 0
                                                 {
                                                 image_angle = 180;
                                                 }
-
+                                            show_debug_message("Adding Ballplant in square: " + string(u) + " , " + string(v));
                                         }
                                 if block[bu + u * 12, bv + v * 12] == 6      //ballplant on east side facing west
                                         {
@@ -1071,17 +1114,17 @@ if bigblock[u , v] > 0
                                                 {
                                                 image_angle = 0;
                                                 }
+                                          show_debug_message("Adding Ballplant in square: " + string(u) + " , " + string(v));
                                          }       
                                                 
                                 if block[bu + u * 12, bv + v * 12] == 7      //spiker on south side facing up
-                                    {
+                                        {
 
-                                        with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  +32, v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 64, obj_spiker))
+                                            with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  +32, v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 64, obj_spiker))
                                                 {
                                                     image_angle = 90;
                                                 }
-                                              
-                  
+                                            show_debug_message("Adding Spiker in square: " + string(u) + " , " + string(v));                      
                                         }
                                 if block[bu + u * 12, bv + v * 12] == 8      //spiker on north side facing down
                                         {
@@ -1090,7 +1133,7 @@ if bigblock[u , v] > 0
                                                     image_angle = 270;
                                                     
                                                 }
-
+                                            show_debug_message("Adding Spiker in square: " + string(u) + " , " + string(v)); 
                                         }
                                 if block[bu + u * 12, bv + v * 12] == 9      //spiker on west side facing east
                                         {
@@ -1098,7 +1141,7 @@ if bigblock[u , v] > 0
                                                 {
                                                 image_angle = 180;
                                                 }
-
+                                            show_debug_message("Adding Spiker in square: " + string(u) + " , " + string(v)); 
                                         }
                                 if block[bu + u * 12, bv + v * 12] == 10      //spiker on east side facing west
                                         {
@@ -1106,7 +1149,7 @@ if bigblock[u , v] > 0
                                                 {
                                                 image_angle = 0;
                                                 }                                                
-                                               
+                                            show_debug_message("Adding Spiker in square: " + string(u) + " , " + string(v));                                                
                                         }
                                          
                                 if block[bu + u * 12, bv + v * 12] == 11      //enemy node on north side facing up                                        {

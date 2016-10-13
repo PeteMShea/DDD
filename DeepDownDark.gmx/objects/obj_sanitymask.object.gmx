@@ -96,7 +96,7 @@ if scale != oldscale
     {
         image_xscale = scale;
         image_yscale = scale;
-        show_debug_message(string(scale));
+        //show_debug_message(string(scale));
     }
 
 
