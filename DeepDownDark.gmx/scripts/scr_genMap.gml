@@ -356,9 +356,24 @@ for (u = 0; u < gridsize; u +=1)
                         spikerdensity = spikerdensitymin + (spikerdensityrange * ((walkblock[u,v]- totalwalkblocks * spikerstartblock)/(totalwalkblocks * spikerendblock - totalwalkblocks * spikerstartblock)))
                         if spikerdensity > 0 show_debug_message("Adding spikers at Walkblock: " + string(walkblock[u,v]) + " with chance: " + string(spikerdensity));                        
                     }
-                else spikerdensity = 0;                             
+                else spikerdensity = 0;
+                
+                //GRABBERS
+                if grabberone == true && walkblock[u, v] > 0 && walkblock[u, v] >= (totalwalkblocks * grabberoneblockmin) && walkblock[u, v] <= (totalwalkblocks * grabberoneblockmax)
+                    {
+                        grabberadd = true;                    
+                    }
+                else grabberadd = false;
+
+                if grabbertwo == true && walkblock[u, v] > 0 && walkblock[u, v] >= (totalwalkblocks * grabbertwoblockmin) && walkblock[u, v] <= (totalwalkblocks * grabbertwoblockmax)
+                    {
+                        grabberadd = true;                    
+                    }
+                else grabberadd = false;                
+                
+                                              
             
-            script_execute(scr_genBlocks, u, v, bigblock[u,v], gridsize, starthuge, endhuge, ballplantdensity, spikerdensity)
+            script_execute(scr_genBlocks, u, v, bigblock[u,v], gridsize, starthuge, endhuge, ballplantdensity, spikerdensity, grabberadd, grabberone, grabbertwo)
 
 
              
@@ -548,7 +563,8 @@ bn = 0;
 be = 0;
 bw =0;
 bs =0;
- 
+
+grabberadded = false; 
 
 if bigblock[u , v] > 0
 //show_debug_message("Space found square-");
@@ -754,7 +770,13 @@ if bigblock[u , v] > 0
                                          {
                                             spikerdensity = 0;      //one per huge block
                                             block[column + u * 12, c + v * 12] = 8     //if last block is empty and random chance add spiker
-                                         } 
+                                         }
+                                         if grabberadd == true
+                                         {
+                                            block[column + u * 12, c + 1 + v * 12] = 11  //add enemy node
+                                            grabberadded = true
+                                         }
+
                                    
 
                                 clampmax = (12 - count - mingap)
@@ -773,6 +795,7 @@ if bigblock[u , v] > 0
                                             spikerdensity = 0;      //one per huge block
                                             block[column + u * 12, (11-c) + v * 12] = 7     //if last block is empty and random chance add spiker
                                          }
+                                  if grabberadd == true block[column + u * 12, (11-c) + v * 12] = 13  //add enemy node        
                               }                         
                     }                                         
 
@@ -781,7 +804,7 @@ if bigblock[u , v] > 0
                         count = 1
                         oppositecount = 1
                         clampmax = maxspike
-                        for (row = 0; row < 12; row +=1)           //iterate through each column from north edge down
+                        for (row = 0; row < 12; row +=1)           //iterate through each row from north edge down
                             {
 
                                 count = count + irandom_range(-1, 2)
@@ -798,7 +821,12 @@ if bigblock[u , v] > 0
                                          {
                                             spikerdensity = 0;      //one per huge block
                                             block[c + u * 12, row + v * 12] = 10     //if last block is empty and random chance add spiker
-                                         }   
+                                         }
+                                    if grabberadd == true
+                                    {
+                                    block[c + u * 12, row + v * 12] = 14  //add enemy node
+                                    grabberadded = true
+                                    }    
                             
                                 clampmax = (12 - count - mingap)
                                 oppositecount = oppositecount + irandom_range(-1, 2)
@@ -815,7 +843,8 @@ if bigblock[u , v] > 0
                                          {
                                             spikerdensity = 0;      //one per huge block
                                             block[(11-c) + u * 12, row + v * 12] = 9     //if last block is empty and random chance add spiker
-                                         }    
+                                         } 
+                                         if grabberadd == true block[(11-c) + u * 12, row + v * 12] = 12  //add enemy node    
                             }                     
                     }                     
 
@@ -1001,8 +1030,8 @@ if bigblock[u , v] > 0
                     {
                         for (bv = 0; bv < 12; bv +=1)
                             {
-        
-                                if block[bu + u * 12 , bv + v * 12] == 1 
+                                //if block add a new block
+                                if block[bu + u * 12 , bv + v * 12] == 1
                                     {
                                         instance_create( u * 384 * global.RM+64 * global.RM + bu *32 * global.RM, v * 384 * global.RM+64 * global.RM + bv *32 * global.RM, obj_newblock);
                                         //instance_deactivate_object(obj_newblock);
@@ -1018,7 +1047,7 @@ if bigblock[u , v] > 0
                                                 }
                                               
                   
-                                        }
+                                    }
                                 if block[bu + u * 12, bv + v * 12] == 4      //ballplant on north side facing down
                                         {
                                             with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  + 32, v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 32 , obj_ballplant))
@@ -1076,22 +1105,75 @@ if bigblock[u , v] > 0
                                           with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  + 0 , v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 32, obj_spiker))
                                                 {
                                                 image_angle = 0;
-                                                }
-                                                
-                                                
+                                                }                                                
+                                               
                                         }
+                                         
+                                if block[bu + u * 12, bv + v * 12] == 11      //enemy node on north side facing up                                        {
+                                        {     
+                                             inst = instance_create( u * 384 * global.RM+64 * global.RM + bu *32 * global.RM +32, v * 384 * global.RM+64 * global.RM + bv *32 * global.RM - 64, obj_enemynode);
+                                                 with(inst)
+                                                    {
+                                                        image_angle = 90;   //pointing up
+                                                    }
+                                             block[bu + u * 12 , bv + v * 12] = 0           
+                                         }                                        
+
+                                if block[bu + u * 12, bv + v * 12] == 12      //enemy node on west side facing east                                       {
+                                        {     
+                                             inst = instance_create( u * 384 * global.RM+64 * global.RM + bu *32 * global.RM + 64, v * 384 * global.RM+64 * global.RM + bv *32 * global.RM +32, obj_enemynode);
+                                                 with(inst)
+                                                    {
+                                                        image_angle = 0;   //pointing right
+                                                    }
+                                             block[bu + u * 12 , bv + v * 12] = 0    
+                                         }                                                                                   
+                                if block[bu + u * 12, bv + v * 12] == 13      //enemy node on south side facing down                                       {
+                                        {     
+                                             inst = instance_create( u * 384 * global.RM+64 * global.RM + bu *32 * global.RM + 32, v * 384 * global.RM+32 * global.RM + bv *32 * global.RM + 128, obj_enemynode);
+                                                 with(inst)
+                                                    {
+                                                        image_angle = 270;   //pointing down
+                                                    }
+                                             block[bu + u * 12 , bv + v * 12] = 0             
+                                         }
+                                if block[bu + u * 12, bv + v * 12] == 14      //enemy node on east side facing west                                       {
+                                        {     
+                                             inst = instance_create( u * 384 * global.RM+64 * global.RM + bu *32 * global.RM - 32, v * 384 * global.RM + 32 * global.RM + bv *32 * global.RM +96, obj_enemynode);
+                                                 with(inst)
+                                                    {
+                                                        image_angle = 180;   //pointing left
+                                                    }
+                                             block[bu + u * 12 , bv + v * 12] = 0    
+                                         }                                                                                 
                                 if block[bu + u * 12, bv + v * 12] == 99      //debug
                                         {
                                           with(instance_create( u * 384 * global.RM +64 * global.RM  + bu *32 * global.RM  + 16 * global.RM , v * 384 * global.RM +64 * global.RM  + bv *32 * global.RM  + 16 * global.RM , debug_S))
                                                 {
                                                 image_angle = 0;
                                                 }
-
+                                          block[bu + u * 12 , bv + v * 12] = 0
                                         }
                                 //instance_deactivate_all(true);          
                                 }
                         }
 
+                    if grabberadded == true && grabberone == true
+                        {
+                            instance_create(u * 768 + 384, v * 768 +384, obj_grabber);
+                            grabberone = false;
+                            grabberadd = false;
+                            grabberadded = false;
+                            show_debug_message("Adding Grabber in square: " + string(u) + " , " + string(v));
+                        }                         
+                    if grabberadded == true && grabbertwo == true
+                        {
+                            instance_create(u * 768 + 384, v * 768 +384, obj_grabber);
+                            grabbertwo = false;
+                            grabberadd = false;
+                            grabberadd = false;
+                            show_debug_message("Adding Grabber in square: " + string(u) + " , " + string(v));
+                        }                         
     }
 }
 

@@ -9,12 +9,16 @@ num = instance_number(obj_blastblock);
 for (var i = 0; i < num; i++ )
     {
         list[i] = instance_find(obj_blastblock, i)
+        test = list[i]
+        if test != noone
+        {
         if point_distance(locx, locy, list[i].x + 4, list[i].y + 4) <= radius
             {
                 //create debris tinyblocks
                 bx = list[i].x
                 by = list[i].y
-                script_execute(scr_particleburst, bx, by);
+                colour = c_black;
+                script_execute(scr_particleburst, bx, by, colour);
                 with (list[i])
                     {
                         if hitpoints > 0
@@ -28,7 +32,8 @@ for (var i = 0; i < num; i++ )
                                 instance_destroy();
                             }
                     }            
-            }        
+            }
+       }        
     }
 
 // next spawn grabber blocks

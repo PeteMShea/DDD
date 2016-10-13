@@ -100,7 +100,10 @@ madnessproximity = 0.005;      //how much madness to apply per frame when enemy 
 
 {
 //-----------------------------------------------------------------------
-
+for (i = 1; i &lt;= totalnodes; i += 1)            //repeat this at run time to pick up nodes that may have been deactivated by object culling
+    {
+        enemynode[i] = instance_find(obj_enemynode,i);
+    }
 
 // rotate
 
@@ -129,7 +132,7 @@ if awake == false
         if dist &lt;= wakeuprange
             {
                 awake = true;
-                show_debug_message("Grabber awake!");   
+                //show_debug_message("Grabber awake!");   
             }
     }
 
@@ -185,7 +188,7 @@ if awake == true &amp;&amp; currenthealth &gt; 0
                     if moving == false      //first turn towards aim point
                         {                    
                             anglealign = abs(angle_difference(target_angle, image_angle));
-                            show_debug_message(string(anglealign));       
+                            //show_debug_message(string(anglealign));       
                             if anglealign &lt;= 3 moving = true;                               
                         }
                     
@@ -219,7 +222,7 @@ if awake == true &amp;&amp; currenthealth &gt; 0
                             //timeline_loop = false;
                             if image_index &lt;= 14
                                 {
-                                    obj_grabberblock.homing = true;
+                                    if instance_exists(obj_grabberblock) obj_grabberblock.homing = true;
                               
                                 }
                             if movespeed &lt; maxspeed movespeed += acceleration;
