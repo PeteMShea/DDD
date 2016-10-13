@@ -16,7 +16,11 @@ for (i =1; i <25; i+=1)
     }
     
 //next item in a blackbox
-ini_write_real("GameplayGlobals","NextItem:",global.nextitemweapon);    
+ini_write_real("GameplayGlobals","NextItem:",global.nextitemweapon); 
+
+//whether quick restarting or not
+ini_write_real("GameplayGlobals","reboot:",global.reboot);
+   
 
 //monsters seen
 ini_write_real("GameplayGlobals","sporeseen:",global.sporeseen); 

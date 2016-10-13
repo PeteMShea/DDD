@@ -27,13 +27,16 @@
             <kind>1</kind>
             <string>// set up global variables
 
+global.reboot = true;       //set to true to force load of Splash otherwise loads whatever is saved for global.nextroom = 3;
+global.nextroom = 1;       // 1 for splash, 2 for A0, 3, for A1, 4, for A2
+
 global.RM = 2.0         //Resolution Multiplier- use 1.0 for half size
 
 global.playerX = x;
 global.playerY = y;
 global.playerspeedX = 0;
 global.playerspeedY = 0;
-global.playerHealth = 100;  //100
+global.playerHealth = 10;  //100
 global.startHealth = 100;
 global.playerGold = 0;
 global.baseSanity = 80;
@@ -91,7 +94,6 @@ global.displaystring = "LOADING";
 countdown = 1;
 global.pause = false;
 global.startroom = false;
-global.nextroom = 3;       // 1 for splash, 2 for A0, 3, for A1, 4, for A2
 global.dead = false;        //temp
 
 //first set all items to their default first ever boot values
@@ -113,7 +115,7 @@ else
         script_execute(scr_savegame);
     }
 
-
+if global.reboot = true global.nextroom = 1 else global.nextroom = 3;       // go to splash unless quick restart, then goto 3
 
 
 // DEBUG

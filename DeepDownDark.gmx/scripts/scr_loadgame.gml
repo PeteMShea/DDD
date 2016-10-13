@@ -20,6 +20,10 @@ if (file_exists("Save.sav"))
     //next item in a blackbox
     global.nextitemweapon = ini_read_real("GameplayGlobals","NextItem:",blank);
     
+    //whether quick restarting or not
+    global.reboot = ini_read_real("GameplayGlobals","reboot:",true);
+    
+        
     //monsters seen
     global.sporeseen = ini_read_real("GameplayGlobals","sporeseen:",blank);
     global.spikerseen = ini_read_real("GameplayGlobals","spikerseen:",blank);

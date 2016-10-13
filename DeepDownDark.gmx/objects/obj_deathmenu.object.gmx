@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-9999999</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -27,8 +27,38 @@
             <kind>1</kind>
             <string>// initialise
 
-alphafade = 0.001;    //how quickly the text fades in
+alphafade = 0.01;    //how quickly the text fades in
 alphalevel = 0;
+finalalpha = 0.9;
+
+fadedelay = 90;     //how long to wait before fade to black appears
+fadeappeared = false;
+menudelay = 60;     //how long to wait before menu appears
+menuappeared = false;
+
+quickrestart = false;
+quit = false;
+
+hidden = false;
+quitdone = false;
+quittimer = 30;     //delay before reloading
+
+
+
+xoffset = view_xview[0];
+yoffset = view_yview[0];
+
+
+quickrestartx1 = 845 + xoffset;
+quickrestartx2 = 1075 + xoffset;
+quickrestarty1 = 500 + yoffset;
+quickrestarty2 = 530 + yoffset;
+
+quitx1 = 920 + xoffset;
+quitx2 = 1000 + xoffset;
+quity1 = 550 + yoffset;
+quity2 = 575 + yoffset;
+
 
 
 </string>
@@ -36,7 +66,7 @@ alphalevel = 0;
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="4">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -53,12 +83,95 @@ alphalevel = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// temp restart on level A1
+            <string>//fade to black trigger
 
-global.nextroom = 3;
-//room_goto(0);
+if fadeappeared == false
+    {
+        fadedelay -=1;
+        if fadedelay &lt;= 0
+            {
+                inst = instance_create(x,y, eff_fadetoblack);
+                    with(inst)
+                    {
+                        destroyonblack = false;
+                        fadeSpeed = 2;
+                    }
+                fadeappeared = true        
+            }
+    }
 
-game_restart();
+if fadeappeared == true &amp;&amp; menuappeared == false
+    {
+        menudelay -=1;
+        if menudelay &lt;= 0
+            {            
+                menuappeared = true        
+            }        
+    }
+
+if menuappeared == true &amp;&amp; quitdone == false
+{
+    mx = mouse_x;
+    my = mouse_y;
+    
+    if mx &gt;= quickrestartx1 &amp;&amp; mx &lt;= quickrestartx2 &amp;&amp; my &gt;= quickrestarty1 &amp;&amp; my &lt;= quickrestarty2 quickrestart = true else quickrestart = false;
+    if mx &gt;= quitx1 &amp;&amp; mx &lt;= quitx2 &amp;&amp; my &gt;= quity1 &amp;&amp; my &lt;= quity2 quit = true else quit = false;
+    
+    if mouse_check_button(mb_left) &amp;&amp; quit == true 
+        {
+            global.reboot = true;
+            script_execute(scr_savegame);
+            hidden = true;
+            quitdone = true;
+        }
+
+    if mouse_check_button(mb_left) &amp;&amp; quickrestart == true 
+        {
+            global.reboot = false;
+            script_execute(scr_savegame);
+            hidden = true;
+            quitdone = true;                        
+        }            
+    
+}
+
+if quitdone = true
+{
+    quittimer -=1;
+    if quittimer &lt;= 0
+    {
+        game_restart();
+    }    
+}
+
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="88">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+
+show_debug_message(string(mouse_x - xoffset) + " , " + string(mouse_y - yoffset));
+
 
 </string>
           </argument>
@@ -84,18 +197,45 @@ game_restart();
             <kind>1</kind>
             <string>// death menu
 
-draw_set_font(fnt_CapsullaBig);
-draw_set_halign(fa_center);        
-draw_set_colour(c_ltgray);
-xpos = 1920/2;
-ypos = 400
-draw_set_alpha(alphalevel);
-
-if alphalevel &lt;= 1.0 alphalevel += alphafade;
-
-draw_text(xpos, ypos, "YOU HAVE DIED");       //temporary
-
-draw_set_alpha(1);
+if hidden = false
+    {
+        if fadeappeared == true
+        {
+            draw_set_font(fnt_CapsullaBig);
+            draw_set_halign(fa_center);        
+            draw_set_colour(c_ltgray);
+            xpos = 960;
+            ypos = 360
+            draw_set_alpha(alphalevel);
+            
+            if alphalevel &lt;= finalalpha alphalevel += alphafade;
+            
+            draw_text(xpos, ypos, "YOU HAVE DIED");
+            
+            draw_set_alpha(1);
+        }
+        if menuappeared == true
+            {
+                draw_set_font(fnt_Michroma14);
+                draw_set_halign(fa_center);
+                draw_set_alpha(0.85);        
+                
+                highlightcolour = make_colour_rgb(187, 63, 148);    
+                xpos = 960;        //top left of menu text
+                ypos = 500;
+                
+                if quickrestart == false draw_set_colour(c_ltgray) else draw_set_colour(highlightcolour)
+                draw_text(xpos, ypos, "QUICK RESTART");
+                
+                
+                ypos += 48;
+                if quit == false draw_set_colour(c_ltgray) else draw_set_colour(highlightcolour)
+                draw_text(xpos, ypos, "MENU");
+                
+                draw_set_alpha(1.0); 
+            
+            }
+    }
 </string>
           </argument>
         </arguments>

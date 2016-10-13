@@ -32,6 +32,7 @@ finalAlpha = 1.01;
 newRoom = 1;
 fadeDone = false;
 fadeOut = 30;
+destroyonblack = true;
 
 
 vx = view_xview[0];
@@ -120,7 +121,7 @@ if fadeAlpha &gt;= finalAlpha
             <string>x = view_xview[0];
 y = view_yview[0];
 
-if fadeDone == true
+if fadeDone == true &amp;&amp; destroyonblack == true
     {
     
         fadeAlpha -= 0.2
