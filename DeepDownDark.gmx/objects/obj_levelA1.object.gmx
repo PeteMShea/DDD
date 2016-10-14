@@ -42,7 +42,7 @@ hugeblockoverlaychance = 0.7;   //chance of a huge block having an overlay added
 
 maxgold = 500;
 goldchance = 0.015;     //0.012
-goldspread = 20;     // how spread out or clumped gold is-  lower numbers for more spread/less clumping
+goldspread = 40;     // how spread out or clumped gold is-  lower numbers for more spread/less clumping
 goldthreshold = 0.5;       //how far down weeblock columns before gold can be placed (1 = never)
 vinechance = 0.15;      //chance of vines being added- overall amount of greenery
 vinethreshold = 0.5;       //how far down weeblock columns before vines can be placed (1 = never)

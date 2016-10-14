@@ -28,7 +28,7 @@
             <string>// initialise
 deceleration = 3;
 terminalvelocity = 0.1;
-rotdecay = 0.9;
+rotdecay = 0.95;
 minrotation = 0.5; 
 massmult = 0.75;     //how much of player speed is transferred to asteroid on collision
 damagemult = 0;     //how much player speed is transferred into damage amount on collision

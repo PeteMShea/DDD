@@ -30,7 +30,7 @@
 min_speed = 0.01;
 deceleration = 0.0001;
 bouncecount = 0;
-lifespan = 1200;
+lifespan = random_range(2100, 2400);
 
 attractdist = obj_player.goldmagnetrange;       //distance at which pickups get sucked into player
 attractspeed = obj_player.magnetstrength;     //max speed pickups get sucked into player

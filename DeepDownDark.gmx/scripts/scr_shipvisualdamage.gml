@@ -25,7 +25,7 @@ if damage > minvisualdamage
         loc_angle = test_angle - obj_player.image_angle;
         if loc_angle < 0 loc_angle += 360;
         loc_distance = point_distance(obj_player.x, obj_player.y, loc_x, loc_y)
-        disttest = (obj_player.shipscale * global.RM)
+        disttest = (obj_player.shipscale * global.RM) + 8;      //added 8 here as central damage was triggering too often
 
         
         if damage >= obj_player.minvisualdamage * 20 damagemodifier = 3 

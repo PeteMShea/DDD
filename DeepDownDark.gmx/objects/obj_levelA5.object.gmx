@@ -58,8 +58,8 @@ minweespike = 1;
 maxweespike = 3;        //cannot be higher than 4!
 
 // spikers
-spikerdensitymin = 0.0;        //chance of spiker are at start of level 0.03
-spikerdensitymax = 0.0;          //maximum chance of spiker 0.2 is very dense!
+spikerdensitymin = 0.1;        //chance of spiker are at start of level 0.03
+spikerdensitymax = 0.1;          //maximum chance of spiker 0.2 is very dense!
 spikerdensityrange = spikerdensitymax - spikerdensitymin;
 spikerstartblock = 0.1;           //spikers do not start spawning until this % empty huge blocks in
 spikerendblock = 0.9;             //no more spikers after this % huge blocks
@@ -68,17 +68,17 @@ spikerdensitycurrent = 0;
 
 // ballplants
 ballplantdensitymin = 0.03;        //chance of ballplant are at start of level 0.03
-ballplantdensitymax = 0.03;          //maximum chance of ballplant 0.2 is very dense!
+ballplantdensitymax = 0.05;          //maximum chance of ballplant 0.2 is very dense!
 ballplantdensityrange = ballplantdensitymax - ballplantdensitymin;
 ballplantstartblock = 0.1;           //ballplants do not start spawning until this % empty huge blocks in
-ballplantendblock = 0.3;             //no more ballplant after this % huge blocks
+ballplantendblock = 0.4;             //no more ballplant after this % huge blocks
 ballplantdensity = ballplantdensitymin;
 ballplantdensitycurrent = 0;
 
 // nightgaunts
 gauntchance = 0.4;        //chance of a huge square being populated with gaunts 0.3
 gauntdensitymin = 0.05;        //how dense gaunts are at start of level 0
-gauntdensitymax = 0.2;          //maximum density of gaunts
+gauntdensitymax = 0.15;          //maximum density of gaunts
 gauntdensityrange = gauntdensitymax - gauntdensitymin;
 gauntstartblock = 0.05;           //gaunts do not start spawning until this % empty huge blocks in
 gauntendblock = 0.65;             //no more gaunts after this % huge blocks

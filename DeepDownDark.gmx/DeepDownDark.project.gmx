@@ -50,6 +50,7 @@
         <sprite>sprites\spr_glassasteroid</sprite>
         <sprite>sprites\spr_glassasteroidnormal</sprite>
         <sprite>sprites\spr_tinyblock</sprite>
+        <sprite>sprites\spr_asteroiddebis</sprite>
         <sprite>sprites\spr_WreckA</sprite>
         <sprite>sprites\spr_WreckDebris</sprite>
         <sprite>sprites\sprtemplemirror</sprite>
@@ -81,7 +82,6 @@
       <sprite>sprites\sprite212</sprite>
       <sprite>sprites\spr_hugeblock</sprite>
       <sprite>sprites\spr_weefloatblock</sprite>
-      <sprite>sprites\spr_asteroiddebis</sprite>
       <sprite>sprites\spr_weeblock</sprite>
       <sprite>sprites\testweeblock</sprite>
       <sprite>sprites\spr_weeblockendNcap</sprite>

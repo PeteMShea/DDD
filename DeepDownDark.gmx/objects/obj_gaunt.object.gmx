@@ -31,7 +31,7 @@ awake = false;
 homing = false;
 attack = false;
 
-currenthealth = 10;     //HP 
+currenthealth = 25;     //HP 15
 
 awaketestmax = 60;     //how many frames between each time limpet checks to see if it should wake up
 awaketest = 60;
@@ -39,7 +39,7 @@ awakerange = random_range(250 * global.RM, 400 * global.RM);   //distance from p
 launchtimemax = 120;    //how many frames gaunt will launch for before it begins homing
 launchtime = -60;
 takeoffspeed = 0.12;     //animation speed for take-off sequence 0.2
-speedmax = 1.5;      //max speed of travel 1.2
+speedmax = 2.0;      //max speed of travel 1.5
 speedmult = 0;
 acceleration = 0.005;     //acceleratation
 normalturnspeed = 2;      //number of degrees to turn per frame
@@ -375,7 +375,7 @@ if awake == true
     x += vx * speedmult
     y += vy * speedmult
     
-    if homing == true &amp;&amp; hitanim &lt;= 0 image_speed = abs(maxanimspeed - speedmult);
+    if homing == true &amp;&amp; hitanim &lt;= 0 image_speed = abs(maxanimspeed - speedmult * 0.75);
     
     if hitanim &gt;0 &amp;&amp; attack == false
         {

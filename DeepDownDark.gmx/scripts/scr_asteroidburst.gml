@@ -11,7 +11,7 @@ var ix;
 for (ix = 0; ix < 4; ix +=1)
     { 
     var i;
-    for (i = 0; i < 4; i += 1)
+    for (i = 0; i < 5; i += 1)
         {
             if nugget == false
             {

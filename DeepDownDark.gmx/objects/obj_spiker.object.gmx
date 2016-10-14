@@ -168,7 +168,20 @@ if currenthealth &lt;= 0 &amp;&amp; dead == false
     image_index = 4;
     //inst = instance_nearest(x, y, obj_spikermask)
     //with (inst) instance_destroy();
-    if instance_exists(obj_spike) obj_spike.fire = true;      //fire any remaining spikes so they clean up
+    //collect nearby spikes
+    if awake == true
+        {
+            for(i = 1; i &lt; 8; i+=1)         //fire spikes at various angles using force from behind
+                {                                                               
+                    if instance_exists(spike[i])
+                    {
+                      with(spike[i])
+                        {
+                            fire = true;
+                        }
+                    }
+                }
+        }
     colour = make_colour_rgb(160, 178, 161);
     for (i = 0; i &lt;8; i+=1)            //spawn debris
         {

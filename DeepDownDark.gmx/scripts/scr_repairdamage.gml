@@ -42,6 +42,7 @@ while (repaircount > 0)
             }   
     }
 
+    
 global.locdamage_CR = area[0];
 global.locdamage_CL = area[1];
 global.locdamage_MR = area[2];
@@ -50,6 +51,16 @@ global.locdamage_BR = area[4];
 global.locdamage_BL = area[5];
 global.locdamage_CC = area[6];
 
+if global.playerHealth >= global.startHealth        //double check if player at full health- repair all visual damage
+    {
+        global.locdamage_CR = 0;
+        global.locdamage_CL = 0;
+        global.locdamage_MR = 0;
+        global.locdamage_ML = 0;
+        global.locdamage_BR = 0;
+        global.locdamage_BL = 0;
+        global.locdamage_CC = 0;    
+    }
 
 
 global.dirtalpha = 0;

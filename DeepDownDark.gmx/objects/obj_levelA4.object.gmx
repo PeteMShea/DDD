@@ -70,7 +70,7 @@ spikerdensitycurrent = 0;
 
 // ballplants
 ballplantdensitymin = 0.03;        //chance of ballplant are at start of level 0.03
-ballplantdensitymax = 0.03;          //maximum chance of ballplant 0.2 is very dense!
+ballplantdensitymax = 0.04;          //maximum chance of ballplant 0.2 is very dense!
 ballplantdensityrange = ballplantdensitymax - ballplantdensitymin;
 ballplantstartblock = 0.75;           //ballplants do not start spawning until this % empty huge blocks in
 ballplantendblock = 0.95;             //no more ballplant after this % huge blocks
@@ -78,7 +78,7 @@ ballplantdensity = ballplantdensitymin;
 ballplantdensitycurrent = 0;
 
 // nightgaunts
-gauntchance = 0.3;        //chance of a huge square being populated with gaunts 0.3
+gauntchance = 0.4;        //chance of a huge square being populated with gaunts 0.3
 gauntdensitymin = 0.025;        //how dense gaunts are at start of level 0
 gauntdensitymax = 0.1;          //maximum density of gaunts
 gauntdensityrange = gauntdensitymax - gauntdensitymin;
@@ -93,7 +93,7 @@ sporedensitymin = 0.10;        //how dense gaunts are at start of level 0
 sporedensitymax = 0.20;          //maximum density of spores
 sporedensityrange = sporedensitymax - sporedensitymin;
 sporestartblock = 0.05;           //spores do not start spawning until this % empty huge blocks in
-sporeendblock = 0.2;             //no more spores after this % huge blocks
+sporeendblock = 0.25;             //no more spores after this % huge blocks
 sporedensity = sporedensitymin;
 sporedensitycurrent = 0;
 startsporeoffsetangle = 0;

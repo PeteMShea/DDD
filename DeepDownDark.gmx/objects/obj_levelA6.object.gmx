@@ -55,7 +55,7 @@ maxspike = 5; //how much normal blocks jut in from edges- defines overall corrid
 mingap = 4;       //how big a gap there will always be between N/S and E/W corridors (allow for -2 due to wee blocks) 5  min = 4
 spikyness = 1;      // how much wee blocks jut in from edges to empty space- minimum number of wee blocks + 1  /1
 minweespike = 1;
-maxweespike = 4;        //cannot be higher than 4!
+maxweespike = 3;        //cannot be higher than 4!
 
 // spikers
 spikerdensitymin = 0.01;        //chance of spiker are at start of level 0.03

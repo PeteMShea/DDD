@@ -28,11 +28,11 @@
             <string>// initialise
 deceleration = 3;
 terminalvelocity = 0.5;
-rotdecay = 0.99;
+rotdecay = 0.95;        //0.99
 minrotation = 0.5;
 massmult = 0.5;     //how much of player speed is transferred to asteroid on collision
 damagemult = 50;     //how much player speed is transferred into damage amount on collision
-asteroidhealth = irandom_range(40,80); 
+asteroidhealth = irandom_range(30,60); 
 gold = 0;
 nugget = false;
 wreck = false;

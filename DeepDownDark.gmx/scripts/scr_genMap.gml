@@ -259,7 +259,26 @@ while (walkloop <= 64)          //this is just a debug safety check- walkloop is
                 walkblock[walk_x, walk_y] = totalwalkblocks;                
                 //show_debug_message("headed down");
                 downlast = true;            
-            } 
+            }        
+        if walk_y >= exit_y && innerloop != true   //last resort- head for the exit directly as probably stuck in bottom corner
+            {
+                if walk_x < exit_x      //go right
+                {
+                    walk_x += 1 
+                    innerloop = true;
+                    bigblock[walk_x, walk_y] = 5;
+                    totalwalkblocks += 1;
+                    walkblock[walk_x, walk_y] = totalwalkblocks;                                  
+                }
+                else if walk_x > exit_x      //go left
+                {
+                    walk_x -= 1 
+                    innerloop = true;
+                    bigblock[walk_x, walk_y] = 5;
+                    totalwalkblocks += 1;
+                    walkblock[walk_x, walk_y] = totalwalkblocks;                
+                }           
+            }         
                      
         //show_debug_message("walk x: " + string(walk_x) + " ,walk y: " + string(walk_y) + " ,dir_x: " + string(dir_x) +  " ,dir_y: " + string(dir_y));
     
@@ -738,7 +757,7 @@ if bigblock[u , v] > 0
                                          if  c == (maxspike + 3) && enemyspawn <= spikerdensity 
                                          {
                                             spikerdensity = 0;      //one per huge block
-                                            block[column + u * 12, (11-c) + v * 12] = 7     //if last block is empty and random chance add spiker
+                                            block[column + u * 12, (11-c-1) + v * 12] = 7     //if last block is empty and random chance add spiker
                                          }
                             }                    
                     }                  
@@ -762,7 +781,7 @@ if bigblock[u , v] > 0
                                          if  c == (maxspike + 3) && enemyspawn <= spikerdensity
                                          {
                                             spikerdensity = 0;      //one per huge block
-                                            block[(11-c) + u * 12, row + v * 12] = 9     //if last block is empty and random chance add spiker
+                                            block[(11-c-1) + u * 12, row + v * 12] = 9     //if last block is empty and random chance add spiker
                                          }
                                     }                    
                     } 
@@ -786,7 +805,7 @@ if bigblock[u , v] > 0
                                          if  c == (maxspike + 3) && enemyspawn <= spikerdensity
                                          {
                                             spikerdensity = 0;      //one per huge block
-                                            block[c + u * 12, row + v * 12] = 10     //if last block is empty and random chance add spiker
+                                            block[c + 1 + u * 12, row + v * 12] = 10     //if last block is empty and random chance add spiker
                                          }
                                     }                    
                     }                                         
@@ -1546,7 +1565,7 @@ blocktest = block [bx, by]
                                     {
                                         var inst
 
-                                                inst = instance_create( 64 * global.RM  + (bx * 32 * global.RM ) + (7-c) * 4, 64 * global.RM  + (by *32 * global.RM ) + (row *4 * global.RM ), obj_spawn)
+                                                inst = instance_create( 64 * global.RM  + (bx * 32 * global.RM ) + (7-c) * 4 * global.RM, 64 * global.RM  + (by *32 * global.RM ) + (row *4 * global.RM ), obj_spawn)
                                                 script_execute(scr_sporeoffset, sporeoffsetdistance, sporeoffsetangle);                                                      
                                                 with(inst)
                                                 {
