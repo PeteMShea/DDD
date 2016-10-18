@@ -289,8 +289,10 @@
     </sprites>
   </sprites>
   <backgrounds name="background">
-    <background>background\MidGroundB</background>
     <background>background\A0Mountains</background>
+    <background>background\MidGround1</background>
+    <background>background\MidGround2</background>
+    <background>background\MidGround3</background>
     <background>background\back_LCWsplash</background>
     <background>background\DDDRed</background>
     <background>background\DDD_Banner</background>
