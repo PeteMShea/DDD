@@ -757,7 +757,7 @@ if bigblock[u , v] > 0
                                          if  c == (maxspike + 3) && enemyspawn <= spikerdensity 
                                          {
                                             spikerdensity = 0;      //one per huge block
-                                            block[column + u * 12, (11-c-1) + v * 12] = 7     //if last block is empty and random chance add spiker
+                                            block[column + u * 12, (11-c) + v * 12] = 7     //if last block is empty and random chance add spiker
                                          }
                             }                    
                     }                  
@@ -781,7 +781,7 @@ if bigblock[u , v] > 0
                                          if  c == (maxspike + 3) && enemyspawn <= spikerdensity
                                          {
                                             spikerdensity = 0;      //one per huge block
-                                            block[(11-c-1) + u * 12, row + v * 12] = 9     //if last block is empty and random chance add spiker
+                                            block[(11-c) + u * 12, row + v * 12] = 9     //if last block is empty and random chance add spiker
                                          }
                                     }                    
                     } 
@@ -805,7 +805,7 @@ if bigblock[u , v] > 0
                                          if  c == (maxspike + 3) && enemyspawn <= spikerdensity
                                          {
                                             spikerdensity = 0;      //one per huge block
-                                            block[c + 1 + u * 12, row + v * 12] = 10     //if last block is empty and random chance add spiker
+                                            block[c + u * 12, row + v * 12] = 10     //if last block is empty and random chance add spiker
                                          }
                                     }                    
                     }                                         

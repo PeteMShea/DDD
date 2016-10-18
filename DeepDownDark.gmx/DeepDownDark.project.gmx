@@ -289,21 +289,28 @@
     </sprites>
   </sprites>
   <backgrounds name="background">
-    <background>background\background0</background>
-    <background>background\background5</background>
-    <background>background\background1</background>
-    <background>background\background2</background>
+    <background>background\MidGroundB</background>
+    <background>background\A0Mountains</background>
     <background>background\back_LCWsplash</background>
-    <background>background\background7</background>
-    <background>background\background9</background>
-    <background>background\background8</background>
-    <background>background\background10</background>
+    <background>background\DDDRed</background>
+    <background>background\DDD_Banner</background>
+    <background>background\DDDPinkOnBlack</background>
+    <background>background\mist</background>
     <background>background\tileset_newblocks</background>
     <background>background\tileset_darknewblocks</background>
     <background>background\tileset_hugeblocks</background>
     <background>background\tileset_templeglyphs</background>
     <background>background\tileset_temple64x64</background>
     <background>background\templeentrance</background>
+    <background>background\sanitymask</background>
+    <background>background\AO_Sky</background>
+    <background>background\A1Sky</background>
+    <background>background\A2Sky</background>
+    <background>background\A3Sky</background>
+    <background>background\A4Sky</background>
+    <background>background\A5Sky</background>
+    <background>background\A6Sky</background>
+    <background>background\A7Sky</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -638,7 +645,6 @@
     <room>rooms\TempleRoom</room>
     <room>rooms\room2</room>
     <room>rooms\room13</room>
-    <room>rooms\room0</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

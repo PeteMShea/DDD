@@ -8,12 +8,12 @@
   <tilehsep>0</tilehsep>
   <tilevsep>0</tilevsep>
   <HTile>0</HTile>
-  <VTile>-1</VTile>
+  <VTile>0</VTile>
   <TextureGroups>
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
   <width>1920</width>
   <height>1080</height>
-  <data>images\background2.png</data>
+  <data>images\A0Mountains.png</data>
 </background>
