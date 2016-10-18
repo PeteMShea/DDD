@@ -56,9 +56,9 @@ madnessfirstsight = 20;         //how much madness is applied first time player 
 madnessproximityrange = 500;    //range before proximity madness is applied
 madnessproximity = 0.0015;      //how much madness to apply per frame when enemy within range
 
-homingtestmax = 180;     //how many frames between each time enemy checks LOS to target and adjusts aim  30
+homingtestmax = 90;     //how many frames between each time enemy checks LOS to target and adjusts aim  30
 homingtest = 0;
-linedistance = 64;     //how long a LOS ray test to perform when pathfinding- shorter equals quicker
+linedistance = 63;     //how long a LOS ray test to perform when pathfinding- shorter equals quicker
 aimoffset = 15;     //max number of degrees for random offset when pathfinding to target
 avoidtest = 0;
 if random(1) &lt;0.5 angleadjust = -60 else angleadjust = +60      //decide whether this enemy avoids this number of degrees to the left or the right
@@ -210,6 +210,9 @@ if awake == true
             lineendy = y + lengthdir_y(linedistance, aimangle);
             hit = 0;
             debug = false;
+            if global.LOScheckactive == false
+            {
+            global.LOScheckactive = true;
             LOScheck(linestartx, linestarty, lineendx, lineendy, linedistance, hit, debug);
             //show_debug_message("hit: " + string(hit));
             if hit != 0
@@ -269,7 +272,8 @@ if awake == true
                                 
                         }
                 }
-        
+            global.LOScheckactive = false
+            }
         
             homingtest = 0;             
         }

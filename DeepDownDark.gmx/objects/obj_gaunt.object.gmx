@@ -56,12 +56,13 @@ madnessproximity = 0.0025;      //how much madness to apply per frame when enemy
 maxanimspeed = 1.5;   //maximum flying animation speed- speedmult is subtracted from this to get anim speed- so faster flight means less wing strokes
 attackanimspeed = 0.75      //attack animation speed
 
-homingtestmax = 30;     //how many frames between each time gaunt checks LOS to player and adjusts aim
+homingtestmax = 60;     //how many frames between each time gaunt checks LOS to player and adjusts aim
 homingtest = 0;
 homingoffset = 32 * global.RM;  //maximum number of pixels offset from centre of ship when homing towards it  16
 linedistance = 32 * global.RM;     //how long a LOS ray test to perform when pathfinding- shorter equals quicker
 aimoffset = 30;     //max number of degrees for random offset when pathfinding to target  15
 avoidtest = 0;
+doavoid = false;        //turn asteroid avoidance on or off
 if random(1) &lt;0.5 angleadjust = -45 else angleadjust = +45      //decide whether this gaunt avoids this number of degrees to the left or the right
 
 aimx = x;
@@ -247,6 +248,7 @@ if awake == true
         if homingtest &lt; homingtestmax homingtest +=1    
         if homingtest &gt;= homingtestmax 
         {
+            
             // first LOS check dead ahead +/- aimoffset degrees from player target for variety
             linestartx = x;
             linestarty = y;
@@ -256,64 +258,70 @@ if awake == true
             lineendy = y + lengthdir_y(linedistance, aimangle);
             hit = 0;
             debug = false;
-            LOScheck(linestartx, linestarty, lineendx, lineendy, linedistance, hit, debug);
-            //show_debug_message("hit: " + string(hit));
-            if hit != 0
-                {
-                    lineangle = point_direction(linestartx, linestarty, lineendx, lineendy);
-                    // left first
-                    aimangle +=45
-                    lineendx = linestartx + lengthdir_x(linedistance, aimangle);
-                    lineendy = linestarty + lengthdir_y(linedistance, aimangle);
-                    //show_debug_message("Testing Left");
-                    debug = false
-                    hit = 0   
-                    LOScheck(linestartx, linestarty, lineendx, lineendy, linedistance, hit, debug);
-                    if hit != 0
-                        {
-                        //right 
-                            lefthit = hit;
-                            aimangle -=90
-                            lineendx = linestartx + lengthdir_x(linedistance, aimangle);
-                            lineendy = linestarty + lengthdir_y(linedistance, aimangle);
-                            //show_debug_message("Testing Right");
-                            debug = false
-                            hit = 0   
-                            LOScheck(linestartx, linestarty, lineendx, lineendy, linedistance, hit, debug);
-                   
-    
-                            if hit !=0      //next try left + 90 degrees
-                                {    
-                                    aimangle = +135;
-                                    lineendx = x + lengthdir_x(linedistance, aimangle);
-                                    lineendy = y + lengthdir_y(linedistance, aimangle);
-                                    debug = false
-                                    hit = 0   
-                                    LOScheck(linestartx, linestarty, lineendx, lineendy, linedistance, hit, debug);  
-                                    //show_debug_message("Left and Right blocked, aimx aimy:" + string(aimx) + " , " + string(aimy) + " , endxy endy" + string(lineendx) + ", " + string(lineendy));
+            if global.LOScheckactive == false
+            {
+                global.LOScheckactive = true;       //used to offset LOS checks
+                LOScheck(linestartx, linestarty, lineendx, lineendy, linedistance, hit, debug);
+                //show_debug_message("hit: " + string(hit));
+                if hit != 0
+                    {
+                        lineangle = point_direction(linestartx, linestarty, lineendx, lineendy);
+                        // left first
+                        aimangle +=45
+                        lineendx = linestartx + lengthdir_x(linedistance, aimangle);
+                        lineendy = linestarty + lengthdir_y(linedistance, aimangle);
+                        //show_debug_message("Testing Left");
+                        debug = false
+                        hit = 0   
+                        LOScheck(linestartx, linestarty, lineendx, lineendy, linedistance, hit, debug);
+                        if hit != 0
+                            {
+                            //right 
+                                lefthit = hit;
+                                aimangle -=90
+                                lineendx = linestartx + lengthdir_x(linedistance, aimangle);
+                                lineendy = linestarty + lengthdir_y(linedistance, aimangle);
+                                //show_debug_message("Testing Right");
+                                debug = false
+                                hit = 0   
+                                LOScheck(linestartx, linestarty, lineendx, lineendy, linedistance, hit, debug);
+                       
+        
+                                if hit !=0      //next try left + 90 degrees
+                                    {    
+                                        aimangle = +135;
+                                        lineendx = x + lengthdir_x(linedistance, aimangle);
+                                        lineendy = y + lengthdir_y(linedistance, aimangle);
+                                        debug = false
+                                        hit = 0   
+                                        LOScheck(linestartx, linestarty, lineendx, lineendy, linedistance, hit, debug);  
+                                        //show_debug_message("Left and Right blocked, aimx aimy:" + string(aimx) + " , " + string(aimy) + " , endxy endy" + string(lineendx) + ", " + string(lineendy));
+                                        
+                                        if hit !=0      //finally try right + 90 degrees
+                                            {    
+                                                aimangle = -180;
+                                                lineendx = x + lengthdir_x(linedistance, aimangle);
+                                                lineendy = y + lengthdir_y(linedistance, aimangle);
+                                                debug = false
+                                                hit = 0   
+                                                LOScheck(linestartx, linestarty, lineendx, lineendy, linedistance, hit, debug);
+                                                
+                                                if hit !=0  //if still no free way to go- aim backwards
+                                                    {
+                                                        lineendx = x + lengthdir_x(linedistance, image_angle - 180);
+                                                        lineendy = y + lengthdir_y(linedistance, image_angle - 180);
+                                                    }
+                                                                                          
+                                            }    
+                                        
+                                    }       
+                                        
+                                        
                                     
-                                    if hit !=0      //finally try right + 90 degrees
-                                        {    
-                                            aimangle = -180;
-                                            lineendx = x + lengthdir_x(linedistance, aimangle);
-                                            lineendy = y + lengthdir_y(linedistance, aimangle);
-                                            debug = false
-                                            hit = 0   
-                                            LOScheck(linestartx, linestarty, lineendx, lineendy, linedistance, hit, debug);
-                                            
-                                            if hit !=0  //if still no free way to go- aim backwards
-                                                {
-                                                    lineendx = x + lengthdir_x(linedistance, image_angle - 180);
-                                                    lineendy = y + lengthdir_y(linedistance, image_angle - 180);
-                                                }
-                                                                                      
-                                        }    
-                                    
-                                }       
-                                    
-                                    
-                                
+                            }
+                            
                         }
+                 global.LOScheckactive = false;       
                 }
             if avoidtest &lt;=0        //update aim point unless currently avoiding
                 {
@@ -326,23 +334,28 @@ if awake == true
      } 
 
      //check nothing directly in front of gaunt
-     aimangle = point_direction(x, y, aimx, aimy);   
-     if avoidtest &lt;=0
-     {
-         avoid = noone;
-         avoid = collision_point(x + lengthdir_x(64, image_angle), y + lengthdir_y(64, image_angle), obj_asteroid, false, true);
-         //if avoid == noone avoid = collision_point(x + lengthdir_x(52, image_angle), y + lengthdir_y(52, image_angle), obj_gaunt, false, true);
-        
-         if avoid != noone      //if something directly in front swerve away
+     aimangle = point_direction(x, y, aimx, aimy); 
+     
+     if doavoid == true
+         {
+               
+             if avoidtest &lt;=0
              {
-                //instance_create(x + lengthdir_x(64, image_angle), y + lengthdir_y(64, image_angle),debug_spot);
-                avoidtest = 60;
-                aimangle = image_angle + angleadjust;
-                speedmult = speedmult * 0.8;
-                turnspeed = maxturnspeed;
-                //instance_create(x + lengthdir_x(52, aimangle), y + lengthdir_y(52, aimangle),obj_debug);         
-             }         
-     }
+                 avoid = noone;
+                 avoid = collision_point(x + lengthdir_x(64, image_angle), y + lengthdir_y(64, image_angle), obj_asteroid, false, true);
+                 //if avoid == noone avoid = collision_point(x + lengthdir_x(52, image_angle), y + lengthdir_y(52, image_angle), obj_gaunt, false, true);
+                
+                 if avoid != noone      //if something directly in front swerve away
+                     {
+                        //instance_create(x + lengthdir_x(64, image_angle), y + lengthdir_y(64, image_angle),debug_spot);
+                        avoidtest = 60;
+                        aimangle = image_angle + angleadjust;
+                        speedmult = speedmult * 0.8;
+                        turnspeed = maxturnspeed;
+                        //instance_create(x + lengthdir_x(52, aimangle), y + lengthdir_y(52, aimangle),obj_debug);         
+                     }         
+             }
+         }
      if avoidtest &gt; 0 
          {
             avoidtest -= 1;

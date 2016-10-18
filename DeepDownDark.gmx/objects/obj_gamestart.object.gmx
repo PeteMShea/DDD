@@ -71,6 +71,7 @@ global.gauntseen = false;
 global.grabberseen = false;
 global.formlessseen = false;
 
+global.LOScheckactive = false;
 
 
 //story
@@ -120,7 +121,7 @@ if global.reboot = true global.nextroom = 1 else global.nextroom = 3;       // g
 
 // DEBUG
 //pointer debug
-global.videocapture = true;
+global.videocapture = false;
 
 global.sanityenabled = true;
 
@@ -137,7 +138,7 @@ window_set_cursor(cr_arrow);
 
 
 //uncomment to force load a specific room
-global.nextroom = 8; 
+global.nextroom = 5; 
 
 
 
