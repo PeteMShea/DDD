@@ -29,7 +29,8 @@
 image_alpha = 0.5;
 
 
-
+audio_play_sound(snd_SharkEngineLoop, 100, true);
+audio_sound_gain(snd_SharkEngineLoop, 0.01, 0);
 
 
 

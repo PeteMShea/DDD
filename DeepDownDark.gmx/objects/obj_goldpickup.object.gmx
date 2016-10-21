@@ -117,6 +117,7 @@ if sucked == true
         if speed &lt; attractspeed speed += acceleration;
         if playerdist &lt;=1
             {
+                audio_play_sound(snd_GoldPickupCollected, 100, false);
                 global.playerGold += 5;
                 if oLightSource.yellow == false oLightSource.yellow = true;     //colour ship yellow when pickup is close
                 instance_destroy();

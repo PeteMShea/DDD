@@ -4,7 +4,36 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sounds name="Ship">
+      <sound>sound\snd_SharkEngineLoop</sound>
+      <sound>sound\snd_Bullet1</sound>
+      <sound>sound\snd_Bullet2</sound>
+      <sound>sound\snd_Bullet3</sound>
+      <sound>sound\snd_Bullet4</sound>
+      <sound>sound\snd_Bullet5</sound>
+      <sound>sound\snd_Bullet6</sound>
+      <sound>sound\snd_SharkEngine</sound>
+      <sound>sound\snd_RetroBooster</sound>
+    </sounds>
+    <sounds name="LevelAmbience">
+      <sound>sound\snd_LevelAmbience0</sound>
+      <sound>sound\snd_LevelAmbience1</sound>
+      <sound>sound\snd_LevelAmbience2</sound>
+      <sound>sound\snd_LevelAmbience3</sound>
+      <sound>sound\snd_LevelAmbience4</sound>
+      <sound>sound\snd_LevelAmbience5</sound>
+      <sound>sound\snd_LevelAmbience6</sound>
+      <sound>sound\snd_DDDLogo</sound>
+      <sound>sound\snd_DDDTheme</sound>
+    </sounds>
+    <sounds name="Environment">
+      <sound>sound\snd_AsteroidBurst</sound>
+      <sound>sound\snd_BulletRock</sound>
+      <sound>sound\snd_BulletGold</sound>
+      <sound>sound\snd_GoldPickupCollected</sound>
+    </sounds>
+  </sounds>
   <sprites name="sprites">
     <sprites name="player">
       <sprite>sprites\spr_Shark128</sprite>

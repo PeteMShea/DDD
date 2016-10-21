@@ -106,11 +106,12 @@ vy = view_yport[0];
 
 //instance_create(0,0, obj_HUD);
 
-
+instance_create(x, y, obj_titlecontrol);
 
 instance_create( vx, vy, eff_fadefromblack );
 
-
+audio_play_sound(snd_LevelAmbience0, 99, true);
+audio_sound_gain(snd_LevelAmbience0, 0.5, 0);
 
 
 

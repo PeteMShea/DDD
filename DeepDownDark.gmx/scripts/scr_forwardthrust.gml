@@ -22,4 +22,12 @@ if trails == true
             {
                 image_angle = obj_player.image_angle;
             }
-    } 
+    }
+
+if playthrustsound == false
+                            {
+                                //show_debug_message("THRUST!");
+                                playthrustsound = true;                                                                
+                                if!audio_is_playing(snd_SharkEngine) audio_play_sound(snd_SharkEngine, 100, true);                                
+                                audio_sound_gain(snd_SharkEngine, 0.5, 0);
+                            }    

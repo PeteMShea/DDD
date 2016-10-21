@@ -293,8 +293,13 @@ if asteroidhealth &lt;=0
     {
         bx = x;
         by = y;
-        if wreck == false script_execute(scr_asteroidburst, bx, by, gold, nugget);
-        if wreck == true
+        if wreck == false
+            {
+                audio_play_sound_at(snd_AsteroidBurst, x, y, 0, 200, 800, 1, false, 100);
+                audio_sound_gain(snd_AsteroidBurst, 0.5, 0);
+                script_execute(scr_asteroidburst, bx, by, gold, nugget);
+            }
+        else if wreck == true
             {
                 for(i = 0; i &lt; 9; i +=1)
                     {

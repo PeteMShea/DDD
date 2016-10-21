@@ -32,15 +32,38 @@ lifespan = 120;     //number of frames bullet will live for
 asteroidmult = 0.25;       //how much damage done to asteroid
 
 
-if obj_player.bulletfire == 0 image_index = 0
-if obj_player.bulletfire == 1 image_index = 1
-if obj_player.bulletfire == 2 image_index = 2
-if obj_player.bulletfire == 3 image_index = 3
+if obj_player.bulletfire == 0
+{
+image_index = 0;
+bulletsound = snd_Bullet1;
+bulletvolume = 0.2;
+}
+if obj_player.bulletfire == 1
+{
+image_index = 1;
+bulletsound = snd_Bullet2;
+bulletvolume = 0.5;
+}
+
+if obj_player.bulletfire == 2
+{
+image_index = 2;
+bulletsound = snd_Bullet3;
+bulletvolume = 0.5;
+}
+if obj_player.bulletfire == 3
+{
+image_index = 3;
+bulletsound = snd_Bullet4;
+bulletvolume = 0.5;
+}
 
 if obj_player.bulletfire == 4
     {
         //show_debug_message("R");
         image_index = 4;
+        bulletsound = snd_Bullet5;
+        bulletvolume = 0.5;
         ricochet = true
         lifespan = 240;
     }
@@ -50,6 +73,8 @@ if obj_player.bulletfire == 5
     {
         //show_debug_message("P");
         image_index = 5;
+        bulletsound = snd_Bullet6;
+        bulletvolume = 0.5;
         piercing = true
         lifespan = 240;
     }
@@ -62,6 +87,23 @@ bounce = 0;
 totalbounces = 3;       //number of permitted bounces before bullet is destroyed
 
 //show_debug_message(string(start_x) + " , " +  string(start_y));
+
+
+audio_sound_gain(bulletsound, bulletvolume, 0);
+audio_play_sound_at(bulletsound, x, y, 0, 100, 800, 1, false, 100);
+audio_sound_gain(bulletsound, bulletvolume, 0);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -128,6 +170,8 @@ if inst != noone
 
         var ix;
         script_execute(scr_blockburstvfx, bx, by);
+        audio_play_sound_at(snd_BulletRock, x, y, 0, 300, 900, 1, false, 100);
+        audio_sound_gain(snd_BulletRock, 0.25, 0);
         //change state or destroy instance of block hit
         if ricochet == true
         {
@@ -205,7 +249,8 @@ if gold != noone
         bx = x
         by = y
         script_execute(scr_blockburstvfx, bx, by);
-        
+        audio_play_sound_at(snd_BulletGold, x, y, 0, 300, 900, 1, false, 100);
+        audio_sound_gain(snd_BulletGold, 0.25, 0);        
         //destroy the bullet unless piercing
         if piercing == false
         {        
@@ -377,7 +422,12 @@ if asteroid != noone
         by = y;
         loc_x = x;
         loc_y = y;
-        if asteroid.nugget == false &amp;&amp; asteroid.wreck == false script_execute(scr_blockburstvfx, bx, by);
+        if asteroid.nugget == false &amp;&amp; asteroid.wreck == false
+            {
+                script_execute(scr_blockburstvfx, bx, by);
+                audio_play_sound_at(snd_BulletRock, x, y, 0, 200, 800, 1, false, 100);
+                audio_sound_gain(snd_BulletRock, 0.25, 0);
+            }
         if asteroid.wreck == true script_execute(scr_wreckdebrisvfx, bx, by, loc_x, loc_y);
         //else script_execute(scr_spawngoldburst, bx, by);
         bx = x

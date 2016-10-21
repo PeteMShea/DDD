@@ -125,6 +125,9 @@ startfade = 150;    //number of frames until fade to black starts
 showmenu = false;   //draw menu once
 collisionoff = false;   // debug option to disable collision
 
+playthrustsound = false;
+playthrustfade = 500;       //time in ms to fade sound out over
+
 // set up gamepad
 if gamepad_is_connected(0) gamepad_set_axis_deadzone(0, 0.15);
 joyx = 0;
@@ -351,6 +354,9 @@ if turret == true &amp;&amp; !instance_exists(obj_sharkturret)
 if global.pause == false 
 {
 
+
+
+
 if dead == false
 {
 
@@ -483,12 +489,14 @@ if moveinput == 1 ||  fireinput == 1
                         turn_angle = image_angle;
                         script_execute(scr_forwardthrust, turn_angle);
                         backwards = false;
+                    
                     }
                 else
                     {
                         turn_angle = image_angle;
                         script_execute(scr_backthrust);
-                        backwards = true;                    
+                        backwards = true;
+                   
                     }
                 landing = 0;
             }
@@ -499,7 +507,7 @@ if moveinput == 1 ||  fireinput == 1
                 if invertedthrust == false
                     {                        
                         script_execute(scr_backthrust);
-                        backwards = true;
+                        backwards = true;  
                     }
                 else
                     {
@@ -563,6 +571,12 @@ if moveinput == 0 &amp;&amp; fireinput == 0
             turning = 0;
             turnspeed = 0;
             //turn_angle = image_angle;
+            if playthrustsound == true
+            {
+                playthrustsound = false;
+                audio_sound_gain(snd_SharkEngine, 0, playthrustfade);
+                audio_sound_gain(snd_RetroBooster, 0, playthrustfade);
+            }
         }
             
 if global.autopilot &lt;= 0
@@ -631,6 +645,13 @@ if global.autopilot &gt; 0 &amp;&amp; global.autopilot &lt; 999
                 {
                     image_angle = other.image_angle;
                 }
+                if playthrustsound == false
+                            {
+                                //show_debug_message("THRUST!");
+                                playthrustsound = true;                                                                
+                                if!audio_is_playing(snd_SharkEngine) audio_play_sound(snd_SharkEngine, 100, true);                                
+                                audio_sound_gain(snd_SharkEngine, 0.5, 0);
+                            }                 
             } 
         if backwards == true
             {
@@ -884,6 +905,8 @@ if collisionoff == false &amp;&amp; global.autopilot &lt;= 0            //debug 
     x += speed_x;
     y += speed_y;
     
+    audio_listener_set_position(0, x, y, 0);       //set audio position to ship position
+    
     if turret == true
     {
         obj_sharkturret.x = x + lengthdir_x(18, image_angle);
@@ -911,29 +934,56 @@ if desired_turnspeed &gt; 0
     {     
         if turning == 1
         {
-            inst = instance_create(x, y, obj_sharkRThrust);
-            with (inst)
-                {
-                    image_angle = other.image_angle
-                }         
+        
             rotcolcheck = collision_line(x + lengthdir_x(33 * global.RM, image_angle + 225), y + lengthdir_y(33 * global.RM, image_angle + 225), x + lengthdir_x(24 * global.RM, image_angle + 255), y + lengthdir_y(24 * global.RM, image_angle + 255), obj_block, false, true);
             if rotcolcheck == noone        
                 {
+                    check = image_angle + desired_turnspeed;
+                    if abs(check - image_angle) &gt; 0.5
+                    {
+                        inst = instance_create(x, y, obj_sharkRThrust);
+                        with (inst)
+                            {
+                                image_angle = other.image_angle                                  
+                            }                     
+                        if playthrustsound == false &amp;&amp; fireinput != 1
+                                {                            
+                                    playthrustsound = true;
+                                    audio_play_sound(snd_RetroBooster, 100, true);
+                                    audio_sound_gain(snd_RetroBooster, 0.05, 0);
+                                }                    
+                    
+                    }                    
                     image_angle += desired_turnspeed;
                 }
+     
         }
         if turning == 2
         {
-            inst = instance_create(x, y, obj_sharkLThrust);
-            with (inst)
-                {
-                    image_angle = other.image_angle
-                }
+
             rotcolcheck = collision_line(x + lengthdir_x(33 * global.RM, image_angle + 135), y + lengthdir_y(33 * global.RM, image_angle + 135), x + lengthdir_x(24 * global.RM, image_angle + 105), y + lengthdir_y(24 * global.RM, image_angle + 105), obj_block, false, true);
             if rotcolcheck == noone                        
                 {
+                    check = image_angle - desired_turnspeed;
+                    if abs(check - image_angle) &gt; 0.5
+                    {                    
+                        inst = instance_create(x, y, obj_sharkLThrust);
+                        with (inst)
+                            {
+                                image_angle = other.image_angle
+                            }                    
+                    if playthrustsound == false &amp;&amp; fireinput != 1
+                            {                            
+                                playthrustsound = true;
+                                audio_play_sound(snd_RetroBooster, 100, true);                                
+                                audio_sound_gain(snd_RetroBooster, 0.05, 0);
+                            }                     
+                    
+                        
+                    }
                     image_angle -= desired_turnspeed;
                 }
+                 
         }
     if image_angle &gt;= 360 image_angle -=360
     if image_angle &lt; 0 image_angle +=360             
@@ -1029,7 +1079,9 @@ if global.playerHealth &lt;= 0 &amp;&amp; dead == false
         debrisdir[6] = 210;
         px = x;
         py = y;
-  
+        audio_sound_gain(snd_SharkEngineLoop, 0, 250);
+        audio_sound_gain(snd_RetroBooster, 0, 250);
+        audio_sound_gain(snd_SharkEngine, 0, 250);
         show_debug_message("Deid");                    
     }
 
@@ -1072,7 +1124,7 @@ if dead == true &amp;&amp; deathcounter &lt; deathsequencetime
 
 // end of pause condition
 }
-
+else audio_sound_gain(snd_SharkEngineLoop, 0, 0);
 
 
 

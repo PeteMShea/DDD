@@ -119,6 +119,10 @@ else
 if global.reboot = true global.nextroom = 1 else global.nextroom = 3;       // go to splash unless quick restart, then goto 3
 
 
+audio_channel_num(64);
+
+
+
 // DEBUG
 //pointer debug
 global.videocapture = false;
@@ -138,7 +142,7 @@ window_set_cursor(cr_arrow);
 
 
 //uncomment to force load a specific room
-global.nextroom = 3; 
+//global.nextroom = 0; 
 
 
 

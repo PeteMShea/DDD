@@ -393,10 +393,11 @@ global.WeaponProgression[24] = 23;
 
 
 
-// debug- unlock all items
+// debug- unlock and own all items
 
-for (i =1; i <25; i+=1)
+for (i =1; i <13; i+=1)
 {
-//global.WeaponUnlocked[i] = true;
+global.WeaponUnlocked[i] = true;
+global.WeaponOwned[i] = true;
 }
 

@@ -25,4 +25,11 @@ if trails == true && backthrust == false
             {
                 image_angle = obj_player.image_angle;
             }
-    } 
+    }
+
+if playthrustsound == false
+                            {                            
+                                playthrustsound = true;
+                                if!audio_is_playing(snd_RetroBooster) audio_play_sound(snd_RetroBooster, 100, true);                                  
+                                audio_sound_gain(snd_RetroBooster, 0.1, 0);
+                            }   
