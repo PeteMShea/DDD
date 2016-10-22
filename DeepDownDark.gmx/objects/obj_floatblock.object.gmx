@@ -206,8 +206,11 @@ for (ix = 0; ix &lt; 5; ix +=1)
             <string>// collided with player- destroy and damage
 
 
-global.playerHealth -= debrisdamage;
-global.playerdamaged = 20;
+//global.playerHealth -= debrisdamage;
+//global.playerdamaged = 20;
+
+audio_play_sound_at(snd_BulletRock, x, y, 0, 400, 1200, 1, false, 100);
+audio_sound_gain(snd_BulletRock, 0.25, 0);
 
 // collided with bullet- replace with 16 tiny blocks
 

@@ -15,6 +15,17 @@
       <sound>sound\snd_Bullet6</sound>
       <sound>sound\snd_SharkEngine</sound>
       <sound>sound\snd_RetroBooster</sound>
+      <sound>sound\snd_ShipImpactSmall1</sound>
+      <sound>sound\snd_ShipImpactSmall2</sound>
+      <sound>sound\snd_ShipImpactMed1</sound>
+      <sound>sound\snd_ShipImpactMed2</sound>
+      <sound>sound\snd_ShipImpactMed3</sound>
+      <sound>sound\snd_ShipImpactMed4</sound>
+      <sound>sound\snd_ShipImpactMed5</sound>
+      <sound>sound\snd_ShipImpactBig1</sound>
+      <sound>sound\snd_ShipImpactBig2</sound>
+      <sound>sound\snd_ShipImpactBig3</sound>
+      <sound>sound\snd_ShipImpactBig4</sound>
     </sounds>
     <sounds name="LevelAmbience">
       <sound>sound\snd_LevelAmbience0</sound>
