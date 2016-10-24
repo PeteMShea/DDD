@@ -43,5 +43,7 @@ for (i = 0; i <= irandom_range(7, 11); i += 1)
     
 }
 
-
+//SFX
+audio_play_sound_at(snd_GrabberRocksBreak, locx, locy, 0, 600, 1200, 1, false, 100);
+audio_sound_gain(snd_GrabberRocksBreak, 0.75, 0);
 

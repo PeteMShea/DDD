@@ -80,6 +80,13 @@
       <sound>sound\snd_GauntDeath</sound>
       <sound>sound\snd_BallplantFire</sound>
       <sound>sound\snd_BallplantHit</sound>
+      <sound>sound\snd_GrabberAwake</sound>
+      <sound>sound\snd_GrabberGrab</sound>
+      <sound>sound\snd_GrabberMakeRock</sound>
+      <sound>sound\snd_GrabberRocksBreak</sound>
+      <sound>sound\snd_GrabberFire</sound>
+      <sound>sound\snd_GrabberHit</sound>
+      <sound>sound\snd_GrabberDeath</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">

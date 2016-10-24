@@ -42,7 +42,7 @@ if obj_player.bulletfire == 1
 {
 image_index = 1;
 bulletsound = snd_Bullet2;
-bulletvolume = 0.5;
+bulletvolume = 0.3;
 }
 
 if obj_player.bulletfire == 2
@@ -331,6 +331,8 @@ grabber = noone;
 if collided == false grabber = instance_place(x, y, obj_grabber);
 if grabber != noone
     {
+        audio_play_sound_at(snd_GrabberHit, x, y, 0, 400, 1200, 1, false, 100);
+        audio_sound_gain(snd_GrabberHit, 0.75, 0);        
         collided = true;
         with(grabber) 
             {

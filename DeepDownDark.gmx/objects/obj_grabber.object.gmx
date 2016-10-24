@@ -52,11 +52,11 @@ grabproximity = 64;     //distance from node before grabber stops moving and com
 
 readytofire = false;
 firepause = 60;     //pause before firing
-firespeed = 11.0;        //force multiplier for firing asteroids at player
+firespeed = 5.0;        //force multiplier for firing asteroids at player was 11
 fired = false;
 attacking = false;
 
-currenthealth = 200;
+currenthealth = 150;
 scale = 1;
 dead = false;
 
@@ -74,6 +74,11 @@ dead = false;
 madnessfirstsight = 10;
 madnessproximityrange = 1000;
 madnessproximity = 0.005;      //how much madness to apply per frame when enemy within range
+
+deathsound = false;     //play death SFX once only
+
+
+
 </string>
           </argument>
         </arguments>
@@ -132,6 +137,8 @@ if awake == false
         if dist &lt;= wakeuprange
             {
                 awake = true;
+                audio_play_sound_at(snd_GrabberAwake, x, y, 0, 400, 1000, 1, false, 100);
+                audio_sound_gain(snd_GrabberAwake, 0.5, 0);
                 //show_debug_message("Grabber awake!");   
             }
     }
@@ -189,7 +196,12 @@ if awake == true &amp;&amp; currenthealth &gt; 0
                         {                    
                             anglealign = abs(angle_difference(target_angle, image_angle));
                             //show_debug_message(string(anglealign));       
-                            if anglealign &lt;= 3 moving = true;                               
+                            if anglealign &lt;= 3 
+                                {
+                                moving = true;
+                                    audio_play_sound_at(snd_GrabberGrab, x, y, 0, 400, 1000, 1, false, 50);
+                                    audio_sound_gain(snd_GrabberGrab, 0.5, 0);
+                                }                               
                         }
                     
                     if moving == true &amp;&amp; dragging == false
@@ -212,7 +224,9 @@ if awake == true &amp;&amp; currenthealth &gt; 0
                                     dragging = true;
                                     locx = aimx + lengthdir_x(8, point_direction(aimx, aimy, x, y,));
                                     locy = aimy + lengthdir_y(8, point_direction(aimx, aimy, x, y,));
-                                    script_execute(scr_grabberrocks, locx, locy);                                                                            
+                                    script_execute(scr_grabberrocks, locx, locy);
+                                    audio_play_sound_at(snd_GrabberMakeRock, x, y, 0, 400, 1000, 1, false, 70);
+                                    audio_sound_gain(snd_GrabberMakeRock, 0.5, 0);                                                                            
                                 }
                         }
                     if dragging == true &amp;&amp; reached == false         //move towards aim point
@@ -303,6 +317,7 @@ if awake == true &amp;&amp; currenthealth &gt; 0
                             firepause -= 1;
                             if firepause &gt; -1          //extra trail of blocks as asteroid is fired
                                 {
+                                 
                                     inst = instance_create(x + random_range(-16, 16), y + random_range(-16, 16), obj_grabberblock);
                                     asteroid = instance_nearest(x, y, obj_grabberasteroid)
                                         with(inst)
@@ -312,7 +327,12 @@ if awake == true &amp;&amp; currenthealth &gt; 0
                                                 speed = slowspeed; 
                                             }
                                 }
-                            if firepause == 0 timeline_position = 0;
+                            if firepause == 0
+                            {
+                            timeline_position = 0;
+                            audio_play_sound_at(snd_GrabberFire, x, y, 0, 400, 1000, 1, false, 60);
+                            audio_sound_gain(snd_GrabberFire, 0.2, 0);
+                            }   
                             if firepause &lt;= 0
                                 {                    
                                     timeline_index = tm_grabberfire;                                    
@@ -361,6 +381,15 @@ if awake == true &amp;&amp; currenthealth &gt; 0
 // death
 if currenthealth &lt;= 0
 {
+    if deathsound == false
+        {
+            if audio_is_playing(snd_GrabberGrab) audio_stop_sound(snd_GrabberGrab);
+            if audio_is_playing(snd_GrabberFire) audio_stop_sound(snd_GrabberFire);
+            audio_play_sound_at(snd_GrabberDeath, x, y, 0, 400, 1000, 1, false, 100);
+            audio_sound_gain(snd_GrabberDeath, 0.75, 0);        
+            deathsound = true;
+        }
+    
     scale -= 0.025;
     image_xscale = scale;
     image_yscale = scale;
