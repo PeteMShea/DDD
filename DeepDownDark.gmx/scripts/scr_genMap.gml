@@ -299,6 +299,7 @@ for (u = 0; u < gridsize; u +=1)
     {
         for (v = 0; v < gridsize; v +=1)
         {
+            if random(1) < chitterfxchance instance_create(u * 384 * global.RM +64 * global.RM + random(384), v * 384 * global.RM +64 * global.RM + random(384), obj_chitteremitter);            
     
             if bigblock[u , v] == 0
                 {
@@ -325,7 +326,6 @@ for (u = 0; u < gridsize; u +=1)
                         }
                    //instance_deactivate_object(inst);
                    //if random(1) < hugeblockoverlaychance instance_create(u * 384 * global.RM +64 * global.RM , v * 384 * global.RM +64 * global.RM , obj_hugeblockoverlay);
-                                
                 }
       
         }

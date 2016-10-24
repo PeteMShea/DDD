@@ -118,6 +118,7 @@ else wreckchance = 0;      //chance of a wreck being in level if a free huge blo
 wreckadded = false;
 
 
+
 global.startx = 0;
 global.starty = 0;
 global.exitx = 0;
@@ -134,8 +135,10 @@ totalwalkblocks = 0;
 
 global.startroom = false;
 
+//sfx
+chitterfxchance = 0.15;        //chance of a chitter emitter being added to a hugeblock
 
-script_execute(scr_genMap, basechance, spacechance, newbigblockvalue, spikyness, gridsize, maxgold, goldspread, bordersize, minspike, maxspike, mingap);
+script_execute(scr_genMap, basechance, spacechance, newbigblockvalue, spikyness, gridsize, maxgold, goldspread, bordersize, minspike, maxspike, mingap, chitterfxchance);
 
 global.loading = false;
 
@@ -151,6 +154,7 @@ exited = false;
 ambience = snd_LevelAmbience1;
 audio_play_sound(ambience, 99, true);
 audio_sound_gain(ambience, 0.5, 3000);
+
 
 
 

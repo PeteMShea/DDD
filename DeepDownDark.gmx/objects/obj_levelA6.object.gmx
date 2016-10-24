@@ -132,8 +132,10 @@ totalwalkblocks = 0;
 
 global.startroom = false;
 
+//sfx
+chitterfxchance = 0.15;        //chance of a chitter emitter being added to a hugeblock
 
-script_execute(scr_genMap, basechance, spacechance, newbigblockvalue, spikyness, gridsize, maxgold, goldspread, bordersize, minspike, maxspike, mingap);
+script_execute(scr_genMap, basechance, spacechance, newbigblockvalue, spikyness, gridsize, maxgold, goldspread, bordersize, minspike, maxspike, mingap, chitterfxchance);
 
 global.loading = false;
 

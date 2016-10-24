@@ -44,6 +44,22 @@
       <sound>sound\snd_BulletGold</sound>
       <sound>sound\snd_GoldPickupCollected</sound>
     </sounds>
+    <sounds name="RandomChitter">
+      <sound>sound\snd_chitter1</sound>
+      <sound>sound\snd_chitter2</sound>
+      <sound>sound\snd_chitter3</sound>
+      <sound>sound\snd_chitter4</sound>
+      <sound>sound\snd_chitter5</sound>
+      <sound>sound\snd_chitter6</sound>
+      <sound>sound\snd_chitter7</sound>
+      <sound>sound\snd_chitter8</sound>
+      <sound>sound\snd_chitter9</sound>
+      <sound>sound\snd_chitter10</sound>
+      <sound>sound\snd_chitter11</sound>
+      <sound>sound\snd_chitter12</sound>
+      <sound>sound\snd_chitter13</sound>
+      <sound>sound\snd_chitter14</sound>
+    </sounds>
   </sounds>
   <sprites name="sprites">
     <sprites name="player">
@@ -657,6 +673,9 @@
       <object>objects\obj_explosion128</object>
       <object>objects\obj_particle</object>
       <object>objects\obj_tinyblock</object>
+    </objects>
+    <objects name="SFXEmitters">
+      <object>objects\obj_chitteremitter</object>
     </objects>
   </objects>
   <timelines name="timelines">
