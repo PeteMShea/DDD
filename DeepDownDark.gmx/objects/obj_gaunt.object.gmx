@@ -78,7 +78,8 @@ hitanimimagespeed = 0.25;   //anim speed for hit anim
 damagecounter = 0;
 explosionproximity = 80 * global.RM;       //how close to an explosion kills enemies
 shadow = false;
-
+sound = snd_GauntLaunch;
+attacksound = snd_GauntAttack;
 
 
 
@@ -197,7 +198,9 @@ if awake == true
         {
 
             aimx = x + lengthdir_x(200, image_angle);
-            aimy = y + lengthdir_y(200, image_angle);            
+            aimy = y + lengthdir_y(200, image_angle);
+            sound = audio_play_sound_at(snd_GauntLaunch, x, y, 0, 400, 1000, 1, false, 100);
+            audio_sound_gain(sound, 0.5, 0);            
 
         }
     
@@ -229,6 +232,8 @@ if awake == true
             sprite_index = spr_gaunt_flying;
             image_index = 0;
             image_speed = 0;
+            sound = audio_play_sound_at(snd_GauntFlightLoop, x, y, 0, 400, 1000, 1, true, 100);
+            audio_sound_gain(sound, 0.5, 0);  
         }
     
     if homing == true 
@@ -417,7 +422,9 @@ if awake == true
             loc_y = y;
             damage = gauntdamage;
             script_execute(scr_shipvisualdamage, x, y, loc_x, loc_y, damage);            
-            script_execute(scr_smalldebris, loc_x, loc_y)         
+            script_execute(scr_smalldebris, loc_x, loc_y);
+            attacksound = audio_play_sound_at(snd_GauntAttack, x, y, 0, 400, 1000, 1, false, 110);
+            audio_sound_gain(attacksound, 0.5, 0);           
         }
     if attack == true &amp;&amp; damagecounter &gt; 0
         {
@@ -428,6 +435,10 @@ if awake == true
 
 if currenthealth &lt;=0 
 {
+    if audio_is_playing(sound) audio_stop_sound(sound);
+    if audio_is_playing(attacksound) audio_stop_sound(attacksound);
+    sound = audio_play_sound_at(snd_GauntDeath, x, y, 0, 400, 1000, 1, false, 100);
+    audio_sound_gain(sound, 0.5, 0); 
     debrisangle = image_angle;
     inst = instance_create(x, y, obj_gauntLW);
     with (inst)

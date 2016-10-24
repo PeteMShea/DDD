@@ -73,6 +73,13 @@
       <sound>sound\snd_SpikerLoad</sound>
       <sound>sound\snd_SpikeHit</sound>
       <sound>sound\snd_SpikerDeath</sound>
+      <sound>sound\snd_GauntLaunch</sound>
+      <sound>sound\snd_GauntFlightLoop</sound>
+      <sound>sound\snd_GauntAttack</sound>
+      <sound>sound\snd_GauntHit</sound>
+      <sound>sound\snd_GauntDeath</sound>
+      <sound>sound\snd_BallplantFire</sound>
+      <sound>sound\snd_BallplantHit</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">

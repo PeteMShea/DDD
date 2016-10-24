@@ -142,7 +142,7 @@ window_set_cursor(cr_arrow);
 
 
 //uncomment to force load a specific room
-global.nextroom = 11; 
+global.nextroom = 7; 
 
 
 

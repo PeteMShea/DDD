@@ -145,6 +145,8 @@ if launch == true
                         show_debug_message(string(hit));    
                         if string(hit) != "obj_blacksnake"
                         {
+                            audio_play_sound_at(snd_BallplantHit, x, y, 0, 400, 1000, 1, false, 100);
+                            audio_sound_gain(snd_BallplantHit, 0.5, 0);
                             lifespan = 1;
                             obj_blacksnake.lifespan = 10;        //kill any snakes in the air at this point
                             image_angle = point_direction(x, y, coltest.x, coltest.y);

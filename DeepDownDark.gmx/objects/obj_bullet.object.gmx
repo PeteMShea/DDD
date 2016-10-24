@@ -265,6 +265,8 @@ spiker = noone;
 spiker = instance_place(x, y, obj_spiker);
 if spiker != noone
     {
+        audio_play_sound_at(snd_BulletRock, x, y, 0, 400, 1200, 1, false, 100);
+        audio_sound_gain(snd_BulletRock, 0.5, 0);
         with(spiker) 
             {
                 if currenthealth &gt;0
@@ -295,6 +297,8 @@ gaunt = noone;
 if collided == false gaunt = instance_place(x, y, obj_gaunt);
 if gaunt != noone
     {
+        audio_sound_gain(snd_GauntHit, 0.1, 0);
+        audio_play_sound_at(snd_GauntHit, x, y, 0, 400, 1200, 1, false, 100);        
         collided = true;
         with(gaunt) 
             {
