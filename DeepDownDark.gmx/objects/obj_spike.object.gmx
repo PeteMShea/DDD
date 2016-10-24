@@ -162,14 +162,16 @@ if fired == true &amp;&amp; hit == false
             loc_x = hx;
             loc_y = hy;
             script_execute(scr_shipvisualdamage, loc_x, loc_y);
-            
+            sound = audio_play_sound(snd_ShipImpactMed3, 100, false);
+            audio_sound_gain(sound, 0.5, 0);
             hitplayer = true;
         }
     if launchcounter &lt;= 0 &amp;&amp; collision_point(hx, hy, obj_block, false, true)
         {
             bx = hx;
             by = hy;  
-    
+            sound = audio_play_sound_at(snd_SpikeHit, x, y, 0, 400, 1000, 1, false, 100);
+            audio_sound_gain(sound, 0.5, 0);    
             script_execute(scr_blockburstvfx, bx, by);
             hit = true;        
         }

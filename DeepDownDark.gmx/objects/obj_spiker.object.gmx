@@ -117,11 +117,13 @@ if awake == true &amp;&amp; spikesready == false &amp;&amp; dead == false
     for(i = 1; i &lt; 8; i+=1)         //spawn spikes at various angles
         {
             angle = spikeangle[i] + image_angle;
-            spike[i] = instance_create(x + lengthdir_x(60, angle), y + lengthdir_y(60, angle), obj_spike);
+            spike[i] = instance_create(x + lengthdir_x(45, angle), y + lengthdir_y(45, angle), obj_spike);
             with(spike[i])
                 {
                     image_angle = other.angle;
                 }
+            sound = audio_play_sound_at(snd_SpikerLoad, x, y, 0, 400, 1000, 1, false, 100);
+            audio_sound_gain(sound, 0.5, 0);
         }
     spikesready = true;
 }
@@ -139,7 +141,8 @@ if awake == true &amp;&amp; fired == false
                         }
                 }
             fired = true;
-
+            sound = audio_play_sound_at(snd_SpikerFire, x, y, 0, 400, 1000, 1, false, 100);
+            audio_sound_gain(sound, 0.75, 0);
             show_debug_message("Spikes Away!");                        
         }
 
@@ -198,6 +201,8 @@ if currenthealth &lt;= 0 &amp;&amp; dead == false
             script_execute(scr_particleburst, bx, by, colour);                       
         }
     dead = true;
+    sound = audio_play_sound_at(snd_SpikerDeath, x, y, 0, 400, 1000, 1, false, 100);
+    audio_sound_gain(sound, 0.75, 0);
 }
 
 

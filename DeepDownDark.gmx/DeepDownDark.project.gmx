@@ -35,6 +35,12 @@
       <sound>sound\snd_LevelAmbience4</sound>
       <sound>sound\snd_LevelAmbience5</sound>
       <sound>sound\snd_LevelAmbience6</sound>
+      <sound>sound\snd_LevelStart1</sound>
+      <sound>sound\snd_LevelStart2</sound>
+      <sound>sound\snd_LevelStart3</sound>
+      <sound>sound\snd_LevelStart4</sound>
+      <sound>sound\snd_LevelStart5</sound>
+      <sound>sound\snd_LevelStart6</sound>
       <sound>sound\snd_DDDLogo</sound>
       <sound>sound\snd_DDDTheme</sound>
     </sounds>
@@ -59,6 +65,14 @@
       <sound>sound\snd_chitter12</sound>
       <sound>sound\snd_chitter13</sound>
       <sound>sound\snd_chitter14</sound>
+    </sounds>
+    <sounds name="Monsters">
+      <sound>sound\snd_SporeLoop</sound>
+      <sound>sound\snd_SporeDeath</sound>
+      <sound>sound\snd_SpikerFire</sound>
+      <sound>sound\snd_SpikerLoad</sound>
+      <sound>sound\snd_SpikeHit</sound>
+      <sound>sound\snd_SpikerDeath</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">

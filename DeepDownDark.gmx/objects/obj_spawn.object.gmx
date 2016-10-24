@@ -78,6 +78,8 @@ damagecounter = 0;
 explosionproximity = 80 * global.RM;       //how close to an explosion kills gaunt
 shadow = false;
 
+sound = snd_SporeLoop;
+
 
 
 
@@ -144,7 +146,7 @@ if awake == true
     }
 
     
-    // when we first wake up  set a point to travel to             
+    // when we first wake up  set a point to travel             
     if homing == false &amp;&amp; launchtime == 0
         {
 
@@ -164,6 +166,9 @@ if awake == true
                 // create a shadow object to follow this one
                 instance_create(x,y, obj_sporeshadow);
                 shadow = true;
+                //start audio loop
+                sound = audio_play_sound_at(snd_SporeLoop, x, y, 0, 400, 1000, 1, true, 90);
+                audio_sound_gain(sound, 0.5, 2);
             }
         }
     
@@ -356,7 +361,9 @@ if awake == true
 if distance_to_point(obj_player.x, obj_player.y) &lt;= damageproximity
     {
     // blow up and destroy and damage player
-    
+    if audio_is_playing(sound) audio_stop_sound(sound);
+    sound = audio_play_sound_at(snd_SporeDeath, x, y, 0, 400, 1000, 1, false, 90);
+    audio_sound_gain(sound, 0.5, 0);
     effect_create_above(ef_explosion, x, y, 2, c_lime);
     bx = x;
     by = y;
@@ -377,6 +384,9 @@ if bouncecount &lt;= 0 currenthealth = 0
 
 if currenthealth &lt;=0 
     {
+        if audio_is_playing(sound) audio_stop_sound(sound);
+        sound = audio_play_sound_at(snd_SporeDeath, x, y, 0, 400, 1000, 1, false, 90);
+        audio_sound_gain(sound, 0.5, 0);
         bx = x;
         by = y;
         script_execute(scr_sporeburst, bx, by);                          

@@ -153,10 +153,15 @@ instance_create(0,0, obj_HUD);
 
 instance_create(global.startx, global.starty, obj_player);
 
+//ambient audio controls
 exited = false;
 ambience = snd_LevelAmbience4;
-audio_play_sound(ambience, 99, true);
-audio_sound_gain(ambience, 0.5, 3000);
+startambience = snd_LevelStart4;
+levelstartplayed = false;
+loopedambience = false;
+startsound = audio_play_sound(startambience, 99, false);
+audio_sound_gain(startsound, 0.5, 3000);
+startlength = audio_sound_length(startsound) -1;
 
 // fade in from black
 vx = view_xview[0];
@@ -242,6 +247,26 @@ if obj_player.exited == true &amp;&amp; exited == false
     audio_sound_gain(ambience, 0.0, 5000);
 }
 
+if levelstartplayed == false
+{
+    
+    position = audio_sound_get_track_position(startsound);
+    //show_debug_message(string(startlength) + " , " + string(position)); 
+    if position &gt;= startlength
+    {
+        audio_sound_gain(startambience, 0.0, 3000);
+        levelstartplayed = true;
+        //show_debug_message("starting ambience loop");    
+    }
+
+
+}
+else if levelstartplayed = true &amp;&amp; loopedambience == false
+    {
+        audio_play_sound(ambience, 101, true);
+        audio_sound_gain(ambience, 0.5, 3000);
+        loopedambience = true;
+    }
 </string>
           </argument>
         </arguments>
