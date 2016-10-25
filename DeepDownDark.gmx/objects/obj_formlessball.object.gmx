@@ -42,7 +42,8 @@ starty = y;
 disttoclear = 64;
 
 
-
+audio_sound_gain(snd_FormlessSnakesFire, 0.5, 0.0);
+audio_play_sound_at(snd_FormlessSnakesFire, x, y, 0, 400, 1000, 1, false, 100);
 
 
 </string>
@@ -139,6 +140,9 @@ if launch == true
                         show_debug_message(string(hit));    
                         if string(hit) != "obj_fssnake"
                         {
+                            audio_sound_gain(snd_FormlessSnakesHit, 0.5, 0.0);
+                            audio_play_sound_at(snd_FormlessSnakesHit, x, y, 0, 400, 1000, 1, false, 100);
+                            
                             lifespan = 1;
                             obj_fssnake.lifespan = 30;        //kill any snakes in the air at this point
                             obj_fssnake.speed = 2.0;

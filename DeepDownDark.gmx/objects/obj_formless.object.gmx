@@ -67,7 +67,7 @@ turnspeed = 0.05;
 decelerating = false;
 hovery = 0;         //this is used to move the formless up and down separate from bobbing
 firecounter = 300;      //frames between firing
-snarltime = 300;    //how often snarl anim plays
+snarltime = 30;    //how often snarl anim plays- play at start immediately then reset in step
 idle = true;
 shotinmouth = false;    //shot in ma mooth
 shotcounter = 5;       //time in frames to flash red for
@@ -77,7 +77,7 @@ currenthealth = 250;         //200
 dying = false;
 dead = false;
 playerdead = false;
-
+introvox = false;
 
 // spawning and launch vars
 scale = 0.05;   //starting scale
@@ -94,6 +94,24 @@ launchdeceleration = 0.1;
 
 
 instance_create(x, y, obj_fsoverlay);
+
+audio_sound_gain(snd_FormlessSpawn, 0.0, 0.0);
+audio_play_sound_at(snd_FormlessSpawn, x, y, 0, 600, 1200, 1, false, 100);
+audio_sound_gain(snd_FormlessSpawn, 1.0, 0.5);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -187,7 +205,18 @@ if launchcomplete == false
 
 if launchcomplete == true
     {
-    
+        if introvox == false 
+        {
+            //audio_play_sound_at(snd_FormlessSpawnVox, x, y, 0, 600, 1200, 1, false, 100);
+            //audio_sound_gain(snd_FormlessSpawnVox, 1.0, 0.0);
+            introvox = true;
+        }
+        if !audio_is_playing(snd_FormlessSpawnVox) &amp;&amp; introvox == true &amp;&amp; dead == false
+        {
+            audio_play_sound_at(snd_FormlessIdle, x, y, 0, 600, 1200, 1, true, 50);
+            audio_sound_gain(snd_FormlessIdle, 0.5, 0.0);            
+        }
+        
         //test for first seen by player and apply madness
         if global.formlessseen == false
                 {
@@ -216,6 +245,8 @@ if launchcomplete == true
                     timeline_running = true;
                     timeline_position = 0;
                     timeline_loop = true;
+                    audio_sound_gain(snd_FormlessFire, 0.5, 0.0);
+                    audio_play_sound_at(snd_FormlessFire, x, y, 0, 400, 1000, 1, false, 100);
                     idle = false;    
                 }
             }
@@ -226,6 +257,8 @@ if launchcomplete == true
                 if snarltime &lt;= 0
                     {
                         snarltime = random_range(300, 400);
+                        audio_play_sound_at(snd_FormlessSpawnVox, x, y, 0, 600, 1200, 1, false, 100);
+                        audio_sound_gain(snd_FormlessSpawnVox, 1.0, 0.0);
                         timeline_index = tm_formlesssnarl;
                         timeline_running = true;
                         timeline_loop = true;  
@@ -372,6 +405,9 @@ if launchcomplete == true
                 timeline_position = 0;
                 timeline_running = true;
                 timeline_loop = false;
+                if audio_is_playing(snd_FormlessIdle) audio_stop_sound(snd_FormlessIdle);
+                audio_play_sound_at(snd_FormlessDeath, x, y, 0, 600, 1200, 1, false, 150);
+                audio_sound_gain(snd_FormlessDeath, 1.0, 0.0);
         }
         
         //player death
@@ -381,6 +417,8 @@ if launchcomplete == true
              timeline_index = tm_formlesslaugh;
              timeline_running = true;
              timeline_loop = true;
+             audio_play_sound_at(snd_FormlessSpawnVox, x, y, 0, 400, 1000, 1, true, 100);
+             audio_sound_gain(snd_FormlessSpawnVox, 0.5, 0.0);
              targetangle = image_angle + 45;        
         
         }

@@ -87,6 +87,13 @@
       <sound>sound\snd_GrabberFire</sound>
       <sound>sound\snd_GrabberHit</sound>
       <sound>sound\snd_GrabberDeath</sound>
+      <sound>sound\snd_FormlessSpawn</sound>
+      <sound>sound\snd_FormlessIdle</sound>
+      <sound>sound\snd_FormlessFire</sound>
+      <sound>sound\snd_FormlessSnakesFire</sound>
+      <sound>sound\snd_FormlessSnakesHit</sound>
+      <sound>sound\snd_FormlessSpawnVox</sound>
+      <sound>sound\snd_FormlessDeath</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">

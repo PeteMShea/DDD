@@ -322,9 +322,22 @@ for (u = 0; u < gridsize; u +=1)
                         spikerdensity = spikerdensitymin + (spikerdensityrange * ((walkblock[u,v]- totalwalkblocks * spikerstartblock)/(totalwalkblocks * spikerendblock - totalwalkblocks * spikerstartblock)))
                         if spikerdensity > 0 show_debug_message("Adding spikers at Walkblock: " + string(walkblock[u,v]) + " with chance: " + string(spikerdensity));                        
                     }
-                else spikerdensity = 0;                             
-            
-            script_execute(scr_genBlocks, u, v, bigblock[u,v], gridsize, starthuge, endhuge, ballplantdensity, spikerdensity)
+                else spikerdensity = 0;
+                                             
+                //GRABBERS
+                if grabberone == true && walkblock[u, v] > 0 && walkblock[u, v] >= (totalwalkblocks * grabberoneblockmin) && walkblock[u, v] <= (totalwalkblocks * grabberoneblockmax)
+                    {
+                        grabberadd = true;                    
+                    }
+                else grabberadd = false;
+
+                if grabbertwo == true && walkblock[u, v] > 0 && walkblock[u, v] >= (totalwalkblocks * grabbertwoblockmin) && walkblock[u, v] <= (totalwalkblocks * grabbertwoblockmax)
+                    {
+                        grabberadd = true;                    
+                    }
+                else grabberadd = false;
+                               
+                script_execute(scr_genBlocks, u, v, bigblock[u,v], gridsize, starthuge, endhuge, ballplantdensity, spikerdensity)
 
 
              
