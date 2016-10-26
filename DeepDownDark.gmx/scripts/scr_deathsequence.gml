@@ -7,6 +7,16 @@ if deathstart == false
         alarm[0] = 10;
         deathstart = true;
         rings = 4;
+        inst = instance_create(px, py, obj_blackbox);
+        with(inst)
+        {
+            image_xscale = 0.5;
+            image_yscale = 0.5;
+            depth = 3;
+            rotspeed = random_range(-3, 3);
+            speed_x = random_range(-0.5, 0.5);
+            speed_y = random_range(-0.5, 0.5);
+        }
     }
 
 if deathstart == true

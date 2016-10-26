@@ -324,6 +324,11 @@ if oldheartbeatsound != heartbeatsound
    audio_sound_gain(heartbeatsound, heartbeatgain, 0);    
 }
 
+if obj_player.dead == true
+{
+   audio_stop_sound(heartbeatsound); 
+}
+
 madnesstimer -= 1;
 
 if sanity &gt;= 180 &amp;&amp; madnesstimer &lt;= 0

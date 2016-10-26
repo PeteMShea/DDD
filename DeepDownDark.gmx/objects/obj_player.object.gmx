@@ -368,7 +368,6 @@ if global.pause == false
 
 
 
-
 if dead == false
 {
 
@@ -376,6 +375,7 @@ if dead == false
 // Movement
 if global.autopilot &lt;= 0
         {
+
          // joystick input   
             joyx = gamepad_axis_value(0, gp_axislh);
             joyy = gamepad_axis_value(0, gp_axislv);
@@ -411,6 +411,7 @@ if global.autopilot &lt;= 0
 
 //show_debug_message("RB: " + string(righttrigger) + ", LB:" + string(lefttrigger)+ ", Moveinput:" + string(moveinput)+ ", Fireinput:" + string(fireinput)+ ", Mousemove:" + string(mousemove));                
 
+        
 
 
         
@@ -671,6 +672,7 @@ if global.autopilot &gt; 0 &amp;&amp; global.autopilot &lt; 999
             }
 }
 
+   //end of death check
     
 // thrust control
 if thrustcounter &gt;= 0 &amp;&amp; global.autopilot &lt;=0
@@ -1053,13 +1055,7 @@ if global.playerdamaged &gt;0
             global.playerdamaged -= 1;
          
     }
-else
-    {
-            //image_index = 0; 
-    }
 
-
-        
     
     
 
@@ -1102,10 +1098,13 @@ if global.playerHealth &lt;= 0 &amp;&amp; dead == false
         audio_sound_gain(snd_SharkEngineLoop, 0, 250);
         audio_sound_gain(snd_RetroBooster, 0, 250);
         audio_sound_gain(snd_SharkEngine, 0, 250);
+        audio_play_sound(snd_ShipExplosion, 150, false);
+        audio_sound_gain(snd_ShipExplosion, 0.5, 0);
         show_debug_message("Deid");                    
     }
 
 }
+
 
 if dead == true &amp;&amp; deathcounter == 0
     {
@@ -1138,7 +1137,10 @@ if dead == true &amp;&amp; deathcounter &lt; deathsequencetime
             {
                 script_execute(scr_deathsequence, px, py, startfade, showmenu);        
             }           
+
+
 }
+
 
 
 

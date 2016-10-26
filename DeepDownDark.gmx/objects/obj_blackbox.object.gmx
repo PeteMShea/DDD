@@ -85,7 +85,8 @@ attractspeed = 0.1;     //speed multiplier once sucked
           <argument>
             <kind>1</kind>
             <string>// player collect
-
+if obj_player.dead == false
+{
 if sucked == false
     {
 
@@ -119,6 +120,7 @@ if sucked == true
                 instance_destroy();
             }    
     } 
+}
 </string>
           </argument>
         </arguments>

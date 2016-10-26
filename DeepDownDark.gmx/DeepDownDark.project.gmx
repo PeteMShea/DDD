@@ -26,6 +26,8 @@
       <sound>sound\snd_ShipImpactBig2</sound>
       <sound>sound\snd_ShipImpactBig3</sound>
       <sound>sound\snd_ShipImpactBig4</sound>
+      <sound>sound\snd_ShipExplosion</sound>
+      <sound>sound\snd_ShipExplosionShockwave</sound>
     </sounds>
     <sounds name="LevelAmbience">
       <sound>sound\snd_LevelAmbience0</sound>
@@ -43,6 +45,7 @@
       <sound>sound\snd_LevelStart6</sound>
       <sound>sound\snd_DDDLogo</sound>
       <sound>sound\snd_DDDTheme</sound>
+      <sound>sound\snd_DeathAmbienceOutro</sound>
     </sounds>
     <sounds name="Environment">
       <sound>sound\snd_AsteroidBurst</sound>
