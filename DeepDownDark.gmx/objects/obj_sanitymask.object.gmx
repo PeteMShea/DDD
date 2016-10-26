@@ -84,9 +84,9 @@ if image_alpha &lt; targetalpha image_alpha += alphafade;
 if image_alpha &gt; targetalpha image_alpha -= alphafade;
 
 
-sanity = clamp(global.currentSanity, 135, 180);
+sanity = clamp(global.currentSanity, 150, 200);
 
-scalecalc = maximumscale - (((sanity - 135)/45) * (maximumscale - minimumscale));
+scalecalc = maximumscale - (((sanity - 150)/50) * (maximumscale - minimumscale));
 
 oldscale = scale;
 

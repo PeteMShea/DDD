@@ -41,41 +41,93 @@ madnessinc = 0.25;      //how much sanity level increases per frame whenever pla
 sanity = global.baseSanity;
 
 
-baselevel = global.baseSanity;
+baselevel = 80;
 baselevelsprite = spr_sanitymeter80;
 baselevelspeed = 0.2;
+
 leveltwo = 90;
 leveltwosprite = spr_sanitymeter80;
 leveltwospeed = 0.25;
+
 levelthree = 100;
 levelthreesprite = spr_sanitymeter100;
 levelthreespeed = 0.2;
+
 levelfour = 110;
 levelfoursprite = spr_sanitymeter100;
-levelfourspeed = 0.25;
+levelfourspeed = 0.3;
+
 levelfive = 120;
 levelfivesprite = spr_sanitymeter120;
 levelfivespeed = 0.2;
-levelsix = 135;
+
+levelsix = 130;
 levelsixsprite = spr_sanitymeter120;
-levelsixspeed = 0.25;
-levelseven = 150;
-levelsevensprite = spr_sanitymeter150;
-levelsevenspeed = 0.2;
-leveleight = 165;
+levelsixspeed = 0.225;
+
+levelseven = 140;
+levelsevensprite = spr_sanitymeter120;
+levelsevenspeed = 0.25;
+
+leveleight = 150;
 leveleightsprite = spr_sanitymeter150;
-leveleightspeed = 0.25;
-levelnine = 180;
-levelninesprite = spr_sanitymeter180;
-levelninespeed = 0.2;
-levelten = 195;
-leveltensprite = spr_sanitymeter180;
-leveltenspeed = 0.3;
+leveleightspeed = 0.2;
+
+levelnine = 160;
+levelninesprite = spr_sanitymeter150;
+levelninespeed = 0.225;
+
+levelten = 170;
+leveltensprite = spr_sanitymeter150;
+leveltenspeed = 0.25;
+
+leveleleven = 180;
+levelelevensprite = spr_sanitymeter180;
+levelelevenspeed = 0.2;
+
+leveltwelve = 191;
+leveltwelvesprite = spr_sanitymeter180;
+leveltwelvespeed = 0.3;
 
 image_speed = baselevelspeed;
 mask = false;
 extramask = false;
 spritelevel = 0;
+
+//sfx
+heartbeatsound = snd_Heartbeat80;
+heartbeatgain = 0.1;
+oldheartbeatsound = snd_Heartbeat190;
+madnesstimermax = 1800;    //minimum number of frames between each trigger of a madness SFX
+madnesstimer = 0;
+
+madsound[1] = snd_Madness1;
+madsound[2] = snd_Madness2;
+madsound[3] = snd_Madness3;
+madsound[4] = snd_Madness4;
+madsound[5] = snd_Madness5;
+madsound[6] = snd_Madness6;
+madsound[7] = snd_Madness7;
+madsound[8] = snd_Madness8;
+madsound[9] = snd_Madness9;
+madsound[10] = snd_Madness10;
+madsound[11] = snd_Madness11;
+madsound[12] = snd_Madness12;
+madsound[13] = snd_Madness13;
+madsound[14] = snd_Madness14;
+madsound[15] = snd_Madness15;
+madsound[16] = snd_Madness16;
+madsound[17] = snd_Madness17;
+madsound[18] = snd_Madness18;
+madsound[19] = snd_Madness19;
+
+
+
+
+
+
+
+
 
 
 
@@ -104,6 +156,8 @@ spritelevel = 0;
           <argument>
             <kind>1</kind>
             <string>
+
+
 if obj_HUD.hidden == true
 {
     image_alpha = 0.0
@@ -150,75 +204,150 @@ if sanity &gt;= levelten &amp;&amp; global.baseSanity &lt; 180
 
 
 // adjust meter graphic based upon sanity levels
+if image_index &gt;= 31
+{
 if sanity &lt; leveltwo &amp;&amp; spritelevel != 1
     {
         sprite_index = baselevelsprite;
         image_speed = baselevelspeed;
         spritelevel = 1;
+        heartbeatsound = snd_Heartbeat80;
+        heartbeatgain = 0.2;
     }
 
 if sanity &gt;= leveltwo &amp;&amp; sanity &lt; levelthree &amp;&amp; spritelevel != 2
     {
         sprite_index = leveltwosprite;
         image_speed = leveltwospeed;
-        spritelevel = 2
+        spritelevel = 2;
+        heartbeatsound = snd_Heartbeat90;
+        heartbeatgain = 0.2;
     }
 
 if sanity &gt;= levelthree &amp;&amp; sanity &lt; levelfour &amp;&amp; spritelevel != 3
     {
         sprite_index = levelthreesprite;
         image_speed = levelthreespeed;
-        spritelevel = 3
+        spritelevel = 3;
+        heartbeatsound = snd_Heartbeat100;
+        heartbeatgain = 0.3;
     }
 
 if sanity &gt;= levelfour &amp;&amp; sanity &lt; levelfive &amp;&amp; spritelevel != 4
     {
         sprite_index = levelfoursprite;
         image_speed = levelfourspeed;
-        spritelevel = 4
+        spritelevel = 4;
+        heartbeatsound = snd_Heartbeat110;
+        heartbeatgain = 0.4;
     }
     
 if sanity &gt;= levelfive &amp;&amp; sanity &lt; levelsix &amp;&amp; spritelevel != 5
     {
         sprite_index = levelfivesprite;
         image_speed = levelfivespeed;
-        spritelevel = 5
+        spritelevel = 5;
+        heartbeatsound = snd_Heartbeat120;
+        heartbeatgain = 0.5;
     }
 
 if sanity &gt;= levelsix &amp;&amp; sanity &lt; levelseven &amp;&amp; spritelevel != 6
     {
         sprite_index = levelsixsprite;
         image_speed = levelsixspeed;
-        spritelevel = 6
+        spritelevel = 6;
+        heartbeatsound = snd_Heartbeat130;
+        heartbeatgain = 0.6;
     }
         
 if sanity &gt;= levelseven &amp;&amp; sanity &lt; leveleight &amp;&amp; spritelevel != 7
     {
         sprite_index = levelsevensprite;
         image_speed = levelsevenspeed;
-        spritelevel = 7
+        spritelevel = 7;
+        heartbeatsound = snd_Heartbeat140;
+        heartbeatgain = 0.4;
     }    
 
 if sanity &gt;= leveleight &amp;&amp; sanity &lt; levelnine &amp;&amp; spritelevel != 8
     {
         sprite_index = leveleightsprite;
         image_speed = leveleightspeed;
-        spritelevel = 8
+        spritelevel = 8;
+        heartbeatsound = snd_Heartbeat150;
+        heartbeatgain = 0.7;
     }   
 
 if sanity &gt;= levelnine  &amp;&amp; sanity &lt; levelten &amp;&amp; spritelevel != 9
     {
         sprite_index = levelninesprite;
         image_speed = levelninespeed;
-        spritelevel = 9
+        spritelevel = 9;
+        heartbeatsound = snd_Heartbeat160;
+        heartbeatgain = 0.8;
     }
 
-if sanity &gt;= levelten &amp;&amp; spritelevel != 10
+if sanity &gt;= levelten  &amp;&amp; sanity &lt; leveleleven &amp;&amp; spritelevel != 10
     {
         sprite_index = leveltensprite;
         image_speed = leveltenspeed;
-        spritelevel = 10
-    }      
+        spritelevel = 10;
+        heartbeatsound = snd_Heartbeat170;
+        heartbeatgain = 0.9;
+    }        
+
+if sanity &gt;= leveleleven  &amp;&amp; sanity &lt; leveltwelve &amp;&amp; spritelevel != 11
+    {
+        sprite_index = levelelevensprite;
+        image_speed = levelelevenspeed;
+        spritelevel = 11;
+        heartbeatsound = snd_Heartbeat180;
+        heartbeatgain = 0.95;
+    }
+    
+if sanity &gt;= leveltwelve &amp;&amp; spritelevel != 12
+    {
+        sprite_index = leveltwelvesprite;
+        image_speed = leveltwelvespeed;
+        spritelevel = 12;
+        heartbeatsound = snd_Heartbeat190;
+        heartbeatgain = 1.0;
+    }
+}    
+//sfx
+
+if oldheartbeatsound != heartbeatsound
+{
+   audio_stop_sound(oldheartbeatsound);
+   oldheartbeatsound = heartbeatsound;
+   audio_play_sound(heartbeatsound, 100, true);
+   audio_sound_gain(heartbeatsound, heartbeatgain, 0);    
+}
+
+madnesstimer -= 1;
+
+if sanity &gt;= 180 &amp;&amp; madnesstimer &lt;= 0
+{
+    madnesstimer = madnesstimermax;
+    i = irandom_range(0, 19)
+    sound = madsound[i];
+    audio_play_sound(madsound[i], 110, false);
+    audio_sound_gain(madsound[i], 0.5, 0);         
+}
+
+/*
+if image_index &gt;= 0 &amp;&amp; image_index &lt;= 1
+{
+    if !audio_is_playing(heartbeatsound) audio_play_sound(heartbeatsound, 100, false);
+    audio_sound_gain(heartbeatsound, heartbeatgain, 0); 
+}
+
+if image_index &gt;= 31
+
+{
+    audio_stop_sound(heartbeatsound);
+}
+*/          
 
 if global.sanityenabled == true
 {
@@ -237,14 +366,14 @@ if global.sanityenabled == true
         }
     
     // Add extra Sanity  mask if sanity above level or destroy it if not
-    if extramask == false &amp;&amp; sanity &gt;= levelsix
+    if extramask == false &amp;&amp; sanity &gt;= leveleight
         {
             extramask = true
             instance_create(obj_player.x, obj_player.y, obj_sanitymask);
         
         }
     
-    if extramask == true &amp;&amp; sanity &lt; levelsix       //kill it a level earlier than it was spawned for smoother transition
+    if extramask == true &amp;&amp; sanity &lt; leveleight       //kill it a level earlier than it was spawned for smoother transition
         {
             obj_sanitymask.destroy = true;
             extramask = false;
@@ -253,7 +382,7 @@ if global.sanityenabled == true
 }
 
 
-
+//show_debug_message(string(global.baseSanity));
 
 
 

@@ -95,6 +95,41 @@
       <sound>sound\snd_FormlessSpawnVox</sound>
       <sound>sound\snd_FormlessDeath</sound>
     </sounds>
+    <sounds name="GUI">
+      <sound>sound\snd_Heartbeat80</sound>
+      <sound>sound\snd_Heartbeat90</sound>
+      <sound>sound\snd_Heartbeat100</sound>
+      <sound>sound\snd_Heartbeat110</sound>
+      <sound>sound\snd_Heartbeat120</sound>
+      <sound>sound\snd_Heartbeat130</sound>
+      <sound>sound\snd_Heartbeat140</sound>
+      <sound>sound\snd_Heartbeat150</sound>
+      <sound>sound\snd_Heartbeat160</sound>
+      <sound>sound\snd_Heartbeat170</sound>
+      <sound>sound\snd_Heartbeat180</sound>
+      <sound>sound\snd_Heartbeat190</sound>
+    </sounds>
+    <sounds name="Madness">
+      <sound>sound\snd_Madness1</sound>
+      <sound>sound\snd_Madness2</sound>
+      <sound>sound\snd_Madness3</sound>
+      <sound>sound\snd_Madness4</sound>
+      <sound>sound\snd_Madness5</sound>
+      <sound>sound\snd_Madness6</sound>
+      <sound>sound\snd_Madness7</sound>
+      <sound>sound\snd_Madness8</sound>
+      <sound>sound\snd_Madness9</sound>
+      <sound>sound\snd_Madness10</sound>
+      <sound>sound\snd_Madness11</sound>
+      <sound>sound\snd_Madness12</sound>
+      <sound>sound\snd_Madness13</sound>
+      <sound>sound\snd_Madness14</sound>
+      <sound>sound\snd_Madness15</sound>
+      <sound>sound\snd_Madness16</sound>
+      <sound>sound\snd_Madness17</sound>
+      <sound>sound\snd_Madness18</sound>
+      <sound>sound\snd_Madness19</sound>
+    </sounds>
   </sounds>
   <sprites name="sprites">
     <sprites name="player">
