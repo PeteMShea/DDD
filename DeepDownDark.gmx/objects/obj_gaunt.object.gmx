@@ -205,7 +205,7 @@ if awake == true
         }
     
     // and now start animating the takeoff- 12 frames total
-    if  homing == false &amp;&amp; launchtime &lt; launchtimemax
+    if  homing == false &amp;&amp; launchtime * 60 * delta_time /1000000 &lt; launchtimemax
         {
             launchtime +=1
             if frame != 99
@@ -213,7 +213,7 @@ if awake == true
                 frame = image_index;
                 if frame &lt;11
                     {
-                        image_speed = takeoffspeed;
+                        image_speed = takeoffspeed * 60 * delta_time /1000000;
                         //show_debug_message(string(frame));
                     }
                 else
@@ -226,7 +226,7 @@ if awake == true
             //show_debug_message("L: " + string(launchtime));
         }
     
-    if  homing == false &amp;&amp; launchtime &gt;= launchtimemax
+    if  homing == false &amp;&amp; launchtime * 60 * delta_time /1000000 &gt;= launchtimemax
         {
             homing = true;
             sprite_index = spr_gaunt_flying;
@@ -250,8 +250,8 @@ if awake == true
         if playerdist &lt;= attackrange attack = true else attack = false
         
         //perform LOS check ever Z frames
-        if homingtest &lt; homingtestmax homingtest +=1    
-        if homingtest &gt;= homingtestmax 
+        if homingtest * 60 * delta_time /1000000 &lt; homingtestmax homingtest +=1    
+        if homingtest * 60 * delta_time /1000000 &gt;= homingtestmax 
         {
             
             // first LOS check dead ahead +/- aimoffset degrees from player target for variety
@@ -363,7 +363,7 @@ if awake == true
          }
      if avoidtest &gt; 0 
          {
-            avoidtest -= 1;
+            avoidtest -= 1 * 60 * delta_time /1000000;
          }
      else turnspeed = normalturnspeed;
 
@@ -383,33 +383,35 @@ if awake == true
     vx = (movex - x);
     vy = (movey - y);
                 
-    len = sqrt(vx * vx + vy * vy);
+    if vx != 0 || vy != 0 len = sqrt(vx * vx + vy * vy) else len = 0;
                         
+    if len != 0
+    {
     vx = vx / len;
     vy = vy / len;
-            
+    }        
 
     if speedmult &lt;= speedmax speedmult += acceleration               
-    x += vx * speedmult
-    y += vy * speedmult
+    x += vx * speedmult * 60 * delta_time /1000000
+    y += vy * speedmult * 60 * delta_time /1000000
     
-    if homing == true &amp;&amp; hitanim &lt;= 0 image_speed = abs(maxanimspeed - speedmult * 0.75);
+    if homing == true &amp;&amp; hitanim &lt;= 0 image_speed = abs(maxanimspeed - speedmult * 0.75) * 60 * delta_time /1000000;
     
     if hitanim &gt;0 &amp;&amp; attack == false
         {
             sprite_index = spr_gaunt_hit;
-            image_speed = hitanimimagespeed;
+            image_speed = hitanimimagespeed * 60 * delta_time /1000000;
             speedmult = speedmax * 0.5;           
-            hitanim -= 1;
+            hitanim -= 1 * 60 * delta_time /1000000;
             if hitanim == 0 sprite_index = spr_gaunt_flying;
         }
         
-    if hitanim == 0 &amp;&amp; attack == false &amp;&amp; homing == true
+    if hitanim &lt;= 0 &amp;&amp; attack == false &amp;&amp; homing == true
         {
             sprite_index = spr_gaunt_flying;
         }
         
-    if attack == true &amp;&amp; damagecounter &lt;= 0
+    if attack == true &amp;&amp; damagecounter * 60 * delta_time /1000000 &lt;= 0
         {
             damagecounter = damagecountermax
             sprite_index = spr_gaunt_attack;
@@ -428,7 +430,7 @@ if awake == true
         }
     if attack == true &amp;&amp; damagecounter &gt; 0
         {
-            damagecounter -=1;
+            damagecounter -=1 * 60 * delta_time /1000000;
         }
                                 
 }

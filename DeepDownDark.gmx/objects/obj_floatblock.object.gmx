@@ -39,6 +39,7 @@ image_index = irandom_range(0,5);
 image_angle = irandom(360);
 direction = point_direction(x, y, obj_player.x, obj_player.y) + random_range(-15, 15);
 speed = 0.5;
+maxspeed = 0.5;
 
 
 </string>
@@ -64,6 +65,9 @@ speed = 0.5;
           <argument>
             <kind>1</kind>
             <string>
+speed = maxspeed * 60 * delta_time /1000000;
+
+
 if hspeed &gt;= min_speed || hspeed &lt;= -min_speed
     {
     

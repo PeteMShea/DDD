@@ -204,13 +204,13 @@ if awake == true
                 
         //perform LOS check ever Z frames
         if homingtest &lt; homingtestmax homingtest +=1    
-        if homingtest &gt;= homingtestmax 
+        if homingtest  &gt;= homingtestmax 
         {
             // first LOS check dead ahead
             linestartx = x;
             linestarty = y;
 
-            aimangle = point_direction(x,y, aimx, aimy);
+            aimangle = point_direction(x, y, aimx, aimy);
             lineendx = x + lengthdir_x(linedistance, aimangle);
             lineendy = y + lengthdir_y(linedistance, aimangle);
             hit = 0;
@@ -317,7 +317,7 @@ if awake == true
      //now turn towards aim point    
     anglediff = angle_difference(image_angle, aimangle);
 
-    if homing == true image_angle -= sign(anglediff) * turnspeed;
+    if homing == true image_angle -= sign(anglediff) * turnspeed * 60 * delta_time /1000000;
     
     //now move along facing direction if no spawn in the way
         
@@ -328,11 +328,13 @@ if awake == true
         vx = (movex - x);
         vy = (movey - y);
                     
-        len = sqrt(vx * vx + vy * vy);
-                            
+        if vx != 0 || vy != 0 len = sqrt(vx * vx + vy * vy) else len = 0;
+        
+        if len != 0
+        {                    
         vx = vx / len;
         vy = vy / len;
-                
+        }        
     
         if speedmult &lt;= speedmax speedmult += acceleration
         
@@ -343,8 +345,8 @@ if awake == true
     if coltest == noone &amp;&amp; awake == true  
         { 
                          
-            x += vx * speedmult
-            y += vy * speedmult
+            x += vx * speedmult * 60 * delta_time /1000000;
+            y += vy * speedmult * 60 * delta_time /1000000;
     
         }
     else
@@ -404,33 +406,6 @@ if instance_exists(obj_explosion128)
     
 //----------------------------------------
 }
-
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_hugeblock">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>// clean up if stuck in environment
-
-instance_destroy();
 
 
 </string>

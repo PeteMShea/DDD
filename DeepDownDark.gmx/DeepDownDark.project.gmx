@@ -498,6 +498,10 @@
     <script>scripts\scr_loadgame.gml</script>
     <script>scripts\scr_savegame.gml</script>
     <script>scripts\scr_readstory.gml</script>
+    <scripts name="MathFunctions">
+      <script>scripts\deltaSpeed.gml</script>
+      <script>scripts\oldDelta.gml</script>
+    </scripts>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_multiply.shader</shader>
@@ -644,8 +648,6 @@
       <object>objects\obj_fsholeoverlay</object>
     </objects>
     <objects name="enemies">
-      <object>objects\obj_fixedgunbase</object>
-      <object>objects\obj_enemybullet</object>
       <object>objects\obj_gaunt</object>
       <object>objects\obj_gauntshadow</object>
       <object>objects\obj_sporeshadow</object>

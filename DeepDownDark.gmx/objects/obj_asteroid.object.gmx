@@ -164,7 +164,7 @@ lightSource = instance_nearest(x,y,oLightSourceAsteroid);
             <kind>1</kind>
             <string>
 // rotation
-image_angle += rotspeed
+image_angle += rotspeed * 60 * delta_time /1000000
 
 if abs(rotspeed) &gt;= minrotation
     {
@@ -172,8 +172,8 @@ if abs(rotspeed) &gt;= minrotation
     }
     
 // movement
-x += speed_x;
-y += speed_y;
+x += speed_x * 60 * delta_time /1000000;
+y += speed_y * 60 * delta_time /1000000;
 
 // reduce speed by deceleration amount each frame unless at min speed
 if abs(speed_x) &gt; terminalvelocity
@@ -193,7 +193,7 @@ if hitcounter &gt;= 0 hitcounter -= 1;
 if gold &gt; 0 &amp;&amp; obj_player.magnetextract != 0
 {
     counter -= 1
-    if counter &lt;= 0
+    if counter * 60 * delta_time /1000000 &lt;= 0
         {
             counter = 120;
             playerdist = distance_to_object(obj_player);
@@ -216,12 +216,12 @@ if asteroidhit != 0
     
 
     
-    if hitcounter &lt;= 0
+    if hitcounter * 60 * delta_time /1000000 &lt;= 0
     {
         vx = (hit_x - x);
         vy = (hit_y - y);
             
-        len = sqrt(vx * vx + vy * vy);
+        if vx != 0 || vy != 0 len = sqrt(vx * vx + vy * vy) else len = 0;
          
         if len != 0
         {   
@@ -229,7 +229,7 @@ if asteroidhit != 0
         vy = vy / len;
         }
         
-        speedlen = sqrt(hitspeed_x * hitspeed_x + hitspeed_y * hitspeed_y); 
+        if hitspeed_x != 0 || hitspeed_y != 0 speedlen = sqrt(hitspeed_x * hitspeed_x + hitspeed_y * hitspeed_y) else speedlen = 0; 
         
         speedmult = abs(speedlen) * massmult;
         

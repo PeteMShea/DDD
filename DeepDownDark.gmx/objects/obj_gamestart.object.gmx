@@ -127,7 +127,7 @@ audio_channel_num(64);
 //pointer debug
 global.videocapture = false;
 
-global.sanityenabled = false;       //whether to draw the sanity masks
+global.sanityenabled = true;       //whether to draw the sanity masks
 
 if global.videocapture == true
 {
@@ -142,7 +142,7 @@ window_set_cursor(cr_cross);
 
 
 //uncomment to force load a specific room
-global.nextroom = 1; 
+global.nextroom = 4; 
 
 
 

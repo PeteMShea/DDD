@@ -1,7 +1,7 @@
 
 
     // shoot counter limits fire rate
-    if shoot_counter <= 0
+    if (shoot_counter * 60 * delta_time /1000000) <= 0
     {            
         if turret == false
             {        

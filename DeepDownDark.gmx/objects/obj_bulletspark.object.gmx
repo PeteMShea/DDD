@@ -40,7 +40,8 @@ aiming = random_range(0, 360);
 image_angle = aiming;
 
 direction = aiming;
-speed = random_range(0.8, 0.9);
+maxspeed = random_range(0.8, 0.9);
+speed = maxspeed;
 lifespan = random_range(20, 35);
 alphalevel = 1.0;
 alphadecay = alphalevel/lifespan;
@@ -71,6 +72,7 @@ alphadecay = alphalevel/lifespan;
             <kind>1</kind>
             <string>// reduce Alpha level over lifespan
 
+speed = maxspeed * 60 * delta_time /1000000;
 
 image_alpha = alphalevel;
 alphalevel -= alphadecay;

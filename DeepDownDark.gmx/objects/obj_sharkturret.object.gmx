@@ -178,12 +178,12 @@ joylefty = gamepad_axis_value(0, gp_axisrv);
 if abs(desired_angle - image_angle) &gt; 2
     {
      
-        if angle_difference(desired_angle, image_angle) &lt; -2 image_angle -= 2;
-        if obj_player.turretturn &gt;= 2 &amp;&amp; angle_difference(desired_angle, image_angle) &lt; -2 image_angle -= 2;    // turret turns twice in a frame if turnspeed higher
-        if obj_player.turretturn &gt;= 3 &amp;&amp; angle_difference(desired_angle, image_angle) &lt; -2 image_angle -= 2;      //three times                  
+        if angle_difference(desired_angle, image_angle) &lt; -2 image_angle -= 2 * 60 * delta_time /1000000;
+        if obj_player.turretturn &gt;= 2 &amp;&amp; angle_difference(desired_angle, image_angle) &lt; -2 image_angle -= 2 * 60 * delta_time /1000000;    // turret turns twice in a frame if turnspeed higher
+        if obj_player.turretturn &gt;= 3 &amp;&amp; angle_difference(desired_angle, image_angle) &lt; -2 image_angle -= 2 * 60 * delta_time /1000000;      //three times                  
         if angle_difference(desired_angle, image_angle) &gt; 2 image_angle += 2;
-        if obj_player.turretturn &gt;= 2 &amp;&amp; angle_difference(desired_angle, image_angle) &gt; 2 image_angle += 2;        
-        if obj_player.turretturn &gt;= 3 &amp;&amp; angle_difference(desired_angle, image_angle) &gt; 2 image_angle += 2;                    
+        if obj_player.turretturn &gt;= 2 &amp;&amp; angle_difference(desired_angle, image_angle) &gt; 2 image_angle += 2 * 60 * delta_time /1000000;        
+        if obj_player.turretturn &gt;= 3 &amp;&amp; angle_difference(desired_angle, image_angle) &gt; 2 image_angle += 2 * 60 * delta_time /1000000;                    
     }
         
 

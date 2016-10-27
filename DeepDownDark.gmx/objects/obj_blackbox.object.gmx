@@ -111,8 +111,8 @@ if sucked == true
             vy = vy / len;
         }
         
-        speed_x += (vx * attractspeed);
-        speed_y += (vy * attractspeed);
+        speed_x += (vx * attractspeed) * 60 * delta_time /1000000;
+        speed_y += (vy * attractspeed) * 60 * delta_time /1000000;
                 
         if playerdist &lt;=1
             {

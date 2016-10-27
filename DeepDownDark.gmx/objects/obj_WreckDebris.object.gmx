@@ -74,7 +74,10 @@ speed = random_range(0.1, 0.4);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>oldspeed = speed;
+speed =  oldspeed * 60 * delta_time /1000000;
+
+
 if hspeed &gt;= min_speed || hspeed &lt;= -min_speed
     {
     
@@ -111,7 +114,7 @@ if lifespan &lt;=0
     
     }
 
-image_angle += rotspeed;    
+image_angle += rotspeed * 60 * delta_time /1000000;    
     
 lifespan -= 1;
 

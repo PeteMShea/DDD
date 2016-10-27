@@ -712,7 +712,7 @@ if thrustcounter &gt;= 0 &amp;&amp; global.autopilot &lt;=0
         
         if speed_x &gt;= max_speed * 0.8 || speed_y &gt;= max_speed * 0.8 global.madness += madnesstopspeed;      //fast speeds make you mad
         
-        thrustcounter -= 1;
+        thrustcounter -= 1 * 60 * delta_time /1000000;
         
         thrustdir = point_direction(x, y, x - thrust_x, y - thrust_y); 
         
@@ -730,8 +730,8 @@ if thrustcounter &gt;= 0 &amp;&amp; global.autopilot &lt;=0
             thrust = min_thrust;
         
         // reduce speed by deceleration amount each frame
-        speed_x -= (speed_x * deceleration/1000);
-        speed_y -= (speed_y * deceleration/1000);
+        speed_x -= (speed_x * deceleration/1000) * 60 * delta_time /1000000;
+        speed_y -= (speed_y * deceleration/1000) * 60 * delta_time /1000000;
         
         //reduce deceleration by decay amount each frame (clamped to 0)
         deceleration -= decay;
@@ -904,7 +904,7 @@ if collisionoff == false &amp;&amp; global.autopilot &lt;= 0            //debug 
                 
                 script_execute(scr_shipvisualdamage, x, y, loc_x, loc_y, damage);
                 
-                  hitcollide -= 1;
+                  hitcollide -= 1 * 60 * delta_time /1000000;
                 global.playerdamaged = 20;
             }
             //SFX
@@ -918,14 +918,14 @@ if collisionoff == false &amp;&amp; global.autopilot &lt;= 0            //debug 
          }
     else
         {
-            hitcollide -= 1;
+            hitcollide -= 1 * 60 * delta_time /1000000;
     
         }     
 }  
   
 // Apply movement to player
-    x += speed_x;
-    y += speed_y;
+    x += speed_x * 60 * delta_time /1000000;
+    y += speed_y * 60 * delta_time /1000000;
     
     audio_listener_set_position(0, x, y, 0);       //set audio position to ship position
     
@@ -976,7 +976,7 @@ if desired_turnspeed &gt; 0
                                 }                    
                     
                     }                    
-                    image_angle += desired_turnspeed;
+                    image_angle += desired_turnspeed * 60 * delta_time /1000000;
                 }
      
         }
@@ -1003,7 +1003,7 @@ if desired_turnspeed &gt; 0
                     
                         
                     }
-                    image_angle -= desired_turnspeed;
+                    image_angle -= desired_turnspeed * 60 * delta_time /1000000;
                 }
                  
         }
@@ -1052,7 +1052,7 @@ if trails == true
 if global.playerdamaged &gt;0 
     {
             //image_index = 1; 
-            global.playerdamaged -= 1;
+            global.playerdamaged -= 1 * 60 * delta_time /1000000;
          
     }
 
@@ -1085,7 +1085,7 @@ if global.playerHealth &lt;= 0 &amp;&amp; dead == false
     {
         dead = true;
         sprite_index = spr_shipSharkDead;
-        image_speed = 0.1;
+        image_speed = 0.1 * 60 * delta_time /1000000;
         debrisdir[0] = 140;
         debrisdir[1] = 90;        
         debrisdir[2] = 70;        
@@ -1109,7 +1109,7 @@ if global.playerHealth &lt;= 0 &amp;&amp; dead == false
 if dead == true &amp;&amp; deathcounter == 0
     {
         show_debug_message("Burstbaw");    
-        deathcounter += 1;   
+        deathcounter += 1 * 60 * delta_time /1000000;   
     
     }
 if dead == true &amp;&amp; deathcounter &lt; deathsequencetime

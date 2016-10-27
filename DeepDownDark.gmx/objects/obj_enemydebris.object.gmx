@@ -64,7 +64,8 @@ speed = random_range(0.15, 0.25);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>deltaSpeed(speed);
+
 if hspeed &gt;= min_speed || hspeed &lt;= -min_speed
     {
     

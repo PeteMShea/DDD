@@ -71,12 +71,15 @@ moving = false;
     
     image_angle = angle;
     direction = angle;
-    speed = random_range(0.1, 0.4);
+    maxspeed = random_range(0.1, 0.4);
+    speed = maxspeed * 60 * delta_time /1000000;
+    oldDelta();
     rotation_speed = random_range(-0.5,0.5);
     moving = true;
 }
 
 
+speed = oldspeed * (oldtime - delta_time);
 
 
 if hspeed &gt;= min_speed || hspeed &lt;= -min_speed
@@ -104,7 +107,7 @@ else
         vspeed = sign(vspeed) * min_speed;
     }
 
-image_angle += rotation_speed;
+image_angle += rotation_speed * 60 * delta_time /1000000;
 
 image_alpha = fadealpha;
 
@@ -118,6 +121,8 @@ if bouncecount &gt;= 3 || lifespan &lt;=0
     }
 
 lifespan -= 1;
+
+oldDelta();
 
 
 </string>

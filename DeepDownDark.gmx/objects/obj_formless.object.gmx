@@ -146,7 +146,7 @@ if launchcomplete == false
     {
         // scaling
         scaledelay -= 1;
-        if scaledelay &lt;= 0 &amp;&amp; scale &lt; 1.0
+        if scaledelay * 60 * delta_time /1000000 &lt;= 0 &amp;&amp; scale &lt; 1.0
             {
                 scale += scaleinc;
                 scaleinc += scaleincaccleration;
@@ -165,7 +165,7 @@ if launchcomplete == false
                 if currentspeed &gt; 0 currentspeed -= launchdeceleration        
             }
                     
-        y -= currentspeed;
+        y -= currentspeed * 60 * delta_time /1000000;
         
         if currentspeed &lt;= 0        //slowed to a stop at top of launch
             {
@@ -177,6 +177,7 @@ if launchcomplete == false
                 timeline_index = tm_formlessidle;
                 timeline_running = true;
                 timeline_loop = true;
+                timeline_speed = 1  * 60 * delta_time /1000000;
                 starty = y;     //reset start position
             }
         //spawn worms
@@ -238,13 +239,14 @@ if launchcomplete == true
             {
                 firecounter -= 1;
                 
-                if firecounter &lt;= 0
+                if firecounter * 60 * delta_time /1000000 &lt;= 0
                 {
                     firecounter = random_range(275, 325);
                     timeline_index = tm_formlessfire;
                     timeline_running = true;
                     timeline_position = 0;
                     timeline_loop = true;
+                    timeline_speed = 1  * 60 * delta_time /1000000;
                     audio_sound_gain(snd_FormlessFire, 0.5, 0.0);
                     audio_play_sound_at(snd_FormlessFire, x, y, 0, 400, 1000, 1, false, 100);
                     idle = false;    
@@ -261,15 +263,16 @@ if launchcomplete == true
                         audio_sound_gain(snd_FormlessSpawnVox, 1.0, 0.0);
                         timeline_index = tm_formlesssnarl;
                         timeline_running = true;
-                        timeline_loop = true;  
+                        timeline_loop = true;
+                        timeline_speed = 1  * 60 * delta_time /1000000;  
                     }
             }
             
             //bobbing motion
             
-            tiltxtime -= 1;
-            tiltytime -= 1;
-            tiltangletime -= 1;
+            tiltxtime -= 1 * 60 * delta_time /1000000;
+            tiltytime -= 1 * 60 * delta_time /1000000;
+            tiltangletime -= 1 * 60 * delta_time /1000000;
             
             if tiltxtime &lt;= 0  &amp;&amp; decelerating == false
                 {
@@ -307,10 +310,13 @@ if launchcomplete == true
                     vx = (destx - x);
                     vy = (desty - y);
                                 
-                    len = sqrt((vx * vx) + (vy * vy));
-                                
+                    if vx != 0 || vy != 0 len = sqrt((vx * vx) + (vy * vy)) else len = 0;
+                    
+                    if len != 0
+                    {            
                     vx = vx / len;
                     vy = vy / len;
+                    }
                 }
             if abs(x - destx) &lt; 5 &amp;&amp; abs(y - desty) &lt; 5 decelerating = true
             if abs(y - desty) &lt;= 1 hovery = 0;    
@@ -326,19 +332,19 @@ if launchcomplete == true
                     currentspeed -= deceleration    
                 }
             
-            x += vx * currentspeed
-            y += vy * currentspeed
+            x += vx * currentspeed * 60 * delta_time /1000000;
+            y += vy * currentspeed * 60 * delta_time /1000000;
                 
                 
             //rotation
             angdif = angle_difference(image_angle, targetangle);
             if angdif &lt; -1
                 {
-                    image_angle += turnspeed 
+                    image_angle += turnspeed * 60 * delta_time /1000000; 
                 }
             if angdif &gt; -1
                 {
-                    image_angle -= turnspeed 
+                    image_angle -= turnspeed * 60 * delta_time /1000000; 
                 }    
             
             
@@ -380,7 +386,7 @@ if launchcomplete == true
             }
             
             // flash red when hit
-            if shotinmouth == false &amp;&amp; shotcounter &lt;= 0
+            if shotinmouth == false &amp;&amp; shotcounter * 60 * delta_time /1000000 &lt;= 0
                 {
                     image_blend = c_white;
                     if instance_exists(obj_fsoverlay) obj_fsoverlay.image_blend = c_white;
@@ -405,6 +411,7 @@ if launchcomplete == true
                 timeline_position = 0;
                 timeline_running = true;
                 timeline_loop = false;
+                timeline_speed = 1 * 60 * delta_time /1000000;
                 if audio_is_playing(snd_FormlessIdle) audio_stop_sound(snd_FormlessIdle);
                 audio_play_sound_at(snd_FormlessDeath, x, y, 0, 600, 1200, 1, false, 150);
                 audio_sound_gain(snd_FormlessDeath, 1.0, 0.0);
@@ -417,6 +424,7 @@ if launchcomplete == true
              timeline_index = tm_formlesslaugh;
              timeline_running = true;
              timeline_loop = true;
+             timeline_speed = 1 * 60 * delta_time /1000000;
              audio_play_sound_at(snd_FormlessSpawnVox, x, y, 0, 400, 1000, 1, true, 100);
              audio_sound_gain(snd_FormlessSpawnVox, 0.5, 0.0);
              targetangle = image_angle + 45;        

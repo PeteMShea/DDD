@@ -148,8 +148,8 @@ vx = vx / len;
 vy = vy / len;
 }
 
-x -= vx * bulletspd
-y -= vy * bulletspd
+x -= vx * bulletspd * 60 * delta_time /1000000
+y -= vy * bulletspd * 60 * delta_time /1000000
 
 
 // remove bullets over time if no collision

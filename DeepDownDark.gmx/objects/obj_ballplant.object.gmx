@@ -108,7 +108,7 @@ if awake == true
             }
         if launchedball == false
         {
-            if image_index &lt; holdframe image_speed = anim_speed                
+            if image_index &lt; holdframe image_speed = anim_speed * 60 * delta_time /1000000;                
             if image_index &gt;= holdframe
                     {
                         image_speed = 0;
@@ -156,7 +156,7 @@ if awake == true
              }       
          if launchedball == true &amp;&amp; done == false
             {
-                image_speed = anim_speed;
+                image_speed = anim_speed * 60 * delta_time /1000000;
                 if image_index &gt;= launchframe
                     {
                     angletest = image_angle;

@@ -48,7 +48,7 @@ straight = false;
 
 collisioncounter = 45; //how often to check for collisions with ground
 hitground = false;
-timetofade = 10;        //number of frames on ground before starting to fade
+timetofade = 5;        //number of frames on ground before starting to fade
 startfade = false;
 alphafade = 0.1;
 fanangle = random_range(-30, 30);   //how much worms fan out when hitting ground (set to zero for launch worms)
@@ -109,7 +109,7 @@ if scale &lt; 1        //scale up on spawn
 //if speed &lt; maxspeed speed += acceleration
 
 direction = image_angle;    //face forwards
-
+//deltaSpeed(speed);
 
 if hitground == false
     {
@@ -133,13 +133,13 @@ if hitground == false
         } 
     if insidecolumn == false
         {
-            if x &lt; columnx1 image_angle += swerveangle
-            if x &gt; columnx2 image_angle -= swerveangle
+            if x &lt; columnx1 image_angle += swerveangle * 60 * delta_time/1000000;
+            if x &gt; columnx2 image_angle -= swerveangle * 60 * delta_time/1000000;
         }
            
     collisioncounter -= 1;
     
-    if collisioncounter &lt; 0
+    if collisioncounter * 60 * delta_time/1000000 &lt; 0
         {
             collisioncounter = 45;
             if instance_place(x, y + 100, obj_newblock)     //check ahead of the worm so it begins slow and fan out ahead of reaching it
@@ -164,9 +164,9 @@ if hitground == false
 }
 if hitground = true &amp;&amp; startfade == false
     {
-        if image_angle &lt; grounddirection - 1 image_angle += swerveangle;
-        if image_angle &gt; grounddirection + 1 image_angle -= swerveangle;        
-        timetofade -= 1;
+        if image_angle &lt; grounddirection - 1 image_angle += swerveangle * 60 * delta_time/1000000;
+        if image_angle &gt; grounddirection + 1 image_angle -= swerveangle * 60 * delta_time/1000000;        
+        timetofade -= 1 * 60 * delta_time /1000000;
         if timetofade &lt;= 0 startfade = true
         disttoplayer = distance_to_point(obj_player.x, obj_player.y);
         if disttoplayer &lt; 20 &amp;&amp; hitplayer == false
@@ -184,7 +184,7 @@ if hitground = true &amp;&amp; startfade == false
 
 if startfade == true
     {
-        if image_alpha &gt; 0 image_alpha -= alphafade;
+        if image_alpha &gt; 0 image_alpha -= alphafade * 60 * delta_time /1000000;
         if image_alpha &lt;= 0 instance_destroy();
     
     }

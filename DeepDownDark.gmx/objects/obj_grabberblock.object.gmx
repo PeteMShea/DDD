@@ -39,7 +39,8 @@ image_angle = irandom(360);
 // start moving
 
 direction = random_range(0, 359);
-speed = random_range(0.1, 0.4);
+maxspeed = random_range(0.1, 0.4);
+speed = maxspeed;
 image_angle = random(360);
 
 homing = false;
@@ -74,6 +75,9 @@ slowspeed = random_range(2, 5);
           <argument>
             <kind>1</kind>
             <string>
+speed = maxspeed  * 60 * delta_time /1000000;
+
+
 if hspeed &gt;= min_speed || hspeed &lt;= -min_speed
     {
     

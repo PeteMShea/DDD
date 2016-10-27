@@ -74,6 +74,8 @@ paused = false;
             <string>// live for x frames then fade out
 
 speed -= deceleration;
+deltaSpeed(speed);
+
 lifespan -= 1;
 if lifespan &lt;= lifeover &amp;&amp; global.pause = false
 {

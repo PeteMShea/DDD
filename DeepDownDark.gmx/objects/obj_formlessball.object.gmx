@@ -94,11 +94,13 @@ if launch == true
         vx = (destx - x);
         vy = (desty - y);
             
-        len = sqrt(vx * vx + vy * vy);
-            
+        if vx != 0 || vy != 0 len = sqrt(vx * vx + vy * vy) else len = 0;
+        
+        if len != 0
+        {    
         vx = vx / len;
         vy = vy / len;
-        
+        }
         // remove bullets over time if no collision
         lifespan -= 1;
         if lifespan &lt;= 0 instance_destroy();        
@@ -127,8 +129,8 @@ if launch == true
                 //coltest = instance_place( x + vx * ballspeed, y + vy * ballspeed, all);                            
             }
 
-        x += vx * ballspeed
-        y += vy * ballspeed
+        x += vx * ballspeed * 60 * delta_time /1000000;
+        y += vy * ballspeed * 60 * delta_time /1000000;
 
         // Collision detection and resolution
         if coltest != noone &amp;&amp; hit == noone
@@ -137,7 +139,7 @@ if launch == true
                             {
                                 other.hit = object_get_name(object_index);
                             }
-                        show_debug_message(string(hit));    
+                        //show_debug_message(string(hit));    
                         if string(hit) != "obj_fssnake"
                         {
                             audio_sound_gain(snd_FormlessSnakesHit, 0.5, 0.0);
@@ -161,7 +163,7 @@ if launch == true
                                                     homing = true;
                                                     target = other.coltest;
                                                     lifespan = random_range(30,40);
-                                                    speed = 2.0;
+                                                    speed = 1.0;
                                                     deceleration = 0.001;
                                                 }                                    
                                     }    

@@ -93,11 +93,12 @@ if launch == true
         vx = (destx - x);
         vy = (desty - y);
             
-        len = sqrt(vx * vx + vy * vy);
-            
+        if vx != 0 || vy !=0 len = sqrt(vx * vx + vy * vy) else len = 0;
+        if len != 0
+        {   
         vx = vx / len;
         vy = vy / len;
-        
+        }
 
 
         
@@ -120,7 +121,7 @@ if launch == true
                     {
                         image_angle = other.snakeangle;
                         direction = other.snakeangle;
-                        speed = other.ballspeed;
+                        speed = other.ballspeed * 60 * delta_time /1000000;
                         lifespan = irandom_range(15,18)- speed;
                     }                                 
                 if coltest == noone coltest = instance_place( x + lengthdir_x(10, image_angle) + vx * ballspeed , y+ lengthdir_y(10, image_angle) + vy * ballspeed , obj_player);
@@ -132,8 +133,8 @@ if launch == true
                             
             }
 
-        x += vx * ballspeed
-        y += vy * ballspeed
+        x += vx * ballspeed * 60 * delta_time /1000000;
+        y += vy * ballspeed * 60 * delta_time /1000000;
 
         // Collision detection and resolution
         if coltest != noone &amp;&amp; hit == noone
@@ -163,7 +164,7 @@ if launch == true
                                                     homing = true;
                                                     target = other.coltest;
                                                     lifespan = random_range(45,60);
-                                                    speed = 2;
+                                                    speed = 2 * 60 * delta_time /1000000;
                                                     deceleration = -0.2;
                                                 }                                    
                                     }    
