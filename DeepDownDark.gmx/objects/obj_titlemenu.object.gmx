@@ -29,7 +29,7 @@
 
 textalpha = 0.85;
 menudisappear = false;
-timeout = 300;
+timeout = 60;  //was 300
 
 
 newgame = false;
@@ -99,9 +99,13 @@ if mouse_check_button(mb_left) &amp;&amp; newgame == true &amp;&amp; menudisappe
 
 if menudisappear == true
 {
-    if timeout &gt; 0 timeout -=1;
-    if timeout &lt;= 0 instance_destroy();
-    if textalpha &gt;0 textalpha -= 0.1;
+    timeout -=1;
+    if timeout &lt;= 0 &amp;&amp; textalpha &lt;= 0
+        {
+            instance_create(0, 0, obj_tutorialmenu);
+            instance_destroy();    
+        }
+    if textalpha &gt; 0 textalpha -= 0.1;
 }
 
 </string>

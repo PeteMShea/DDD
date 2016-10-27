@@ -514,6 +514,7 @@
   <objects name="objects">
     <objects name="control_objects">
       <object>objects\obj_gamestart</object>
+      <object>objects\obj_roomcontrolA0</object>
       <object>objects\obj_levelA1</object>
       <object>objects\obj_levelA2</object>
       <object>objects\obj_levelA3</object>
@@ -521,7 +522,6 @@
       <object>objects\obj_levelA5</object>
       <object>objects\obj_levelA6</object>
       <object>objects\obj_levelA7</object>
-      <object>objects\obj_roomcontrolA0</object>
       <object>objects\obj_singleroomcontrol</object>
       <object>objects\obj_PauseLanded</object>
       <object>objects\obj_alarm</object>
@@ -725,6 +725,7 @@
       <object>objects\obj_sanitymask</object>
       <object>objects\obj_blackplayermask</object>
       <object>objects\obj_MessagePanel</object>
+      <object>objects\obj_tutorialmenu</object>
     </objects>
     <objects name="debug">
       <object>objects\debug_line</object>

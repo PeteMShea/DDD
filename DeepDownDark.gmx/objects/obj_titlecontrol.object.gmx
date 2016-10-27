@@ -140,7 +140,11 @@ if fadeblacktitle == true &amp;&amp; startgame == 0
 if menuvisible == true &amp;&amp; startgame == 0
     {
         obj_player.y = 512    
+        if !instance_exists(obj_titlemenu)
+        {
         instance_create(0, 0, obj_titlemenu);
+        show_debug_message("Creating titlemenu");
+        }
         menuvisible = false;
         fadeblacktitle = true;
     }

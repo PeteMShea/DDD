@@ -234,7 +234,7 @@ if panelsdismissed == true &amp;&amp; fadeout = false
                 window_set_cursor(cr_none);
                 cursor_sprite = blackspot;
             }
-        else window_set_cursor(cr_arrow);
+        else window_set_cursor(cr_cross);
 }
 
 if fadeout == true &amp;&amp; panelsdismissed == true

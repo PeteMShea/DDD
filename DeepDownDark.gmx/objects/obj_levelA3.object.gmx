@@ -267,6 +267,13 @@ else if levelstartplayed = true &amp;&amp; loopedambience == false
         audio_sound_gain(ambience, 0.5, 3000);
         loopedambience = true;
     }
+    
+        
+if obj_player.dead == true
+{
+        audio_sound_gain(ambience, 0.0, 10000);
+
+}
 </string>
           </argument>
         </arguments>
