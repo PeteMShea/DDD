@@ -200,8 +200,8 @@ if startgame == 2
         global.autopilot = 60;
         obj_player.thrustdir = 90;
         obj_player.thrust_angle = 90;               
-        obj_player.auto_y = -1.0;
-        obj_player.autothrust = 10; 
+        obj_player.auto_y = -0.7;
+        obj_player.autothrust = 7; 
         instance_create(0,0, obj_HUD); 
                
         instance_destroy();

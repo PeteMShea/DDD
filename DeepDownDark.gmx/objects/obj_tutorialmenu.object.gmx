@@ -217,14 +217,14 @@ if messagefiveseen == true &amp;&amp; messagesixappear == false
 if messagesixappear == true &amp; messagesixseen == false
 {
     if instance_exists(obj_bullet)
-    {
-    messagesixshoottimeout -=1;
-    show_debug_message(string(messagesixshoottimeout));
-    }
+        {
+            messagesixshoottimeout -=1;
+            //show_debug_message(string(messagesixshoottimeout));
+        }
     if messagesixshoottimeout &lt;= 0
-    {
+        {
             messagesixseen = true;      
-    }
+        }
 
 }
 
