@@ -1,13 +1,15 @@
 if landing == 1     
  //left leg planted, swing right foot down
     {
-        while (collision_circle(x + lengthdir_x(30 * global.RM, image_angle + 225), y + lengthdir_y(30 * global.RM, image_angle + 225), 4 * global.RM, obj_block, false, true) == noone)
+        while (collision_circle(x + lengthdir_x(34 * global.RM, image_angle + 220), y + lengthdir_y(34 * global.RM, image_angle + 220), 4 * global.RM, obj_block, false, true) == noone)
             {
-                fx = x + lengthdir_x(32 * global.RM, image_angle + 135)     //position of the ship's foot right now
-                fy = y + lengthdir_y(32 * global.RM, image_angle + 135)              
+                //instance_create(x + lengthdir_x(36 * global.RM, image_angle + 220), y + lengthdir_y(36 * global.RM, image_angle + 220), obj_debug); 
+                fx = x + lengthdir_x(34 * global.RM, image_angle + 145)     //position of the ship's foot right now
+                fy = y + lengthdir_y(34 * global.RM, image_angle + 145)
+                             
                 image_angle -=1;
-                nx = x + lengthdir_x(32 * global.RM, image_angle + 135)     //position of the ship's foot after rotation
-                ny = y + lengthdir_y(32 * global.RM, image_angle + 135)
+                nx = x + lengthdir_x(34 * global.RM, image_angle + 145)     //position of the ship's foot after rotation
+                ny = y + lengthdir_y(34 * global.RM, image_angle + 145)
                 x -= (nx-fx);
                 y -= (ny-fy);
             }
@@ -17,13 +19,14 @@ if landing == 1
 
 if landing == 2      //right leg planted, swing left foot down
     {
-        while (collision_circle(x + lengthdir_x(30 * global.RM, image_angle + 135), y + lengthdir_y(30 * global.RM, image_angle + 135), 4 * global.RM, obj_block, false, true) == noone)
+        while (collision_circle(x + lengthdir_x(34 * global.RM, image_angle + 145), y + lengthdir_y(34 * global.RM, image_angle + 145), 4 * global.RM, obj_block, false, true) == noone)
             {
-                fx = x + lengthdir_x(32 * global.RM, image_angle + 225)     //position of the ship's foot right now
-                fy = y + lengthdir_y(32 * global.RM, image_angle + 225)              
+                fx = x + lengthdir_x(34 * global.RM, image_angle + 220)     //position of the ship's foot right now
+                fy = y + lengthdir_y(34 * global.RM, image_angle + 220)
+                //instance_create(fx, fy, obj_debug);               
                 image_angle +=1;
-                nx = x + lengthdir_x(32 * global.RM, image_angle + 225)     //position of the ship's foot after rotation
-                ny = y + lengthdir_y(32 * global.RM, image_angle + 225)
+                nx = x + lengthdir_x(34 * global.RM, image_angle + 220)     //position of the ship's foot after rotation
+                ny = y + lengthdir_y(34 * global.RM, image_angle + 220)
                 x -= (nx-fx);
                 y -= (ny-fy) 
             }
