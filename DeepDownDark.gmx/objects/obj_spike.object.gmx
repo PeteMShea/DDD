@@ -181,8 +181,8 @@ if fired == true &amp;&amp; hit == false
 if fired == true &amp;&amp; hit == false
 {
     if speedmult &lt; maxspeed speedmult += acceleration    
-    x += vx * speedmult 
-    y += vy * speedmult
+    x += vx * speedmult * 60 * delta_time/1000000; 
+    y += vy * speedmult * 60 * delta_time/1000000;
 }
 
 //collision reactions

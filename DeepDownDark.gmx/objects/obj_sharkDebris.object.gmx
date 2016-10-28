@@ -37,11 +37,14 @@ maxrotspeed = random_range(-0.75, 0.75);
 rotacceleration = 0.025;
 rotspeed = 0;
 
+oldspeed = speed;
+oldtime = delta_time;
+
 image_speed = 0;
 
 // start moving
 
-speed = random_range(0.6, 0.8);
+speed = random_range(0.6, 0.8) * 60 * delta_time/1000000;
 
 
 
@@ -67,7 +70,11 @@ speed = random_range(0.6, 0.8);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>speed = oldspeed * (delta_time / oldtime);
+oldspeed = speed;
+oldtime = delta_time;
+
+
 if hspeed &gt;= min_speed || hspeed &lt;= -min_speed
     {
     

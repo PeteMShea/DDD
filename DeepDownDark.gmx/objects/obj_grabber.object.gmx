@@ -130,6 +130,7 @@ if grabbing == false
         timeline_index = tm_grabberidle;
         timeline_running = true;
         timeline_loop = true;
+        timeline_speed = 1 * 60 * delta_time/1000000;
     }
 
 if awake == false
@@ -164,7 +165,8 @@ if awake == true &amp;&amp; currenthealth &gt; 0
                 awake = false;
                 timeline_index = tm_grabberidle;
                 timeline_running = true;
-                timeline_loop = true;                    
+                timeline_loop = true;
+                timeline_speed = 1 * 60 * delta_time/1000000;                    
             }
     
     if grabbing == true &amp;&amp; attacking == false         //grabbing is set in the timeline
@@ -213,7 +215,8 @@ if awake == true &amp;&amp; currenthealth &gt; 0
                             totalframes = clamp(totalframes, 15, 31);
                             //show_debug_message("Now grabbing, totalframes = " + string(totalframes) + " nodedist: " + string(nodedist));
                             timeline_index = tm_grabbermove;                    
-                            timeline_loop = false;                                        
+                            timeline_loop = false;
+                            timeline_speed = 1 * 60 * delta_time/1000000;                                        
                             if image_index &lt; totalframes timeline_running = true
                             if image_index &gt;= totalframes
                                 {
@@ -252,8 +255,8 @@ if awake == true &amp;&amp; currenthealth &gt; 0
                                     vy = vy / len;
                                 }
                             
-                            x += vx * movespeed
-                            y += vy * movespeed
+                            x += vx * movespeed * 60 * delta_time/1000000;
+                            y += vy * movespeed * 60 * delta_time/1000000;
                             
                             movedist = point_distance(x, y, aimx, aimy);
                                 if movedist &lt; grabproximity
@@ -267,7 +270,8 @@ if awake == true &amp;&amp; currenthealth &gt; 0
                                     movespeed = 1.0;                            
                                     timeline_index = tm_grabberidle;
                                     timeline_running = true;
-                                    timeline_loop = true;                                                     
+                                    timeline_loop = true;
+                                    timeline_speed = 1 * 60 * delta_time/1000000;                                                     
                                 }
                         }
                     if reached == true &amp;&amp; readytofire == false          //now back away a bit
@@ -277,7 +281,7 @@ if awake == true &amp;&amp; currenthealth &gt; 0
                                 {
                                     target = other.id;
                                     homing = true;
-                                    speed = 6.0;
+                                    speed = 6.0 * 60 * delta_time/1000000;;
                                 }
                                 
                             target_angle = point_direction(x, y, obj_player.x, obj_player.y);       //aim at player                    
@@ -293,8 +297,8 @@ if awake == true &amp;&amp; currenthealth &gt; 0
                                     vy = vy / len;
                                 }
                             
-                            x += vx * movespeed
-                            y += vy * movespeed
+                            x += vx * movespeed * 60 * delta_time/1000000;
+                            y += vy * movespeed * 60 * delta_time/1000000;
                             
                             movedist = point_distance(x, y, aimx, aimy);
                                 if movedist &lt; 3
@@ -338,6 +342,7 @@ if awake == true &amp;&amp; currenthealth &gt; 0
                                     timeline_index = tm_grabberfire;                                    
                                     timeline_running = true;
                                     timeline_loop = false;
+                                    timeline_speed = 1 * 60 * delta_time/1000000;
                                     if image_index &gt;= 37
                                     {
                                     reverseangle = image_angle + 180;               //fire asteroid by applying a hit force to opposite side

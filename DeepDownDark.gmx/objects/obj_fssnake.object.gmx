@@ -44,7 +44,8 @@ hitplayer = false;
 
 paused = false;
 
-
+oldspeed = speed;
+oldtime = delta_time;
 
 
 
@@ -76,7 +77,11 @@ paused = false;
             <string>// live for x frames then fade out
 
 if speed &gt; 0 speed -= deceleration;
-//deltaSpeed(speed);
+
+speed = oldspeed * (delta_time / oldtime);
+oldspeed = speed;
+oldtime = delta_time;
+
 
 lifespan -= 1;
 if lifespan &lt;= lifeover &amp;&amp; global.pause = false

@@ -66,7 +66,7 @@ rotation_speed = random_range(-1,1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>deltaSpeed(speed);
+            <string>
 
 if hspeed &gt;= min_speed || hspeed &lt;= -min_speed
     {

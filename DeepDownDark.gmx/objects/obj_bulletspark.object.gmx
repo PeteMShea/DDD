@@ -25,9 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// start moving
-
-image_speed = 0;
+            <string>image_speed = 0;
 image_index = 0;
 
 if obj_player.bulletfire == 1 image_index = 1
@@ -45,7 +43,6 @@ speed = maxspeed;
 lifespan = random_range(20, 35);
 alphalevel = 1.0;
 alphadecay = alphalevel/lifespan;
-
 
 
 </string>

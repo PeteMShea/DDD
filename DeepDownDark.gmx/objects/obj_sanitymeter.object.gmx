@@ -209,7 +209,7 @@ if image_index &gt;= 31
 if sanity &lt; leveltwo &amp;&amp; spritelevel != 1
     {
         sprite_index = baselevelsprite;
-        image_speed = baselevelspeed;
+        image_speed = baselevelspeed * 60 * delta_time/1000000;
         spritelevel = 1;
         heartbeatsound = snd_Heartbeat80;
         heartbeatgain = 0.2;
@@ -218,7 +218,7 @@ if sanity &lt; leveltwo &amp;&amp; spritelevel != 1
 if sanity &gt;= leveltwo &amp;&amp; sanity &lt; levelthree &amp;&amp; spritelevel != 2
     {
         sprite_index = leveltwosprite;
-        image_speed = leveltwospeed;
+        image_speed = leveltwospeed * 60 * delta_time/1000000;
         spritelevel = 2;
         heartbeatsound = snd_Heartbeat90;
         heartbeatgain = 0.2;
@@ -227,7 +227,7 @@ if sanity &gt;= leveltwo &amp;&amp; sanity &lt; levelthree &amp;&amp; spriteleve
 if sanity &gt;= levelthree &amp;&amp; sanity &lt; levelfour &amp;&amp; spritelevel != 3
     {
         sprite_index = levelthreesprite;
-        image_speed = levelthreespeed;
+        image_speed = levelthreespeed * 60 * delta_time/1000000;
         spritelevel = 3;
         heartbeatsound = snd_Heartbeat100;
         heartbeatgain = 0.3;
@@ -236,7 +236,7 @@ if sanity &gt;= levelthree &amp;&amp; sanity &lt; levelfour &amp;&amp; spritelev
 if sanity &gt;= levelfour &amp;&amp; sanity &lt; levelfive &amp;&amp; spritelevel != 4
     {
         sprite_index = levelfoursprite;
-        image_speed = levelfourspeed;
+        image_speed = levelfourspeed * 60 * delta_time/1000000;
         spritelevel = 4;
         heartbeatsound = snd_Heartbeat110;
         heartbeatgain = 0.4;
@@ -245,7 +245,7 @@ if sanity &gt;= levelfour &amp;&amp; sanity &lt; levelfive &amp;&amp; spriteleve
 if sanity &gt;= levelfive &amp;&amp; sanity &lt; levelsix &amp;&amp; spritelevel != 5
     {
         sprite_index = levelfivesprite;
-        image_speed = levelfivespeed;
+        image_speed = levelfivespeed * 60 * delta_time/1000000;
         spritelevel = 5;
         heartbeatsound = snd_Heartbeat120;
         heartbeatgain = 0.5;
@@ -254,7 +254,7 @@ if sanity &gt;= levelfive &amp;&amp; sanity &lt; levelsix &amp;&amp; spritelevel
 if sanity &gt;= levelsix &amp;&amp; sanity &lt; levelseven &amp;&amp; spritelevel != 6
     {
         sprite_index = levelsixsprite;
-        image_speed = levelsixspeed;
+        image_speed = levelsixspeed * 60 * delta_time/1000000;
         spritelevel = 6;
         heartbeatsound = snd_Heartbeat130;
         heartbeatgain = 0.6;
@@ -263,7 +263,7 @@ if sanity &gt;= levelsix &amp;&amp; sanity &lt; levelseven &amp;&amp; spriteleve
 if sanity &gt;= levelseven &amp;&amp; sanity &lt; leveleight &amp;&amp; spritelevel != 7
     {
         sprite_index = levelsevensprite;
-        image_speed = levelsevenspeed;
+        image_speed = levelsevenspeed * 60 * delta_time/1000000;
         spritelevel = 7;
         heartbeatsound = snd_Heartbeat140;
         heartbeatgain = 0.4;
@@ -272,7 +272,7 @@ if sanity &gt;= levelseven &amp;&amp; sanity &lt; leveleight &amp;&amp; spritele
 if sanity &gt;= leveleight &amp;&amp; sanity &lt; levelnine &amp;&amp; spritelevel != 8
     {
         sprite_index = leveleightsprite;
-        image_speed = leveleightspeed;
+        image_speed = leveleightspeed * 60 * delta_time/1000000;
         spritelevel = 8;
         heartbeatsound = snd_Heartbeat150;
         heartbeatgain = 0.7;
@@ -281,7 +281,7 @@ if sanity &gt;= leveleight &amp;&amp; sanity &lt; levelnine &amp;&amp; spritelev
 if sanity &gt;= levelnine  &amp;&amp; sanity &lt; levelten &amp;&amp; spritelevel != 9
     {
         sprite_index = levelninesprite;
-        image_speed = levelninespeed;
+        image_speed = levelninespeed * 60 * delta_time/1000000;
         spritelevel = 9;
         heartbeatsound = snd_Heartbeat160;
         heartbeatgain = 0.8;
@@ -290,7 +290,7 @@ if sanity &gt;= levelnine  &amp;&amp; sanity &lt; levelten &amp;&amp; spriteleve
 if sanity &gt;= levelten  &amp;&amp; sanity &lt; leveleleven &amp;&amp; spritelevel != 10
     {
         sprite_index = leveltensprite;
-        image_speed = leveltenspeed;
+        image_speed = leveltenspeed * 60 * delta_time/1000000;
         spritelevel = 10;
         heartbeatsound = snd_Heartbeat170;
         heartbeatgain = 0.9;
@@ -299,7 +299,7 @@ if sanity &gt;= levelten  &amp;&amp; sanity &lt; leveleleven &amp;&amp; spritele
 if sanity &gt;= leveleleven  &amp;&amp; sanity &lt; leveltwelve &amp;&amp; spritelevel != 11
     {
         sprite_index = levelelevensprite;
-        image_speed = levelelevenspeed;
+        image_speed = levelelevenspeed * 60 * delta_time/1000000;
         spritelevel = 11;
         heartbeatsound = snd_Heartbeat180;
         heartbeatgain = 0.95;
@@ -308,7 +308,7 @@ if sanity &gt;= leveleleven  &amp;&amp; sanity &lt; leveltwelve &amp;&amp; sprit
 if sanity &gt;= leveltwelve &amp;&amp; spritelevel != 12
     {
         sprite_index = leveltwelvesprite;
-        image_speed = leveltwelvespeed;
+        image_speed = leveltwelvespeed * 60 * delta_time/1000000;
         spritelevel = 12;
         heartbeatsound = snd_Heartbeat190;
         heartbeatgain = 1.0;

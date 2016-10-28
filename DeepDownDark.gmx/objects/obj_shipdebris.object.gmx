@@ -42,8 +42,10 @@ lifespan = random_range(500, 900);
 // start moving
 
 direction = point_direction(x, y, - obj_player.x , -obj_player.y) + random_range(-45, 45);
-speed = random_range(0.1, 0.4);
+speed = random_range(0.1, 0.4) *  60 * delta_time/1000000;
 
+oldspeed = speed;
+oldtime = delta_time;
 
 
 
@@ -70,7 +72,11 @@ speed = random_range(0.1, 0.4);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>speed = oldspeed * (delta_time / oldtime);
+oldspeed = speed;
+oldtime = delta_time;
+
+
 if hspeed &gt;= min_speed || hspeed &lt;= -min_speed
     {
     

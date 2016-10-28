@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>// initialise
 
-image_speed = 0.5;
+image_speed = 0.5 * 60 * delta_time/1000000;
 spd = image_speed;
 spdmin = 0.2;
 imagespd_deceleration = 0.02;

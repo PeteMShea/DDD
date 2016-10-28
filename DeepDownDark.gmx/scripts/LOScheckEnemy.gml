@@ -4,10 +4,13 @@
 vx = (lineendx - linestartx);
 vy = (lineendy - linestarty);
             
-len = sqrt(vx * vx + vy * vy);
-                    
+if vx != 0 || vy != 0 len = sqrt(vx * vx + vy * vy) else len = 0;
+
+if len != 0
+{                    
 vx = vx / len;
 vy = vy / len; 
+}
 
 
 

@@ -31,7 +31,7 @@ scale = 0.2;
 scaleinc = 0.1;
 ballspeed = 0;
 acceleration = 0.2;
-maxspeed = 9.0;
+maxspeed = 7.0;
 launch = false;
 lifespan = 180;
 balldamage = 5;
@@ -163,7 +163,7 @@ if launch == true
                                                     homing = true;
                                                     target = other.coltest;
                                                     lifespan = random_range(30,40);
-                                                    speed = 1.0;
+                                                    speed = 1.0 * 60 * delta_time/1000000;
                                                     deceleration = 0.001;
                                                 }                                    
                                     }    

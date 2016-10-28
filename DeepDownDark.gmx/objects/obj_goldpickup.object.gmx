@@ -75,9 +75,7 @@ speed = 0.5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>oldspeed = speed;
-speed = oldspeed * 60 * delta_time /1000000
-
+            <string>
 
 if hspeed &gt;= min_speed || hspeed &lt;= -min_speed
     {
