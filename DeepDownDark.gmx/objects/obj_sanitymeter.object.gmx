@@ -320,7 +320,7 @@ if oldheartbeatsound != heartbeatsound
 {
    audio_stop_sound(oldheartbeatsound);
    oldheartbeatsound = heartbeatsound;
-   audio_play_sound(heartbeatsound, 100, true);
+   if !audio_is_playing(heartbeatsound) audio_play_sound(heartbeatsound, 100, true);
    audio_sound_gain(heartbeatsound, heartbeatgain, 0);    
 }
 

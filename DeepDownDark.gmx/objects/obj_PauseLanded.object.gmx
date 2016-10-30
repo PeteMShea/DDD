@@ -107,6 +107,7 @@ if panelsappeared == true
                 obj_player.backwards = false                
                 global.pause = false;
                 obj_player.landing = 0;
+                obj_player.hitcollide = 60;     //disable damage for a second for clean launch
                 eff_fadelanded.fadeDone = true;
                 with(obj_StatusPanel)
                 {

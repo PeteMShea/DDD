@@ -140,7 +140,6 @@
       <sprite>sprites\spr_shipSharkDead</sprite>
       <sprite>sprites\spr_shipSharkDebris</sprite>
       <sprite>sprites\spr_shipSharkDebrisold</sprite>
-      <sprite>sprites\spr_shipSharkSpec</sprite>
       <sprite>sprites\spr_shipSharkDirt</sprite>
       <sprite>sprites\spr_shipSharkRetro</sprite>
       <sprite>sprites\spr_shipSharkBThrust</sprite>
@@ -247,16 +246,6 @@
       <sprite>sprites\spr_bordersideleft</sprite>
       <sprite>sprites\spr_hugeblockoverlay</sprite>
       <sprite>sprites\spr_hugeblockplace</sprite>
-    </sprites>
-    <sprites name="old">
-      <sprite>sprites\spr_bigblock</sprite>
-      <sprite>sprites\spr_ship</sprite>
-      <sprite>sprites\spr_shipgun</sprite>
-      <sprite>sprites\spr_lightbeam</sprite>
-      <sprite>sprites\spr_light</sprite>
-      <sprite>sprites\spr_softlight</sprite>
-      <sprite>sprites\spr_fixedgun</sprite>
-      <sprite>sprites\spr_shipShark</sprite>
     </sprites>
     <sprites name="enemies">
       <sprite>sprites\spr_enemybullet</sprite>
@@ -641,7 +630,6 @@
       <object>objects\obj_vineScap</object>
       <object>objects\obj_vineWcap</object>
       <object>objects\obj_vineEcap</object>
-      <object>objects\obj_bigblock</object>
       <object>objects\obj_newblockoverlay</object>
       <object>objects\obj_hugeblockoverlay</object>
       <object>objects\obj_fsholenewblock</object>
@@ -737,13 +725,6 @@
       <object>objects\debug_spot</object>
       <object>objects\debug_N</object>
       <object>objects\debug_W</object>
-    </objects>
-    <objects name="old">
-      <object>objects\obj_lightcontrol</object>
-      <object>objects\obj_lightbeam</object>
-      <object>objects\obj_light</object>
-      <object>objects\obj_lightpixelshader</object>
-      <object>objects\obj_fixedgun</object>
     </objects>
     <objects name="VFX">
       <object>objects\obj_explosion128</object>

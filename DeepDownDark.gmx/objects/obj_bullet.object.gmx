@@ -89,9 +89,10 @@ totalbounces = 3;       //number of permitted bounces before bullet is destroyed
 //show_debug_message(string(start_x) + " , " +  string(start_y));
 
 
-audio_sound_gain(bulletsound, bulletvolume, 0);
-audio_play_sound_at(bulletsound, x, y, 0, 100, 800, 1, false, 100);
-audio_sound_gain(bulletsound, bulletvolume, 0);
+
+sound = audio_play_sound(bulletsound, 110, false);
+audio_sound_gain(sound, bulletvolume, 0);
+//audio_sound_gain(bulletsound, bulletvolume, 0);
 
 
 
@@ -164,14 +165,15 @@ if collided == false inst = instance_place(x, y, obj_blastblock);
 if inst != noone
     {
         collided = true;
+        audio_stop_sound(sound);
         //create debris tinyblocks
         bx = x
         by = y
 
         var ix;
         script_execute(scr_blockburstvfx, bx, by);
-        audio_play_sound_at(snd_BulletRock, x, y, 0, 400, 1200, 1, false, 100);
-        audio_sound_gain(snd_BulletRock, 0.5, 0);
+        sound = audio_play_sound_at(snd_BulletRock, x, y, 0, 400, 1200, 1, false, 100);
+        audio_sound_gain(sound, 0.5, 0);
         //change state or destroy instance of block hit
         if ricochet == true
         {
@@ -249,8 +251,8 @@ if gold != noone
         bx = x
         by = y
         script_execute(scr_blockburstvfx, bx, by);
-        audio_play_sound_at(snd_BulletGold, x, y, 0, 300, 900, 1, false, 100);
-        audio_sound_gain(snd_BulletGold, 0.25, 0);        
+        sound = audio_play_sound_at(snd_BulletGold, x, y, 0, 300, 900, 1, false, 100);
+        audio_sound_gain(sound, 0.25, 0);        
         //destroy the bullet unless piercing
         if piercing == false
         {        
@@ -265,8 +267,8 @@ spiker = noone;
 spiker = instance_place(x, y, obj_spiker);
 if spiker != noone
     {
-        audio_play_sound_at(snd_BulletRock, x, y, 0, 400, 1200, 1, false, 100);
-        audio_sound_gain(snd_BulletRock, 0.5, 0);
+        sound = audio_play_sound_at(snd_BulletRock, x, y, 0, 400, 1200, 1, false, 100);
+        audio_sound_gain(sound, 0.5, 0);
         with(spiker) 
             {
                 if currenthealth &gt;0
@@ -297,8 +299,8 @@ gaunt = noone;
 if collided == false gaunt = instance_place(x, y, obj_gaunt);
 if gaunt != noone
     {
-        audio_sound_gain(snd_GauntHit, 0.1, 0);
-        audio_play_sound_at(snd_GauntHit, x, y, 0, 400, 1200, 1, false, 100);        
+        sound = audio_play_sound_at(sound, x, y, 0, 400, 1200, 1, false, 100);
+        audio_sound_gain(sound, 0.1, 0);        
         collided = true;
         with(gaunt) 
             {
@@ -331,8 +333,8 @@ grabber = noone;
 if collided == false grabber = instance_place(x, y, obj_grabber);
 if grabber != noone
     {
-        audio_play_sound_at(snd_GrabberHit, x, y, 0, 400, 1200, 1, false, 100);
-        audio_sound_gain(snd_GrabberHit, 0.75, 0);        
+        sound = audio_play_sound_at(snd_GrabberHit, x, y, 0, 400, 1200, 1, false, 100);
+        audio_sound_gain(sound, 0.75, 0);        
         collided = true;
         with(grabber) 
             {

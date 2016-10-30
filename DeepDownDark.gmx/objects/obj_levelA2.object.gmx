@@ -245,7 +245,13 @@ y = obj_player.y;
 if obj_player.exited == true &amp;&amp; exited == false
 {
     exited = true;
-    audio_sound_gain(ambience, 0.0, 5000);
+    audio_sound_gain(ambience, 0.0, 1000);
+}
+
+if exited == true 
+{
+    vol = audio_sound_get_gain(ambience);
+    if vol &lt; 0.01 audio_stop_sound(ambience);
 }
 
 if levelstartplayed == false

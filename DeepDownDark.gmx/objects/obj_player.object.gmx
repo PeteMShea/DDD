@@ -918,7 +918,7 @@ if collisionoff == false &amp;&amp; global.autopilot &lt;= 0            //debug 
          }
     else
         {
-            hitcollide -= 1 * 60 * delta_time /1000000;
+            hitcollide -= 1;
     
         }     
 }  
@@ -927,7 +927,7 @@ if collisionoff == false &amp;&amp; global.autopilot &lt;= 0            //debug 
     x += speed_x * 60 * delta_time /1000000;
     y += speed_y * 60 * delta_time /1000000;
     
-    audio_listener_set_position(0, x, y, 0);       //set audio position to ship position
+    audio_listener_position(x, y, 0);       //set audio position to ship position
     
     if turret == true
     {
@@ -1230,6 +1230,62 @@ vy = view_yport[0];
 instance_create( vx, vy, eff_fadetoblack );
         
         
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="68">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//  debug
+
+//audio_debug(true);
+show_debug_overlay(true);
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="65">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//  debug
+
+audio_debug(true);
+
+
+
 </string>
           </argument>
         </arguments>
