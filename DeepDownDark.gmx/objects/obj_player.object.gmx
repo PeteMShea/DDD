@@ -745,8 +745,9 @@ if thrustcounter &gt;= 0 &amp;&amp; global.autopilot &lt;=0
 //  collision detection
 if collisionoff == false &amp;&amp; global.autopilot &lt;= 0            //debug option for disabling collision
 {
-    colcheck = noone;
-    
+if !place_free(x + speed_x, y + speed_y)
+{    
+    colcheck = noone;        
     colcheck = collision_circle(x + speed_x, y + speed_y, shipscale, obj_block, true, true) 
     if colcheck == noone colcheck = collision_circle(x + lengthdir_x(32 * global.RM, image_angle + 140), y + lengthdir_y(32 * global.RM, image_angle + 140), 8, obj_block, true, true)
     if colcheck == noone colcheck = collision_circle(x + lengthdir_x(32 * global.RM, image_angle + 230), y + lengthdir_y(32 * global.RM, image_angle + 230), 8, obj_block, true, true)  
@@ -889,7 +890,9 @@ if collisionoff == false &amp;&amp; global.autopilot &lt;= 0            //debug 
         
             
                  
-    } 
+    }
+    
+}
     
     // Player has collided with bad thing
     if hitcollide &gt;= (damagecooldown * 60)
