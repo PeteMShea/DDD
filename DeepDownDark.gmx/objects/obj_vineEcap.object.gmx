@@ -37,7 +37,7 @@ dir = 1;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_player">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -54,17 +54,7 @@ dir = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// collided with player- destroy
-
-
-bx = x
-by = y
-
-script_execute(scr_blockburstvfx, bx, by);
-
-instance_destroy();
-
-
+            <string>// prevent auto draw self
 </string>
           </argument>
         </arguments>

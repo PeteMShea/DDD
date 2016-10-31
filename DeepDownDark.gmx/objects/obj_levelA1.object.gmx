@@ -2,7 +2,7 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -145,6 +145,7 @@ script_execute(scr_genMap, basechance, spacechance, newbigblockvalue, spikyness,
 
 global.loading = false;
 
+instance_create(global.startx, global.starty, obj_drawblocks);
 
 background_xscale[1] = 2.0;
 background_yscale[1] = 2.0;
@@ -282,6 +283,13 @@ if obj_player.dead == true
         audio_sound_gain(ambience, 0.0, 10000);
 
 }
+
+
+
+
+
+
+
 </string>
           </argument>
         </arguments>

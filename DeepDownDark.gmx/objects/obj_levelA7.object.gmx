@@ -139,6 +139,8 @@ script_execute(scr_mapGEN_A7, basechance, spacechance, newbigblockvalue, spikyne
 
 global.loading = false;
 
+instance_create(global.startx, global.starty, obj_drawblocks);
+
 // fade in from black
 vx = view_xport[0];
 vy = view_yport[0];

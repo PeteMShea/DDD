@@ -9,7 +9,7 @@
             }
         
         weeblocktype[0] = "empty";
-        weeblocktype[1] = obj_weeblock;
+        weeblocktype[1] = obj_weeblockA0;
         weeblocktype[2] = obj_blastblock;
         weeblocktype[3] = obj_gold;
         weeblocktype[4] = obj_weeblockendNcap;

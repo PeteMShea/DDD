@@ -203,6 +203,7 @@
         <sprite>sprites\spr_templecthulhuUp</sprite>
       </sprites>
       <sprite>sprites\spr_block</sprite>
+      <sprite>sprites\spr_weeblockcol</sprite>
       <sprite>sprites\spr_newblock</sprite>
       <sprite>sprites\spr_newblockDark</sprite>
       <sprite>sprites\spr_newblockoverlay</sprite>
@@ -414,6 +415,7 @@
     <background>background\tileset_hugeblocks</background>
     <background>background\tileset_templeglyphs</background>
     <background>background\tileset_temple64x64</background>
+    <background>background\tileset_weeblocks</background>
     <background>background\templeentrance</background>
     <background>background\sanitymask</background>
     <background>background\AO_Sky</background>
@@ -514,6 +516,7 @@
       <object>objects\obj_alarm</object>
       <object>objects\obj_exittrigger</object>
       <object>objects\obj_loadingscreen</object>
+      <object>objects\obj_drawblocks</object>
     </objects>
     <objects name="player">
       <object>objects\obj_player</object>
@@ -586,6 +589,7 @@
       <object>objects\obj_newblock</object>
       <object>objects\obj_newblocksprite</object>
       <object>objects\obj_weeblock</object>
+      <object>objects\obj_weeblockA0</object>
       <object>objects\obj_weeblock_N</object>
       <object>objects\obj_weeblock_S</object>
       <object>objects\obj_weeblock_E</object>

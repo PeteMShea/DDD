@@ -145,7 +145,7 @@ script_execute(scr_genMap, basechance, spacechance, newbigblockvalue, spikyness,
 
 global.loading = false;
 
-
+instance_create(global.startx, global.starty, obj_drawblocks);
 
 //if random(1) &lt; 0.5 xsign = -1 else xsign = 1
 //if random(1) &lt; 0.5 ysign = -1 else ysign = 1

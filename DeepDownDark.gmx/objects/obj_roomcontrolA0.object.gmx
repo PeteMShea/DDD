@@ -2,7 +2,7 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -91,6 +91,10 @@ if once == false
     }
 
 global.loading = false;
+
+//instance_create(global.startx, global.starty, obj_drawblocks);
+
+
 
 //instance_create(global.startx, global.starty, obj_blackplayermask);
 
@@ -247,6 +251,84 @@ global.playerGold += 5;
             <string>// rerun
 
 game_restart();
+
+
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// draw all weeblocks in one batch
+
+//shader_set(shader0);
+
+with(obj_weeblock_N) draw_self();
+with(obj_weeblock_S) draw_self();
+with(obj_weeblock_E) draw_self();
+with(obj_weeblock_W) draw_self();
+with(obj_weeblock_NE) draw_self();
+with(obj_weeblock_NW) draw_self();
+with(obj_weeblock_SE) draw_self();
+with(obj_weeblock_SW) draw_self();
+with(obj_blastblock_N) draw_self();
+with(obj_blastblock_S) draw_self();
+with(obj_blastblock_E) draw_self();
+with(obj_blastblock_W) draw_self();
+with(obj_weeblockendNcap) draw_self();
+with(obj_weeblockendEcap) draw_self();
+with(obj_weeblockendWcap) draw_self();
+with(obj_weeblockendScap) draw_self();
+with(obj_gold) draw_self();
+with(obj_goldNBase) draw_self();
+with(obj_goldSBase) draw_self();
+with(obj_goldEBase) draw_self();
+with(obj_goldWBase) draw_self();
+with(obj_goldNCap) draw_self();
+with(obj_goldSCap) draw_self();
+with(obj_goldECap) draw_self();
+with(obj_goldWCap) draw_self();
+with(obj_vine) draw_self();
+with(obj_vineNBase) draw_self();
+with(obj_vineSBase) draw_self();
+with(obj_vineEBase) draw_self();
+with(obj_vineWBase) draw_self();
+with(obj_vineNcap) draw_self();
+with(obj_vineScap) draw_self();
+with(obj_vineEcap) draw_self();
+with(obj_vineWcap) draw_self();
+
+
+//shader_reset();
+
+
+
+
+
+
+
+
+
+
+
 
 
 
