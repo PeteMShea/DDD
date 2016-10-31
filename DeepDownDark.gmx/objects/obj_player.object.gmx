@@ -232,8 +232,8 @@ u_LowerAmbientColour = shader_get_uniform(SpriteLampShader, "sl_LowerAmbientColo
 normalDepthTexture = sprite_get_texture(spr_shipSharkNormal, 0);
 //specGlossMap = sprite_get_texture(spr_shipSharkNormal, 0);
 specGlossMap = sprite_get_texture(spr_shipSharkSpecGloss, 0);
-aoMap = sprite_get_texture(spr_shipShark, 0);
-emissiveMap = sprite_get_texture(spr_shipShark, 0);
+aoMap = sprite_get_texture(spr_Shark128, 0);
+emissiveMap = sprite_get_texture(spr_Shark128, 0);
 //(note - this example doesn't have an emissive map so I'm using the diffuse map as
 //a dummy and turning the emissive strength variable to zero. Eventually I'll have
 //a couple of versions of the shader, so if you're not using certain features you
@@ -1434,6 +1434,43 @@ obj_exittrigger.x = x;
 obj_exittrigger.y = y;
 }
 else instance_create(x, y, obj_exittrigger);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="73">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// debug- spit out all active instances
+
+
+var i;
+ for (i = 0; i &lt; instance_count; i += 1;)
+    {
+    with (instance_id[i])
+        {
+            obj_name = object_get_name(object_index);
+            show_debug_message(string(obj_name));
+        }
+    }
+    
+    
+    
 </string>
           </argument>
         </arguments>

@@ -137,11 +137,14 @@ background_x[0] = view_xview[0];
 background_y[0] = view_yview[0];
 
 
+
 if global.startroom == false
 {
 background_x[1] = view_xview[0]/1.8;
 background_y[1] = view_yview[0]/1.8;       //1.1
 }
+
+
 //background_x[2] = view_xview[0]/1.5;
 //background_y[2] = view_yview[0]/1.5;       //1.1
 
@@ -199,11 +202,12 @@ if !instance_exists(obj_sanitymeter) instance_create(view_xport[0] + 64, view_yp
         }
         
     draw_text(healthtextright, HUDtextY, hudhealth);
+    /*
     draw_set_alpha(0.1);
     draw_text(healthtextright-2, HUDtextY-2, hudhealth);
     draw_set_alpha(HUDAlpha);
     draw_set_halign(fa_left);
-    
+    */
     //Now draw the meter
     HealthHundreds = floor(global.playerHealth / 100);
     HealthTens = floor((global.playerHealth-HealthHundreds*100) / 10);
@@ -356,8 +360,10 @@ if !instance_exists(obj_sanitymeter) instance_create(view_xport[0] + 64, view_yp
     if goldrightalign == true draw_set_halign(fa_right) else draw_set_halign(fa_left)
 
     draw_text(goldtextleft, goldtextY, global.playerGold);
+    /*
     draw_set_alpha(0.1);
     draw_text(goldtextleft+2, goldtextY-2, global.playerGold);
+    */
     
     //Now draw the meter
     GoldTenThousands = floor(global.playerGold / 10000);
@@ -486,9 +492,11 @@ if !instance_exists(obj_sanitymeter) instance_create(view_xport[0] + 64, view_yp
     draw_set_font(fnt_HUD);
     draw_set_halign(fa_right);    
     draw_text(sanitytextright, sanitytextY, hudsanity);
+    /*
     draw_set_alpha(0.1);
     draw_text(sanitytextright-2, sanitytextY-2, hudsanity);
     draw_set_alpha(HUDAlpha);
+    */
     draw_set_halign(fa_left);
     
     

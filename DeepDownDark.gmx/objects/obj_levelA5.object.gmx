@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Procedural Map Generator
+            <string>//flush textures and trigger required texture pages
+draw_texture_flush();
+
+// Procedural Map Generator
 global.pause = false;
 
 global.categorycap[2] = 18;      //unlock story lines for this level- should be 30

@@ -207,7 +207,6 @@
       <sprite>sprites\spr_newblockDark</sprite>
       <sprite>sprites\spr_newblockoverlay</sprite>
       <sprite>sprites\spr_fsholenewblock</sprite>
-      <sprite>sprites\sprite212</sprite>
       <sprite>sprites\spr_hugeblock</sprite>
       <sprite>sprites\spr_weefloatblock</sprite>
       <sprite>sprites\spr_weeblock</sprite>
@@ -230,7 +229,6 @@
       <sprite>sprites\spr_goldEBase</sprite>
       <sprite>sprites\spr_goldWBase</sprite>
       <sprite>sprites\spr_moss</sprite>
-      <sprite>sprites\testplant</sprite>
       <sprite>sprites\spr_vineNbase</sprite>
       <sprite>sprites\spr_vineSBase</sprite>
       <sprite>sprites\spr_vineEBase</sprite>
@@ -249,7 +247,6 @@
     </sprites>
     <sprites name="enemies">
       <sprite>sprites\spr_enemybullet</sprite>
-      <sprite>sprites\spr_fixedgunbase</sprite>
       <sprite>sprites\spr_gaunt_flying</sprite>
       <sprite>sprites\spr_gaunt_tail</sprite>
       <sprite>sprites\spr_gaunt_torso</sprite>
@@ -259,8 +256,6 @@
       <sprite>sprites\spr_gaunt_hit</sprite>
       <sprite>sprites\spr_enemy_debris</sprite>
       <sprite>sprites\spr_gaunt_attack</sprite>
-      <sprite>sprites\spawnref</sprite>
-      <sprite>sprites\spr_spawn</sprite>
       <sprite>sprites\spore</sprite>
       <sprite>sprites\sporedebris</sprite>
       <sprite>sprites\sporespines</sprite>
@@ -299,9 +294,8 @@
     <sprites name="GUI">
       <sprite>sprites\spr_titlemask1</sprite>
       <sprite>sprites\spr_titlemask2</sprite>
+      <sprite>sprites\spr_StatusPanel</sprite>
       <sprite>sprites\spr_titlemask3</sprite>
-      <sprite>sprites\testXXX</sprite>
-      <sprite>sprites\sprite84</sprite>
       <sprite>sprites\spr_HUDGold10K</sprite>
       <sprite>sprites\spr_HUDGold1KTop</sprite>
       <sprite>sprites\spr_HUDGold1KBottom</sprite>
@@ -318,8 +312,6 @@
       <sprite>sprites\spr_sanityvignette</sprite>
       <sprite>sprites\spr_sanitymask</sprite>
       <sprite>sprites\spr_INVbluepanel</sprite>
-      <sprite>sprites\sprite148</sprite>
-      <sprite>sprites\spr_StatusPanel</sprite>
       <sprite>sprites\spr_WeaponryPanel</sprite>
       <sprite>sprites\spr_INVshark</sprite>
       <sprite>sprites\spr_INVsharkdirtmask</sprite>
@@ -342,11 +334,8 @@
     </sprites>
     <sprites name="VFX">
       <sprite>sprites\spr_explosion</sprite>
-      <sprite>sprites\sprite95</sprite>
       <sprite>sprites\spr_bulletspark</sprite>
-      <sprite>sprites\sprite96</sprite>
       <sprite>sprites\spr_bullet</sprite>
-      <sprite>sprites\sprite126</sprite>
       <sprite>sprites\spr_goldpickup</sprite>
       <sprite>sprites\spr_black8</sprite>
       <sprite>sprites\spr_black64</sprite>
@@ -411,6 +400,10 @@
     <background>background\MidGround1</background>
     <background>background\MidGround2</background>
     <background>background\MidGround3</background>
+    <background>background\MidGround4</background>
+    <background>background\MidGround5</background>
+    <background>background\MidGround6</background>
+    <background>background\MidGround7</background>
     <background>background\back_LCWsplash</background>
     <background>background\DDDRed</background>
     <background>background\DDD_Banner</background>
@@ -495,6 +488,7 @@
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_multiply.shader</shader>
     <shader type="GLSLES">shaders\SpriteLampShader.shader</shader>
+    <shader type="GLSLES">shaders\shader0.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fnt_HUD</font>
@@ -734,6 +728,8 @@
     <objects name="SFXEmitters">
       <object>objects\obj_chitteremitter</object>
     </objects>
+    <object>objects\object_ShaderBegin</object>
+    <object>objects\object_ShaderEnd</object>
   </objects>
   <timelines name="timelines">
     <timelines name="enemies">

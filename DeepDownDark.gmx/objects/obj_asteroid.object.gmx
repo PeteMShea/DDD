@@ -55,6 +55,12 @@ h_angle = 0;
 hitspeed_x = 0;
 hitspeed_y = 0;
 
+
+lit = false;
+
+if lit == true
+{
+
 /////////////////////////////////////////////////////////////////////////////
 // Lighting Setup
 //This script goes on the 'create' event of objects that need Sprite Lamp's
@@ -135,6 +141,7 @@ lowerAmbient_Blue = 0.01;
 
 //The nearest lightsource.
 lightSource = instance_nearest(x,y,oLightSourceAsteroid);
+}
 
 //add the light to follow player
 
@@ -449,9 +456,11 @@ if asteroidhealth &lt;=0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>lightSource = instance_nearest(x,y,oLightSourceAsteroid);
+            <string>//lightSource = instance_nearest(x,y,oLightSourceAsteroid);
 
-if lightSource != noone
+if lit == true
+{
+if instance_exists(lightSource)
 {
     shader_set(SpriteLampShader);
     
@@ -481,6 +490,7 @@ if lightSource != noone
     shader_set_uniform_f(u_LowerAmbientColour,
             lowerAmbient_Red, lowerAmbient_Green, lowerAmbient_Blue);
 
+}
 }
 draw_self();
 

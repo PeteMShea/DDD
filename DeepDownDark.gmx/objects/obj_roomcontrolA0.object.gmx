@@ -25,7 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Procedural Map Generator
+            <string>//flush textures and trigger required texture pages
+draw_texture_flush();
+draw_sprite(spr_Shark128, 0, 0, 0);     //default group- page 1
+//draw_sprite(spr_newblock, 0, 0, 0);     //Level 0 group- 
+
+
+
+// Procedural Map Generator
 global.startroom = true;
 
 

@@ -57,6 +57,9 @@ hit_y = 0;
 hitspeed_x = 0;
 hitspeed_y = 0;
 
+
+lit = false;
+
 /////////////////////////////////////////////////////////////////////////////
 // Lighting Setup
 //This script goes on the 'create' event of objects that need Sprite Lamp's
@@ -136,7 +139,7 @@ lowerAmbient_Blue = 0.01;
 
 
 //The nearest lightsource.
-lightSource = instance_nearest(x,y,oLightSourceAsteroid);
+if lit == true lightSource = instance_nearest(x,y,oLightSourceAsteroid);
 
 //add the light to follow player
 
