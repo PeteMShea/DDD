@@ -452,6 +452,16 @@
     <option_textureGroup13_parent>&lt;none&gt;</option_textureGroup13_parent>
     <option_textureGroup13_scaled>0</option_textureGroup13_scaled>
     <option_textureGroup13_targets>9223372036854775807</option_textureGroup13_targets>
+    <option_textureGroup14_border>2</option_textureGroup14_border>
+    <option_textureGroup14_nocropping>0</option_textureGroup14_nocropping>
+    <option_textureGroup14_parent>&lt;none&gt;</option_textureGroup14_parent>
+    <option_textureGroup14_scaled>0</option_textureGroup14_scaled>
+    <option_textureGroup14_targets>9223372036854775807</option_textureGroup14_targets>
+    <option_textureGroup15_border>2</option_textureGroup15_border>
+    <option_textureGroup15_nocropping>0</option_textureGroup15_nocropping>
+    <option_textureGroup15_parent>&lt;none&gt;</option_textureGroup15_parent>
+    <option_textureGroup15_scaled>0</option_textureGroup15_scaled>
+    <option_textureGroup15_targets>9223372036854775807</option_textureGroup15_targets>
     <option_textureGroup1_border>2</option_textureGroup1_border>
     <option_textureGroup1_nocropping>0</option_textureGroup1_nocropping>
     <option_textureGroup1_parent>&lt;none&gt;</option_textureGroup1_parent>
@@ -497,13 +507,15 @@
     <option_textureGroup9_parent>&lt;none&gt;</option_textureGroup9_parent>
     <option_textureGroup9_scaled>0</option_textureGroup9_scaled>
     <option_textureGroup9_targets>9223372036854775807</option_textureGroup9_targets>
-    <option_textureGroup_count>14</option_textureGroup_count>
+    <option_textureGroup_count>16</option_textureGroup_count>
     <option_textureGroups0>Default</option_textureGroups0>
     <option_textureGroups1>Splash</option_textureGroups1>
     <option_textureGroups10>Obsolete</option_textureGroups10>
     <option_textureGroups11>Monstersto6</option_textureGroups11>
     <option_textureGroups12>EnvironTiles</option_textureGroups12>
     <option_textureGroups13>3DTex</option_textureGroups13>
+    <option_textureGroups14>GUIMenus</option_textureGroups14>
+    <option_textureGroups15>SanityMasks</option_textureGroups15>
     <option_textureGroups2>Level0</option_textureGroups2>
     <option_textureGroups3>Level1</option_textureGroups3>
     <option_textureGroups4>Level2</option_textureGroups4>
