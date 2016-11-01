@@ -173,8 +173,8 @@ if fadeblackworld = true &amp;&amp; startgame == 1
             image_blend = other.objectcolour;        
         }
     obj_player.image_blend = c_white;
-    obj_redlightglow.image_blend = c_white;
-    obj_redtrail.image_blend = c_white;
+    if instance_exists(obj_redlightglow) obj_redlightglow.image_blend = c_white;
+    if instance_exists(obj_redtrail) obj_redtrail.image_blend = c_white;
 
         
     if titlealpha &gt;= finaltitlealpha

@@ -37,15 +37,15 @@ maxrotspeed = random_range(-0.75, 0.75);
 rotacceleration = 0.025;
 rotspeed = 0;
 
-oldspeed = speed;
-oldtime = delta_time;
+
 
 image_speed = 0;
 
 // start moving
 
 speed = random_range(0.6, 0.8);
-
+oldspeed = speed;
+oldtime = delta_time;
 
 
 </string>

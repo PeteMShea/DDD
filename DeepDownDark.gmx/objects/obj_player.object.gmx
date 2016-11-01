@@ -50,7 +50,7 @@
     damagecooldown = 2;    //How many seconds player is invincible after taking damage
     thrustparticles = false;
     thrustcolour = make_colour_rgb(80, 80, 80);
-    shipscale = 18 * global.RM;     //radius of collision circle for ship
+    shipscale = 34;     //radius of collision circle for ship
     trails = true;
     trailspeed = 0.75;   //minimum speed before trails are drawn at high alpha- 0 is on all the time
     turret = false;
@@ -465,8 +465,8 @@ if moveinput == 1 ||  fireinput == 1
                         
                 if turning == 1    
                     {
-                        rotcolcheck = collision_line(x + lengthdir_x(33, image_angle + 135), y + lengthdir_y(33 * global.RM, image_angle + 135), x + lengthdir_x(24 * global.RM, image_angle + 105), y + lengthdir_y(24 * global.RM, image_angle + 105), obj_block, false, true);
-                        //if rotcolcheck != noone show_debug_message(string(rotcolcheck));
+                        rotcolcheck = collision_line(x + lengthdir_x(78, image_angle + 140), y + lengthdir_y(78, image_angle + 140), x + lengthdir_x(58, image_angle + 115), y + lengthdir_y(58, image_angle + 115), obj_block, false, true);
+                        if rotcolcheck == noone rotcolcheck = collision_line(x + lengthdir_x(78, image_angle + 140), y + lengthdir_y(78, image_angle + 140), x + lengthdir_x(58, image_angle + 115), y + lengthdir_y(58, image_angle + 115), obj_asteroid, true, true);
                         if rotcolcheck == noone
                             {                       
                                 turnspeed += turnacceleration;
@@ -480,8 +480,8 @@ if moveinput == 1 ||  fireinput == 1
                     
                 if turning == 2    
                     {                                    
-                        rotcolcheck = collision_line(x + lengthdir_x(33 * global.RM, image_angle + 225), y + lengthdir_y(33 * global.RM, image_angle + 225), x + lengthdir_x(24 * global.RM, image_angle + 255), y + lengthdir_y(24 * global.RM, image_angle + 255), obj_block, false, true);
-                        //if rotcolcheck != noone show_debug_message(string(rotcolcheck));
+                        rotcolcheck = collision_line(x + lengthdir_x(78, image_angle + 220), y + lengthdir_y(78, image_angle + 220), x + lengthdir_x(58, image_angle + 245), y + lengthdir_y(58, image_angle + 245), obj_block, false, true);
+                        if rotcolcheck == noone rotcolcheck = collision_line(x + lengthdir_x(78, image_angle + 220), y + lengthdir_y(78, image_angle + 220), x + lengthdir_x(58, image_angle + 245), y + lengthdir_y(58, image_angle + 245), obj_asteroid, true, true);
                         if rotcolcheck == noone
                             {
                                 turnspeed += turnacceleration
@@ -543,8 +543,8 @@ else if moveinput == 2
                     {
                         turning = 1;  
                         turn_angle = angle_joy;
-                        rotcolcheck = collision_line(x + lengthdir_x(33, image_angle + 135), y + lengthdir_y(33 * global.RM, image_angle + 135), x + lengthdir_x(24 * global.RM, image_angle + 105), y + lengthdir_y(24 * global.RM, image_angle + 105), obj_block, false, true);
-                        //if rotcolcheck != noone show_debug_message(string(rotcolcheck));
+                        rotcolcheck = collision_line(x + lengthdir_x(78, image_angle + 140), y + lengthdir_y(78, image_angle + 140), x + lengthdir_x(58, image_angle + 115), y + lengthdir_y(58, image_angle + 115), obj_block, false, true);
+                        if rotcolcheck == noone rotcolcheck = collision_line(x + lengthdir_x(78, image_angle + 140), y + lengthdir_y(78, image_angle + 140), x + lengthdir_x(58, image_angle + 115), y + lengthdir_y(58, image_angle + 115), obj_asteroid, true, true);
                         if rotcolcheck == noone
                             {                       
                                 turnspeed += turnacceleration;
@@ -560,7 +560,7 @@ else if moveinput == 2
                         turning = 2;
                         turn_angle = angle_joy;
                         rotcolcheck = collision_line(x + lengthdir_x(33 * global.RM, image_angle + 225), y + lengthdir_y(33 * global.RM, image_angle + 225), x + lengthdir_x(24 * global.RM, image_angle + 255), y + lengthdir_y(24 * global.RM, image_angle + 255), obj_block, false, true);
-                        //if rotcolcheck != noone show_debug_message(string(rotcolcheck));
+                        if rotcolcheck == noone rotcolcheck = collision_line(x + lengthdir_x(33 * global.RM, image_angle + 225), y + lengthdir_y(33 * global.RM, image_angle + 225), x + lengthdir_x(24 * global.RM, image_angle + 255), y + lengthdir_y(24 * global.RM, image_angle + 255), obj_asteroid, true, true);
                         if rotcolcheck == noone
                             {
                                 turnspeed += turnacceleration
@@ -748,23 +748,31 @@ if collisionoff == false &amp;&amp; global.autopilot &lt;= 0            //debug 
 if !place_free(x + speed_x, y + speed_y)
 {    
     colcheck = noone;        
-    colcheck = collision_circle(x + speed_x, y + speed_y, shipscale, obj_block, true, true) 
-    if colcheck == noone colcheck = collision_circle(x + lengthdir_x(32 * global.RM, image_angle + 140), y + lengthdir_y(32 * global.RM, image_angle + 140), 8, obj_block, true, true)
-    if colcheck == noone colcheck = collision_circle(x + lengthdir_x(32 * global.RM, image_angle + 230), y + lengthdir_y(32 * global.RM, image_angle + 230), 8, obj_block, true, true)  
-    if colcheck == noone colcheck = collision_circle(x + lengthdir_x(-3 * global.RM, thrustdir) + speed_x, y + speed_y, shipscale, obj_asteroid, true, true)
+    colcheck = collision_circle(x + speed_x, y + speed_y, shipscale, obj_block, true, true)
+    if colcheck != noone show_debug_message("Body"); 
+    if colcheck == noone colcheck = collision_circle(x + lengthdir_x(64, image_angle + 135), y + lengthdir_y(64, image_angle + 135), 8, obj_block, true, true);
+    if colcheck != noone show_debug_message("Left"); 
+    if colcheck == noone colcheck = collision_circle(x + lengthdir_x(64, image_angle + 225), y + lengthdir_y(64, image_angle + 225), 8, obj_block, true, true);
+    if colcheck != noone show_debug_message("Right");   
+    if colcheck == noone colcheck = collision_circle(x + lengthdir_x(-6, thrustdir) + speed_x, y + speed_y, shipscale, obj_asteroid, true, true)
+    if colcheck == noone colcheck = collision_circle(x + lengthdir_x(64, image_angle + 135), y + lengthdir_y(64, image_angle + 135), 8, obj_asteroid, true, true)
+    if colcheck == noone colcheck = collision_circle(x + lengthdir_x(64, image_angle + 225), y + lengthdir_y(64, image_angle + 225), 8, obj_asteroid, true, true)     
+    
     
     if colcheck != noone
     
     {
-    
-        if collision_circle(x+ speed_x, y + speed_y, shipscale + 3 * global.RM, obj_asteroid, true, true)
+        obj_name = object_get_name(colcheck.object_index);
+        //show_debug_message(obj_name);
+        if obj_name == "obj_asteroid" || obj_name == "obj_goldasteroid" || obj_name == "obj_glassasteroid" || obj_name == "obj_wreck"
     
             {
             var inst;
             //instance_create(x - speed_x + lengthdir_x(32, thrustdir), y - speed_y + lengthdir_y(32, thrustdir), obj_debug);
-        
+            
                 
             inst = instance_nearest(x + speed_x, y + speed_y, obj_asteroid);
+            //inst = colcheck;
             if inst != noone 
                 {
                     ax = (inst).x;
@@ -801,29 +809,31 @@ if !place_free(x + speed_x, y + speed_y)
             }
     
         //now check for leg collisions for landing
-        leftlegcheck = collision_circle(x + lengthdir_x(32 * global.RM, image_angle + 140), y + lengthdir_y(32 * global.RM, image_angle + 140), 8, obj_block, false, true)
-        rightlegcheck = collision_circle(x + lengthdir_x(32 * global.RM, image_angle + 230), y + lengthdir_y(32 * global.RM, image_angle + 230), 8, obj_block, false, true)
+        leftlegcheck = collision_circle(x + lengthdir_x(76, image_angle + 145), y + lengthdir_y(70, image_angle + 145), 8, obj_block, false, true)
+        rightlegcheck = collision_circle(x + lengthdir_x(76, image_angle + 215), y + lengthdir_y(70, image_angle + 215), 8, obj_block, false, true)
         cs = (speed_x * speed_x + speed_y * speed_y)
         cs = abs(cs)
-        if cs &gt; 0 currrentspeed = sqrt(cs);          
-        if currrentspeed &lt;= minlandspeed landingokay = true else landingokay = false
+        if cs &gt; 0 currentspeed = sqrt(cs);          
+        if currentspeed &lt;= minlandspeed landingokay = true else landingokay = false
         if global.autopilot &gt; 0 landingokay = false
-        if leftlegcheck == noone &amp;&amp; rightlegcheck == noone landing = 0      //not landing as no legs in contact with ground       
+        landing = 0      //not landing as no legs in contact with ground       
         if leftlegcheck != noone &amp;&amp; rightlegcheck != noone &amp;&amp; landingokay == true       //both legs down at same time
             {
+                show_debug_message("both legs down");
+                landing = 3;
                 script_execute(scr_landingsequence, landing);
             } 
             
         if leftlegcheck != noone &amp;&amp; rightlegcheck == noone &amp;&amp; landingokay == true &amp;&amp; landing == 0      //left leg hit
             {
-                //show_debug_message("left leg down");
+                show_debug_message("left leg down");
                 speed_x = 0;
                 speed_y = 0;
                 landing = 1;    //in progress
                 
                 //now check if the right leg is within a reasonable range of the ground before landing sequence
-                landx = x + lengthdir_x(40 * global.RM, image_angle + 215); 
-                landy = y + lengthdir_y(40 * global.RM, image_angle + 215);        
+                landx = x + lengthdir_x(84, image_angle + 210); 
+                landy = y + lengthdir_y(84, image_angle + 210);        
                 //instance_create(landx, landy, obj_debug);
                 
                 var legcheck = collision_point(landx, landy, obj_block, false, false);            
@@ -833,14 +843,14 @@ if !place_free(x + speed_x, y + speed_y)
     
         if leftlegcheck == noone &amp;&amp; rightlegcheck != noone  &amp;&amp; landingokay == true &amp;&amp; landing == 0     //right leg hit so turn to the left
             {
-                //show_debug_message("right leg down");            
+                show_debug_message("right leg down");            
                 speed_x = 0;
                 speed_y = 0;            
                 landing = 2;    // in progress
                 
                 //now check if the left leg is within a reasonable range of the ground before landing sequence
-                landx = x + lengthdir_x(40 * global.RM, image_angle + 145); 
-                landy = y + lengthdir_y(40 * global.RM, image_angle + 145);            
+                landx = x + lengthdir_x(84, image_angle + 150); 
+                landy = y + lengthdir_y(84, image_angle + 150);            
                 //instance_create(landx, landy, obj_debug);   
                 
                 var legcheck = collision_point(landx, landy, obj_block, false, false);            
@@ -1176,39 +1186,6 @@ else audio_sound_gain(snd_SharkEngineLoop, 0, 0);
         </arguments>
       </action>
     </event>
-    <event eventtype="5" enumb="81">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>// debug test object under mouse
-
-testx = mouse_x;
-testy = mouse_y;
-
-debug = instance_place(testx, testy, obj_newblock);
-
-show_debug_message(string(debug));
-
-
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="5" enumb="70">
       <action>
         <libid>1</libid>
@@ -1294,40 +1271,6 @@ audio_debug(true);
         </arguments>
       </action>
     </event>
-    <event eventtype="5" enumb="49">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>
-
-show_debug_message("image angle: " + string(image_angle) + " , angle diff: " + string(angle_diff));
-
-show_debug_message("turning: " + string(turning));
-
-//instance_create(x ,y, obj_debug);
-//instance_create(x + lengthdir_x(33, image_angle + 135), y + lengthdir_y(33, image_angle + 135), obj_debug);
-//instance_create(x + lengthdir_x(24, image_angle + 105), y + lengthdir_y(24, image_angle + 105), obj_debug);
-
-//instance_create(x + lengthdir_x(33, image_angle + 225), y + lengthdir_y(33, image_angle + 225), obj_debug);
-//instance_create(x + lengthdir_x(24, image_angle + 255), y + lengthdir_y(24, image_angle + 255), obj_debug);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="5" enumb="36">
       <action>
         <libid>1</libid>
@@ -1407,6 +1350,56 @@ draw_self();
 
 shader_reset();
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="88">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+/* uncomment to draw debug wing collision lines
+x1 = x + lengthdir_x(39 * global.RM, image_angle + 140);
+y1 = y + lengthdir_y(39 * global.RM, image_angle + 140);
+x2 = x + lengthdir_x(29 * global.RM, image_angle + 115);
+y2 = y + lengthdir_y(29 * global.RM, image_angle + 115);
+
+instance_create(x1, y1, obj_debug);
+instance_create(x2, y2, obj_debug);
+
+x1 = x + lengthdir_x(39 * global.RM, image_angle + 220);
+y1 = y + lengthdir_y(39 * global.RM, image_angle + 220);
+x2 = x + lengthdir_x(29 * global.RM, image_angle + 245);
+y2 = y + lengthdir_y(29 * global.RM, image_angle + 245);
+
+instance_create(x1, y1, obj_debug);
+instance_create(x2, y2, obj_debug);
+
+*/
+
+//debug foot landing points (circle rad 4)
+x1 = x + lengthdir_x(80, image_angle + 145);
+y1 = y + lengthdir_y(80, image_angle + 145);
+x2 = x + lengthdir_x(80, image_angle + 215);
+y2 = y + lengthdir_y(80, image_angle + 215);
+
+instance_create(x1, y1, obj_debug);
+instance_create(x2, y2, obj_debug);
 </string>
           </argument>
         </arguments>
