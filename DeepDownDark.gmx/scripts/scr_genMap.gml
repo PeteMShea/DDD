@@ -388,7 +388,7 @@ for (u = 0; u < gridsize; u +=1)
                     {
                         grabberadd = true;                    
                     }
-                else grabberadd = false;                
+                //else grabberadd = false;                
                 
                                               
             

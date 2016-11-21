@@ -3,7 +3,7 @@
   <caption></caption>
   <width>3840</width>
   <height>2160</height>
-  <vsnap>8</vsnap>
+  <vsnap>64</vsnap>
   <hsnap>64</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
@@ -31,8 +31,8 @@
     <yoffset>0</yoffset>
   </makerSettings>
   <backgrounds>
-    <background visible="-1" foreground="0" name="A7Sky" x="0" y="0" htiled="0" vtiled="0" hspeed="0" vspeed="0" stretch="-1"/>
-    <background visible="-1" foreground="0" name="MidGround5" x="0" y="0" htiled="0" vtiled="0" hspeed="0" vspeed="0" stretch="-1"/>
+    <background visible="-1" foreground="0" name="B1Sky" x="0" y="0" htiled="0" vtiled="0" hspeed="0" vspeed="0" stretch="-1"/>
+    <background visible="-1" foreground="0" name="Bmidground" x="0" y="0" htiled="0" vtiled="0" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -265,10 +265,17 @@
     <instance objName="obj_newblock" x="896" y="704" name="inst_DC3B7551" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_newblock" x="960" y="640" name="inst_C41993E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_newblock" x="960" y="704" name="inst_4B2E5378" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_newblock" x="1024" y="640" name="inst_D0AFC5E2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_newblock" x="1024" y="704" name="inst_51FEAC60" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_WreckSpawner" x="96" y="512" name="inst_82143844" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_darkyoung" x="704" y="704" name="inst_601C0AAB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_blockSCap" x="1024" y="576" name="inst_3177D961" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_blockSCap" x="960" y="576" name="inst_5921DFAA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_blockSCap" x="896" y="576" name="inst_F85D2543" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_blockSCap" x="1088" y="704" name="inst_ABB830E8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_blockSCap" x="1152" y="704" name="inst_237AFD62" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_blockSCap" x="1216" y="704" name="inst_834C9BE2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_blockSCap" x="1280" y="704" name="inst_72D66747" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_blockSCap" x="1088" y="704" name="inst_6B538C26" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

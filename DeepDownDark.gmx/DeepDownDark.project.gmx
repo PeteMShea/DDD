@@ -165,7 +165,7 @@
       <sprite>sprites\spr_SharkTurretNormal</sprite>
       <sprite>sprites\spr_SharkTurretMounting</sprite>
     </sprites>
-    <sprites name="environment">
+    <sprites name="environmentA">
       <sprites name="InteractiveObjects">
         <sprite>sprites\spr_blackbox</sprite>
         <sprite>sprites\spr_blackboxcoll</sprite>
@@ -277,6 +277,7 @@
       <sprite>sprites\spr_spiker</sprite>
       <sprite>sprites\spr_spikermask</sprite>
       <sprite>sprites\spr_spike</sprite>
+      <sprite>sprites\spr_darkyoung</sprite>
     </sprites>
     <sprites name="debug">
       <sprite>sprites\spr_debug</sprite>
@@ -395,6 +396,9 @@
       <sprite>sprites\spr_14MagnetB</sprite>
       <sprite>sprites\spr_15MagnetExtract</sprite>
     </sprites>
+    <sprites name="environmentB">
+      <sprite>sprites\spr_newblockSCap</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\A0Mountains</background>
@@ -426,6 +430,8 @@
     <background>background\A5Sky</background>
     <background>background\A6Sky</background>
     <background>background\A7Sky</background>
+    <background>background\Bmidground</background>
+    <background>background\B1Sky</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -548,7 +554,7 @@
       <object>objects\oLightSourceTurret</object>
       <object>objects\oLightSourceAsteroid</object>
     </objects>
-    <objects name="environment">
+    <objects name="environmentA">
       <objects name="InteractiveObjects">
         <object>objects\obj_blackbox</object>
         <object>objects\obj_goldasteroid</object>
@@ -664,6 +670,7 @@
       <object>objects\obj_spiker</object>
       <object>objects\obj_spikermask</object>
       <object>objects\obj_spike</object>
+      <object>objects\obj_darkyoung</object>
     </objects>
     <objects name="Inventory">
       <object>objects\obj_StatusPanel</object>
@@ -734,6 +741,9 @@
     </objects>
     <object>objects\object_ShaderBegin</object>
     <object>objects\object_ShaderEnd</object>
+    <objects name="environmentB">
+      <object>objects\obj_blockSCap</object>
+    </objects>
   </objects>
   <timelines name="timelines">
     <timelines name="enemies">
@@ -760,6 +770,7 @@
     <room>rooms\room_A7</room>
     <room>rooms\TestBed</room>
     <room>rooms\TestBed2</room>
+    <room>rooms\envBTest</room>
     <room>rooms\TempleRoom</room>
     <room>rooms\room2</room>
     <room>rooms\room13</room>

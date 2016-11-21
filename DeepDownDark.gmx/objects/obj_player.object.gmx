@@ -764,7 +764,7 @@ if !place_free(x + speed_x, y + speed_y)
     {
         obj_name = object_get_name(colcheck.object_index);
         //show_debug_message(obj_name);
-        if obj_name == "obj_asteroid" || obj_name == "obj_goldasteroid" || obj_name == "obj_glassasteroid" || obj_name == "obj_wreck"
+        if obj_name == "obj_asteroid" || obj_name == "obj_goldasteroid" || obj_name == "obj_glassasteroid" || obj_name == "obj_wreck" || obj_name == "obj_grabberasteroid"
     
             {
             var inst;
@@ -1492,6 +1492,40 @@ var i;
             <string>// debug key for disabling player collision
 
 if collisionoff == false collisionoff = true else collisionoff = false;
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="16">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//debug spawn enemy at mouse point when holding SHIFT
+
+if mouse_button == mb_left
+{
+    if !instance_exists(obj_darkyoung)
+        {
+            instance_create(mouse_x, mouse_y, obj_darkyoung)
+        
+        }
+}
 
 
 </string>

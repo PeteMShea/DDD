@@ -25,63 +25,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-speed = maxspeed  * 60 * delta_time /1000000;
+            <string>min_speed = 0.1;
+deceleration = 0.001;
+bouncecount = 0;
+debrisdamage = 0;     //how much damage collision with debris does
+lifespan = random_range(80, 120);
 
+image_speed = 0;
+image_index = irandom_range(0,9);
+image_angle = irandom(360);
+// start moving
 
-if hspeed &gt;= min_speed || hspeed &lt;= -min_speed
-    {
-    
-        hspeed -= (sign(hspeed) * deceleration);
-    
-    }
+direction = random_range(0, 359);
+speed = random_range(0.1, 0.4);
+image_angle = random(360);
 
-else
-    {
-        hspeed = sign(hspeed) * min_speed;
-    }
+homing = false;
+aimx = x;
+aimy = y;
+count = 0;     //how often blocks move inside the grabber
+target = instance_nearest(x, y, obj_grabber);
 
+slowspeed = random_range(2, 5);
 
-if vspeed &gt;= min_speed || vspeed &lt;= -min_speed
-    {
-    
-        vspeed -= (sign(vspeed) * deceleration);
-    
-    }
-    
-else
-    {
-        vspeed = sign(vspeed) * min_speed;
-    }
-
-lifespan -=1;
-    
-if lifespan &lt;= random_range(-10, 0)
-   {
-   
-        instance_destroy();
-    
-    }
-
-    
-if homing == true
-{
-
-    if count &lt;= 0 
-        {
-            count = 30;
-            offsetx = random_range(-12, 12);
-            offsety = random_range(-12, 12);                      
-        }
-    if instance_exists(target)
-        {
-            aimx = target.x + offsetx;
-            aimy = target.y + offsety;
-        }
-    count -= 1;
-    direction = point_direction(x, y, aimx, aimy);
-
-}
 
 
 </string>

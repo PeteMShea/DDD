@@ -61,7 +61,7 @@ global.locdamage_CL = 0;
 global.locdamage_CC = 0;
 global.loading = false;
 global.autopilot = 0;
-global.dirtalpha = 1.0;
+global.dirtalpha = 0.0;
 
 //monsters seen for first time
 global.sporeseen = false;
@@ -129,7 +129,7 @@ global.videocapture = false;
 
 global.sanityenabled = true;       //whether to draw the sanity masks
 
-if global.videocapture == true
+if global.videocapture == false
 {
 window_set_cursor(cr_none);
 cursor_sprite = blackspot;
@@ -142,7 +142,7 @@ window_set_cursor(cr_cross);
 
 
 //uncomment to force load a specific room
-global.nextroom = 2; 
+global.nextroom = 12;       //8
 
 
 

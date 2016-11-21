@@ -522,14 +522,14 @@ if !instance_exists(obj_sanitymeter) instance_create(view_xport[0] + 64, view_yp
     draw_set_halign(fa_left);
     
     
-    
+/*    
     //Now frame counter
     if global.videocapture == false
         {
             draw_set_font(fnt_CapsullaTitle);
             draw_text(healthtextright, 100, "FPS = " + string(fps));
         }
-    
+*/    
     // reset Alpha
 draw_set_alpha(1.0);
 
