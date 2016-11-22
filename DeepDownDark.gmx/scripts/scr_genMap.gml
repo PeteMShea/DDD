@@ -896,7 +896,7 @@ if bigblock[u , v] > 0
                                 oppositecount = clamp(oppositecount, minspike, clampmax)
                                 for (c = 0; c < oppositecount; c +=1)
                                     {
-                                        if block[(7-c)+ u * 12,row + v * 12] == 0 block[(11-c) + u * 12, row + v * 12] = 1     //if block is empty add one
+                                        if block[(11-c)+ u * 12,row + v * 12] == 0 block[(11-c) + u * 12, row + v * 12] = 1     //if block is empty add one
                                         
                                     }
                                          enemyspawn = random(1);

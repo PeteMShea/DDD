@@ -23,10 +23,10 @@ for(i = 0; i < 38; i+=1)
         blocktype[15] = obj_Valley_S;
         blocktype[16] = obj_Valley_E;
         blocktype[17] = obj_Valley_W;
-        blocktype[18] = obj_debug;
-        blocktype[19] = obj_debug;
-        blocktype[20] = obj_debug;
-        blocktype[21] = obj_debug;        
+        blocktype[18] = obj_Trunk_N;
+        blocktype[19] = obj_Trunk_S;
+        blocktype[20] = obj_Trunk_E;
+        blocktype[21] = obj_Trunk_W;        
         blocktype[22] = obj_debug;        
         blocktype[23] = obj_debug;
         blocktype[24] = obj_debug;                       
@@ -662,6 +662,8 @@ if bigblock[u , v] > 0
                 special = 1;
                 block[0 + u * 12, 0 + v * 12] = 1
                 block[1 + u * 12, 0 + v * 12] = 1
+                block[0 + u * 12, 1 + v * 12] = 1
+                block[1 + u * 12, 1 + v * 12] = 1
                 for(i = 3; i < 7; i +=1)
                     {
                         block[i + u * 12, 0 + v * 12] = 98;     //used to prevent any blocks being added in these squares directly in front of player
@@ -669,7 +671,11 @@ if bigblock[u , v] > 0
                 block[8 + u * 12, 0 + v * 12] = 1
                 block[9 + u * 12, 0 + v * 12] = 1
                 block[10 + u * 12, 0 + v * 12] = 1
-                block[11 + u * 12, 0 + v * 12] = 1                             
+                block[11 + u * 12, 0 + v * 12] = 1 
+                block[8 + u * 12, 1 + v * 12] = 1
+                block[9 + u * 12, 1 + v * 12] = 1
+                block[10 + u * 12, 1 + v * 12] = 1
+                block[11 + u * 12, 1 + v * 12] = 1                                             
             }
         if v == 7 && u == endhuge                //special routine to add blocks in end square along south edge
         {
@@ -680,7 +686,13 @@ if bigblock[u , v] > 0
                 block[8 + u * 12, 11 + v * 12] = 1
                 block[9 + u * 12, 11 + v * 12] = 1
                 block[10 + u * 12, 11 + v * 12] = 1
-                block[11 + u * 12, 11 + v * 12] = 1             
+                block[11 + u * 12, 11 + v * 12] = 1
+                block[0 + u * 12, 10 + v * 12] = 1
+                block[1 + u * 12, 10 + v * 12] = 1
+                block[8 + u * 12, 10 + v * 12] = 1
+                block[9 + u * 12, 10 + v * 12] = 1
+                block[10 + u * 12, 10 + v * 12] = 1
+                block[11 + u * 12, 10 + v * 12] = 1                               
         }
         
         // check for unsurrounded huge blocks to add potential wreckages
@@ -772,8 +784,10 @@ if bigblock[u , v] > 0
                         for (column = 0; column < 12; column +=1)           //iterate through each column from north edge down
                             {
                                 if column <= 1 || column >= 11 clampmax = maxspike else clampmax = maxspike + 3 
-                                count = count + irandom_range(-1, 1)
-                                count = clamp(count, minspike, clampmax)
+                                count = count + irandom_range(-1, 1);
+                                minadd = 0;
+                                if v == 0 minadd = 1;
+                                count = clamp(count, minspike + minadd, clampmax)
                                 for (c = 0; c < count; c +=1)
                                     {
                                         if block[column + u * 12,c + v * 12] == 0 block[column + u * 12, c + v * 12] = 1     //if block is empty add one
@@ -796,8 +810,10 @@ if bigblock[u , v] > 0
                         for (column = 0; column < 12; column +=1)           //iterate through each column from south edge up
                             {
                                 if column <= 1 || column >= 11 clampmax = maxspike else clampmax = maxspike + 3                               
-                                count = count + irandom_range(-1, 1)
-                                count = clamp(count, minspike, maxspike+3)
+                                count = count + irandom_range(-1, 1);
+                                minadd = 0;
+                                if v == 7 minadd = 1;
+                                count = clamp(count, minspike + minadd, maxspike+3)
                                 for (c = 0; c < count; c +=1)
                                     {
                                         if block[column + u * 12,(11-c) + v * 12] == 0 block[column + u * 12, (11-c) + v * 12] = 1     //if block is empty add one
@@ -819,8 +835,10 @@ if bigblock[u , v] > 0
                         for (row = 0; row < 12; row +=1)           //iterate through each row
                             {
                                 if row <= 1 || row >= 11 clampmax = maxspike else clampmax = maxspike + 3    
-                                count = count + irandom_range(-1, 1)
-                                count = clamp(count, minspike, clampmax)
+                                count = count + irandom_range(-1, 1);
+                                minadd = 0;
+                                if u == 7 minadd = 1;
+                                count = clamp(count, minspike + minadd, clampmax)
                                 for (c = 0; c < count; c +=1)
                                     {
                                         if block[(11-c)+ u * 12,row + v * 12] == 0 block[(11-c) + u * 12, row + v * 12] = 1     //if block is empty add one
@@ -843,8 +861,10 @@ if bigblock[u , v] > 0
                         for (row = 0; row < 12; row +=1)           //iterate through each row
                             {
                                 if row <= 1 || row >= 11 clampmax = maxspike else clampmax = maxspike + 3   
-                                count = count + irandom_range(-1, 1)
-                                count = clamp(count, minspike, clampmax)
+                                count = count + irandom_range(-1, 1);
+                                minadd = 0;
+                                if u == 0 minadd = 1;
+                                count = clamp(count, minspike + minadd, clampmax);
                                 for (c = 0; c < count; c +=1)
                                     {
                                         if block[c+ u * 12,row + v * 12] == 0 block[c + u * 12, row + v * 12] = 1     //if block is empty add one
@@ -870,7 +890,9 @@ if bigblock[u , v] > 0
 
                                 count = count + irandom_range(-1, 2)
                                 if column <= 1 || column >= 10 clampmax = 2
-                                count = clamp(count, minspike, clampmax)
+                                minadd = 0;
+                                if v == 0 minadd = 1;
+                                count = clamp(count, minspike + minadd, clampmax)
                                 for (c = 0; c < count; c +=1)
                                     {
                                         if block[column + u * 12,c + v * 12] == 0 block[column + u * 12, c + v * 12] = 1     //if block is empty add one
@@ -894,7 +916,9 @@ if bigblock[u , v] > 0
                                 clampmax = (12 - count - mingap)
                                 oppositecount = oppositecount + irandom_range(-1, 2)
                                 if column <= 1 || column >= 10 clampmax = 2
-                                oppositecount = clamp(oppositecount, minspike, clampmax)
+                                minadd = 0;
+                                if v == 7 minadd = 1;
+                                oppositecount = clamp(oppositecount, minspike + minadd, clampmax)
                                 for (c = 0; c < oppositecount; c +=1)
                                     {
                                         if block[column + u * 12,(11-c) + v * 12] == 0 block[column + u * 12, (11-c) + v * 12] = 1     //if block is empty add one
@@ -921,6 +945,8 @@ if bigblock[u , v] > 0
 
                                 count = count + irandom_range(-1, 2)
                                 if row <= 1 || row >= 10 clampmax = 2
+                                minadd = 0;
+                                if u == 0 minadd = 1;
                                 count = clamp(count, minspike, clampmax)
                                 for (c = 0; c < count; c +=1)
                                     {
@@ -943,10 +969,12 @@ if bigblock[u , v] > 0
                                 clampmax = (12 - count - mingap)
                                 oppositecount = oppositecount + irandom_range(-1, 2)
                                 if row <= 1 || row >= 10 clampmax = 2
-                                oppositecount = clamp(oppositecount, minspike, clampmax)
+                                minadd = 0;
+                                if u == 7 minadd = 1;
+                                oppositecount = clamp(oppositecount, minspike + minadd, clampmax)
                                 for (c = 0; c < oppositecount; c +=1)
                                     {
-                                        if block[(7-c)+ u * 12,row + v * 12] == 0 block[(11-c) + u * 12, row + v * 12] = 1     //if block is empty add one
+                                        if block[(11-c)+ u * 12,row + v * 12] == 0 block[(11-c) + u * 12, row + v * 12] = 1     //if block is empty add one
                                         
                                     }
                                          enemyspawn = random(1);
@@ -970,7 +998,8 @@ if bigblock[u , v] > 0
                                 count = clamp(count, minspike+1, clampmax)
                                 clampmax +=1
                                 if clampmax >=12 clampmax =11
-                                if column = 0 count = 12                                
+                                if u == 0 && column == 1 count = 12
+                                if column == 0 count = 12                                
                                 for (c = 0; c < count; c +=1)
                                     {
                                         if block[column + u * 12,c + v * 12] == 0 block[column + u * 12, c + v * 12] = 1     //if block is empty add one
@@ -993,6 +1022,7 @@ if bigblock[u , v] > 0
                                 count = clamp(count, minspike +1, clampmax)
                                 clampmax +=1
                                 if clampmax >=12 clampmax =11
+                                if u == 7 && column == 10 count = 12
                                 if column = 11 count = 12                                 
                                 for (c = 0; c < count; c +=1)
                                     {
@@ -1014,7 +1044,8 @@ if bigblock[u , v] > 0
                                 count = clamp(count, minspike +1, clampmax)
                                 clampmax +=1
                                 if clampmax >=12 clampmax =11
-                                if column = 0 count = 12 
+                                if u == 0 && column == 1 count = 12
+                                if column == 0 count = 12 
                                 for (c = 0; c < count; c +=1)
                                     {
                                         if block[column + u * 12,(11-c) + v * 12] == 0 block[column + u * 12, (11-c) + v * 12] = 1     //if block is empty add one
@@ -1036,7 +1067,8 @@ if bigblock[u , v] > 0
                                 count = clamp(count, minspike +1, clampmax)
                                 clampmax +=1
                                 if clampmax >=12 clampmax =11
-                                if column = 11 count = 12 
+                                if u == 7 && column == 10 count = 12
+                                if column == 11 count = 12 
                                 for (c = 0; c < count; c +=1)
                                     {
                                         if block[column + u * 12,(11-c) + v * 12] == 0 block[column + u * 12, (11-c) + v * 12] = 1     //if block is empty add one
@@ -1057,7 +1089,9 @@ if bigblock[u , v] > 0
                                 count = count + irandom_range(-1, 1)
                                 count = clamp(count, minspike, clampmax)
                                 oldcount = count
-                                if row <= 0 || row >= 11 count = 11 else count = oldcount   
+                                if row <= 0 || row >= 11 count = 12 else count = oldcount
+                                if v == 0 && row == 1 count = 12
+                                if v == 7 && row == 10 count = 12   
                                 for (c = 0; c < count; c +=1)
                                     {
                                         if block[(11-c)+ u * 12,row + v * 12] == 0 block[(11-c) + u * 12, row + v * 12] = 1     //if block is empty add one
@@ -1078,7 +1112,9 @@ if bigblock[u , v] > 0
                                 count = count + irandom_range(-1, 1)
                                 count = clamp(count, minspike, clampmax)
                                 oldcount = count
-                                if column <= 0 || column >= 11 count = 11 else count = oldcount                                   
+                                if column <= 0 || column >= 11 count = 11 else count = oldcount
+                                if u == 0 && column == 1 count = 12
+                                if u == 7 && column == 10 count = 12                                    
                                 for (c = 0; c < count; c +=1)
                                     {
                                         if block[column + u * 12,c + v * 12] == 0 block[column + u * 12, c + v * 12] = 1     //if block is empty add one
@@ -1099,7 +1135,9 @@ if bigblock[u , v] > 0
                                 count = count + irandom_range(-1, 1)
                                 count = clamp(count, minspike, clampmax)
                                 oldcount = count
-                                if column <= 0 || column >= 11 count = 11 else count = oldcount                                   
+                                if column <= 0 || column >= 11 count = 12 else count = oldcount
+                                if u == 0 && column == 1 count = 12
+                                if u == 7 && column == 10 count = 12                                    
                                 for (c = 0; c < count; c +=1)
                                     {
                                         if block[column + u * 12,(11-c) + v * 12] == 0 block[column + u * 12, (11-c) + v * 12] = 1     //if block is empty add one
@@ -1122,7 +1160,9 @@ if bigblock[u , v] > 0
                                 count = count + irandom_range(-1, 1)
                                 count = clamp(count, minspike, clampmax)
                                 oldcount = count
-                                if row <= 0 || row >= 11 count = 11 else count = oldcount   
+                                if row <= 0 || row >= 11 count = 12 else count = oldcount
+                                if v == 0 && row = 1 count = 12
+                                if v == 7 && row == 10 count = 12    
                                 for (c = 0; c < count; c +=1)
                                     {
                                         if block[c+ u * 12,row + v * 12] == 0 block[c + u * 12, row + v * 12] = 1     //if block is empty add one
@@ -1403,22 +1443,26 @@ if v > 95
 
                 var value = blocknear[u, v];
                 
-                if value == 111111 block[u,v] = 2;
-                else if value == 111111000 block[u,v] = 3;
-                else if value == 110110110 block[u,v] = 4;
-                else if value == 11011011 block[u,v] = 5;
+                if value == 111111 || value == 100111111 || value == 1111111 || value == 111010 || value == 111110 || value == 100111110 || value == 1111011 block[u,v] = 2;
+                else if value == 111111000 || value == 111111100 || value == 111111001 || value == 10111000 || value == 110111000 || value == 110111100 block[u,v] = 3;
+                else if value == 110110110 || value == 111110110 || value == 110110111 || value == 10110110 || value == 110110010 || value == 10110111 || value == 111110010 block[u,v] = 4;
+                else if value == 11011011 || value == 111011011 || value == 11011111 || value == 10011111 || value == 10011010 || value == 111011010 || value == 10011011 block[u,v] = 5;
                 else if value == 100110111 || value == 100110110 || value == 110111 || value == 110110 block[u,v] = 6;
                 else if value == 1011111 || value == 1011011 || value == 11111 || value == 11011 block[u,v] = 7;
-                else if value == 111110100 || value == 11011100 || value == 111110000 || value == 11011000 block[u,v] = 8;
+                else if value == 111110100 || value == 110110000 || value == 111110000 || value == 110110000 || value == 110110100 block[u,v] = 8;
                 else if value == 111011001 || value == 111011000 || value == 11011001 || value == 11011000 block[u,v] = 9;
                 else if value == 10010 || value == 10111 || value == 10110 || value == 10011 block[u,v] = 10;
-                else if value == 111010000 || value == 10010000 || value == 11010000 || value == 10010000 block[u,v] = 11;
-                else if value == 10011000 || value == 110000 || value == 110100 || value == 100110100 block[u,v] = 12;
-                else if value == 1011001 || value == 11001 || value == 1011000 || value == 1011000 block[u,v] = 13;
+                else if value == 111010000 || value == 10010000 || value == 11010000 || value == 10010000 || value == 1001000 || value == 110010000 block[u,v] = 11;
+                else if value == 10011000 || value == 110000 || value == 110100 || value == 100110100 || value == 100110000 block[u,v] = 12;
+                else if value == 1011001 || value == 11001 || value == 1011000 || value == 1011000 || value == 11000 block[u,v] = 13;
                 else if value == 101111111 block[u,v] = 14;
                 else if value == 111111101 block[u,v] = 15;
                 else if value == 111110111 block[u,v] = 16;
                 else if value == 111011111 block[u,v] = 17;
+                else if value == 10010111 || value == 10010010 || value == 10010110 || value == 10010011 block[u,v] = 18;
+                else if value == 111010010 || value == 11010010 || value == 110010010 || value == 10010010 block[u,v] = 19;
+                else if value == 100111100 || value == 111000 || value == 111100 || value == 100111000 block[u,v] = 20;
+                else if value == 1111001 || value == 1111000 || value == 111001 block[u,v] = 21;
 
 //Now create the block with correct type unless inside a solid huge block
 hu = floor(u / 12);
