@@ -59,6 +59,9 @@ mingap = 4;       //how big a gap there will always be between N/S and E/W corri
 spikyness = 1;      // how much wee blocks jut in from edges to empty space- minimum number of wee blocks + 1  /1
 minweespike = 1;
 maxweespike = 3;        //cannot be higher than 4!
+halfchance = 0.5;       //chance of half flats being used (higher number for smoother less bumpy world);
+
+
 
 // spikers
 spikerdensitymin = 0.0;        //chance of spiker are at start of level 0.03
@@ -138,7 +141,7 @@ global.startroom = false;
 //sfx
 chitterfxchance = 0.15;        //chance of a chitter emitter being added to a hugeblock
 
-script_execute(scr_genMap_B, basechance, spacechance, newbigblockvalue, spikyness, gridsize, maxgold, goldspread, bordersize, minspike, maxspike, mingap, chitterfxchance);
+script_execute(scr_genMap_B, basechance, spacechance, newbigblockvalue, spikyness, gridsize, maxgold, goldspread, bordersize, minspike, maxspike, mingap, chitterfxchance, halfchance);
 
 global.loading = false;
 

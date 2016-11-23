@@ -27,18 +27,18 @@ for(i = 0; i < 38; i+=1)
         blocktype[19] = obj_Trunk_S;
         blocktype[20] = obj_Trunk_E;
         blocktype[21] = obj_Trunk_W;        
-        blocktype[22] = obj_debug;        
-        blocktype[23] = obj_debug;
-        blocktype[24] = obj_debug;                       
-        blocktype[25] = obj_debug;
-        blocktype[26] = obj_debug;                 
-        blocktype[27] = obj_debug;   
-        blocktype[28] = obj_debug;   
-        blocktype[29] = obj_debug;                           
-        blocktype[30] = obj_debug;   
-        blocktype[31] = obj_debug;  
-        blocktype[32] = obj_debug;                  
-        blocktype[33] = obj_debug;          
+        blocktype[22] = obj_FallsHalf_N;        
+        blocktype[23] = obj_FallsHalf_S;
+        blocktype[24] = obj_FallsHalf_E;                       
+        blocktype[25] = obj_FallsHalf_W;
+        blocktype[26] = obj_Half_N;                 
+        blocktype[27] = obj_Half_S;   
+        blocktype[28] = obj_Half_E;   
+        blocktype[29] = obj_Half_W;                           
+        blocktype[30] = obj_HalfRises_N;   
+        blocktype[31] = obj_HalfRises_S;  
+        blocktype[32] = obj_HalfRises_E;                  
+        blocktype[33] = obj_HalfRises_W;          
         blocktype[34] = obj_debug;          
         blocktype[35] = obj_debug; 
         blocktype[36] = obj_debug;         
@@ -434,7 +434,7 @@ for (u = 1; u < 95; u +=1)
         }
 }
 
-//Now iterate through all blocks for a third time and create blocks based upon the blocknear array values
+//Now iterate through all blocks for a third time and assign blocks based upon the blocknear array values
 for (u = 0; u < 96; u +=1)
 {
     for (v = 0; v < 96; v +=1)
@@ -445,6 +445,24 @@ for (u = 0; u < 96; u +=1)
             }
         }
 }
+
+//Now iterate through all blocks for a fourth time and add detail blocks as well as create the instances
+for (u = 0; u < 96; u +=1)
+{
+    for (v = 0; v < 96; v +=1)
+        {
+            if block[u, v] > 0
+            {
+                script_execute(scr_BlocksDetail_B, u, v, block[u, v], blocknear[u, v], blocktype[], halfchance);            
+            }
+        }
+}
+
+
+
+
+
+
 
 show_debug_message("Block instances now created");
 
@@ -1464,6 +1482,123 @@ if v > 95
                 else if value == 100111100 || value == 111000 || value == 111100 || value == 100111000 block[u,v] = 20;
                 else if value == 1111001 || value == 1111000 || value == 111001 block[u,v] = 21;
 
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#define scr_BlocksDetail_B
+//iterate through block array one more time adjusting tiles to add details & variation
+
+
+//Half Flats
+if block[u, v] == 2 && block[u+1, v] == 2 && random(1) < halfchance       //at least two adjacent facing flats- North
+{
+    block[u, v] = 22;       //falls to half
+    loop = true;
+    position = u+1;
+    maxrun = irandom_range(2, 7);       //randomise how many half pieces in a row to allow
+    count = 2;
+    while(loop == true)
+    {
+            if block[position+1, v] != 2 || count >= maxrun
+                {
+                    block[position, v] = 30;        //half rises
+                    loop = false;                 
+                }
+            else
+                {
+                    block[position, v] = 26;        //half half
+                    position += 1;
+                    count += 1;                   
+                }
+    }
+}
+
+if block[u, v] == 3 && block[u+1, v] == 3 && random(1) < halfchance       //at least two adjacent facing flats- South
+{
+    block[u, v] = 23;       //falls to half
+    loop = true;
+    position = u+1;
+    maxrun = irandom_range(2, 7);       //randomise how many half pieces in a row to allow
+    count = 2;
+    while(loop == true)
+    {
+            if block[position+1, v] != 3 || count >= maxrun
+                {
+                    block[position, v] = 31;        //half rises
+                    loop = false;                 
+                }
+            else
+                {
+                    block[position, v] = 27;        //half half
+                    position += 1;
+                    count += 1;                   
+                }
+    }
+}
+
+if block[u, v] == 4 && block[u, v+1] == 4 && random(1) < halfchance       //at least two adjacent facing flats- East
+{
+    block[u, v] = 24;       //falls to half
+    loop = true;
+    position = v+1;
+    maxrun = irandom_range(2, 7);       //randomise how many half pieces in a row to allow
+    count = 2;
+    while(loop == true)
+    {
+            if block[u, position+1] != 4 || count >= maxrun
+                {
+                    block[u, position] = 32;        //half rises
+                    loop = false;                 
+                }
+            else
+                {
+                    block[u, position] = 28;        //half half
+                    position += 1;
+                    count += 1;                   
+                }
+    }
+}
+
+if block[u, v] == 5 && block[u, v+1] == 5 && random(1) < halfchance       //at least two adjacent facing flats- West
+{
+    block[u, v] = 25;       //falls to half
+    loop = true;
+    position = v+1;
+    maxrun = irandom_range(2, 7);       //randomise how many half pieces in a row to allow
+    count = 2;
+    while(loop == true)
+    {
+            if block[u, position+1] != 5 || count >= maxrun
+                {
+                    block[u, position] = 33;        //half rises
+                    loop = false;                 
+                }
+            else
+                {
+                    block[u, position] = 29;        //half half
+                    position += 1;
+                    count += 1;                   
+                }
+    }
+}
+
+
+
+
+//---------------------------------------------------------------------
+                
 //Now create the block with correct type unless inside a solid huge block
 hu = floor(u / 12);
 hv = floor(v / 12);
@@ -1471,25 +1606,13 @@ hv = floor(v / 12);
 if bigblock[hu, hv] > 0
 {
     var type = block[u,v];
-    if type < 38 
+    if type < 38    //98 is used to keep start and end squares free
         {
             var object = blocktype[type];
             //show_debug_message("type = " + string(type) + " , Object: " + string(object));            
-            instance_create(128 + u * 64, 128 + v * 64, object);      //98 is used to keep start and end squares free
+            instance_create(128 + u * 64, 128 + v * 64, object);      
         }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 #define script46
 // iterate through all the blocks in this big block square and calculate neigbour values for them
