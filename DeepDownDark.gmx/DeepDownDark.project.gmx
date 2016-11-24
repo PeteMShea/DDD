@@ -397,8 +397,11 @@
       <sprite>sprites\spr_15MagnetExtract</sprite>
     </sprites>
     <sprites name="environmentB">
+      <sprite>sprites\spr_Solid</sprite>
+      <sprite>sprites\spr_Solid128</sprite>
       <sprite>sprites\spr_newblockSCap</sprite>
       <sprite>sprites\spr_Diagonal_NW</sprite>
+      <sprite>sprites\spr_Diagonal_NE</sprite>
       <sprite>sprites\spr_Diagonal_SE</sprite>
       <sprite>sprites\spr_Diagonal_SW</sprite>
       <sprite>sprites\spr_FallsHalf_E</sprite>
@@ -421,14 +424,13 @@
       <sprite>sprites\spr_NarrowCap_N</sprite>
       <sprite>sprites\spr_NarrowCap_S</sprite>
       <sprite>sprites\spr_NarrowCap_W</sprite>
-      <sprite>sprites\spr_Solid</sprite>
-      <sprite>sprites\spr_Trunk_E</sprite>
       <sprite>sprites\spr_Trunk_N</sprite>
       <sprite>sprites\spr_Trunk_S</sprite>
+      <sprite>sprites\spr_Trunk_E</sprite>
       <sprite>sprites\spr_Trunk_W</sprite>
-      <sprite>sprites\spr_TrunkNarrows_E</sprite>
       <sprite>sprites\spr_TrunkNarrows_N</sprite>
       <sprite>sprites\spr_TrunkNarrows_S</sprite>
+      <sprite>sprites\spr_TrunkNarrows_E</sprite>
       <sprite>sprites\spr_TrunkNarrows_W</sprite>
       <sprite>sprites\spr_Valley_E</sprite>
       <sprite>sprites\spr_Valley_N</sprite>
@@ -438,7 +440,8 @@
       <sprite>sprites\spr_Cap_N</sprite>
       <sprite>sprites\spr_Cap_S</sprite>
       <sprite>sprites\spr_Cap_W</sprite>
-      <sprite>sprites\spr_Diagonal_NE</sprite>
+      <sprite>sprites\spr_HugeBlockTemp_</sprite>
+      <sprite>sprites\spr_BorderBlockTemp</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -566,6 +569,53 @@
       <object>objects\obj_exittrigger</object>
       <object>objects\obj_loadingscreen</object>
       <object>objects\obj_drawblocks</object>
+    </objects>
+    <objects name="environmentB">
+      <object>objects\obj_blockSCap</object>
+      <object>objects\obj_Solid</object>
+      <object>objects\obj_Solid128</object>
+      <object>objects\obj_Cap_N</object>
+      <object>objects\obj_Cap_S</object>
+      <object>objects\obj_Cap_E</object>
+      <object>objects\obj_Cap_W</object>
+      <object>objects\obj_Diagonal_NE</object>
+      <object>objects\obj_Diagonal_NW</object>
+      <object>objects\obj_Diagonal_SE</object>
+      <object>objects\obj_Diagonal_SW</object>
+      <object>objects\obj_FallsHalf_N</object>
+      <object>objects\obj_FallsHalf_S</object>
+      <object>objects\obj_FallsHalf_E</object>
+      <object>objects\obj_FallsHalf_W</object>
+      <object>objects\obj_Flat_N</object>
+      <object>objects\obj_Flat_S</object>
+      <object>objects\obj_Flat_E</object>
+      <object>objects\obj_Flat_W</object>
+      <object>objects\obj_Half_N</object>
+      <object>objects\obj_Half_S</object>
+      <object>objects\obj_Half_E</object>
+      <object>objects\obj_Half_W</object>
+      <object>objects\obj_HalfRises_N</object>
+      <object>objects\obj_HalfRises_S</object>
+      <object>objects\obj_HalfRises_E</object>
+      <object>objects\obj_HalfRises_W</object>
+      <object>objects\obj_NarrowCap_N</object>
+      <object>objects\obj_NarrowCap_S</object>
+      <object>objects\obj_NarrowCap_E</object>
+      <object>objects\obj_NarrowCap_W</object>
+      <object>objects\obj_Trunk_N</object>
+      <object>objects\obj_Trunk_S</object>
+      <object>objects\obj_Trunk_E</object>
+      <object>objects\obj_Trunk_W</object>
+      <object>objects\obj_TrunkNarrows_N</object>
+      <object>objects\obj_TrunkNarrows_S</object>
+      <object>objects\obj_TrunkNarrows_E</object>
+      <object>objects\obj_TrunkNarrows_W</object>
+      <object>objects\obj_Valley_N</object>
+      <object>objects\obj_Valley_S</object>
+      <object>objects\obj_Valley_E</object>
+      <object>objects\obj_Valley_W</object>
+      <object>objects\obj_HugeBlockTemp</object>
+      <object>objects\obj_BorderBlockTemp</object>
     </objects>
     <objects name="player">
       <object>objects\obj_player</object>
@@ -784,50 +834,6 @@
     </objects>
     <object>objects\object_ShaderBegin</object>
     <object>objects\object_ShaderEnd</object>
-    <objects name="environmentB">
-      <object>objects\obj_blockSCap</object>
-      <object>objects\obj_Cap_N</object>
-      <object>objects\obj_Cap_S</object>
-      <object>objects\obj_Cap_E</object>
-      <object>objects\obj_Cap_W</object>
-      <object>objects\obj_Diagonal_NE</object>
-      <object>objects\obj_Diagonal_NW</object>
-      <object>objects\obj_Diagonal_SE</object>
-      <object>objects\obj_Diagonal_SW</object>
-      <object>objects\obj_FallsHalf_N</object>
-      <object>objects\obj_FallsHalf_S</object>
-      <object>objects\obj_FallsHalf_E</object>
-      <object>objects\obj_FallsHalf_W</object>
-      <object>objects\obj_Flat_N</object>
-      <object>objects\obj_Flat_S</object>
-      <object>objects\obj_Flat_E</object>
-      <object>objects\obj_Flat_W</object>
-      <object>objects\obj_Half_N</object>
-      <object>objects\obj_Half_S</object>
-      <object>objects\obj_Half_E</object>
-      <object>objects\obj_Half_W</object>
-      <object>objects\obj_HalfRises_N</object>
-      <object>objects\obj_HalfRises_S</object>
-      <object>objects\obj_HalfRises_E</object>
-      <object>objects\obj_HalfRises_W</object>
-      <object>objects\obj_NarrowCap_N</object>
-      <object>objects\obj_NarrowCap_S</object>
-      <object>objects\obj_NarrowCap_E</object>
-      <object>objects\obj_NarrowCap_W</object>
-      <object>objects\obj_Solid</object>
-      <object>objects\obj_Trunk_N</object>
-      <object>objects\obj_Trunk_S</object>
-      <object>objects\obj_Trunk_E</object>
-      <object>objects\obj_Trunk_W</object>
-      <object>objects\obj_TrunkNarrows_N</object>
-      <object>objects\obj_TrunkNarrows_S</object>
-      <object>objects\obj_TrunkNarrows_E</object>
-      <object>objects\obj_TrunkNarrows_W</object>
-      <object>objects\obj_Valley_N</object>
-      <object>objects\obj_Valley_S</object>
-      <object>objects\obj_Valley_E</object>
-      <object>objects\obj_Valley_W</object>
-    </objects>
   </objects>
   <timelines name="timelines">
     <timelines name="enemies">

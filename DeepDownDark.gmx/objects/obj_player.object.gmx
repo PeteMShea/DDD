@@ -465,7 +465,7 @@ if moveinput == 1 ||  fireinput == 1
                         
                 if turning == 1    
                     {
-                        rotcolcheck = collision_line(x + lengthdir_x(78, image_angle + 140), y + lengthdir_y(78, image_angle + 140), x + lengthdir_x(58, image_angle + 115), y + lengthdir_y(58, image_angle + 115), obj_block, false, true);
+                        rotcolcheck = collision_line(x + lengthdir_x(78, image_angle + 140), y + lengthdir_y(78, image_angle + 140), x + lengthdir_x(58, image_angle + 115), y + lengthdir_y(58, image_angle + 115), obj_block, true, true);
                         if rotcolcheck == noone rotcolcheck = collision_line(x + lengthdir_x(78, image_angle + 140), y + lengthdir_y(78, image_angle + 140), x + lengthdir_x(58, image_angle + 115), y + lengthdir_y(58, image_angle + 115), obj_asteroid, true, true);
                         if rotcolcheck == noone
                             {                       
@@ -480,7 +480,7 @@ if moveinput == 1 ||  fireinput == 1
                     
                 if turning == 2    
                     {                                    
-                        rotcolcheck = collision_line(x + lengthdir_x(78, image_angle + 220), y + lengthdir_y(78, image_angle + 220), x + lengthdir_x(58, image_angle + 245), y + lengthdir_y(58, image_angle + 245), obj_block, false, true);
+                        rotcolcheck = collision_line(x + lengthdir_x(78, image_angle + 220), y + lengthdir_y(78, image_angle + 220), x + lengthdir_x(58, image_angle + 245), y + lengthdir_y(58, image_angle + 245), obj_block, true, true);
                         if rotcolcheck == noone rotcolcheck = collision_line(x + lengthdir_x(78, image_angle + 220), y + lengthdir_y(78, image_angle + 220), x + lengthdir_x(58, image_angle + 245), y + lengthdir_y(58, image_angle + 245), obj_asteroid, true, true);
                         if rotcolcheck == noone
                             {
@@ -543,7 +543,7 @@ else if moveinput == 2
                     {
                         turning = 1;  
                         turn_angle = angle_joy;
-                        rotcolcheck = collision_line(x + lengthdir_x(78, image_angle + 140), y + lengthdir_y(78, image_angle + 140), x + lengthdir_x(58, image_angle + 115), y + lengthdir_y(58, image_angle + 115), obj_block, false, true);
+                        rotcolcheck = collision_line(x + lengthdir_x(78, image_angle + 140), y + lengthdir_y(78, image_angle + 140), x + lengthdir_x(58, image_angle + 115), y + lengthdir_y(58, image_angle + 115), obj_block, true, true);
                         if rotcolcheck == noone rotcolcheck = collision_line(x + lengthdir_x(78, image_angle + 140), y + lengthdir_y(78, image_angle + 140), x + lengthdir_x(58, image_angle + 115), y + lengthdir_y(58, image_angle + 115), obj_asteroid, true, true);
                         if rotcolcheck == noone
                             {                       
@@ -559,7 +559,7 @@ else if moveinput == 2
                     {
                         turning = 2;
                         turn_angle = angle_joy;
-                        rotcolcheck = collision_line(x + lengthdir_x(33 * global.RM, image_angle + 225), y + lengthdir_y(33 * global.RM, image_angle + 225), x + lengthdir_x(24 * global.RM, image_angle + 255), y + lengthdir_y(24 * global.RM, image_angle + 255), obj_block, false, true);
+                        rotcolcheck = collision_line(x + lengthdir_x(33 * global.RM, image_angle + 225), y + lengthdir_y(33 * global.RM, image_angle + 225), x + lengthdir_x(24 * global.RM, image_angle + 255), y + lengthdir_y(24 * global.RM, image_angle + 255), obj_block, true, true);
                         if rotcolcheck == noone rotcolcheck = collision_line(x + lengthdir_x(33 * global.RM, image_angle + 225), y + lengthdir_y(33 * global.RM, image_angle + 225), x + lengthdir_x(24 * global.RM, image_angle + 255), y + lengthdir_y(24 * global.RM, image_angle + 255), obj_asteroid, true, true);
                         if rotcolcheck == noone
                             {

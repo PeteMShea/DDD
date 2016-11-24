@@ -47,10 +47,10 @@ goldspread = 20;     // how spread out or clumped gold is-  lower numbers for mo
 goldthreshold = 0.7;       //how far down weeblock columns before gold can be placed (1 = never)
 vinechance = 0.01;      //chance of vines being added- overall amount of greenery
 vinethreshold = 0.75;       //how far down weeblock columns before vines can be placed (1 = never)
-asteroidchance = 0.05;       //chance of asteroids being added
-goldasteroidchance = 0.05;   //chance of gold asteroid being added 0.1
-goldnuggetchance = 0.05;     //chance of gold nugget being added
-glassasteroidchance = 0.01;     //chance of indestructible asteroid
+asteroidchance = 0.0;       //chance of asteroids being added
+goldasteroidchance = 0.0;   //chance of gold asteroid being added 0.1
+goldnuggetchance = 0.0;     //chance of gold nugget being added
+glassasteroidchance = 0.0;     //chance of indestructible asteroid
 
 
 minspike = 1;       //minimum number of normal blocks to add to each edge- should always be at least 1
@@ -59,7 +59,9 @@ mingap = 4;       //how big a gap there will always be between N/S and E/W corri
 spikyness = 1;      // how much wee blocks jut in from edges to empty space- minimum number of wee blocks + 1  /1
 minweespike = 1;
 maxweespike = 3;        //cannot be higher than 4!
-halfchance = 0.5;       //chance of half flats being used (higher number for smoother less bumpy world);
+halfchance = 0.1;       //chance of half flats being used (higher number for smoother less bumpy world);
+narrowtrunkchance = 0.5;        //chance of trunks narrowing to thinner spikes
+bigsolidchance = 0.2;       //chance of replacing 2x2 solid tiles with 1 128x128 one
 
 
 
@@ -141,7 +143,7 @@ global.startroom = false;
 //sfx
 chitterfxchance = 0.15;        //chance of a chitter emitter being added to a hugeblock
 
-script_execute(scr_genMap_B, basechance, spacechance, newbigblockvalue, spikyness, gridsize, maxgold, goldspread, bordersize, minspike, maxspike, mingap, chitterfxchance, halfchance);
+script_execute(scr_genMap_B, basechance, spacechance, newbigblockvalue, spikyness, gridsize, maxgold, goldspread, bordersize, minspike, maxspike, mingap, chitterfxchance, halfchance, bigsolidchance);
 
 global.loading = false;
 

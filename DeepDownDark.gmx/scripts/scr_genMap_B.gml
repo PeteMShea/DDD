@@ -1,6 +1,6 @@
 #define scr_genMap_B
 // set up an array for block types
-for(i = 0; i < 38; i+=1)
+for(i = 0; i < 42; i+=1)
 {
     blocktype[i] = 0;
 }
@@ -39,11 +39,14 @@ for(i = 0; i < 38; i+=1)
         blocktype[31] = obj_HalfRises_S;  
         blocktype[32] = obj_HalfRises_E;                  
         blocktype[33] = obj_HalfRises_W;          
-        blocktype[34] = obj_debug;          
-        blocktype[35] = obj_debug; 
-        blocktype[36] = obj_debug;         
-        blocktype[37] = obj_debug;         
-                
+        blocktype[34] = obj_NarrowCap_N;          
+        blocktype[35] = obj_NarrowCap_S; 
+        blocktype[36] = obj_NarrowCap_E;         
+        blocktype[37] = obj_NarrowCap_W;         
+        blocktype[38] = obj_TrunkNarrows_N;          
+        blocktype[39] = obj_TrunkNarrows_S; 
+        blocktype[40] = obj_TrunkNarrows_E;         
+        blocktype[41] = obj_TrunkNarrows_W;                 
                 
 // Initialise 8 x 8 Array- all set to 0 (place block)
 
@@ -308,17 +311,17 @@ for (u = 0; u < gridsize; u +=1)
                     //tile_add(tileset_hugeblocks, leftx, topy, width, height, u * 384 * global.RM +64 * global.RM , v * 384 * global.RM +64 * global.RM, 10);                                                         
                    // show_debug_message("u: " + string(u) + " ,v: "+ string(v) + " ,blockindex = " + string(blockindex));
                                                   
-                    inst = instance_create( u * 384 * global.RM +64 * global.RM , v * 384 * global.RM +64 * global.RM , obj_hugeblock)
+                    inst = instance_create( u * 384 * global.RM +64 * global.RM , v * 384 * global.RM +64 * global.RM , obj_HugeBlockTemp)
                     with (inst)
                         {
-                            if random(1) < 0.5
+                            if random(1) < 0.0          // *********************** Revert to 0.5 or 1 once hugeblock corners created *******************************************************
                                 {
                                     image_index = other.blockindex;
                                     
                                 }
                             else
                                 {
-                                    image_index = 15;                                                                    
+                                    image_index = 0;                                                                    
                                 }
                         //show_debug_message("blockindex = " + string(other.blockindex));   
                         }
@@ -453,7 +456,7 @@ for (u = 0; u < 96; u +=1)
         {
             if block[u, v] > 0
             {
-                script_execute(scr_BlocksDetail_B, u, v, block[u, v], blocknear[u, v], blocktype[], halfchance);            
+                script_execute(scr_BlocksDetail_B, u, v, block[u, v], blocknear[u, v], blocktype[], halfchance, narrowtrunkchance, bigsolidchance);            
             }
         }
 }
@@ -541,14 +544,14 @@ show_debug_message("Asteroids done");
 
 for (u =0; u < bordersize+2; u+=1)
     {
-                instance_create(u*64 * global.RM , 0, obj_borderblock)
-                instance_create(u*64 * global.RM , gridsize*384 * global.RM +64 * global.RM , obj_borderblock)
+                instance_create(u*64 * global.RM , 0, obj_BorderBlockTemp)
+                instance_create(u*64 * global.RM , gridsize*384 * global.RM +64 * global.RM , obj_BorderBlockTemp)
     }
 
 for (u =0 u < bordersize+2; u+=1)
     {
-                instance_create(0, u*64 * global.RM , obj_borderblock)
-                instance_create(gridsize*384 * global.RM +64 * global.RM ,u*64 * global.RM  , obj_borderblock)
+                instance_create(0, u*64 * global.RM , obj_BorderBlockTemp)
+                instance_create(gridsize*384 * global.RM +64 * global.RM ,u*64 * global.RM  , obj_BorderBlockTemp)
     }
 
 
@@ -1595,23 +1598,81 @@ if block[u, v] == 5 && block[u, v+1] == 5 && random(1) < halfchance       //at l
 }
 
 
+//Narrowing Trunks
+if block[u, v] == 10 && block[u, v+1] == 18 && random(1) < narrowtrunkchance        //narrowing trunk- North
+{
+    block[u, v] = 34;
+    block[u, v+1] = 38;
+}
+
+if block[u, v] == 19 && block[u, v+1] == 11 && random(1) < narrowtrunkchance        //narrowing trunk- South
+{
+    block[u, v] = 39;
+    block[u, v+1] = 35;
+}
+
+if block[u, v] == 20 && block[u+1, v] == 12 && random(1) < narrowtrunkchance        //narrowing trunk- East
+{
+    block[u, v] = 40;
+    block[u+1, v] = 36;
+}
+
+if block[u, v] == 13 && block[u+1, v] == 21 && random(1) < narrowtrunkchance        //narrowing trunk- West
+{
+    block[u, v] = 37;
+    block[u+1, v] = 41;
+}
 
 
-//---------------------------------------------------------------------
-                
-//Now create the block with correct type unless inside a solid huge block
+
+// are we outside of a bigblock square
 hu = floor(u / 12);
 hv = floor(v / 12);
 
 if bigblock[hu, hv] > 0
 {
+
+
+if random(1) < bigsolidchance       //replace four adjacent solid tiles with one 128 solid
+    {                
+        if block[u, v] == 1 && block[u+1, v] == 1 && block[u, v+1] == 1 && block[u+1, v+1] == 1
+        { 
+            hu = floor((u+1) / 12);     //check none of the four blocks are inside a huge block
+            hv = floor(v / 12);
+            if bigblock[hu, hv] > 0
+            {        
+                hu = floor(u / 12);
+                hv = floor((v+1) / 12);
+                if bigblock[hu, hv] > 0
+                    {         
+                        hu = floor((u+1) / 12);
+                        hv = floor((v+1) / 12);
+                        if bigblock[hu, hv] > 0
+                            {             
+                                block[u, v] = 0;
+                                block[u+1, v] = 0;    
+                                block[u, v+1] = 0;    
+                                block[u+1, v+1] = 0;    
+                                instance_create(128 + u * 64, 128 + v * 64, obj_Solid128);                                
+                            }
+                    }
+             }
+        }
+    }
+
+//---------------------------------------------------------------------
+                
+//Now create the block with correct type unless inside a solid huge block
+
     var type = block[u,v];
-    if type < 38    //98 is used to keep start and end squares free
+    if type > 0 && type < 45    //98 is used to keep start and end squares free
         {
             var object = blocktype[type];
             //show_debug_message("type = " + string(type) + " , Object: " + string(object));            
             instance_create(128 + u * 64, 128 + v * 64, object);      
         }
+
+        
 }
 
 #define script46

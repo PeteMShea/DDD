@@ -7,7 +7,7 @@
   <coltolerance>0</coltolerance>
   <sepmasks>-1</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>16</bbox_left>
+  <bbox_left>4</bbox_left>
   <bbox_right>63</bbox_right>
   <bbox_top>0</bbox_top>
   <bbox_bottom>63</bbox_bottom>
@@ -21,5 +21,12 @@
   <height>64</height>
   <frames>
     <frame index="0">images\spr_Cap_W_0.png</frame>
+    <frame index="1">images\spr_Cap_W_1.png</frame>
+    <frame index="2">images\spr_Cap_W_2.png</frame>
+    <frame index="3">images\spr_Cap_W_3.png</frame>
+    <frame index="4">images\spr_Cap_W_4.png</frame>
+    <frame index="5">images\spr_Cap_W_5.png</frame>
+    <frame index="6">images\spr_Cap_W_6.png</frame>
+    <frame index="7">images\spr_Cap_W_7.png</frame>
   </frames>
 </sprite>
