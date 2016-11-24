@@ -408,9 +408,9 @@
       <sprite>sprites\spr_FallsHalf_N</sprite>
       <sprite>sprites\spr_FallsHalf_S</sprite>
       <sprite>sprites\spr_FallsHalf_W</sprite>
-      <sprite>sprites\spr_Flat_E</sprite>
       <sprite>sprites\spr_Flat_N</sprite>
       <sprite>sprites\spr_Flat_S</sprite>
+      <sprite>sprites\spr_Flat_E</sprite>
       <sprite>sprites\spr_Flat_W</sprite>
       <sprite>sprites\spr_Half_E</sprite>
       <sprite>sprites\spr_Half_N</sprite>

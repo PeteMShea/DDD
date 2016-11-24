@@ -28,7 +28,19 @@
             <string>// initialise
 
 image_speed = 0;
-image_index = irandom_range(0, 7);
+neighbour = instance_position(x +32, y - 32, obj_Flat_E);
+image = irandom_range(0, 7);
+
+if neighbour != noone
+{
+    neighbourimage = neighbour.image_index;
+    while(image == neighbourimage)
+        {
+            image = irandom_range(0, 7);        
+        }
+}
+
+image_index = image;
 
 
 </string>
