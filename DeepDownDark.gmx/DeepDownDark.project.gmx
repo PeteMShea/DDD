@@ -400,8 +400,8 @@
       <sprite>sprites\spr_Solid</sprite>
       <sprite>sprites\spr_Solid128</sprite>
       <sprite>sprites\spr_newblockSCap</sprite>
-      <sprite>sprites\spr_Diagonal_NW</sprite>
       <sprite>sprites\spr_Diagonal_NE</sprite>
+      <sprite>sprites\spr_Diagonal_NW</sprite>
       <sprite>sprites\spr_Diagonal_SE</sprite>
       <sprite>sprites\spr_Diagonal_SW</sprite>
       <sprite>sprites\spr_FallsHalf_E</sprite>
@@ -436,9 +436,9 @@
       <sprite>sprites\spr_Valley_N</sprite>
       <sprite>sprites\spr_Valley_S</sprite>
       <sprite>sprites\spr_Valley_W</sprite>
-      <sprite>sprites\spr_Cap_E</sprite>
       <sprite>sprites\spr_Cap_N</sprite>
       <sprite>sprites\spr_Cap_S</sprite>
+      <sprite>sprites\spr_Cap_E</sprite>
       <sprite>sprites\spr_Cap_W</sprite>
       <sprite>sprites\spr_HugeBlockTemp_</sprite>
       <sprite>sprites\spr_BorderBlockTemp</sprite>
