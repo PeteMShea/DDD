@@ -59,7 +59,7 @@ mingap = 4;       //how big a gap there will always be between N/S and E/W corri
 spikyness = 1;      // how much wee blocks jut in from edges to empty space- minimum number of wee blocks + 1  /1
 minweespike = 1;
 maxweespike = 3;        //cannot be higher than 4!
-halfchance = 0.1;       //chance of half flats being used (higher number for smoother less bumpy world);
+halfchance = 0.4;       //chance of half flats being used (higher number for smoother less bumpy world) 0.1
 narrowtrunkchance = 0.5;        //chance of trunks narrowing to thinner spikes
 bigsolidchance = 0.2;       //chance of replacing 2x2 solid tiles with 1 128x128 one
 

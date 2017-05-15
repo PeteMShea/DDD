@@ -348,17 +348,17 @@
     <option_mac_appstore_outgoing_allow>0</option_mac_appstore_outgoing_allow>
     <option_mac_build_version>0</option_mac_build_version>
     <option_mac_copyright_info>(c)2012 CompanyName Ltd...</option_mac_copyright_info>
-    <option_mac_create_app_store>-1</option_mac_create_app_store>
-    <option_mac_display_name>Pete1</option_mac_display_name>
+    <option_mac_create_app_store>0</option_mac_create_app_store>
+    <option_mac_display_name>DDDMac</option_mac_display_name>
     <option_mac_enable_retina>0</option_mac_enable_retina>
     <option_mac_enable_steam>0</option_mac_enable_steam>
-    <option_mac_fullscreen>0</option_mac_fullscreen>
+    <option_mac_fullscreen>-1</option_mac_fullscreen>
     <option_mac_icon_png>Configs\Default\mac\icon512.png</option_mac_icon_png>
     <option_mac_interpolate>-1</option_mac_interpolate>
     <option_mac_major_version>1</option_mac_major_version>
     <option_mac_menu_dock>0</option_mac_menu_dock>
     <option_mac_minor_version>0</option_mac_minor_version>
-    <option_mac_output_dir>~/GameMaker-Studio/Pete1</option_mac_output_dir>
+    <option_mac_output_dir>~/GameMaker-Studio/DDDMac</option_mac_output_dir>
     <option_mac_scale>-1</option_mac_scale>
     <option_mac_screenkey>-1</option_mac_screenkey>
     <option_mac_showcursor>-1</option_mac_showcursor>
@@ -462,6 +462,11 @@
     <option_textureGroup15_parent>&lt;none&gt;</option_textureGroup15_parent>
     <option_textureGroup15_scaled>0</option_textureGroup15_scaled>
     <option_textureGroup15_targets>9223372036854775807</option_textureGroup15_targets>
+    <option_textureGroup16_border>2</option_textureGroup16_border>
+    <option_textureGroup16_nocropping>0</option_textureGroup16_nocropping>
+    <option_textureGroup16_parent>&lt;none&gt;</option_textureGroup16_parent>
+    <option_textureGroup16_scaled>0</option_textureGroup16_scaled>
+    <option_textureGroup16_targets>9223372036854775807</option_textureGroup16_targets>
     <option_textureGroup1_border>2</option_textureGroup1_border>
     <option_textureGroup1_nocropping>0</option_textureGroup1_nocropping>
     <option_textureGroup1_parent>&lt;none&gt;</option_textureGroup1_parent>
@@ -507,7 +512,7 @@
     <option_textureGroup9_parent>&lt;none&gt;</option_textureGroup9_parent>
     <option_textureGroup9_scaled>0</option_textureGroup9_scaled>
     <option_textureGroup9_targets>9223372036854775807</option_textureGroup9_targets>
-    <option_textureGroup_count>16</option_textureGroup_count>
+    <option_textureGroup_count>17</option_textureGroup_count>
     <option_textureGroups0>Default</option_textureGroups0>
     <option_textureGroups1>Splash</option_textureGroups1>
     <option_textureGroups10>Obsolete</option_textureGroups10>
@@ -516,6 +521,7 @@
     <option_textureGroups13>3DTex</option_textureGroups13>
     <option_textureGroups14>GUIMenus</option_textureGroups14>
     <option_textureGroups15>SanityMasks</option_textureGroups15>
+    <option_textureGroups16>ENV_B</option_textureGroups16>
     <option_textureGroups2>Level0</option_textureGroups2>
     <option_textureGroups3>Level1</option_textureGroups3>
     <option_textureGroups4>Level2</option_textureGroups4>

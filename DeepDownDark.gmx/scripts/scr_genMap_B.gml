@@ -1553,7 +1553,7 @@ if block[u, v] == 3 && block[u+1, v] == 3 && random(1) < halfchance       //at l
 
 if block[u, v] == 4 && block[u, v+1] == 4 && random(1) < halfchance       //at least two adjacent facing flats- East
 {
-    block[u, v] = 24;       //falls to half
+    block[u, v] = 24;       //falls to half 24
     loop = true;
     position = v+1;
     maxrun = irandom_range(2, 7);       //randomise how many half pieces in a row to allow
@@ -1562,7 +1562,7 @@ if block[u, v] == 4 && block[u, v+1] == 4 && random(1) < halfchance       //at l
     {
             if block[u, position+1] != 4 || count >= maxrun
                 {
-                    block[u, position] = 32;        //half rises
+                    block[u, position] = 32;        //half rises   32
                     loop = false;                 
                 }
             else

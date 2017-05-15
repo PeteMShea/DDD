@@ -106,7 +106,7 @@ global.nextitemweapon = 1;       //whether to unlock a weapon or equipment next-
 
 
 //now check for save file- if it exists load it and overwrite the globals that have changed else create it with the default first ever values
-
+/*
 if (file_exists("Save.sav"))
     {
         script_execute(scr_loadgame);
@@ -115,7 +115,7 @@ else
     {
         script_execute(scr_savegame);
     }
-
+*/
 if global.reboot = true global.nextroom = 1 else global.nextroom = 3;       // go to splash unless quick restart, then goto 3
 
 
