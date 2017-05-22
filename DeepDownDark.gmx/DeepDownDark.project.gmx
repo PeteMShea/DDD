@@ -442,6 +442,11 @@
       <sprite>sprites\spr_Cap_W</sprite>
       <sprite>sprites\spr_HugeBlockTemp_</sprite>
       <sprite>sprites\spr_BorderBlockTemp</sprite>
+      <sprite>sprites\spr_hugeblock_B</sprite>
+      <sprite>sprites\spr_borderblockEW</sprite>
+      <sprite>sprites\spr_borderblockNS</sprite>
+      <sprite>sprites\spr_borderside_Bleft</sprite>
+      <sprite>sprites\spr_borderside_Bright</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -604,6 +609,7 @@
       <object>objects\obj_NarrowCap_W</object>
       <object>objects\obj_Trunk_N</object>
       <object>objects\obj_Trunk_S</object>
+      <object>objects\obj_hugeblockB</object>
       <object>objects\obj_Trunk_E</object>
       <object>objects\obj_Trunk_W</object>
       <object>objects\obj_TrunkNarrows_N</object>
@@ -615,7 +621,10 @@
       <object>objects\obj_Valley_E</object>
       <object>objects\obj_Valley_W</object>
       <object>objects\obj_HugeBlockTemp</object>
-      <object>objects\obj_BorderBlockTemp</object>
+      <object>objects\obj_borderblock_BEW</object>
+      <object>objects\obj_borderblock_BNS</object>
+      <object>objects\obj_borderside_Bleft</object>
+      <object>objects\obj_borderside_Bright</object>
     </objects>
     <objects name="player">
       <object>objects\obj_player</object>

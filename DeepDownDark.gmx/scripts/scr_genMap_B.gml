@@ -309,19 +309,19 @@ for (u = 0; u < gridsize; u +=1)
                     
                     blockindex = (bigblock[u, v] * -1) - 1;
                     //tile_add(tileset_hugeblocks, leftx, topy, width, height, u * 384 * global.RM +64 * global.RM , v * 384 * global.RM +64 * global.RM, 10);                                                         
-                   // show_debug_message("u: " + string(u) + " ,v: "+ string(v) + " ,blockindex = " + string(blockindex));
+                    show_debug_message("u: " + string(u) + " ,v: "+ string(v) + " ,blockindex = " + string(blockindex));
                                                   
-                    inst = instance_create( u * 384 * global.RM +64 * global.RM , v * 384 * global.RM +64 * global.RM , obj_HugeBlockTemp)
+                    inst = instance_create( u * 384 * global.RM +64 * global.RM , v * 384 * global.RM +64 * global.RM , obj_hugeblockB)
                     with (inst)
                         {
-                            if random(1) < 0.0          // *********************** Revert to 0.5 or 1 once hugeblock corners created *******************************************************
+                            if random(1) < 2.0          // *********************** Revert to 0.5 or 1 once hugeblock corners created *******************************************************
                                 {
                                     image_index = other.blockindex;
                                     
                                 }
                             else
                                 {
-                                    image_index = 0;                                                                    
+                                    image_index = 15;                                                                  
                                 }
                         //show_debug_message("blockindex = " + string(other.blockindex));   
                         }
@@ -544,14 +544,14 @@ show_debug_message("Asteroids done");
 
 for (u =0; u < bordersize+2; u+=1)
     {
-                instance_create(u*64 * global.RM , 0, obj_BorderBlockTemp)
-                instance_create(u*64 * global.RM , gridsize*384 * global.RM +64 * global.RM , obj_BorderBlockTemp)
+                instance_create(u*64 * global.RM , 0, obj_borderblock_BNS)
+                instance_create(u*64 * global.RM , gridsize*384 * global.RM +64 * global.RM , obj_borderblock_BNS)
     }
 
-for (u =0 u < bordersize+2; u+=1)
+for (u =0; u < bordersize+2; u+=1)
     {
-                instance_create(0, u*64 * global.RM , obj_BorderBlockTemp)
-                instance_create(gridsize*384 * global.RM +64 * global.RM ,u*64 * global.RM  , obj_BorderBlockTemp)
+                instance_create(0, u*64 * global.RM , obj_borderblock_BEW)
+                instance_create(gridsize*384 * global.RM +64 * global.RM ,u*64 * global.RM  , obj_borderblock_BEW)
     }
 
 
@@ -572,10 +572,10 @@ position_destroy(global.exitx+64 * global.RM , global.exity);
 global.startx -= 48;    //reposition ship in centre of start trench    
     
 //and add four new borderside blocks
-instance_create(starthuge * 384 * global.RM  + 64 * global.RM  + 64 * global.RM , 0, obj_bordersideleft);
-instance_create(starthuge * 384 * global.RM  + 192 * global.RM  + 64 * global.RM , 0, obj_bordersideright);
-instance_create(endhuge * 384 * global.RM  + 64 * global.RM  + 64 * global.RM , gridsize * 384 * global.RM  + 64 * global.RM , obj_bordersideleft);
-instance_create(endhuge * 384 * global.RM  + 192 * global.RM  + 64 * global.RM , gridsize * 384 * global.RM + 64 * global.RM , obj_bordersideright);
+instance_create(starthuge * 384 * global.RM  + 64 * global.RM  + 64 * global.RM , 0, obj_borderside_Bleft);
+instance_create(starthuge * 384 * global.RM  + 192 * global.RM  + 64 * global.RM , 0, obj_borderside_Bright);
+instance_create(endhuge * 384 * global.RM  + 64 * global.RM  + 64 * global.RM , gridsize * 384 * global.RM  + 64 * global.RM , obj_borderside_Bleft);
+instance_create(endhuge * 384 * global.RM  + 192 * global.RM  + 64 * global.RM , gridsize * 384 * global.RM + 64 * global.RM , obj_borderside_Bright);
 
 // add an exit trigger
 instance_create(endhuge * 384 * global.RM  + 64 * global.RM  + 64 * global.RM , gridsize * 384 * global.RM  + 64 * global.RM , obj_exittrigger);
@@ -624,6 +624,12 @@ if  s != 2 && bigblock [u, v+1] > 0 s = 1
                 if n != 1 && e != 1 && s != 1 && w == 1 bigblock [u, v] = -14     // West Only
                 if n == 1 && e == 1 && s == 1 && w == 1 bigblock [u, v] = -15     // North, South, East and West
                 if n != 1 && e != 1 && s != 1 && w != 1 bigblock [u, v] = -16     // None- no adjacent spaces (fully enclosed)
+                
+                
+                
+                
+                
+               // bigblock [u, v] = -11
 
 
              
