@@ -1425,45 +1425,51 @@ if v > 95
 
 
 #define scr_genBlocks_B
-// blocktype[0] = "obj_debug";     //0 reserved for empty squares
-// blocktype[1] = "obj_Solid";
-// blocktype[2] = obj_Flat_N;
-// blocktype[3] = obj_Flat_S;
-// blocktype[4] = obj_Flat_E;
-// blocktype[5] = obj_Flat_W;
-// blocktype[6] = obj_Diagonal_NE;
-// blocktype[7] = obj_Diagonal_NW;
-// blocktype[8] = obj_Diagonal_SE;
-// blocktype[9] = obj_Diagonal_SW;
-// blocktype[10] = obj_Cap_N;
-// blocktype[11] = obj_Cap_S;
-// blocktype[12] = obj_Cap_E;
-// blocktype[13] = obj_Cap_W;
-// blocktype[14] = obj_Valley_N;
-// blocktype[15] = obj_Valley_S;
-// blocktype[16] = obj_Valley_E;
-// blocktype[17] = obj_Valley_W;
-// blocktype[18] = obj_debug;
-// blocktype[19] = obj_debug;
-// blocktype[20] = obj_debug;
-// blocktype[21] = obj_debug;        
-// blocktype[22] = obj_debug;        
-// blocktype[23] = obj_debug;
-// blocktype[24] = obj_debug;                       
-// blocktype[25] = obj_debug;
-// blocktype[26] = obj_debug;                 
-// blocktype[27] = obj_debug;   
-// blocktype[28] = obj_debug;   
-// blocktype[29] = obj_debug;                           
-// blocktype[30] = obj_debug;   
-// blocktype[31] = obj_debug;  
-// blocktype[32] = obj_debug;                  
-// blocktype[33] = obj_debug;          
-// blocktype[34] = obj_debug;          
-// blocktype[35] = obj_debug; 
-// blocktype[36] = obj_debug;         
-// blocktype[37] = obj_debug;  
-
+/*      REFERENCE ONLY!!!
+        
+        blocktype[0] = obj_debug;     //0 reserved for empty squares
+        blocktype[1] = obj_Solid;
+        blocktype[2] = obj_Flat_N;
+        blocktype[3] = obj_Flat_S;
+        blocktype[4] = obj_Flat_E;
+        blocktype[5] = obj_Flat_W;
+        blocktype[6] = obj_Diagonal_NE;
+        blocktype[7] = obj_Diagonal_NW;
+        blocktype[8] = obj_Diagonal_SE;
+        blocktype[9] = obj_Diagonal_SW;
+        blocktype[10] = obj_Cap_N;
+        blocktype[11] = obj_Cap_S;
+        blocktype[12] = obj_Cap_E;
+        blocktype[13] = obj_Cap_W;
+        blocktype[14] = obj_Valley_N;
+        blocktype[15] = obj_Valley_S;
+        blocktype[16] = obj_Valley_E;
+        blocktype[17] = obj_Valley_W;
+        blocktype[18] = obj_Trunk_N;
+        blocktype[19] = obj_Trunk_S;
+        blocktype[20] = obj_Trunk_E;
+        blocktype[21] = obj_Trunk_W;        
+        blocktype[22] = obj_FallsHalf_N;        
+        blocktype[23] = obj_FallsHalf_S;
+        blocktype[24] = obj_FallsHalf_E;                       
+        blocktype[25] = obj_FallsHalf_W;
+        blocktype[26] = obj_Half_N;                 
+        blocktype[27] = obj_Half_S;   
+        blocktype[28] = obj_Half_E;   
+        blocktype[29] = obj_Half_W;                           
+        blocktype[30] = obj_HalfRises_N;   
+        blocktype[31] = obj_HalfRises_S;  
+        blocktype[32] = obj_HalfRises_E;                  
+        blocktype[33] = obj_HalfRises_W;          
+        blocktype[34] = obj_NarrowCap_N;          
+        blocktype[35] = obj_NarrowCap_S; 
+        blocktype[36] = obj_NarrowCap_E;         
+        blocktype[37] = obj_NarrowCap_W;         
+        blocktype[38] = obj_TrunkNarrows_N;          
+        blocktype[39] = obj_TrunkNarrows_S; 
+        blocktype[40] = obj_TrunkNarrows_E;         
+        blocktype[41] = obj_TrunkNarrows_W; 
+*/
 //test blocknear[] values and change block value to above new type unless no change (0= solid)
 
 
@@ -1675,7 +1681,31 @@ if random(1) < bigsolidchance       //replace four adjacent solid tiles with one
         {
             var object = blocktype[type];
             //show_debug_message("type = " + string(type) + " , Object: " + string(object));            
-            instance_create(128 + u * 64, 128 + v * 64, object);      
+            instance_create(128 + u * 64, 128 + v * 64, object);
+            
+            if random(1) < shroomchance
+                {
+                    //North Flat
+                    if type == 2 
+                        {
+                            instance_create(128 + u * 64, 128 + v * 64 - random_range(24, 56), obj_Shroom_N);
+                        }                    
+                    //North Half
+                    else if type == 22 || type == 26 || type == 30
+                        {
+                            instance_create(128 + u * 64, 128 + v * 64 + random_range(8, 16), obj_Shroom_N);
+                        }
+                    //Other North
+                    else if type == 10 || type == 14 || type == 18 || type == 38 || type == 6 || type == 7
+                        {
+                            instance_create(128 + u * 64, 128 + v * 64, obj_Shroom_N);
+                        }                     
+                    
+                                    
+                }
+            
+            
+                  
         }
 
         
