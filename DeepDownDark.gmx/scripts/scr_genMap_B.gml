@@ -1688,12 +1688,12 @@ if random(1) < bigsolidchance       //replace four adjacent solid tiles with one
                     //North Flat
                     if type == 2 
                         {
-                            instance_create(128 + u * 64, 128 + v * 64 - random_range(24, 56), obj_Shroom_N);
+                            instance_create(128 + u * 64, 128 + v * 64 - random_range(36, 50), obj_Shroom_N);
                         }                    
                     //North Half
                     else if type == 22 || type == 26 || type == 30
                         {
-                            instance_create(128 + u * 64, 128 + v * 64 + random_range(8, 16), obj_Shroom_N);
+                            instance_create(128 + u * 64, 128 + v * 64 + random_range(2, 4), obj_Shroom_N);
                         }
                     //Other North
                     else if type == 10 || type == 14 || type == 18 || type == 38 || type == 6 || type == 7
@@ -1703,7 +1703,26 @@ if random(1) < bigsolidchance       //replace four adjacent solid tiles with one
                     
                                     
                 }
-            
+            if random(1) < plantchance
+                {
+                    //North Flat
+                    if type == 2 
+                        {
+                            instance_create(128 + u * 64, 128 + v * 64 - random_range(36, 50), obj_plant_N);
+                        }                    
+                    //North Half
+                    else if type == 22 || type == 26 || type == 30
+                        {
+                            instance_create(128 + u * 64, 128 + v * 64 + random_range(2, 4), obj_plant_N);
+                        }
+                    //Other North
+                    else if type == 10 || type == 14 || type == 18 || type == 38 || type == 6 || type == 7
+                        {
+                            instance_create(128 + u * 64, 128 + v * 64, obj_plant_N);
+                        }                     
+                    
+                                    
+                }            
             
                   
         }

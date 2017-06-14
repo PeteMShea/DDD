@@ -379,7 +379,35 @@ if spores != noone
             }
 // don't destroy the bullet when shooting spores
 
+    }
+    
+shrooms = noone;
+if collided == false shrooms = instance_place(x, y, obj_shroomhead);
+if shrooms != noone
+    {
+        collided = true;
+        with(shrooms) 
+            {
+                if currenthealth &gt;0
+                {
+                
+                //create debris tinyblocks
+                bx = other.x
+                by = other.y
+                script_execute(scr_bulletsparks, bx, by);
+                awake = true;
+                currenthealth -= obj_player.bulletdamage;
+                
+                }
+                if currenthealth &lt;= 0
+                {
+                    instance_destroy();
+                }           
+            }
+// don't destroy the bullet when shooting shrooms
+
     }     
+         
 
 formless = noone;
 if collided == false formless = instance_place(x, y, obj_fsmouthcollision);

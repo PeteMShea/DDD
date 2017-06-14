@@ -46,7 +46,9 @@ goldchance = 0.0;     //0.012
 goldspread = 20;     // how spread out or clumped gold is-  lower numbers for more spread/less clumping
 goldthreshold = 0.7;       //how far down weeblock columns before gold can be placed (1 = never)
 
+instance_create(x, y, obj_destructsetup);   //add control object to create data for destructibles
 shroomchance = 0.8;     //chance of adding a shroom tile
+plantchance = 0.3;      //chance of adding a plant tile
 
 
 vinechance = 0.01;      //chance of vines being added- overall amount of greenery

@@ -397,6 +397,11 @@
       <sprite>sprites\spr_15MagnetExtract</sprite>
     </sprites>
     <sprites name="environmentB">
+      <sprites name="vegetation">
+        <sprite>sprites\spr_Plant_N</sprite>
+        <sprite>sprites\spr_Shrooms_N</sprite>
+        <sprite>sprites\spr_ShroomHead</sprite>
+      </sprites>
       <sprite>sprites\spr_Solid</sprite>
       <sprite>sprites\spr_Solid128</sprite>
       <sprite>sprites\spr_newblockSCap</sprite>
@@ -447,7 +452,6 @@
       <sprite>sprites\spr_borderblockNS</sprite>
       <sprite>sprites\spr_borderside_Bleft</sprite>
       <sprite>sprites\spr_borderside_Bright</sprite>
-      <sprite>sprites\spr_Shrooms_N</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -543,6 +547,7 @@
       <script>scripts\deltaSpeed.gml</script>
       <script>scripts\oldDelta.gml</script>
     </scripts>
+    <script>scripts\scr_shroomheadsetup.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_multiply.shader</shader>
@@ -627,6 +632,9 @@
       <object>objects\obj_borderside_Bleft</object>
       <object>objects\obj_borderside_Bright</object>
       <object>objects\obj_Shroom_N</object>
+      <object>objects\obj_plant_N</object>
+      <object>objects\obj_shroomhead</object>
+      <object>objects\obj_destructsetup</object>
     </objects>
     <objects name="player">
       <object>objects\obj_player</object>
